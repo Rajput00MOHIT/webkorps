@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import verizonLogo from '../../../assets/brands/verizon.png';
 import acimaLogo from '../../../assets/brands/acima.png';
 import bhaiBandhuLogo from '../../../assets/brands/bhai-bandhu.png';
@@ -30,8 +30,33 @@ const BRANDS: Brand[] = [
 ];
 
 export const LeadingBrands: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="wk-brands" aria-labelledby="brands-heading">
+    <section
+      ref={sectionRef}
+      className={`wk-brands ${isVisible ? 'is-visible' : ''}`}
+      aria-labelledby="brands-heading"
+    >
       <div className="site-container">
         {/* Section Heading */}
         <div className="wk-brands__header">

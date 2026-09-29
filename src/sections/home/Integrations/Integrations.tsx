@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Container } from '../../../components/Container/Container';
 import integrationIot from '../../../assets/integrations/integration-iot.png';
 import integrationRpa from '../../../assets/integrations/integration-rpa.png';
@@ -192,6 +192,26 @@ function renderTechnologyIcon(id: string) {
 export const Integrations: React.FC = () => {
   const [activeId, setActiveId] = useState<string>(TECHNOLOGIES_DATA[0].id);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const activeItem =
     TECHNOLOGIES_DATA.find((item) => item.id === activeId) ||
@@ -227,7 +247,8 @@ export const Integrations: React.FC = () => {
 
   return (
     <section
-      className="wk-integrations"
+      ref={sectionRef}
+      className={`wk-integrations ${isVisible ? 'is-visible' : ''}`}
       aria-labelledby="integrations-heading"
       id="integrations"
     >
@@ -277,6 +298,7 @@ export const Integrations: React.FC = () => {
                   className={`wk-integrations__tab ${
                     isActive ? 'wk-integrations__tab--active' : ''
                   }`}
+                  style={{ transitionDelay: `${index * 60}ms` }}
                   onClick={() => setActiveId(item.id)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
                   type="button"

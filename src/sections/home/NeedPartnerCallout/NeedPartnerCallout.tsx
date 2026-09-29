@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../../components/Container/Container';
 import technologyPartnerImg from '../../../assets/Technology Partner/Entrepreneur_giving_positive_fee…_202609081049 1.png';
 import './NeedPartnerCallout.css';
 
 export const NeedPartnerCallout: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="technology-partner"
-      className="wk-tech-partner"
+      className={`wk-tech-partner ${isVisible ? 'is-visible' : ''}`}
       aria-labelledby="tech-partner-heading"
     >
       <Container size="wide">

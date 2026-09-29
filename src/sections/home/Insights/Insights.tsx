@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../../components/Container/Container';
 import { BLOG_POSTS } from './insightsData';
 import { BlogCarousel } from './BlogCarousel';
 import './Insights.css';
 
 export const Insights: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="insights"
-      className="wk-insights"
+      className={`wk-insights ${isVisible ? 'is-visible' : ''}`}
       aria-labelledby="insights-heading"
     >
       <Container size="wide">

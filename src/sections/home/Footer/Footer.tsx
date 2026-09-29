@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../../components/Container/Container';
 import { FooterCTA } from './FooterCTA';
 import { FooterNav } from './FooterNav';
@@ -7,8 +7,34 @@ import { FooterBottom } from './FooterBottom';
 import './Footer.css';
 
 export const Footer: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer id="footer" className="wk-footer" role="contentinfo">
+    <footer
+      ref={sectionRef}
+      id="footer"
+      className={`wk-footer ${isVisible ? 'is-visible' : ''}`}
+      role="contentinfo"
+    >
       <Container size="normal">
         <div className="wk-footer__wrapper">
           {/* Layer 1: Final CTA & Contact/Social Card */}

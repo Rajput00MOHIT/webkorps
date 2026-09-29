@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../../components/Container/Container';
 import aiHowWeUse from '../../../assets/ai/ai-how-we-use.png';
 import aiHelpsBusiness from '../../../assets/ai/ai-helps-business.png';
@@ -51,8 +51,33 @@ const AI_CARDS_DATA: AICardItem[] = [
 ];
 
 export const AIInnovation: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="wk-ai-innovation" aria-labelledby="ai-heading">
+    <section
+      ref={sectionRef}
+      className={`wk-ai-innovation ${isVisible ? 'is-visible' : ''}`}
+      aria-labelledby="ai-heading"
+    >
       <Container>
         <div className="wk-ai-innovation__header">
           <h2 id="ai-heading" className="wk-ai-innovation__title">
@@ -62,8 +87,13 @@ export const AIInnovation: React.FC = () => {
         </div>
 
         <div className="wk-ai-innovation__grid">
-          {AI_CARDS_DATA.map((card) => (
-            <article key={card.id} className="wk-ai-card" tabIndex={0}>
+          {AI_CARDS_DATA.map((card, index) => (
+            <article
+              key={card.id}
+              className="wk-ai-card"
+              style={{ transitionDelay: `${index * 100}ms` }}
+              tabIndex={0}
+            >
               <div className="wk-ai-card__visual">
                 <img
                   src={card.image}

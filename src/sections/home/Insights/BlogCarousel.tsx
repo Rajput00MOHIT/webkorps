@@ -92,6 +92,7 @@ export const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
             <div
               key={`${post.id}-${index}`}
               className="wk-blog-carousel__slide"
+              style={{ transitionDelay: `${index * 120}ms` }}
               role="group"
               aria-roledescription="slide"
               aria-label={`${index + 1} of ${posts.length}`}

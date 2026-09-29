@@ -71,10 +71,30 @@ const INDUSTRIES_DATA: IndustryItem[] = [
 
 export const Industries: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0.5);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const updateScrollState = () => {
     if (!scrollRef.current) return;
@@ -117,7 +137,11 @@ export const Industries: React.FC = () => {
   };
 
   return (
-    <section className="wk-industries" aria-labelledby="industry-heading">
+    <section
+      ref={sectionRef}
+      className={`wk-industries ${isVisible ? 'is-visible' : ''}`}
+      aria-labelledby="industry-heading"
+    >
       <Container>
         {/* Section Header */}
         <div className="wk-industries__header">
@@ -150,10 +174,11 @@ export const Industries: React.FC = () => {
           aria-label="Industry solutions list"
           tabIndex={0}
         >
-          {INDUSTRIES_DATA.map((industry) => (
+          {INDUSTRIES_DATA.map((industry, index) => (
             <article
               key={industry.id}
               className={`wk-industry-card ${activeCardId === industry.id ? 'is-active' : ''}`}
+              style={{ transitionDelay: `${index * 80}ms` }}
               tabIndex={0}
               aria-labelledby={`ind-title-${industry.id}`}
               onClick={() => setActiveCardId(activeCardId === industry.id ? null : industry.id)}

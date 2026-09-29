@@ -77,7 +77,7 @@
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.25s ease;
 }
 
 .wk-footer__btn--outline {
@@ -86,10 +86,17 @@
   background-color: transparent;
 }
 
-.wk-footer__btn--outline:hover {
-  background-color: #EBF3FF;
-  border-color: #1272ab;
-  color: #1272ab;
+@media (hover: hover) and (pointer: fine) {
+  .wk-footer__btn--outline:hover {
+    background-color: #EBF3FF;
+    border-color: #1272ab;
+    color: #1272ab;
+    transform: translateY(-2px);
+  }
+}
+
+.wk-footer__btn--outline:active {
+  transform: translateY(0);
 }
 
 .wk-footer__btn--outline:focus-visible {
@@ -104,11 +111,18 @@
   box-shadow: 0 4px 14px rgba(24, 135, 201, 0.2);
 }
 
-.wk-footer__btn--primary:hover {
-  background-color: var(--color-brand-primary-hover, #1272ab);
-  transform: translateY(-1px);
-  color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(24, 135, 201, 0.3);
+@media (hover: hover) and (pointer: fine) {
+  .wk-footer__btn--primary:hover {
+    background-color: var(--color-brand-primary-hover, #1272ab);
+    transform: translateY(-2px);
+    color: #FFFFFF;
+    box-shadow: 0 6px 18px rgba(24, 135, 201, 0.3);
+  }
+}
+
+.wk-footer__btn--primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(24, 135, 201, 0.25);
 }
 
 .wk-footer__btn--primary:focus-visible {
@@ -119,11 +133,13 @@
 .wk-footer__btn-arrow {
   width: 15px;
   height: 15px;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.wk-footer__btn--primary:hover .wk-footer__btn-arrow {
-  transform: translate(2px, -2px);
+@media (hover: hover) and (pointer: fine) {
+  .wk-footer__btn--primary:hover .wk-footer__btn-arrow {
+    transform: translate(3px, -3px);
+  }
 }
 
 /* Contact & Social Card */
@@ -215,7 +231,7 @@
   justify-content: center;
   color: var(--color-brand-primary, #1887C9);
   text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .wk-footer__social-link svg {
@@ -223,10 +239,12 @@
   height: 17px;
 }
 
-.wk-footer__social-link:hover {
-  background-color: var(--color-brand-primary, #1887C9);
-  color: #FFFFFF;
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .wk-footer__social-link:hover {
+    background-color: var(--color-brand-primary, #1887C9);
+    color: #FFFFFF;
+    transform: translateY(-2px) scale(1.05);
+  }
 }
 
 .wk-footer__social-link:focus-visible {
@@ -459,10 +477,100 @@
 }
 
 /* ==========================================================================
+   Scroll Entrance Animations (GLOBAL SPEED MODE)
+   ========================================================================== */
+
+/* Top CTA Elements Reveal */
+.wk-footer__cta-title {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+  will-change: opacity, transform;
+}
+
+.wk-footer__cta-desc {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+  will-change: opacity, transform;
+}
+
+.wk-footer__cta-actions {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+  will-change: opacity, transform;
+}
+
+/* Contact Card Reveal: fade + translateY */
+.wk-footer__contact-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, box-shadow 0.2s ease;
+  will-change: opacity, transform;
+}
+
+/* Dividers */
+.wk-footer__divider {
+  opacity: 0;
+  transition: opacity 0.5s ease 0.3s;
+}
+
+/* Navigation Columns Reveal: subtle opacity reveal (not individual links) */
+.wk-footer__nav-col {
+  opacity: 0;
+  transition: opacity 0.6s ease 0.35s;
+  will-change: opacity;
+}
+
+/* Locations Section Reveal: subtle fade reveal */
+.wk-footer__locations {
+  opacity: 0;
+  transition: opacity 0.6s ease 0.45s;
+  will-change: opacity;
+}
+
+/* Legal Row Reveal: fade in after main footer content */
+.wk-footer__bottom {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.55s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.55s;
+  will-change: opacity, transform;
+}
+
+/* Visible States */
+.wk-footer.is-visible .wk-footer__cta-title,
+.wk-footer.is-visible .wk-footer__cta-desc,
+.wk-footer.is-visible .wk-footer__cta-actions,
+.wk-footer.is-visible .wk-footer__contact-card,
+.wk-footer.is-visible .wk-footer__bottom {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wk-footer.is-visible .wk-footer__divider,
+.wk-footer.is-visible .wk-footer__nav-col,
+.wk-footer.is-visible .wk-footer__locations {
+  opacity: 1;
+}
+
+/* ==========================================================================
    Reduced Motion
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+  .wk-footer__cta-title,
+  .wk-footer__cta-desc,
+  .wk-footer__cta-actions,
+  .wk-footer__contact-card,
+  .wk-footer__divider,
+  .wk-footer__nav-col,
+  .wk-footer__locations,
+  .wk-footer__bottom {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 
   .wk-footer__btn,
   .wk-footer__btn-arrow,
@@ -470,5 +578,6 @@
   .wk-footer__nav-link,
   .wk-footer__legal-link {
     transition: none !important;
+    transform: none !important;
   }
 }

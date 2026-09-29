@@ -19,6 +19,15 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: clamp(2.5rem, 4vw, 3.75rem);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.wk-leadership.is-visible .wk-leadership__header {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .wk-leadership__title {
@@ -78,15 +87,30 @@
   flex-direction: row;
   align-items: stretch;
   box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.3s ease;
   position: relative;
   cursor: pointer;
+  will-change: opacity, transform;
 }
 
-.wk-leader-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+.wk-leadership.is-visible .wk-leader-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wk-leadership.is-visible .wk-leader-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+  }
+
+  .wk-leadership.is-visible .wk-leader-card:hover .wk-leader-card__photo {
+    transform: scale(1.02);
+  }
 }
 
 /* Left Column: Portrait Visual */
@@ -107,11 +131,12 @@
   object-fit: cover;
   object-position: top center;
   display: block;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.97);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.wk-leader-card:hover .wk-leader-card__photo {
-  transform: scale(1.03);
+.wk-leadership.is-visible .wk-leader-card__photo {
+  transform: scale(1);
 }
 
 /* Right Column: White Content Card */

@@ -12,11 +12,12 @@ export interface CaseStudyItem {
 
 interface CaseStudyCardProps {
   caseStudy: CaseStudyItem;
+  style?: React.CSSProperties;
 }
 
-export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy }) => {
+export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, style }) => {
   return (
-    <article className="wk-case-study-card" id={`case-study-${caseStudy.id}`}>
+    <article className="wk-case-study-card" id={`case-study-${caseStudy.id}`} style={style}>
       <div className="wk-case-study-card__visual">
         <img
           src={caseStudy.image}

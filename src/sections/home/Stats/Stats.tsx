@@ -64,7 +64,7 @@ export const Stats: React.FC = () => {
       return () => cancelAnimationFrame(frameId);
     }
 
-    const duration = 1800; // ms
+    const duration = 1200; // ms snappy count-up
     const startTime = performance.now();
 
     const updateCounts = (now: number) => {

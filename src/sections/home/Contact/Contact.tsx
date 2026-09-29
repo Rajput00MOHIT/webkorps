@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../../components/Container/Container';
 import { ContactVisual } from './ContactVisual';
 import { ContactForm } from './ContactForm';
 import './Contact.css';
 
 export const Contact: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="contact" className="wk-contact" aria-labelledby="contact-heading">
+    <section
+      ref={sectionRef}
+      id="contact"
+      className={`wk-contact ${isVisible ? 'is-visible' : ''}`}
+      aria-labelledby="contact-heading"
+    >
       <Container size="normal">
         <div className="wk-contact__grid">
           {/* Left Column: Heading and 3D Visual Asset */}

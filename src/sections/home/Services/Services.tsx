@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Container } from '../../../components/Container/Container';
 import serviceMobile from '../../../assets/services/service-mobile.png';
@@ -70,8 +70,33 @@ const SERVICES_DATA: ServiceItem[] = [
 ];
 
 export const Services: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="wk-services" aria-labelledby="services-heading">
+    <section
+      ref={sectionRef}
+      className={`wk-services ${isVisible ? 'is-visible' : ''}`}
+      aria-labelledby="services-heading"
+    >
       <Container>
         <div className="wk-services__header">
           <h2 id="services-heading" className="wk-services__title">
@@ -81,8 +106,13 @@ export const Services: React.FC = () => {
         </div>
 
         <div className="wk-services__grid">
-          {SERVICES_DATA.map((service) => (
-            <article key={service.id} className="wk-service-card" tabIndex={0}>
+          {SERVICES_DATA.map((service, index) => (
+            <article
+              key={service.id}
+              className="wk-service-card"
+              style={{ transitionDelay: `${index * 80}ms` }}
+              tabIndex={0}
+            >
               <div className="wk-service-card__visual">
                 <img
                   src={service.image}

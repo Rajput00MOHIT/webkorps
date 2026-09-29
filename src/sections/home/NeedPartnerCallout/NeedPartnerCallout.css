@@ -50,6 +50,15 @@
   letter-spacing: -0.03em;
   color: var(--color-text-primary, #0F172A);
   margin: 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.wk-tech-partner.is-visible .wk-tech-partner__title {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .wk-tech-partner__title-accent {
@@ -63,10 +72,28 @@
   color: var(--color-text-secondary, #475569);
   margin: clamp(1.25rem, 2vw, 1.75rem) 0 0 0;
   max-width: 520px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+  will-change: opacity, transform;
+}
+
+.wk-tech-partner.is-visible .wk-tech-partner__subtitle {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .wk-tech-partner__action {
   margin-top: clamp(1.75rem, 2.5vw, 2.5rem);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.24s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.24s;
+  will-change: opacity, transform;
+}
+
+.wk-tech-partner.is-visible .wk-tech-partner__action {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Primary CTA Button */
@@ -91,9 +118,10 @@
 }
 
 .wk-tech-partner__btn:hover {
-  background-color: #ffffff;
+  background-color: #1274AF;
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(24, 136, 201, 0.074);
+  box-shadow: 0 14px 30px rgba(24, 135, 201, 0.25);
 }
 
 .wk-tech-partner__btn:focus-visible {
@@ -102,7 +130,7 @@
 }
 
 .wk-tech-partner__btn:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.98);
 }
 
 .wk-tech-partner__btn-icon {
@@ -117,41 +145,25 @@
    Right Column: Smartphone Mockup & Backdrop
    ========================================================================== */
 
-.wk-tech-partner__visual {
+.wk-tech-partner__phone-wrapper {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 380px;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+  will-change: opacity, transform;
 }
 
-/* Circular Ambient Backdrop */
-.wk-tech-partner__backdrop {
-  position: absolute;
-  width: clamp(260px, 26vw, 380px);
-  height: clamp(260px, 26vw, 380px);
-  border-radius: 50%;
-  background: radial-gradient(circle, #D5EBFE 0%, #E8F4FE 55%, rgba(232, 244, 254, 0) 75%);
-  z-index: 1;
-  pointer-events: none;
-  transform: scale(1.05);
+.wk-tech-partner.is-visible .wk-tech-partner__phone-wrapper {
+  opacity: 1;
+  transform: scale(1);
 }
-
-/* Subtle outer aura ring */
-.wk-tech-partner__ring {
-  position: absolute;
-  width: clamp(300px, 30vw, 430px);
-  height: clamp(300px, 30vw, 430px);
-  border-radius: 50%;
-  border: 1px dashed rgba(24, 135, 201, 0.22);
-  z-index: 1;
-  pointer-events: none;
-}
-
-
 
 .wk-tech-partner__card:hover .wk-tech-partner__phone-wrapper {
-  transform: translateY(-4px);
+  transform: scale(1) translateY(-3px);
 }
 
 .wk-tech-partner__phone-img {
@@ -161,6 +173,11 @@
   max-width: 100%;
   object-fit: contain;
   user-select: none;
+  transition: transform 0.35s ease;
+}
+
+.wk-tech-partner__card:hover .wk-tech-partner__phone-img {
+  transform: scale(1.015);
 }
 
 /* ==========================================================================

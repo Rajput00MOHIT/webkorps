@@ -6,9 +6,29 @@ import './CaseStudies.css';
 
 export const CaseStudies: React.FC = () => {
   const trackRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const [scrollProgress, setScrollProgress] = useState<number>(50);
   const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
   const [canScrollRight, setCanScrollRight] = useState<boolean>(true);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const updateScrollState = useCallback(() => {
     const track = trackRef.current;
@@ -62,8 +82,9 @@ export const CaseStudies: React.FC = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="case-studies"
-      className="wk-case-studies"
+      className={`wk-case-studies ${isVisible ? 'is-visible' : ''}`}
       aria-labelledby="case-studies-heading"
     >
       <Container size="wide">
@@ -97,8 +118,12 @@ export const CaseStudies: React.FC = () => {
           tabIndex={0}
           aria-label="Case studies list"
         >
-          {CASE_STUDIES_DATA.map((study) => (
-            <CaseStudyCard key={study.id} caseStudy={study} />
+          {CASE_STUDIES_DATA.map((study, index) => (
+            <CaseStudyCard
+              key={study.id}
+              caseStudy={study}
+              style={{ transitionDelay: `${index * 120}ms` }}
+            />
           ))}
         </div>
 

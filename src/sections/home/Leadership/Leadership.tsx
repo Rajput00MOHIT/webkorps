@@ -127,7 +127,27 @@ const LEADERS_DATA: LeaderItem[] = [
 
 export const Leadership: React.FC = () => {
   const trackRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const updateScrollState = useCallback(() => {
     if (!trackRef.current) return;
@@ -200,7 +220,8 @@ export const Leadership: React.FC = () => {
 
   return (
     <section
-      className="wk-leadership"
+      ref={sectionRef}
+      className={`wk-leadership ${isVisible ? 'is-visible' : ''}`}
       aria-labelledby="leadership-heading"
       id="leadership"
     >
@@ -232,6 +253,7 @@ export const Leadership: React.FC = () => {
               className={`wk-leader-card ${
                 index === activeIndex ? 'wk-leader-card--active' : ''
               }`}
+              style={{ transitionDelay: `${index * 120}ms` }}
               aria-label={`${leader.name}, ${leader.title}`}
               onClick={() => scrollToSlide(index)}
             >
