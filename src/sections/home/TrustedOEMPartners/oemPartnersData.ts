@@ -11,7 +11,7 @@ import logoHpeJuniper from '../../../assets/oem/logo_hpe_juniper.png';
 export interface OEMPartner {
   id: string;
   name: string;
-  logo: string;
+  logo: string | any;
   orbit: 'inner' | 'middle' | 'outer';
   orbitRadiusCss: string; // CSS variable representing the orbit radius
   speedSeconds: number; // orbital period in seconds (constant per lane)

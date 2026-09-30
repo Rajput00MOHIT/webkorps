@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../../components/Container/Container';
 import { BLOG_POSTS } from './insightsData';

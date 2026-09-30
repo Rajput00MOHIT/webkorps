@@ -1,16 +1,19 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../../components/Container/Container';
 import aiHowWeUse from '../../../assets/ai/ai-how-we-use.png';
 import aiHelpsBusiness from '../../../assets/ai/ai-helps-business.png';
 import aiDlcMethod from '../../../assets/ai/ai-dlc-method.png';
 import aiSaasSmarter from '../../../assets/ai/ai-saas-smarter.png';
+import { getImgSrc } from '../../../utils/image';
 import './AIInnovation.css';
 
 interface AICardItem {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image: string | any;
   imageAlt: string;
 }
 
@@ -96,7 +99,7 @@ export const AIInnovation: React.FC = () => {
             >
               <div className="wk-ai-card__visual">
                 <img
-                  src={card.image}
+                  src={getImgSrc(card.image)}
                   alt={card.imageAlt}
                   className="wk-ai-card__image"
                   loading="lazy"

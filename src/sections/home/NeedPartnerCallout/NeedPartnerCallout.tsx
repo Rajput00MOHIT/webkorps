@@ -1,6 +1,9 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../../components/Container/Container';
 import technologyPartnerImg from '../../../assets/Technology Partner/Entrepreneur_giving_positive_fee…_202609081049 1.png';
+import { getImgSrc } from '../../../utils/image';
 import './NeedPartnerCallout.css';
 
 export const NeedPartnerCallout: React.FC = () => {
@@ -77,7 +80,7 @@ export const NeedPartnerCallout: React.FC = () => {
           {/* Right Column: Smartphone Mockup with Circular Glow Backdrop */}
           <div className="wk-tech-partner__phone-wrapper">
             <img
-              src={technologyPartnerImg}
+              src={getImgSrc(technologyPartnerImg)}
               alt="Webkorps technology partnership consultation on mobile screen"
               className="wk-tech-partner__phone-img"
               loading="lazy"

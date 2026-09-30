@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import cardImage from '../../../assets/cardimage.png';
+import { getImgSrc } from '../../../utils/image';
 import './Hero.css';
 
 interface ServiceItem {
@@ -121,7 +124,7 @@ export const Hero: React.FC = () => {
             <a href="#contact" className="wk-hero__btn-primary">
               <span>Start a Project</span>
               <span className="wk-hero__btn-icon-circle" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" ><img src="→.svg" alt="" />
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M2.5 7H11.5M11.5 7L7.5 3M11.5 7L7.5 11" stroke="#1887C9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
@@ -134,7 +137,7 @@ export const Hero: React.FC = () => {
           {/* Left Column: Visual Acrylic Puzzle Image */}
           <div className="wk-hero__card-visual">
             <img
-              src={cardImage}
+              src={getImgSrc(cardImage)}
               alt="Hands connecting precision blue puzzle pieces representing collaborative digital engineering"
               className="wk-hero__card-image"
               width={420}

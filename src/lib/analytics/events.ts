@@ -22,7 +22,7 @@ class AnalyticsManager {
       timestamp: event.timestamp || Date.now()
     };
 
-    if (import.meta.env.DEV) {
+    if (process.env.NODE_ENV !== 'production') {
       console.log('[Analytics Event]', payload);
     }
 

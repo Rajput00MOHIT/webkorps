@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Container } from '../../../components/Container/Container';
 import integrationIot from '../../../assets/integrations/integration-iot.png';
@@ -6,12 +8,13 @@ import integrationAiml from '../../../assets/integrations/integration-aiml.png';
 import integrationCybersecurity from '../../../assets/integrations/integration-cybersecurity.png';
 import integrationDataanalytics from '../../../assets/integrations/integration-dataanalytics.png';
 import integrationBlockchain from '../../../assets/integrations/integration-blockchain.png';
+import { getImgSrc } from '../../../utils/image';
 import './Integrations.css';
 
 interface TechnologyItem {
   id: string;
   name: string;
-  image: string;
+  image: string | any;
   imageAlt: string;
 }
 
@@ -325,7 +328,7 @@ export const Integrations: React.FC = () => {
             <div className="wk-integrations__image-wrapper">
               <img
                 key={activeItem.id}
-                src={activeItem.image}
+                src={getImgSrc(activeItem.image)}
                 alt={activeItem.imageAlt}
                 className="wk-integrations__image"
                 width={760}

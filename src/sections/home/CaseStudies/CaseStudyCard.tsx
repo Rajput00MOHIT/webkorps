@@ -1,11 +1,12 @@
 import React from 'react';
+import { getImgSrc } from '../../../utils/image';
 
 export interface CaseStudyItem {
   id: string;
   client: string;
   description: string;
   categories: string[];
-  image: string;
+  image: string | any;
   imageAlt: string;
   href?: string;
 }
@@ -20,7 +21,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, style }
     <article className="wk-case-study-card" id={`case-study-${caseStudy.id}`} style={style}>
       <div className="wk-case-study-card__visual">
         <img
-          src={caseStudy.image}
+          src={getImgSrc(caseStudy.image)}
           alt={caseStudy.imageAlt}
           className="wk-case-study-card__image"
           loading="eager"

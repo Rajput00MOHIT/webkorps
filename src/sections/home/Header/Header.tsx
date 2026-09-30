@@ -1,5 +1,6 @@
 import React from 'react';
 import mainLogo from '../../../assets/main logo.png';
+import { getImgSrc } from '../../../utils/image';
 import './Header.css';
 
 export const Header: React.FC = () => {
@@ -9,7 +10,7 @@ export const Header: React.FC = () => {
         {/* Brand Logo */}
         <a href="/" className="wk-header__logo-link" aria-label="Webkorps Home">
           <img
-            src={mainLogo}
+            src={getImgSrc(mainLogo)}
             alt="Webkorps"
             className="wk-header__logo"
             width={160}

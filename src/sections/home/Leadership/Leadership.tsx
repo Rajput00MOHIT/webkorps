@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Container } from '../../../components/Container/Container';
@@ -10,6 +12,7 @@ import vikasPhoto from '../../../assets/leadership/vikas.png';
 import mehulPhoto from '../../../assets/leadership/mehul.png';
 import aakashPhoto from '../../../assets/leadership/aakash.png';
 import ajayPhoto from '../../../assets/leadership/ajay.png';
+import { getImgSrc } from '../../../utils/image';
 import './Leadership.css';
 
 interface LeaderItem {
@@ -17,7 +20,7 @@ interface LeaderItem {
   name: string;
   title: string;
   quote: string;
-  image: string;
+  image: string | any;
   imageAlt: string;
   linkedinUrl: string;
   emailUrl: string;
@@ -260,7 +263,7 @@ export const Leadership: React.FC = () => {
               {/* Left Column: Portrait */}
               <div className="wk-leader-card__visual">
                 <img
-                  src={leader.image}
+                  src={getImgSrc(leader.image)}
                   alt={leader.imageAlt}
                   className="wk-leader-card__photo"
                   width={340}

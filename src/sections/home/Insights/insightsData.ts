@@ -7,7 +7,7 @@ export interface BlogPost {
   displayDate: string;
   category: string;
   title: string;
-  image: string;
+  image: string | any;
   imageAlt: string;
   href: string;
 }

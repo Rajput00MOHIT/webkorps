@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from '../../../components/Container/Container';
 import { OEM_PARTNERS_DATA } from './oemPartnersData';
 import logoWebkorps from '../../../assets/oem/logo_webkorps.png';
+import { getImgSrc } from '../../../utils/image';
 import './TrustedOEMPartners.css';
 
 export const TrustedOEMPartners: React.FC = () => {
@@ -81,7 +82,7 @@ export const TrustedOEMPartners: React.FC = () => {
             aria-label="Webkorps - Centered Technology Ecosystem Anchor"
           >
             <img
-              src={logoWebkorps}
+              src={getImgSrc(logoWebkorps)}
               alt="Webkorps"
               className="wk-oem__center-logo"
               loading="eager"
@@ -114,7 +115,7 @@ export const TrustedOEMPartners: React.FC = () => {
                     tabIndex={0}
                   >
                     <img
-                      src={partner.logo}
+                      src={getImgSrc(partner.logo)}
                       alt={partner.name}
                       className="wk-oem__logo"
                       loading="eager"

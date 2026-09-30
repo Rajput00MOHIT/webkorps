@@ -1,5 +1,6 @@
 import React from 'react';
 import type { BlogPost } from './insightsData';
+import { getImgSrc } from '../../../utils/image';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -53,7 +54,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
       {/* Right Artwork / Laptop Illustration */}
       <div className="wk-blog-card__media" aria-hidden="true">
         <img
-          src={post.image}
+          src={getImgSrc(post.image)}
           alt={post.imageAlt}
           className="wk-blog-card__img"
           loading="lazy"

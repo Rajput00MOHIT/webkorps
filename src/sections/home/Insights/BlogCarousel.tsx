@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import type { BlogPost } from './insightsData';
 import { BlogCard } from './BlogCard';

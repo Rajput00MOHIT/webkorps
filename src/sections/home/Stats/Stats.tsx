@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from '../../../components/Container/Container';
 import './Stats.css';

@@ -4,6 +4,8 @@
 
 export type SectionStatus = 'NOT STARTED' | 'IN PROGRESS' | 'REVIEW' | 'APPROVED' | 'LOCKED';
 
+export type ImageSource = string | any;
+
 export interface SectionDescriptor {
   id: string;
   order: number;

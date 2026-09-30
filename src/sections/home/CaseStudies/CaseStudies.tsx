@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { Container } from '../../../components/Container/Container';
 import { CaseStudyCard } from './CaseStudyCard';

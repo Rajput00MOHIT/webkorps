@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import verizonLogo from '../../../assets/brands/verizon.png';
 import acimaLogo from '../../../assets/brands/acima.png';
@@ -8,11 +10,12 @@ import propertyFinderLogo from '../../../assets/brands/property-finder.png';
 import cloudshotLogo from '../../../assets/brands/cloudshot.png';
 import inKindLogo from '../../../assets/brands/InKind.png';
 import shreeLaxmiLogo from '../../../assets/brands/Shreelaxmi.png';
+import { getImgSrc } from '../../../utils/image';
 import './LeadingBrands.css';
 
 interface Brand {
   name: string;
-  logo: string;
+  logo: string | any;
   width: number;
   height: number;
 }
@@ -74,7 +77,7 @@ export const LeadingBrands: React.FC = () => {
             {BRANDS.map((brand) => (
               <div key={brand.name} className="wk-brands__logo-item" role="listitem">
                 <img
-                  src={brand.logo}
+                  src={getImgSrc(brand.logo)}
                   alt={`${brand.name} logo`}
                   className="wk-brands__logo-image"
                   width={brand.width}
@@ -91,7 +94,7 @@ export const LeadingBrands: React.FC = () => {
                 aria-hidden="true"
               >
                 <img
-                  src={brand.logo}
+                  src={getImgSrc(brand.logo)}
                   alt=""
                   className="wk-brands__logo-image"
                   width={brand.width}

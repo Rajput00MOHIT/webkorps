@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Container } from '../../../components/Container/Container';
@@ -7,13 +9,14 @@ import serviceCustom from '../../../assets/services/service-custom.png';
 import serviceBlockchain from '../../../assets/services/service-blockchain.png';
 import serviceEnterprise from '../../../assets/services/service-enterprise.png';
 import serviceAiml from '../../../assets/services/service-aiml.png';
+import { getImgSrc } from '../../../utils/image';
 import './Services.css';
 
 interface ServiceItem {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image: string | any;
   imageAlt: string;
   href: string;
 }
@@ -115,7 +118,7 @@ export const Services: React.FC = () => {
             >
               <div className="wk-service-card__visual">
                 <img
-                  src={service.image}
+                  src={getImgSrc(service.image)}
                   alt={service.imageAlt}
                   className="wk-service-card__image"
                   loading="lazy"

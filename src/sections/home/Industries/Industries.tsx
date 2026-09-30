@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, useEffect } from 'react';
 import { ArrowRight, ChevronRight, ArrowLeft } from 'lucide-react';
 import { Container } from '../../../components/Container/Container';
@@ -7,13 +9,14 @@ import educationArt from '../../../assets/industries/education.png';
 import healthcareArt from '../../../assets/industries/healthcare.png';
 import fintechArt from '../../../assets/industries/fintech.png';
 import realestateArt from '../../../assets/industries/realestate.png';
+import { getImgSrc } from '../../../utils/image';
 import './Industries.css';
 
 interface IndustryItem {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image: string | any;
   imageAlt: string;
   href: string;
 }
@@ -212,7 +215,7 @@ export const Industries: React.FC = () => {
               {/* Dynamic 3D Illustration Overlay (Reveals on Hover / Focus) */}
               <div className="wk-industry-card__art-wrap" aria-hidden="true">
                 <img
-                  src={industry.image}
+                  src={getImgSrc(industry.image)}
                   alt=""
                   className="wk-industry-card__art"
                   loading="lazy"
