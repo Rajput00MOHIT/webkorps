@@ -17,6 +17,7 @@ import { Insights } from '../../sections/home/Insights/Insights';
 import { FAQ } from '../../sections/home/FAQ/FAQ';
 import { Contact } from '../../sections/home/Contact/Contact';
 import { Footer } from '../../sections/home/Footer/Footer';
+import { BottomNavigation } from '../../components/BottomNavigation';
 import { updateSEOMetadata } from '../../lib/seo/meta';
 import { getOrganizationSchema, getWebSiteSchema } from '../../lib/structured-data/schema';
 import './HomePage.css';
@@ -73,6 +74,9 @@ export const HomePage: React.FC = () => {
 
       {/* Global Footer */}
       <Footer />
+
+      {/* Floating Bottom Navigation & Expandable Mega-Menu */}
+      <BottomNavigation />
     </>
   );
 };

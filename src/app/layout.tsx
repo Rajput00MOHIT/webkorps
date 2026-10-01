@@ -12,6 +12,8 @@ import '../components/Button/Button.css';
 import '../components/Card/Card.css';
 import '../components/Container/Container.css';
 import '../components/SectionHeading/SectionHeading.css';
+import '../components/BottomNavigation/BottomNavigation.css';
+import '../components/AIAssistant/AIAssistant.css';
 
 // Section Styles in Strict Visual Order
 import '../sections/home/Header/Header.css';
