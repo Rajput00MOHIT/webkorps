@@ -173,13 +173,6 @@ export const BottomNavigation: React.FC = () => {
               onClick={() => toggleMenu('industries')}
             />
 
-            <NavigationTrigger
-              id="trigger-case-studies"
-              label="Case Studies"
-              isOpen={activeMenu === 'case-studies'}
-              controlsId="mega-menu-case-studies"
-              onClick={() => toggleMenu('case-studies')}
-            />
 
             <NavigationTrigger
               id="trigger-technologies"

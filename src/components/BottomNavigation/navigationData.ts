@@ -160,39 +160,45 @@ export const IMPACT_DATA: ImpactStats = {
 
 export const INDUSTRIES_NAV_DATA: IndustryItem[] = [
   {
-    id: 'manufacturing',
-    title: 'Manufacturing',
-    description: 'Automation and intelligent systems to improve factory productivity and operations.',
+    id: 'logistic',
+    title: 'Logistic Industry',
+    description: 'Driving Efficiency Through Smart Logistics Solutions',
     href: '#industries',
   },
   {
-    id: 'logistics',
-    title: 'Logistics & Supply Chain',
-    description: 'Real-time telemetry, cargo tracking, and smarter operational warehouse workflows.',
-    href: '#industries',
-  },
-  {
-    id: 'education',
-    title: 'Education & E-Learning',
-    description: 'Scalable platforms and interactive portals for modern digital learning experiences.',
+    id: 'real-estate',
+    title: 'Real Estate',
+    description: 'Transforming Real Estate with Smart Tech Solutions',
     href: '#industries',
   },
   {
     id: 'healthcare',
-    title: 'Healthcare',
-    description: 'HIPAA-compliant platforms for smarter patient care and clinical workflows.',
+    title: 'HealthCare',
+    description: 'Innovative Tech Solutions for Better Healthcare Outcomes',
+    href: '#industries',
+  },
+  {
+    id: 'retail',
+    title: 'Retail',
+    description: 'Empowering Retailers with Smart Technology',
     href: '#industries',
   },
   {
     id: 'fintech',
     title: 'FinTech',
-    description: 'High-frequency financial systems, payment gateways, and banking security.',
+    description: 'Secure and Scalable Fintech Solutions',
     href: '#industries',
   },
   {
-    id: 'realestate',
-    title: 'Real Estate',
-    description: 'Next-gen property intelligence, virtual tours, and automated transaction engines.',
+    id: 'travel',
+    title: 'Travel and Hospitality',
+    description: 'Enhancing Experiences with Travel Tech Solutions',
+    href: '#industries',
+  },
+  {
+    id: 'warehouse',
+    title: 'Warehouse',
+    description: 'Optimizing Warehouse Operations with Smart Solutions',
     href: '#industries',
   },
 ];

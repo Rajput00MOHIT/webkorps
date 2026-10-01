@@ -54,21 +54,7 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ activeMenu, onClose, onSelec
       aria-label={`${title} expanded navigation menu`}
     >
       <div className="wk-mega-menu__header">
-        <div className="wk-mega-menu__header-nav" role="tablist" aria-label="Mega menu sections">
-          {MENU_ITEMS.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              role="tab"
-              aria-selected={activeMenu === item.id}
-              className={`wk-mega-menu__tab-btn ${activeMenu === item.id ? 'wk-mega-menu__tab-btn--active' : ''}`}
-              onClick={() => onSelectMenu && onSelectMenu(item.id)}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-
+        <h2 className="wk-mega-menu__title">{title}</h2>
         <button
           type="button"
           className="wk-mega-menu__close-btn"
