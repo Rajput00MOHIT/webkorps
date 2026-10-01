@@ -46,6 +46,7 @@ export const ConversationCTA: React.FC<ConversationCTAProps> = ({
       </span>
 
       <span className="wk-bottom-nav__cta-text">Start the Conversation</span>
+      <span className="wk-bottom-nav__cta-text-mobile">Start</span>
     </button>
   );
 };

@@ -9,7 +9,7 @@
   background-color: var(--color-bg-canvas, #FFFFFF);
   border-top: 1px solid var(--color-border-default, #E2E8F0);
   padding-top: clamp(3.5rem, 5vw, 5rem);
-  padding-bottom: clamp(2rem, 3.5vw, 3rem);
+  padding-bottom: calc(clamp(2rem, 3.5vw, 3rem) + 84px);
 }
 
 .wk-footer__wrapper {

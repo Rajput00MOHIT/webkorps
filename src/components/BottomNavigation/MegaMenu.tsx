@@ -11,17 +11,18 @@ import { CaseStudiesMenu } from './CaseStudiesMenu';
 interface MegaMenuProps {
   activeMenu: ActiveMenuType;
   onClose: () => void;
+  onSelectMenu?: (menu: NonNullable<ActiveMenuType>) => void;
 }
 
-const MENU_TITLES: Record<NonNullable<ActiveMenuType>, string> = {
-  services: 'Services',
-  industries: 'Industries',
-  'case-studies': 'Case Studies',
-  technologies: 'Technologies',
-  insights: 'Insights',
-};
+const MENU_ITEMS = [
+  { id: 'services', label: 'Services' },
+  { id: 'industries', label: 'Industries' },
+  { id: 'case-studies', label: 'Case Studies' },
+  { id: 'technologies', label: 'Technologies' },
+  { id: 'insights', label: 'Insights' },
+] as const;
 
-export const MegaMenu: React.FC<MegaMenuProps> = ({ activeMenu, onClose }) => {
+export const MegaMenu: React.FC<MegaMenuProps> = ({ activeMenu, onClose, onSelectMenu }) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Close on Escape key press
@@ -42,7 +43,7 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ activeMenu, onClose }) => {
     return null;
   }
 
-  const title = MENU_TITLES[activeMenu];
+  const title = MENU_ITEMS.find((item) => item.id === activeMenu)?.label || 'Navigation';
 
   return (
     <div
@@ -53,7 +54,21 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ activeMenu, onClose }) => {
       aria-label={`${title} expanded navigation menu`}
     >
       <div className="wk-mega-menu__header">
-        <h2 className="wk-mega-menu__title">{title}</h2>
+        <div className="wk-mega-menu__header-nav" role="tablist" aria-label="Mega menu sections">
+          {MENU_ITEMS.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              role="tab"
+              aria-selected={activeMenu === item.id}
+              className={`wk-mega-menu__tab-btn ${activeMenu === item.id ? 'wk-mega-menu__tab-btn--active' : ''}`}
+              onClick={() => onSelectMenu && onSelectMenu(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+
         <button
           type="button"
           className="wk-mega-menu__close-btn"

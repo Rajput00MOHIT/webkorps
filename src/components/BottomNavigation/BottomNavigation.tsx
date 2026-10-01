@@ -70,7 +70,11 @@ export const BottomNavigation: React.FC = () => {
       aria-label="Floating Navigation Dock"
     >
       {/* Expanded Mega Menu Panel */}
-      <MegaMenu activeMenu={activeMenu} onClose={closeMenu} />
+      <MegaMenu
+        activeMenu={activeMenu}
+        onClose={closeMenu}
+        onSelectMenu={(menu) => setActiveMenu(menu)}
+      />
 
       {/* Webkorps AI Assistant Modal */}
       <AIAssistantModal isOpen={isAiOpen} onClose={closeAiAssistant} />
@@ -81,6 +85,29 @@ export const BottomNavigation: React.FC = () => {
         aria-label="Bottom Quick Navigation"
       >
         <div className="wk-bottom-nav__inner">
+          {/* Mobile Menu Button (<= 640px) */}
+          <button
+            type="button"
+            className={`wk-bottom-nav__mobile-menu-btn ${activeMenu ? 'wk-bottom-nav__mobile-menu-btn--active' : ''}`}
+            onClick={() => toggleMenu(activeMenu || 'services')}
+            aria-label={activeMenu ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={!!activeMenu}
+          >
+            {activeMenu ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
+            <span className="wk-bottom-nav__mobile-menu-text">Menu</span>
+          </button>
+
           {/* Webkorps Logo */}
           <a
             href="/"
@@ -104,7 +131,31 @@ export const BottomNavigation: React.FC = () => {
             />
           </a>
 
-          {/* Navigation Triggers */}
+          {/* Tablet Menu Trigger (641px - 880px) */}
+          <button
+            type="button"
+            className={`wk-bottom-nav__tablet-menu-btn ${activeMenu ? 'wk-bottom-nav__tablet-menu-btn--active' : ''}`}
+            onClick={() => toggleMenu(activeMenu || 'services')}
+            aria-label={activeMenu ? 'Close navigation menu' : 'Explore solutions and services'}
+            aria-expanded={!!activeMenu}
+          >
+            <span>Explore Solutions</span>
+            <span className="wk-nav-trigger__icon-wrap" aria-hidden="true">
+              {activeMenu ? (
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="2" y1="2" x2="10" y2="10" />
+                  <line x1="10" y1="2" x2="2" y2="10" />
+                </svg>
+              ) : (
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="6" y1="2" x2="6" y2="10" />
+                  <line x1="2" y1="6" x2="10" y2="6" />
+                </svg>
+              )}
+            </span>
+          </button>
+
+          {/* Navigation Triggers (> 880px) */}
           <div className="wk-bottom-nav__triggers" role="menubar">
             <NavigationTrigger
               id="trigger-services"
