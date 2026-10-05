@@ -9,7 +9,7 @@
   left: 50%;
   bottom: 20px;
   transform: translateX(-50%);
-  z-index: 100;
+  z-index: 900;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +26,8 @@
 /* ── Primary Floating Dock Bar (Single clean white floating surface) ── */
 .wk-bottom-nav {
   pointer-events: auto;
+  position: relative;
+  z-index: 20;
   width: 100%;
   height: 76px;
   background: #ffffff;
@@ -224,13 +226,15 @@
 .wk-mega-menu {
   pointer-events: auto;
   position: absolute;
-  bottom: calc(100% + 14px);
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: min(1160px, calc(100vw - 48px));
+  z-index: 10;
+  bottom: calc(100% + 16px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
   max-width: 1160px;
   height: auto;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 190px);
   overflow-y: auto;
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
@@ -239,7 +243,7 @@
     0 24px 60px -12px rgba(15, 23, 42, 0.18),
     0 8px 24px -4px rgba(15, 23, 42, 0.08);
   padding: 26px 32px 36px 32px;
-  animation: megaMenuReveal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: megaMenuReveal 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   scrollbar-width: thin;
   scrollbar-color: #CBD5E1 transparent;
   box-sizing: border-box;
@@ -257,12 +261,12 @@
 @keyframes megaMenuReveal {
   from {
     opacity: 0;
-    transform: translate(-50%, 12px);
+    transform: translateY(-6px);
   }
 
   to {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translateY(0);
   }
 }
 
@@ -749,6 +753,160 @@
   color: #0F75B2;
 }
 
+/* ── Technologies Mega Menu Layout ── */
+.wk-mega-menu__tech-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+  width: 100%;
+}
+
+.wk-mega-menu__tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-content: start;
+}
+
+.wk-mega-menu__tech-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.wk-mega-menu__tech-card:hover {
+  border-color: #BFDBFE;
+  background: #F8FAFC;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.wk-mega-menu__tech-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #EFF6FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #1887C9;
+}
+
+.wk-mega-menu__tech-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.wk-mega-menu__tech-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.25;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wk-mega-menu__tech-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 12px;
+  color: #64748B;
+  line-height: 1.35;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Tech Spotlight Card (Right) ── */
+.wk-mega-menu__tech-spotlight {
+  border: 1px solid #E2E8F0;
+  border-radius: 18px;
+  padding: 16px;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+  align-self: start;
+  box-sizing: border-box;
+}
+
+.wk-mega-menu__tech-spotlight-img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.wk-mega-menu__tech-spotlight-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-mega-menu__tech-spotlight-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: #1887C9;
+  color: #FFFFFF;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-top: 14px;
+  margin-bottom: 8px;
+}
+
+.wk-mega-menu__tech-spotlight-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.3;
+  margin: 0 0 6px 0;
+}
+
+.wk-mega-menu__tech-spotlight-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 12.5px;
+  color: #64748B;
+  line-height: 1.45;
+  margin: 0 0 12px 0;
+}
+
+.wk-mega-menu__tech-spotlight-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1887C9;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.wk-mega-menu__tech-spotlight-link:hover {
+  gap: 9px;
+  color: #0F75B2;
+}
+
 /* ==========================================================================
    Responsive Adaptations
    ========================================================================== */
@@ -966,7 +1124,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .wk-mega-menu__industries-layout {
+  .wk-mega-menu__industries-layout,
+  .wk-mega-menu__tech-layout {
     grid-template-columns: 1fr;
     gap: 20px;
   }
@@ -1173,30 +1332,36 @@
     grid-template-columns: 1fr;
   }
 
-  .wk-mega-menu__industries-layout {
+  .wk-mega-menu__industries-layout,
+  .wk-mega-menu__tech-layout {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  .wk-mega-menu__industries-grid {
+  .wk-mega-menu__industries-grid,
+  .wk-mega-menu__tech-grid {
     grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  .wk-mega-menu__industry-card {
+  .wk-mega-menu__industry-card,
+  .wk-mega-menu__tech-card {
     padding: 10px 12px;
   }
 
-  .wk-mega-menu__industry-icon-box {
+  .wk-mega-menu__industry-icon-box,
+  .wk-mega-menu__tech-icon-box {
     width: 38px;
     height: 38px;
   }
 
-  .wk-mega-menu__industry-title {
+  .wk-mega-menu__industry-title,
+  .wk-mega-menu__tech-title {
     font-size: 14px;
   }
 
-  .wk-mega-menu__industry-desc {
+  .wk-mega-menu__industry-desc,
+  .wk-mega-menu__tech-desc {
     font-size: 11.5px;
   }
 }
