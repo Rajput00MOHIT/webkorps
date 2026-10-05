@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import type { ChatMessageData } from './types';
 import { mockAiResponse } from './mockAiEngine';
 import { AIWelcome } from './AIWelcome';
@@ -15,7 +16,12 @@ interface AIAssistantModalProps {
 export const AIAssistantModal: React.FC<AIAssistantModalProps> = ({ isOpen, onClose }) => {
   const [messages, setMessages] = useState<ChatMessageData[]>([]);
   const [isTyping, setIsTyping] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close on Escape key press
   useEffect(() => {
@@ -62,26 +68,39 @@ export const AIAssistantModal: React.FC<AIAssistantModalProps> = ({ isOpen, onCl
   }
 
   return (
-    <div
-      ref={containerRef}
-      className="wk-ai-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Webkorps AI Assistant"
-    >
-      <div className="wk-ai-modal__card">
-        {messages.length === 0 ? (
-          <AIWelcome onSendMessage={handleSendMessage} disabled={isTyping} />
-        ) : (
-          <ChatWindow
-            messages={messages}
-            isTyping={isTyping}
-            onSendMessage={handleSendMessage}
-            onClose={onClose}
-            onActionClick={() => onClose()}
-          />
+    <>
+      {/* Full-screen light blue dotted background behind AI Conversation surface */}
+      {mounted &&
+        createPortal(
+          <div
+            className="wk-ai-backdrop"
+            onClick={onClose}
+            aria-hidden="true"
+          />,
+          document.body
         )}
+
+      <div
+        ref={containerRef}
+        className="wk-ai-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Webkorps AI Assistant"
+      >
+        <div className="wk-ai-modal__card">
+          {messages.length === 0 ? (
+            <AIWelcome onSendMessage={handleSendMessage} disabled={isTyping} />
+          ) : (
+            <ChatWindow
+              messages={messages}
+              isTyping={isTyping}
+              onSendMessage={handleSendMessage}
+              onClose={onClose}
+              onActionClick={() => onClose()}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
