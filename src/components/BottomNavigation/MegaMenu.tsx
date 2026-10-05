@@ -46,7 +46,9 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ activeMenu, onClose, onSelec
   const title =
     activeMenu === 'technologies'
       ? 'Technologies we work on'
-      : MENU_ITEMS.find((item) => item.id === activeMenu)?.label || 'Navigation';
+      : activeMenu === 'insights'
+        ? 'Featured Insights'
+        : MENU_ITEMS.find((item) => item.id === activeMenu)?.label || 'Navigation';
 
   return (
     <div

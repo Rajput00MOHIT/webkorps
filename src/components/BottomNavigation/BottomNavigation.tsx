@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import mainLogo from '../../assets/main logo.png';
 import { getImgSrc } from '../../utils/image';
 import type { ActiveMenuType } from './navigationData';
@@ -10,16 +11,42 @@ import { MegaMenu } from './MegaMenu';
 import { AIAssistantModal } from '../AIAssistant';
 import './BottomNavigation.css';
 
-export const BottomNavigation: React.FC = () => {
+interface BottomNavigationProps {
+  isInsightsPage?: boolean;
+}
+
+export const BottomNavigation: React.FC<BottomNavigationProps> = ({ isInsightsPage = false }) => {
   const [activeMenu, setActiveMenu] = useState<ActiveMenuType>(null);
   const [isAiOpen, setIsAiOpen] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const isInsightsRoute = pathname === '/insights' || isInsightsPage;
+
+  // ROUTE CHANGE RULE: Reset all open menus and AI assistant whenever route changes
+  useEffect(() => {
+    setActiveMenu(null);
+    setIsAiOpen(false);
+  }, [pathname]);
 
   const toggleMenu = (menu: NonNullable<ActiveMenuType>) => {
     // If AI is open, close it when opening a navigation menu
     if (isAiOpen) {
       setIsAiOpen(false);
     }
+
+    if (menu === 'insights') {
+      if (pathname !== '/insights') {
+        setActiveMenu(null);
+        router.push('/insights');
+        return;
+      }
+      // If already on /insights, closing or reopening preview
+      setActiveMenu((prev) => (prev === 'insights' ? null : 'insights'));
+      return;
+    }
+
     setActiveMenu((prev) => (prev === menu ? null : menu));
   };
 
@@ -114,11 +141,14 @@ export const BottomNavigation: React.FC = () => {
             className="wk-bottom-nav__brand"
             aria-label="Webkorps Home"
             onClick={(e) => {
-              if (window.location.pathname === '/') {
+              closeMenu();
+              closeAiAssistant();
+              if (pathname === '/') {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                closeMenu();
-                closeAiAssistant();
+              } else {
+                e.preventDefault();
+                router.push('/');
               }
             }}
           >
@@ -185,7 +215,7 @@ export const BottomNavigation: React.FC = () => {
             <NavigationTrigger
               id="trigger-insights"
               label="Insights"
-              isOpen={activeMenu === 'insights'}
+              isOpen={activeMenu === 'insights' || (isInsightsRoute && activeMenu === null)}
               controlsId="mega-menu-insights"
               onClick={() => toggleMenu('insights')}
             />
