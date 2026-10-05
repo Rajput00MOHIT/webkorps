@@ -5,6 +5,7 @@ import trendsTechImg from '../../assets/insights/trends-tech.png';
 import eventsWebinarsImg from '../../assets/insights/events-webinars.png';
 import { FeaturedInsightCard } from '../../views/Insights/FeaturedInsightCard';
 import { ImpactPanel } from '../../views/Insights/ImpactPanel';
+import '../../views/Insights/InsightsPage.css';
 
 interface InsightsMenuProps {
   onItemClick?: () => void;
@@ -28,7 +29,7 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
           image={trendsTechImg}
           imageAlt="Trends on Modern Technologies"
           ctaText="Explore Blogs"
-          href="/insights"
+          href="#blogs"
         />
 
         <FeaturedInsightCard
@@ -39,7 +40,7 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
           image={eventsWebinarsImg}
           imageAlt="Industry Events & Webinars"
           ctaText="View Events"
-          href="/insights"
+          href="#events"
         />
       </div>
 
