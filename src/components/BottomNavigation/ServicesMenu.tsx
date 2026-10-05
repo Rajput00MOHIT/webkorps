@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { SERVICES_DATA, IMPACT_DATA } from './navigationData';
+import wekorpsIcon from '../../assets/wekorps iconsvg.svg';
+import { getImgSrc } from '../../utils/image';
 
 interface ServicesMenuProps {
   onItemClick?: () => void;
@@ -9,11 +11,14 @@ interface ServicesMenuProps {
 
 const SERVICE_ICONS: Record<string, React.ReactNode> = {
   'web-dev': (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="2" y="3" width="20" height="14" rx="2" />
-      <line x1="8" y1="21" x2="16" y2="21" />
-      <line x1="12" y1="17" x2="12" y2="21" />
-    </svg>
+    <img
+      src={getImgSrc(wekorpsIcon)}
+      alt=""
+      width={18}
+      height={18}
+      style={{ display: 'block', width: '18px', height: '18px' }}
+      aria-hidden="true"
+    />
   ),
   'custom-software': (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -204,10 +209,13 @@ export const ServicesMenu: React.FC<ServicesMenuProps> = ({ onItemClick }) => {
 
           <div className="wk-mega-menu__impact-inner">
             <div className="wk-mega-menu__impact-emblem" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.75" />
-                <path d="M7 10.5l2.5 4.5L12 11.5l2.5 3.5L17 10.5" />
-              </svg>
+              <img
+                src={getImgSrc(wekorpsIcon)}
+                alt=""
+                width={24}
+                height={24}
+                style={{ display: 'block', width: '24px', height: '24px' }}
+              />
             </div>
 
             <h4 className="wk-mega-menu__impact-headline">{IMPACT_DATA.highlight}</h4>
