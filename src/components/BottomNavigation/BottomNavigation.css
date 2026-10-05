@@ -336,7 +336,7 @@
 }
 
 .wk-mega-menu__close-btn {
-  display: none;
+  display: flex;
   background: #F8FAFC;
   border: 1px solid #E2E8F0;
   border-radius: 50%;

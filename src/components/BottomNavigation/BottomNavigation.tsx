@@ -22,8 +22,6 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isInsightsRoute = pathname === '/insights';
-
   // ROUTE CHANGE RULE: Reset all open menus and AI assistant whenever route changes
   useEffect(() => {
     setActiveMenu(null);
@@ -34,16 +32,6 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = () => {
     // If AI is open, close it when opening a navigation menu
     if (isAiOpen) {
       setIsAiOpen(false);
-    }
-
-    if (menu === 'insights') {
-      if (pathname !== '/insights') {
-        setActiveMenu(null);
-        router.push('/insights');
-        return;
-      }
-      setActiveMenu((prev) => (prev === 'insights' ? null : 'insights'));
-      return;
     }
 
     setActiveMenu((prev) => (prev === menu ? null : menu));
@@ -214,7 +202,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = () => {
             <NavigationTrigger
               id="trigger-insights"
               label="Insights"
-              isOpen={activeMenu === 'insights' || (isInsightsRoute && activeMenu === null)}
+              isOpen={activeMenu === 'insights'}
               controlsId="mega-menu-insights"
               onClick={() => toggleMenu('insights')}
             />

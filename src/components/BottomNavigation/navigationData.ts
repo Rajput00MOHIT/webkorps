@@ -272,6 +272,42 @@ export const INSIGHTS_NAV_DATA: InsightItem[] = [
   },
 ];
 
+export interface InsightEventItem {
+  id: string;
+  badge: string;
+  date: string;
+  title: string;
+  description: string;
+  href: string;
+}
+
+export const INSIGHT_EVENTS_DATA: InsightEventItem[] = [
+  {
+    id: 'event-1',
+    badge: 'WEBINAR',
+    date: 'Oct 24, 2026',
+    title: 'Architecting Enterprise AI Agents for Production Scale',
+    description: 'Deep dive into LLM deployment, latency optimization, and enterprise security patterns.',
+    href: '#insights',
+  },
+  {
+    id: 'event-2',
+    badge: 'GLOBAL SUMMIT',
+    date: 'Nov 12, 2026',
+    title: 'Cloud-Native & Distributed Systems World Summit',
+    description: 'Keynotes and engineering sessions on modern multi-cloud resilience.',
+    href: '#insights',
+  },
+  {
+    id: 'event-3',
+    badge: 'ROUNDTABLE',
+    date: 'Dec 05, 2026',
+    title: 'Industrial IoT & Predictive Telemetry Executive Forum',
+    description: 'Strategies for zero unplanned downtime with edge computing and smart sensors.',
+    href: '#insights',
+  },
+];
+
 export const CASE_STUDIES_NAV_DATA: CaseStudyNavItem[] = [
   {
     id: 'cigna',
