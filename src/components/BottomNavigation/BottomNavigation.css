@@ -249,6 +249,13 @@
   box-sizing: border-box;
 }
 
+@media (min-width: 1025px) {
+  .wk-mega-menu {
+    min-height: calc(100vh - 215px);
+    max-height: calc(100vh - 180px);
+  }
+}
+
 .wk-mega-menu::-webkit-scrollbar {
   width: 6px;
 }

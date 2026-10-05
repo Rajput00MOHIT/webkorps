@@ -20,8 +20,8 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: clamp(90px, 12vh, 120px);
-  padding-bottom: clamp(120px, 16vh, 160px);
+  padding-top: 100px;
+  padding-bottom: 112px;
   padding-left: 20px;
   padding-right: 20px;
   box-sizing: border-box;
@@ -40,6 +40,26 @@
   padding: 36px 40px 40px 40px;
   box-sizing: border-box;
   animation: wkInsightsFadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (min-width: 1025px) {
+  .wk-insights-container {
+    min-height: calc(100vh - 215px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .wk-insights-page {
+    padding-top: 88px;
+    padding-bottom: 104px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .wk-insights-container {
+    min-height: auto;
+    padding: 28px 24px;
+  }
 }
 
 @keyframes wkInsightsFadeUp {
