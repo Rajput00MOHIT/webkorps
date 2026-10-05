@@ -42,8 +42,9 @@
   font-weight: inherit;
 }
 
-/* Metrics Row */
+/* Metrics Row / Card */
 .wk-stats__container {
+  position: relative;
   max-width: 980px;
   margin-top: clamp(3rem, 5vw, 4.5rem);
   margin-left: auto;
@@ -51,9 +52,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #FFFFFF;
+  border-radius: var(--radius-xl, 16px);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  padding: clamp(2.25rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  overflow: hidden;
+}
+
+/* Subtle Map Background */
+.wk-stats__map-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
 }
 
 .wk-stats__item {
+  position: relative;
+  z-index: 1;
   flex: 1;
   text-align: center;
   display: flex;
@@ -109,6 +130,8 @@
 
 /* Vertical Separator */
 .wk-stats__separator {
+  position: relative;
+  z-index: 1;
   width: 1px;
   height: 84px;
   background-color: var(--color-border-default);
@@ -126,6 +149,7 @@
   .wk-stats__container {
     flex-direction: column;
     gap: var(--space-8);
+    padding: var(--space-8) var(--space-4);
   }
 
   .wk-stats__separator {

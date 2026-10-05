@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from '../../../components/Container/Container';
+import { getImgSrc } from '../../../utils/image';
+import mapImg from '../../../assets/Map_image.png';
 import './Stats.css';
 
 interface StatItem {
@@ -102,6 +104,12 @@ export const Stats: React.FC = () => {
         </div>
 
         <div className="wk-stats__container">
+          <img
+            src={getImgSrc(mapImg)}
+            alt=""
+            className="wk-stats__map-bg"
+            aria-hidden="true"
+          />
           {STATS_DATA.map((stat, index) => {
             const displayValue = stat.formatLeadingZero
               ? String(counts[index]).padStart(2, '0')
