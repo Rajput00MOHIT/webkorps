@@ -4,6 +4,9 @@ import React from 'react';
 import holypayLogo from '../../../assets/about/holypay.png';
 import safeexpressLogo from '../../../assets/about/safeexpress.png';
 import deepakLogo from '../../../assets/about/deepakfertilizers.png';
+import puravankaraLogo from '../../../assets/about/purvankara.png';
+import cryoportLogo from '../../../assets/about/crptoport.png';
+import acimaLogo from '../../../assets/about/acima.png';
 import { getImgSrc } from '../../../utils/image';
 import './ClientTestimonials.css';
 
@@ -49,14 +52,7 @@ const TESTIMONIALS_ROW_1: TestimonialItem[] = [
     category: 'Real Estate Developer',
     quote:
       'The modern digital architecture transformed property discovery, buyer management, and automated booking workflows with impressive reliability.',
-    badgeBg: '#EFF6FF',
-    badgeColor: '#2563EB',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <polyline points="9 22 9 12 15 12 15 22" />
-      </svg>
-    ),
+    logoSrc: puravankaraLogo,
   },
 ];
 
@@ -91,14 +87,7 @@ const TESTIMONIALS_ROW_2: TestimonialItem[] = [
     category: 'Supply Chain Logistics',
     quote:
       'WebKorps engineered dependable tracking integrations and telemetry dashboards that ensured complete compliance and 24/7 visibility.',
-    badgeBg: '#F0F9FF',
-    badgeColor: '#0284C7',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
+    logoSrc: cryoportLogo,
   },
 ];
 
@@ -133,14 +122,7 @@ const TESTIMONIALS_ROW_3: TestimonialItem[] = [
     category: 'Fintech Solutions',
     quote:
       'Exceptional development speed and technical execution in delivering highly responsive, compliant fintech customer checkout journeys.',
-    badgeBg: '#F5F3FF',
-    badgeColor: '#7C3AED',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <rect x="2" y="5" width="20" height="14" rx="2" />
-        <line x1="2" y1="10" x2="22" y2="10" />
-      </svg>
-    ),
+    logoSrc: acimaLogo,
   },
 ];
 
