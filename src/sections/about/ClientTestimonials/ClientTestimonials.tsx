@@ -1,6 +1,10 @@
 'use client';
 
 import React from 'react';
+import holypayLogo from '../../../assets/about/holypay.png';
+import safeexpressLogo from '../../../assets/about/safeexpress.png';
+import deepakLogo from '../../../assets/about/deepakfertilizers.png';
+import { getImgSrc } from '../../../utils/image';
 import './ClientTestimonials.css';
 
 export interface TestimonialItem {
@@ -8,6 +12,7 @@ export interface TestimonialItem {
   companyName: string;
   category: string;
   quote: string;
+  logoSrc?: string | any;
   badgeBg?: string;
   badgeColor?: string;
   badgeIcon?: React.ReactNode;
@@ -20,13 +25,7 @@ const TESTIMONIALS_ROW_1: TestimonialItem[] = [
     category: 'Religious Application',
     quote:
       'WebKorps helped us create a smooth and user-friendly religious application that makes donations, bookings, and devotional services easier for users.',
-    badgeBg: '#FFF7ED',
-    badgeColor: '#EA580C',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-      </svg>
-    ),
+    logoSrc: holypayLogo,
   },
   {
     id: 'safexpress-1',
@@ -34,16 +33,7 @@ const TESTIMONIALS_ROW_1: TestimonialItem[] = [
     category: 'Logistics Company',
     quote:
       'Helping Safexpress improve operational visibility, streamline workflows, and deliver a smoother digital experience across logistics processes.',
-    badgeBg: '#ECFDF5',
-    badgeColor: '#059669',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <rect x="1" y="3" width="15" height="13" />
-        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
-        <circle cx="5.5" cy="18.5" r="2.5" />
-        <circle cx="18.5" cy="18.5" r="2.5" />
-      </svg>
-    ),
+    logoSrc: safeexpressLogo,
   },
   {
     id: 'deepak-1',
@@ -51,15 +41,7 @@ const TESTIMONIALS_ROW_1: TestimonialItem[] = [
     category: 'Chemicals and Fertilizers',
     quote:
       'WebKorps simplified our RCA and MEP workflows with a smart, easy-to-use solution that improved visibility, accountability, and team collaboration.',
-    badgeBg: '#FEF2F2',
-    badgeColor: '#DC2626',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M10 2v7.31L4.89 20.7A2 2 0 0 0 6.64 23h10.72a2 2 0 0 0 1.75-2.3L14 9.31V2" />
-        <line x1="8" y1="2" x2="16" y2="2" />
-        <line x1="7" y1="16" x2="17" y2="16" />
-      </svg>
-    ),
+    logoSrc: deepakLogo,
   },
   {
     id: 'puravankara-1',
@@ -85,13 +67,7 @@ const TESTIMONIALS_ROW_2: TestimonialItem[] = [
     category: 'Religious Application',
     quote:
       'WebKorps helped us create a smooth and user-friendly religious application that makes donations, bookings, and devotional services easier for users.',
-    badgeBg: '#FFF7ED',
-    badgeColor: '#EA580C',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-      </svg>
-    ),
+    logoSrc: holypayLogo,
   },
   {
     id: 'safexpress-2',
@@ -99,16 +75,7 @@ const TESTIMONIALS_ROW_2: TestimonialItem[] = [
     category: 'Logistics Company',
     quote:
       'Helping Safexpress improve operational visibility, streamline workflows, and deliver a smoother digital experience across logistics processes.',
-    badgeBg: '#ECFDF5',
-    badgeColor: '#059669',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <rect x="1" y="3" width="15" height="13" />
-        <polygon points="16 8 20 8 23 11 23 16 16 16 8" />
-        <circle cx="5.5" cy="18.5" r="2.5" />
-        <circle cx="18.5" cy="18.5" r="2.5" />
-      </svg>
-    ),
+    logoSrc: safeexpressLogo,
   },
   {
     id: 'deepak-2',
@@ -116,15 +83,7 @@ const TESTIMONIALS_ROW_2: TestimonialItem[] = [
     category: 'Chemicals and Fertilizers',
     quote:
       'WebKorps simplified our RCA and MEP workflows with a smart, easy-to-use solution that improved visibility, accountability, and team collaboration.',
-    badgeBg: '#FEF2F2',
-    badgeColor: '#DC2626',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M10 2v7.31L4.89 20.7A2 2 0 0 0 6.64 23h10.72a2 2 0 0 0 1.75-2.3L14 9.31V2" />
-        <line x1="8" y1="2" x2="16" y2="2" />
-        <line x1="7" y1="16" x2="17" y2="16" />
-      </svg>
-    ),
+    logoSrc: deepakLogo,
   },
   {
     id: 'cryoport-2',
@@ -150,13 +109,7 @@ const TESTIMONIALS_ROW_3: TestimonialItem[] = [
     category: 'Religious Application',
     quote:
       'WebKorps helped us create a smooth and user-friendly religious application that makes donations, bookings, and devotional services easier for users.',
-    badgeBg: '#FFF7ED',
-    badgeColor: '#EA580C',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-      </svg>
-    ),
+    logoSrc: holypayLogo,
   },
   {
     id: 'safexpress-3',
@@ -164,16 +117,7 @@ const TESTIMONIALS_ROW_3: TestimonialItem[] = [
     category: 'Logistics Company',
     quote:
       'Helping Safexpress improve operational visibility, streamline workflows, and deliver a smoother digital experience across logistics processes.',
-    badgeBg: '#ECFDF5',
-    badgeColor: '#059669',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <rect x="1" y="3" width="15" height="13" />
-        <polygon points="16 8 20 8 23 11 23 16 16 16 8" />
-        <circle cx="5.5" cy="18.5" r="2.5" />
-        <circle cx="18.5" cy="18.5" r="2.5" />
-      </svg>
-    ),
+    logoSrc: safeexpressLogo,
   },
   {
     id: 'deepak-3',
@@ -181,15 +125,7 @@ const TESTIMONIALS_ROW_3: TestimonialItem[] = [
     category: 'Chemicals and Fertilizers',
     quote:
       'WebKorps simplified our RCA and MEP workflows with a smart, easy-to-use solution that improved visibility, accountability, and team collaboration.',
-    badgeBg: '#FEF2F2',
-    badgeColor: '#DC2626',
-    badgeIcon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M10 2v7.31L4.89 20.7A2 2 0 0 0 6.64 23h10.72a2 2 0 0 0 1.75-2.3L14 9.31V2" />
-        <line x1="8" y1="2" x2="16" y2="2" />
-        <line x1="7" y1="16" x2="17" y2="16" />
-      </svg>
-    ),
+    logoSrc: deepakLogo,
   },
   {
     id: 'acima-3',
@@ -227,17 +163,26 @@ const MarqueeRow: React.FC<MarqueeRowProps> = ({ items, direction, durationClass
             className="wk-testimonials__card"
             aria-hidden={idx >= items.length ? 'true' : undefined}
           >
-            {/* Card Header: Brand Badge + Company Info */}
+            {/* Card Header: Brand Badge / Logo + Company Info */}
             <div className="wk-testimonials__card-header">
               <div
                 className="wk-testimonials__badge"
                 style={{
-                  backgroundColor: item.badgeBg || '#F1F5F9',
+                  backgroundColor: item.logoSrc ? '#FFFFFF' : item.badgeBg || '#F1F5F9',
                   color: item.badgeColor || '#0F172A',
                 }}
                 aria-hidden="true"
               >
-                {item.badgeIcon}
+                {item.logoSrc ? (
+                  <img
+                    src={getImgSrc(item.logoSrc)}
+                    alt=""
+                    className="wk-testimonials__badge-img"
+                    loading="lazy"
+                  />
+                ) : (
+                  item.badgeIcon
+                )}
               </div>
               <div className="wk-testimonials__meta">
                 <h3 className="wk-testimonials__company-name">{item.companyName}</h3>
