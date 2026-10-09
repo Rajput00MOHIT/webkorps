@@ -32,7 +32,18 @@ import '../sections/home/Insights/Insights.css';
 import '../sections/home/FAQ/FAQ.css';
 import '../sections/home/Contact/Contact.css';
 import '../sections/home/Footer/Footer.css';
+import '../sections/about/AboutHero/AboutHero.css';
+import '../sections/about/BrandTrustStrip/BrandTrustStrip.css';
+import '../sections/about/AboutOverview/AboutOverview.css';
+import '../sections/about/TrustedPartner/TrustedPartner.css';
+import '../sections/about/HowWeWork/HowWeWork.css';
+import '../sections/about/AboutInsights/AboutInsights.css';
+import '../sections/about/Milestones/Milestones.css';
+import '../sections/about/OurValues/OurValues.css';
+import '../sections/about/AboutCTA/AboutCTA.css';
+import '../sections/about/ClientTestimonials/ClientTestimonials.css';
 import '../views/Home/HomePage.css';
+import '../views/AboutUs/AboutUsPage.css';
 
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 

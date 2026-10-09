@@ -24,13 +24,28 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isNearBottomRef = useRef<boolean>(true);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // Track if user is scrolled near bottom
+  const handleScroll = () => {
+    if (!scrollContainerRef.current) return;
+    const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current;
+    const distanceFromBottom = scrollHeight - scrollTop - clientHeight;
+    isNearBottomRef.current = distanceFromBottom < 120;
+  };
+
+  const scrollToBottom = (behavior: ScrollBehavior = 'smooth') => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior });
+    }
   };
 
   useEffect(() => {
-    scrollToBottom();
+    const lastMsg = messages[messages.length - 1];
+    // Always scroll if user sent the message or if user is near bottom
+    if (lastMsg?.sender === 'user' || isNearBottomRef.current) {
+      scrollToBottom('smooth');
+    }
   }, [messages, isTyping]);
 
   return (
@@ -70,9 +85,11 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
       {/* Scrollable Conversation List */}
       <div
         ref={scrollContainerRef}
+        onScroll={handleScroll}
         className="wk-ai-chat-messages"
         role="log"
         aria-live="polite"
+        aria-label="Webkorps conversation messages"
         tabIndex={0}
       >
         {messages.map((msg) => (

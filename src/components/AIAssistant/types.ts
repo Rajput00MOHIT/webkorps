@@ -1,3 +1,12 @@
+export interface SourceItem {
+  id?: string;
+  index: string;
+  title: string;
+  url: string;
+  domain?: string;
+  snippet?: string;
+}
+
 export interface ChatAction {
   label: string;
   href: string;
@@ -10,6 +19,13 @@ export interface ChatMessageData {
   text: string;
   timestamp: number;
   actions?: ChatAction[];
+  citations?: Array<{
+    title: string;
+    url: string;
+    domain?: string;
+    snippet?: string;
+  }>;
+  route?: string;
 }
 
 export interface ExamplePromptItem {

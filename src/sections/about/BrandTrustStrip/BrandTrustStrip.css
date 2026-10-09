@@ -1,0 +1,139 @@
+.wk-brand-strip {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  overflow: hidden;
+}
+
+.wk-brand-strip__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+}
+
+.wk-brand-strip__inner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Trust Statement Column */
+.wk-brand-strip__statement-col {
+  display: flex;
+  align-items: center;
+  padding: 20px 28px 20px 0;
+  border-right: 1px solid #E2E8F0;
+}
+
+.wk-brand-strip__statement {
+  font-family: var(--font-family-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* 4 Brand Logo Grid */
+.wk-brand-strip__logos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
+  width: 100%;
+}
+
+.wk-brand-strip__logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  border-right: 1px solid #E2E8F0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-brand-strip__logo-item:last-child {
+  border-right: none;
+}
+
+.wk-brand-strip__logo-item:hover {
+  background-color: #F8FAFC;
+}
+
+/* Logo Image Proportions */
+.wk-brand-strip__logo-img {
+  max-width: 130px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(0%);
+  transition: transform 0.25s ease;
+}
+
+.wk-brand-strip__logo-item:hover .wk-brand-strip__logo-img {
+  transform: scale(1.04);
+}
+
+.wk-brand-strip__logo-img--microsoft {
+  max-height: 24px;
+}
+
+.wk-brand-strip__logo-img--fortinet {
+  max-height: 20px;
+}
+
+.wk-brand-strip__logo-img--hubspot {
+  max-height: 28px;
+}
+
+.wk-brand-strip__logo-img--manageengine {
+  max-height: 26px;
+}
+
+/* Responsive Rules */
+@media (max-width: 960px) {
+  .wk-brand-strip__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .wk-brand-strip__statement-col {
+    border-right: none;
+    border-bottom: 1px solid #E2E8F0;
+    justify-content: center;
+    text-align: center;
+    padding: 16px 20px;
+  }
+
+  .wk-brand-strip__statement br {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .wk-brand-strip__logos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wk-brand-strip__logo-item {
+    padding: 18px 16px;
+    border-bottom: 1px solid #E2E8F0;
+  }
+
+  .wk-brand-strip__logo-item:nth-child(2n) {
+    border-right: none;
+  }
+
+  .wk-brand-strip__logo-item:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wk-brand-strip__logo-item,
+  .wk-brand-strip__logo-img {
+    transition: none !important;
+    transform: none !important;
+  }
+}

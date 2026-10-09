@@ -1,0 +1,273 @@
+.wk-about-insights {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(56px, 9vh, 96px) 0 clamp(64px, 10vh, 100px);
+  overflow: hidden;
+}
+
+.wk-about-insights__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+}
+
+/* Section Header */
+.wk-about-insights__header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto clamp(40px, 6vh, 64px);
+}
+
+.wk-about-insights__title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0 0 10px;
+}
+
+.wk-about-insights__title-accent {
+  color: #1887C9;
+}
+
+.wk-about-insights__subtitle {
+  font-family: var(--font-family-sans);
+  font-size: clamp(14.5px, 1.4vw, 16.5px);
+  font-weight: 450;
+  line-height: 1.55;
+  color: #64748B;
+  margin: 0 auto;
+}
+
+/* Master Grid Structure */
+.wk-about-insights__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.wk-about-insights__row {
+  display: grid;
+  gap: 24px;
+  width: 100%;
+}
+
+.wk-about-insights__row--top {
+  grid-template-columns: 39fr 61fr;
+}
+
+.wk-about-insights__row--bottom {
+  grid-template-columns: 59fr 41fr;
+}
+
+/* Card Visuals & Layout */
+.wk-about-insights__card {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+}
+
+.wk-about-insights__card:hover {
+  transform: translateY(-4px);
+  border-color: #CBD5E1;
+  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.08);
+}
+
+.wk-about-insights__card-content {
+  position: relative;
+  z-index: 2;
+  padding: 38px 38px 0 38px;
+  max-width: 360px;
+  pointer-events: none;
+}
+
+.wk-about-insights__card-title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0 0 10px;
+}
+
+.wk-about-insights__card-desc {
+  font-family: var(--font-family-sans);
+  font-size: 15px;
+  font-weight: 450;
+  line-height: 1.55;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Visual Background Elements */
+.wk-about-insights__card-visual {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.wk-about-insights__img {
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-about-insights__card:hover .wk-about-insights__img {
+  transform: scale(1.025);
+}
+
+/* Card 1: Inclusive Culture */
+.wk-about-insights__img--culture {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: auto;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: top right;
+}
+
+/* Card 2: Our Leadership */
+.wk-about-insights__img--leadership {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 78%;
+  height: auto;
+  max-height: 85%;
+  object-fit: contain;
+  object-position: bottom right;
+}
+
+/* Card 3: Infrastructure */
+.wk-about-insights__img--infrastructure {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  height: auto;
+  max-height: 88%;
+  object-fit: contain;
+  object-position: bottom right;
+}
+
+/* Card 4: CSR */
+.wk-about-insights__img--csr {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 62%;
+  height: auto;
+  max-height: 85%;
+  object-fit: contain;
+  object-position: bottom right;
+}
+
+/* Circular Arrow Link Button */
+.wk-about-insights__arrow-btn {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1.5px solid #0F172A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0F172A;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.wk-about-insights__arrow-btn svg {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-about-insights__arrow-btn:hover {
+  background-color: #0F172A;
+  color: #FFFFFF;
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+}
+
+.wk-about-insights__arrow-btn:hover svg {
+  transform: translateX(2px);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 960px) {
+  .wk-about-insights__row--top,
+  .wk-about-insights__row--bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .wk-about-insights__card {
+    min-height: 420px;
+  }
+
+  .wk-about-insights__card-content {
+    padding: 28px 28px 0 28px;
+    max-width: 100%;
+  }
+
+  .wk-about-insights__card-title {
+    font-size: 26px;
+  }
+
+  .wk-about-insights__img--culture,
+  .wk-about-insights__img--leadership,
+  .wk-about-insights__img--infrastructure,
+  .wk-about-insights__img--csr {
+    max-height: 75%;
+  }
+}
+
+@media (max-width: 600px) {
+  .wk-about-insights {
+    padding: 44px 0 54px;
+  }
+
+  .wk-about-insights__card {
+    min-height: 380px;
+  }
+
+  .wk-about-insights__card-content {
+    padding: 24px 24px 0 24px;
+  }
+
+  .wk-about-insights__arrow-btn {
+    bottom: 18px;
+    right: 18px;
+    width: 46px;
+    height: 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wk-about-insights__card,
+  .wk-about-insights__img,
+  .wk-about-insights__arrow-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}

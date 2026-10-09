@@ -16,6 +16,7 @@ export const ConversationCTA: React.FC<ConversationCTAProps> = ({
 }) => {
   return (
     <button
+      id="trigger-ai-assistant"
       type="button"
       className={`wk-bottom-nav__cta ${isOpen ? 'wk-bottom-nav__cta--open' : ''} ${className}`}
       onClick={onClick}

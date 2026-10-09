@@ -1,0 +1,116 @@
+.wk-about-overview {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(48px, 8vh, 88px) 0 clamp(64px, 10vh, 110px);
+}
+
+.wk-about-overview__container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header & Text Content */
+.wk-about-overview__header {
+  width: 100%;
+  margin-bottom: clamp(32px, 5vh, 48px);
+}
+
+.wk-about-overview__title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(28px, 3.8vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0 0 16px;
+  text-align: left;
+}
+
+.wk-about-overview__title-brand {
+  color: #1887C9;
+}
+
+.wk-about-overview__description {
+  font-family: var(--font-family-sans);
+  font-size: clamp(15px, 1.4vw, 16.5px);
+  font-weight: 400;
+  line-height: 1.7;
+  color: #475569;
+  margin: 0;
+  text-align: left;
+  max-width: 980px;
+}
+
+/* Media Container */
+.wk-about-overview__media-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.wk-about-overview__media-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 540px;
+  background-color: #F8FAFC;
+  border-radius: 20px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow:
+    0 10px 30px -6px rgba(15, 23, 42, 0.05),
+    0 2px 8px rgba(15, 23, 42, 0.02);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wk-about-overview__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Responsive Rules */
+@media (max-width: 768px) {
+  .wk-about-overview {
+    padding: 36px 0 48px;
+  }
+
+  .wk-about-overview__media-card {
+    border-radius: 16px;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-about-overview__title {
+    font-size: 26px;
+  }
+
+  .wk-about-overview__description {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .wk-about-overview__media-card {
+    border-radius: 12px;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wk-about-overview__video {
+    animation: none;
+  }
+}

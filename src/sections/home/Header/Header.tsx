@@ -22,17 +22,17 @@ export const Header: React.FC = () => {
         <nav className="wk-header__nav" aria-label="Main Navigation">
           <ul className="wk-header__nav-list">
             <li>
-              <a href="#about" className="wk-header__nav-link">
+              <a href="/about-us" className="wk-header__nav-link">
                 About
               </a>
             </li>
             <li>
-              <a href="#case-studies" className="wk-header__nav-link">
+              <a href="/#case-studies" className="wk-header__nav-link">
                 Case Studies
               </a>
             </li>
             <li>
-              <a href="#careers" className="wk-header__nav-link">
+              <a href="/#careers" className="wk-header__nav-link">
                 Careers
               </a>
             </li>

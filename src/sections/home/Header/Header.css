@@ -61,14 +61,29 @@
 
 .wk-header__nav-link {
   font-family: var(--font-family-heading);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: #1E293B;
   transition: color var(--transition-fast);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .wk-header__nav-link:hover {
+  color: var(--color-brand-primary);
+}
+
+.wk-header__chevron {
+  width: 9px;
+  height: 6px;
+  opacity: 0.6;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.wk-header__nav-link:hover .wk-header__chevron {
+  opacity: 1;
   color: var(--color-brand-primary);
 }
 

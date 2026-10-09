@@ -3,6 +3,7 @@
  */
 
 import type { AnalyticsEvent } from '../../types';
+import { sendAnalyticsTelemetry } from '../api';
 
 type EventListener = (event: AnalyticsEvent) => void;
 
@@ -25,6 +26,8 @@ class AnalyticsManager {
     if (process.env.NODE_ENV !== 'production') {
       console.log('[Analytics Event]', payload);
     }
+
+    sendAnalyticsTelemetry(payload as any);
 
     this.listeners.forEach(listener => {
       try {

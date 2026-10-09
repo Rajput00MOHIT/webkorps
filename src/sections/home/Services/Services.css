@@ -65,9 +65,9 @@
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease;
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
   position: relative;
   will-change: opacity, transform;
 }
@@ -127,6 +127,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
@@ -161,6 +162,8 @@
   font-weight: 600;
   padding: 0.5rem 1.25rem;
   border-radius: 9999px;
+  border: #FFFFFF 1px;
+
   text-decoration: none;
   transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
@@ -177,11 +180,13 @@
   background-color: var(--color-brand-primary-hover, #0052CC);
   color: #FFFFFF !important;
   transform: scale(1.04);
+
 }
 
 .wk-service-card__overlay-btn:hover *,
 .wk-service-card__overlay-btn:focus-visible * {
   color: #FFFFFF !important;
+
 }
 
 .wk-service-card__overlay-icon {
@@ -240,6 +245,7 @@
 
 /* Respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
+
   .wk-service-card,
   .wk-service-card__image,
   .wk-service-card__overlay,

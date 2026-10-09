@@ -1,0 +1,167 @@
+.wk-about-cta {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(48px, 8vh, 80px) 0 clamp(64px, 10vh, 100px);
+  overflow: hidden;
+}
+
+.wk-about-cta__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+}
+
+/* Gradient Card Surface */
+.wk-about-cta__card {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(105deg, #0077B6 0%, #0096C7 45%, #0077B6 100%);
+
+  padding: clamp(48px, 7vw, 72px) clamp(24px, 5vw, 56px);
+  overflow: hidden;
+  box-shadow:
+    0 16px 40px -8px rgba(2, 132, 199, 0.25),
+    0 4px 12px rgba(15, 23, 42, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Decorative Ring Graphics */
+.wk-about-cta__ring {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+
+.wk-about-cta__ring--left {
+  bottom: -45%;
+  left: -12%;
+  width: clamp(280px, 45vw, 540px);
+  opacity: 0.85;
+}
+
+.wk-about-cta__ring--right {
+  top: -20%;
+  right: -12%;
+  width: clamp(280px, 45vw, 540px);
+  opacity: 0.85;
+}
+
+.wk-about-cta__ring-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Content */
+.wk-about-cta__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wk-about-cta__title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(26px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin: 0 0 16px;
+}
+
+.wk-about-cta__description {
+  font-family: var(--font-family-sans);
+  font-size: clamp(14.5px, 1.4vw, 17px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 28px;
+  max-width: 660px;
+}
+
+/* Action Button */
+.wk-about-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #FFFFFF;
+  color: #0077B6;
+  font-family: var(--font-family-heading);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 13px 30px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+.wk-about-cta__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  color: #0096C7;
+}
+
+.wk-about-cta__btn-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.wk-about-cta__btn:hover .wk-about-cta__btn-icon {
+  transform: translate(2px, -2px);
+}
+
+/* Responsive Rules */
+@media (max-width: 768px) {
+  .wk-about-cta__card {
+    border-radius: 18px;
+    padding: 44px 20px;
+  }
+
+  .wk-about-cta__ring--left {
+    bottom: -35%;
+    left: -20%;
+    opacity: 0.55;
+  }
+
+  .wk-about-cta__ring--right {
+    top: -35%;
+    right: -20%;
+    opacity: 0.55;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-about-cta {
+    padding: 36px 0 54px;
+  }
+
+  .wk-about-cta__card {
+    border-radius: 16px;
+    padding: 36px 16px;
+  }
+
+  .wk-about-cta__title {
+    font-size: 24px;
+  }
+
+  .wk-about-cta__description {
+    font-size: 13.5px;
+    margin-bottom: 22px;
+  }
+
+  .wk-about-cta__btn {
+    padding: 11px 24px;
+    font-size: 14px;
+  }
+}

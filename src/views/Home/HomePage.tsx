@@ -36,7 +36,6 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: orgSchema }}
@@ -46,15 +45,12 @@ export const HomePage: React.FC = () => {
         dangerouslySetInnerHTML={{ __html: websiteSchema }}
       />
 
-      {/* Accessible skip link for keyboard & screen reader navigation */}
       <a href="#main-content" className="skip-to-content">
         Skip to main content
       </a>
 
-      {/* Global Header Navigation */}
       <Header />
 
-      {/* Primary Main Content */}
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <LeadingBrands />
@@ -72,10 +68,8 @@ export const HomePage: React.FC = () => {
         <Contact />
       </main>
 
-      {/* Global Footer */}
       <Footer />
 
-      {/* Floating Bottom Navigation & Expandable Mega-Menu */}
       <BottomNavigation />
     </>
   );

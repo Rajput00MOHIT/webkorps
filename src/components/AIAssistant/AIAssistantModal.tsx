@@ -47,7 +47,7 @@ export const AIAssistantModal: React.FC<AIAssistantModalProps> = ({ isOpen, onCl
     setMessages((prev) => [...prev, userMsg]);
     setIsTyping(true);
 
-    // Realistic typing duration (750ms)
+    // Client-side AI response with natural response delay
     setTimeout(() => {
       const response = mockAiResponse(text);
       const aiMsg: ChatMessageData = {
@@ -60,7 +60,7 @@ export const AIAssistantModal: React.FC<AIAssistantModalProps> = ({ isOpen, onCl
 
       setMessages((prev) => [...prev, aiMsg]);
       setIsTyping(false);
-    }, 800);
+    }, 500);
   };
 
   if (!isOpen) {

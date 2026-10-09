@@ -1,0 +1,209 @@
+.wk-testimonials {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(60px, 9vh, 100px) 0 clamp(64px, 10vh, 104px);
+  overflow: hidden;
+}
+
+.wk-testimonials__header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+}
+
+/* Section Header */
+.wk-testimonials__header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto clamp(36px, 5vh, 56px);
+}
+
+.wk-testimonials__title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0 0 10px;
+}
+
+.wk-testimonials__title-accent {
+  color: #1887C9;
+}
+
+.wk-testimonials__subtitle {
+  font-family: var(--font-family-sans);
+  font-size: clamp(14.5px, 1.4vw, 16.5px);
+  font-weight: 450;
+  line-height: 1.55;
+  color: #64748B;
+  margin: 0 auto;
+}
+
+/* Tracks Wrapper */
+.wk-testimonials__tracks-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+/* Marquee Viewport & Track */
+.wk-testimonials__marquee-viewport {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  user-select: none;
+}
+
+.wk-testimonials__track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  will-change: transform;
+  flex-shrink: 0;
+}
+
+/* Smooth Infinite Keyframe Animations */
+.wk-testimonials__track--left.wk-testimonials__track--speed-1 {
+  animation: wk-marquee-left 34s linear infinite;
+}
+
+.wk-testimonials__track--right.wk-testimonials__track--speed-2 {
+  animation: wk-marquee-right 38s linear infinite;
+}
+
+.wk-testimonials__track--left.wk-testimonials__track--speed-3 {
+  animation: wk-marquee-left 32s linear infinite;
+}
+
+/* Pause on Row Hover */
+.wk-testimonials__marquee-viewport:hover .wk-testimonials__track {
+  animation-play-state: paused;
+}
+
+@keyframes wk-marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes wk-marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Testimonial Card Styling */
+.wk-testimonials__card {
+  width: clamp(340px, 28vw, 420px);
+  flex-shrink: 0;
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 18px -4px rgba(15, 23, 42, 0.03);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wk-testimonials__card:hover {
+  transform: translateY(-3px);
+  border-color: #CBD5E1;
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.08);
+}
+
+/* Card Header */
+.wk-testimonials__card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.wk-testimonials__badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #E2E8F0;
+  flex-shrink: 0;
+}
+
+.wk-testimonials__meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-testimonials__company-name {
+  font-family: var(--font-family-heading);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #0F172A;
+  margin: 0 0 2px;
+}
+
+.wk-testimonials__category {
+  font-family: var(--font-family-sans);
+  font-size: 13px;
+  font-weight: 450;
+  color: #64748B;
+}
+
+/* Card Quote */
+.wk-testimonials__quote {
+  font-family: var(--font-family-sans);
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0;
+}
+
+/* Responsive Rules */
+@media (max-width: 768px) {
+  .wk-testimonials {
+    padding: 48px 0 56px;
+  }
+
+  .wk-testimonials__card {
+    width: 310px;
+    padding: 22px 22px;
+  }
+
+  .wk-testimonials__tracks-wrapper {
+    gap: 16px;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wk-testimonials__track {
+    animation: none !important;
+    transform: none !important;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .wk-testimonials__marquee-viewport {
+    overflow-x: auto;
+  }
+}

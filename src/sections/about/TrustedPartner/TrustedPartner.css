@@ -1,0 +1,284 @@
+.wk-stats-partner {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(56px, 9vh, 100px) 0 clamp(64px, 10vh, 110px);
+  overflow: hidden;
+}
+
+.wk-stats-partner__container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.wk-stats-partner__header {
+  text-align: center;
+  max-width: 780px;
+  margin-bottom: clamp(36px, 6vh, 56px);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-stats-partner.is-visible .wk-stats-partner__header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wk-stats-partner__title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0 0 12px;
+}
+
+.wk-stats-partner__subtitle {
+  font-family: var(--font-family-sans);
+  font-size: clamp(15px, 1.6vw, 17px);
+  font-weight: 450;
+  line-height: 1.55;
+  color: #64748B;
+  margin: 0 auto;
+}
+
+.wk-stats-partner__highlight {
+  color: #1887C9;
+  font-weight: 600;
+}
+
+/* Card & Map Wrapper */
+.wk-stats-partner__card-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1040px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Background World Map */
+.wk-stats-partner__map-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.96);
+  width: 125%;
+  max-width: 1360px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1.2s ease-out 0.2s, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.wk-stats-partner.is-visible .wk-stats-partner__map-bg {
+  opacity: 0.95;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.wk-stats-partner__map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: contrast(1.05);
+}
+
+/* Elevated Statistics Card */
+.wk-stats-partner__card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow:
+    0 12px 36px -6px rgba(15, 23, 42, 0.06),
+    0 2px 8px rgba(15, 23, 42, 0.02);
+  padding: 48px 40px 32px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+.wk-stats-partner.is-visible .wk-stats-partner__card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Central Floating Logo Badge */
+.wk-stats-partner__badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 58px;
+  height: 58px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s, opacity 0.6s ease-out 0.4s;
+}
+
+.wk-stats-partner.is-visible .wk-stats-partner__badge {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.wk-stats-partner__badge-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 4 Statistics Grid */
+.wk-stats-partner__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2.5vw, 36px);
+  width: 100%;
+}
+
+.wk-stats-partner__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-stats-partner.is-visible .wk-stats-partner__item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Metric Number */
+.wk-stats-partner__number {
+  font-family: var(--font-family-heading);
+  font-size: clamp(36px, 4.4vw, 54px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #1887C9;
+  display: inline-flex;
+  align-items: baseline;
+  margin-bottom: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.wk-stats-partner__digit {
+  display: inline-block;
+  min-width: 0.6em;
+}
+
+.wk-stats-partner__suffix {
+  font-weight: 750;
+  margin-left: 2px;
+}
+
+/* Metric Label */
+.wk-stats-partner__label {
+  font-family: var(--font-family-sans);
+  font-size: clamp(14px, 1.2vw, 15px);
+  font-weight: 500;
+  line-height: 1.35;
+  color: #1E293B;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: -0.01em;
+}
+
+.wk-stats-partner__label-line {
+  display: block;
+}
+
+/* Signature Bottom Line Accent */
+.wk-stats-partner__line-accent {
+  width: 0%;
+  height: 3px;
+  background-color: #1887C9;
+  border-radius: 2px;
+  margin-top: 36px;
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+}
+
+.wk-stats-partner.is-visible .wk-stats-partner__line-accent {
+  width: 100%;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+  .wk-stats-partner__card {
+    padding: 44px 28px 28px;
+  }
+
+  .wk-stats-partner__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 24px;
+  }
+
+  .wk-stats-partner__map-bg {
+    width: 125%;
+  }
+}
+
+@media (max-width: 540px) {
+  .wk-stats-partner {
+    padding: 44px 0 54px;
+  }
+
+  .wk-stats-partner__card {
+    padding: 38px 20px 24px;
+    border-radius: 18px;
+  }
+
+  .wk-stats-partner__badge {
+    width: 50px;
+    height: 50px;
+  }
+
+  .wk-stats-partner__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+  }
+
+  .wk-stats-partner__number {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  .wk-stats-partner__label {
+    font-size: 13px;
+  }
+
+  .wk-stats-partner__line-accent {
+    margin-top: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wk-stats-partner__header,
+  .wk-stats-partner__map-bg,
+  .wk-stats-partner__card,
+  .wk-stats-partner__badge,
+  .wk-stats-partner__item,
+  .wk-stats-partner__line-accent {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+}
