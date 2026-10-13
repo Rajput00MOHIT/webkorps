@@ -126,9 +126,9 @@
 }
 
 /* ========================================================
-   Stable Bounding Slot & Morphable Toggle
+   Stable Reserved Inline Slot & 2 Coordinated Layers
    ======================================================== */
-.wk-about-hero__toggle-slot {
+.wk-about-hero__slot {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -141,11 +141,13 @@
   flex-shrink: 0;
 }
 
+/* Layer B: Real Accessible Toggle Switch */
 .wk-about-hero__toggle {
+  position: absolute;
+  inset: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   width: 100%;
   height: 100%;
   padding: 0;
@@ -156,7 +158,7 @@
   outline: none;
   user-select: none;
   border-radius: 55px;
-  will-change: transform;
+  will-change: transform, opacity;
   transform-origin: center center;
 }
 
@@ -165,7 +167,7 @@
   outline-offset: 4px;
 }
 
-/* Outer morphable gradient track */
+/* Outer Gradient Track */
 .wk-about-hero__toggle-track {
   display: flex;
   align-items: center;
@@ -180,11 +182,11 @@
   );
   padding: 0.07em;
   box-shadow: 0 4px 12px rgba(24, 135, 201, 0.22);
-  will-change: width;
+  will-change: width, transform;
   transform-origin: center center;
 }
 
-/* Recessed white inner track */
+/* Recessed White Inner Track */
 .wk-about-hero__toggle-inner-track {
   position: relative;
   width: 100%;
@@ -198,14 +200,15 @@
   overflow: visible;
 }
 
-/* Circular switch knob */
+/* Circular Switch Knob (Thumb) */
 .wk-about-hero__toggle-knob-wrapper {
   position: absolute;
-  left: -0.04em;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0.92em;
-  height: 0.92em;
+  left: 0.02em;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 0.86em;
+  height: 0.86em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,7 +217,7 @@
   z-index: 2;
 }
 
-/* White surrounding ring */
+/* White Surrounding Ring */
 .wk-about-hero__toggle-knob-ring {
   width: 100%;
   height: 100%;
@@ -227,7 +230,7 @@
   padding: 0.08em;
 }
 
-/* Blue center knob */
+/* Blue Circular Center Knob */
 .wk-about-hero__toggle-knob-blue {
   width: 100%;
   height: 100%;
@@ -235,23 +238,31 @@
   background: #1A87C8;
 }
 
-/* Morphed text "Turn" inside pill */
-.wk-about-hero__toggle-morph-text {
+/* ========================================================
+   Layer A: Precisely Aligned "Turn" Text Control
+   ======================================================== */
+.wk-about-hero__turn-wrapper {
+  position: absolute;
+  inset: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-family-heading);
-  font-size: 0.46em;
-  font-weight: 800;
-  color: #1887C9;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  user-select: none;
   pointer-events: none;
-  opacity: 0;
-  transform: scale(0.6);
-  will-change: opacity, transform;
-  z-index: 1;
+  user-select: none;
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+.wk-about-hero__turn-text {
+  font-family: var(--font-family-heading);
+  font-size: 0.82em;
+  font-weight: 800;
+  line-height: 1;
+  color: #1887C9;
+  letter-spacing: -0.03em;
+  user-select: none;
+  will-change: transform, opacity;
+  transform-origin: center center;
 }
 
 /* Anchor for start position of custom cursor */
@@ -311,7 +322,7 @@
     gap: 0.12em;
   }
 
-  .wk-about-hero__toggle-slot {
+  .wk-about-hero__slot {
     width: 2.18em;
     height: 0.88em;
   }
@@ -319,6 +330,10 @@
   .wk-about-hero__toggle-knob-wrapper {
     width: 0.9em;
     height: 0.9em;
+  }
+
+  .wk-about-hero__turn-pill-track {
+    width: 1.44em;
   }
 
   .wk-about-hero__description {
@@ -358,7 +373,8 @@
   .wk-about-hero__toggle,
   .wk-about-hero__toggle-track,
   .wk-about-hero__toggle-knob-wrapper,
-  .wk-about-hero__toggle-morph-text,
+  .wk-about-hero__turn-wrapper,
+  .wk-about-hero__turn-text,
   .wk-about-hero__animated-cursor {
     transition: none !important;
     animation: none !important;
@@ -366,6 +382,7 @@
     transform: none !important;
   }
 
+  .wk-about-hero__turn-wrapper,
   .wk-about-hero__animated-cursor {
     display: none !important;
   }
