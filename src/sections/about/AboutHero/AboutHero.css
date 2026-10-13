@@ -167,6 +167,32 @@
   outline-offset: 4px;
 }
 
+.wk-about-hero__toggle-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.wk-about-hero__toggle-svg--off {
+  opacity: 1;
+}
+
+.wk-about-hero__toggle-svg--on {
+  opacity: 0;
+}
+
+.wk-about-hero__toggle.is-on .wk-about-hero__toggle-svg--off {
+  opacity: 0;
+}
+
+.wk-about-hero__toggle.is-on .wk-about-hero__toggle-svg--on {
+  opacity: 1;
+}
+
 /* Outer Gradient Track */
 .wk-about-hero__toggle-track {
   display: flex;
