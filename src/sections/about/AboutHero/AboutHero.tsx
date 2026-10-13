@@ -16,8 +16,9 @@ export const AboutHero: React.FC = () => {
 
   // Layer B: SVG Toggle Switch elements
   const toggleBtnRef = useRef<HTMLButtonElement>(null);
-  const svgOffRef = useRef<SVGSVGElement>(null);
-  const svgOnRef = useRef<SVGSVGElement>(null);
+  const innerTrackRef = useRef<SVGRectElement>(null);
+  const knobRef = useRef<SVGGElement>(null);
+  const knobCenterRef = useRef<SVGCircleElement>(null);
 
   // Layer A: "Turn" text control
   const turnWrapperRef = useRef<HTMLSpanElement>(null);
@@ -53,11 +54,12 @@ export const AboutHero: React.FC = () => {
     if (!timelineRef.current?.isActive()) {
       const containerRect = containerRef.current.getBoundingClientRect();
       const startRect = cursorStartAnchorRef.current.getBoundingClientRect();
-      const startX = startRect.left - containerRect.left + 20;
-      const startY = startRect.top - containerRect.top + startRect.height * 0.12;
+      const tip = getCursorTipOffsets();
+      const startX = startRect.left - containerRect.left + 8 - tip.x;
+      const startY = startRect.top - containerRect.top + startRect.height * 0.3 - tip.y;
       gsap.set(cursorWrapperRef.current, { x: startX, y: startY, opacity: 1 });
     }
-  }, []);
+  }, [getCursorTipOffsets]);
 
   // Master GSAP Sequence — runs automatically on page load and refresh
   useEffect(() => {
@@ -70,19 +72,12 @@ export const AboutHero: React.FC = () => {
         if (el) gsap.set(el, { opacity: 1, y: 0 });
       });
       if (descriptionRef.current) gsap.set(descriptionRef.current, { opacity: 1, y: 0 });
+      if (cursorWrapperRef.current) gsap.set(cursorWrapperRef.current, { opacity: 0, display: 'none' });
       if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, { opacity: 1, scale: 1, display: 'inline-flex' });
-      if (svgOffRef.current) gsap.set(svgOffRef.current, { opacity: 1 });
-      if (svgOnRef.current) gsap.set(svgOnRef.current, { opacity: 0 });
+      if (knobRef.current) gsap.set(knobRef.current, { x: 0 });
+      if (innerTrackRef.current) gsap.set(innerTrackRef.current, { x: 0 });
+      if (knobCenterRef.current) gsap.set(knobCenterRef.current, { fill: '#C6C6C6' });
       if (turnWrapperRef.current) gsap.set(turnWrapperRef.current, { opacity: 0, display: 'none' });
-      if (cursorWrapperRef.current && containerRef.current && cursorStartAnchorRef.current) {
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const startRect = cursorStartAnchorRef.current.getBoundingClientRect();
-        gsap.set(cursorWrapperRef.current, {
-          x: startRect.left - containerRect.left + 20,
-          y: startRect.top - containerRect.top + startRect.height * 0.12,
-          opacity: 1,
-        });
-      }
       return;
     }
 
@@ -91,8 +86,9 @@ export const AboutHero: React.FC = () => {
       const startEl = cursorStartAnchorRef.current;
       const slotEl = slotRef.current;
       const toggleBtn = toggleBtnRef.current;
-      const svgOff = svgOffRef.current;
-      const svgOn = svgOnRef.current;
+      const innerTrack = innerTrackRef.current;
+      const knobEl = knobRef.current;
+      const knobCenter = knobCenterRef.current;
       const turnWrapper = turnWrapperRef.current;
       const turnText = turnTextRef.current;
       const cursorEl = cursorWrapperRef.current;
@@ -102,8 +98,9 @@ export const AboutHero: React.FC = () => {
         !startEl ||
         !slotEl ||
         !toggleBtn ||
-        !svgOff ||
-        !svgOn ||
+        !innerTrack ||
+        !knobEl ||
+        !knobCenter ||
         !turnWrapper ||
         !turnText ||
         !cursorEl
@@ -118,25 +115,22 @@ export const AboutHero: React.FC = () => {
       const toggleRect = toggleBtn.getBoundingClientRect();
       const tip = getCursorTipOffsets();
 
-      // Stable position cleanly on the right side of "business"
-      const startX = startRect.left - containerRect.left + 20;
-      const startY = startRect.top - containerRect.top + startRect.height * 0.12;
+      // Original starting position at the right side of "your business"
+      const startX = startRect.left - containerRect.left + 8 - tip.x;
+      const startY = startRect.top - containerRect.top + startRect.height * 0.3 - tip.y;
 
       // Target position over the center of the toggle control
       const toggleTargetX = toggleRect.left - containerRect.left + toggleRect.width * 0.5 - tip.x;
       const toggleTargetY = toggleRect.top - containerRect.top + toggleRect.height * 0.5 - tip.y;
 
-      // Left white space position to the left of "We" so "Turn" and "We" are completely visible and unblocked
-      const line1El = headingLinesRef.current[0];
-      const line1Rect = line1El ? line1El.getBoundingClientRect() : slotRect;
-      const leftWhitespaceX = line1Rect.left - containerRect.left - 54 - tip.x;
-      const leftWhitespaceY = toggleTargetY;
+      // Left white space position so "Turn" text is completely visible and unobstructed
+      const leftWhitespaceX = slotRect.left - containerRect.left - tip.x - 16;
 
       // Clear waypoint in the open whitespace to the right of line 2
       const line2El = headingLinesRef.current[1];
       const line2Rect = line2El ? line2El.getBoundingClientRect() : startRect;
       const line2Right = line2Rect.right - containerRect.left;
-      const midX = Math.max(line2Right + 40, startX + 50);
+      const midX = Math.max(line2Right + 36, startX + 54);
       const midY = startY - (startY - toggleTargetY) * 0.48;
 
       // ========================================================
@@ -149,16 +143,17 @@ export const AboutHero: React.FC = () => {
       });
       gsap.set(descriptionRef.current, { opacity: 0, y: 16 });
 
-      // Toggle starts fully visible in exact OFF state
+      // Toggle starts fully visible in OFF state (knob at left cx: 32, fill: #C6C6C6)
       gsap.set(toggleBtn, { opacity: 1, scale: 1, display: 'inline-flex' });
-      gsap.set(svgOff, { opacity: 1 });
-      gsap.set(svgOn, { opacity: 0 });
+      gsap.set(knobEl, { x: 0, scale: 1, opacity: 1 });
+      gsap.set(innerTrack, { x: 0 });
+      gsap.set(knobCenter, { fill: '#C6C6C6' });
 
       // "Turn" text starts hidden
       gsap.set(turnWrapper, { opacity: 0, scale: 0.9, display: 'none' });
       gsap.set(turnText, { opacity: 0, y: 0, scale: 1 });
 
-      // Cursor starts placed at the right side of "business"
+      // Cursor starts at its original starting position (visible beside "business")
       gsap.set(cursorEl, { x: startX, y: startY, opacity: 0, scale: 1 });
 
       // Master coordinated timeline
@@ -196,7 +191,7 @@ export const AboutHero: React.FC = () => {
           },
           '-=0.35'
         )
-        // Cursor fades in at starting location beside "business"
+        // Cursor fades in at starting location
         .to(
           cursorEl,
           {
@@ -225,13 +220,13 @@ export const AboutHero: React.FC = () => {
           ease: 'power1.out',
         })
         .addLabel('cursor-arrive')
-        .to({}, { duration: 0.12 });
+        .to({}, { duration: 0.15 });
 
       // ========================================================
-      // Phase 4 — Toggle Disappears, "Turn" Reveals, Cursor to Left White Space
+      // Phase 4 — Toggle Disappears, "Turn" Reveals, Cursor to Left Space
       // ========================================================
       tl.addLabel('text-reveal')
-        // Toggle OFF layer exits
+        // Toggle OFF layer exits with scale and opacity
         .to(toggleBtn, {
           scale: 0.86,
           opacity: 0,
@@ -241,7 +236,7 @@ export const AboutHero: React.FC = () => {
             gsap.set(toggleBtn, { display: 'none' });
           },
         })
-        // Reveal "Turn" text in the exact reserved slot
+        // Reveal "Turn" text in the exact same inline area
         .set(turnWrapper, { display: 'inline-flex' }, '<+=0.1')
         .fromTo(
           turnWrapper,
@@ -255,20 +250,20 @@ export const AboutHero: React.FC = () => {
           { opacity: 1, y: 0, duration: 0.26, ease: 'power2.out', immediateRender: false },
           '<+=0.04'
         )
-        // Cursor glides to the left side white space so "Turn" is completely unobstructed!
+        // Cursor glides to the left white space so "Turn" text is completely visible!
         .to(
           cursorEl,
           {
             x: leftWhitespaceX,
-            y: leftWhitespaceY,
-            duration: 0.38,
+            y: toggleTargetY,
+            duration: 0.35,
             ease: 'power2.out',
           },
           '<+=0.06'
         );
 
       // ========================================================
-      // Phase 5 — Wait Exactly One Second (1,000 ms) in Left White Space
+      // Phase 5 — Wait Exactly One Second (1,000 ms) in Left Space
       // ========================================================
       tl.addLabel('pause-one-sec').to({}, { duration: 1.0 });
 
@@ -280,7 +275,7 @@ export const AboutHero: React.FC = () => {
         .to(cursorEl, {
           x: toggleTargetX,
           y: toggleTargetY,
-          duration: 0.32,
+          duration: 0.3,
           ease: 'power2.inOut',
         })
         // Cursor tip moves downward by a few pixels (press)
@@ -316,13 +311,13 @@ export const AboutHero: React.FC = () => {
           },
           '<'
         )
-        // Switch state to ON
+        // Trigger actual toggle state change through shared logic
         .add(() => {
           setToggleState(true);
         });
 
       // ========================================================
-      // Phase 7 — "Turn" Morphs into the Exact ON Toggle SVG
+      // Phase 7 — "Turn" Morphs into the ON Toggle
       // ========================================================
       tl.addLabel('toggle-morph')
         // "Turn" text compresses smoothly toward center and fades out
@@ -346,14 +341,30 @@ export const AboutHero: React.FC = () => {
           },
           '<'
         )
-        // Show the toggle button with the ON SVG active
-        .set(svgOff, { opacity: 0 })
-        .set(svgOn, { opacity: 1 })
+        // Toggle track expands horizontally from the text area
         .set(toggleBtn, { display: 'inline-flex' }, '<+=0.08')
         .fromTo(
           toggleBtn,
           { opacity: 0, scaleX: 0.45, scaleY: 0.8 },
           { opacity: 1, scaleX: 1, scaleY: 1, duration: 0.42, ease: 'power2.out', immediateRender: false },
+          '<'
+        )
+        // Knob slides smoothly to the ON position on right (x: 98, fill: #1A87C8)
+        .to(
+          knobEl,
+          { x: 98, duration: 0.48, ease: 'power2.out' },
+          '<+=0.04'
+        )
+        // Inner track shifts to x: -18 (making room for knob on right)
+        .to(
+          innerTrack,
+          { x: -18, duration: 0.48, ease: 'power2.out' },
+          '<'
+        )
+        // Inner circle turns into Webkorps blue
+        .to(
+          knobCenter,
+          { fill: '#1A87C8', duration: 0.48, ease: 'power2.out' },
           '<'
         );
 
@@ -361,22 +372,22 @@ export const AboutHero: React.FC = () => {
       // Phase 8 — Cursor Returns Beside "business" & Stays Stable
       // ========================================================
       tl.addLabel('cursor-return')
-        // Pause after ON switch is fully visible
+        // Pause after ON switch is fully formed
         .to({}, { duration: 0.25 })
-        // Return journey along the smooth clear path to right side of "business"
+        // Return journey along the smooth clear path
         .to(cursorEl, {
           x: midX,
           y: midY,
-          duration: 0.65,
+          duration: 1,
           ease: 'power1.in',
         })
         .to(cursorEl, {
           x: startX,
           y: startY,
-          duration: 0.65,
+          duration: 1,
           ease: 'power1.out',
         })
-        // Cursor stays stably placed and visible at the right side of "business" (NEVER disappears!)
+        // Cursor stays stably placed and visible beside "business" (never disappears!)
         .set(cursorEl, { opacity: 1 });
     }, containerRef);
 
@@ -400,16 +411,16 @@ export const AboutHero: React.FC = () => {
     const nextState = !isOn;
     setToggleState(nextState);
 
-    if (svgOffRef.current && svgOnRef.current) {
-      if (nextState) {
-        // Transition to ON
-        gsap.to(svgOffRef.current, { opacity: 0, duration: 0.3, ease: 'power2.out' });
-        gsap.to(svgOnRef.current, { opacity: 1, duration: 0.3, ease: 'power2.out' });
-      } else {
-        // Transition to OFF
-        gsap.to(svgOffRef.current, { opacity: 1, duration: 0.3, ease: 'power2.out' });
-        gsap.to(svgOnRef.current, { opacity: 0, duration: 0.3, ease: 'power2.out' });
-      }
+    if (nextState) {
+      // Transition to ON
+      if (knobRef.current) gsap.to(knobRef.current, { x: 98, duration: 0.38, ease: 'power2.out' });
+      if (innerTrackRef.current) gsap.to(innerTrackRef.current, { x: -18, duration: 0.38, ease: 'power2.out' });
+      if (knobCenterRef.current) gsap.to(knobCenterRef.current, { fill: '#1A87C8', duration: 0.38, ease: 'power2.out' });
+    } else {
+      // Transition to OFF
+      if (knobRef.current) gsap.to(knobRef.current, { x: 0, duration: 0.38, ease: 'power2.out' });
+      if (innerTrackRef.current) gsap.to(innerTrackRef.current, { x: 0, duration: 0.38, ease: 'power2.out' });
+      if (knobCenterRef.current) gsap.to(knobCenterRef.current, { fill: '#C6C6C6', duration: 0.38, ease: 'power2.out' });
     }
   };
 
@@ -456,80 +467,16 @@ export const AboutHero: React.FC = () => {
                 className={`wk-about-hero__toggle ${isOn ? 'is-on' : 'is-off'}`}
                 onClick={handleUserToggleClick}
               >
-                {/* 1. Exact Supplied OFF Toggle SVG */}
                 <svg
-                  ref={svgOffRef}
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="170"
-                  height="68"
                   viewBox="0 0 170 68"
                   fill="none"
-                  className="wk-about-hero__toggle-svg wk-about-hero__toggle-svg--off"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="wk-about-hero__toggle-svg"
                   aria-hidden="true"
                 >
-                  <rect x="2" width="168" height="65" rx="32.5" fill="url(#paint0_linear_2151_7867)" />
-                  <g filter="url(#filter0_i_2151_7867)">
-                    <rect x="29" y="12" width="127" height="40" rx="20" fill="white" />
-                  </g>
-                  <g filter="url(#filter1_d_2151_7867)">
-                    <circle cx="32" cy="32" r="28" fill="white" />
-                    <circle cx="31.5" cy="32.5" r="24.5" fill="#C6C6C6" />
-                  </g>
                   <defs>
-                    <filter
-                      id="filter0_i_2151_7867"
-                      x="29"
-                      y="12"
-                      width="127"
-                      height="44"
-                      filterUnits="userSpaceOnUse"
-                      colorInterpolationFilters="sRGB"
-                    >
-                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                      <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha"
-                      />
-                      <feOffset dy="4" />
-                      <feGaussianBlur stdDeviation="2" />
-                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-                      <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                      />
-                      <feBlend mode="normal" in2="shape" result="effect1_innerShadow_2151_7867" />
-                    </filter>
-                    <filter
-                      id="filter1_d_2151_7867"
-                      x="0"
-                      y="4.00001"
-                      width="64"
-                      height="64"
-                      filterUnits="userSpaceOnUse"
-                      colorInterpolationFilters="sRGB"
-                    >
-                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha"
-                      />
-                      <feOffset dy="4" />
-                      <feGaussianBlur stdDeviation="2" />
-                      <feComposite in2="hardAlpha" operator="out" />
-                      <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                      />
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2151_7867" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2151_7867" result="shape" />
-                    </filter>
                     <linearGradient
-                      id="paint0_linear_2151_7867"
+                      id="wk-paint-toggle-grad"
                       x1="2"
                       y1="25.5"
                       x2="170"
@@ -539,35 +486,13 @@ export const AboutHero: React.FC = () => {
                       <stop stopColor="#1887C9" />
                       <stop offset="1" stopColor="#E7F6FF" />
                     </linearGradient>
-                  </defs>
-                </svg>
 
-                {/* 2. Exact Supplied ON Toggle SVG */}
-                <svg
-                  ref={svgOnRef}
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="168"
-                  height="68"
-                  viewBox="0 0 168 68"
-                  fill="none"
-                  className="wk-about-hero__toggle-svg wk-about-hero__toggle-svg--on"
-                  aria-hidden="true"
-                >
-                  <rect width="168" height="65" rx="32.5" fill="url(#paint0_linear_2151_7873)" />
-                  <g filter="url(#filter0_i_2151_7873)">
-                    <rect x="11" y="12" width="127" height="40" rx="20" fill="white" />
-                  </g>
-                  <g filter="url(#filter1_d_2151_7873)">
-                    <circle cx="130" cy="32" r="28" fill="white" />
-                    <circle cx="129.5" cy="32.5" r="24.5" fill="#1A87C8" />
-                  </g>
-                  <defs>
                     <filter
-                      id="filter0_i_2151_7873"
-                      x="11"
-                      y="12"
-                      width="127"
-                      height="44"
+                      id="wk-filter-inner-shadow"
+                      x="0"
+                      y="0"
+                      width="170"
+                      height="68"
                       filterUnits="userSpaceOnUse"
                       colorInterpolationFilters="sRGB"
                     >
@@ -586,14 +511,15 @@ export const AboutHero: React.FC = () => {
                         type="matrix"
                         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
                       />
-                      <feBlend mode="normal" in2="shape" result="effect1_innerShadow_2151_7873" />
+                      <feBlend mode="normal" in2="shape" result="effect1_innerShadow" />
                     </filter>
+
                     <filter
-                      id="filter1_d_2151_7873"
-                      x="98"
-                      y="4"
-                      width="64"
-                      height="64"
+                      id="wk-filter-knob-shadow"
+                      x="-10"
+                      y="-10"
+                      width="190"
+                      height="88"
                       filterUnits="userSpaceOnUse"
                       colorInterpolationFilters="sRGB"
                     >
@@ -611,21 +537,38 @@ export const AboutHero: React.FC = () => {
                         type="matrix"
                         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
                       />
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2151_7873" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2151_7873" result="shape" />
+                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
                     </filter>
-                    <linearGradient
-                      id="paint0_linear_2151_7873"
-                      x1="1.2514e-06"
-                      y1="25.5"
-                      x2="168"
-                      y2="28.5"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stopColor="#1887C9" />
-                      <stop offset="1" stopColor="#E7F6FF" />
-                    </linearGradient>
                   </defs>
+
+                  {/* Outer Gradient Track */}
+                  <rect x="2" width="166" height="65" rx="32.5" fill="url(#wk-paint-toggle-grad)" />
+
+                  {/* Inner White Track with Inset Shadow */}
+                  <g filter="url(#wk-filter-inner-shadow)">
+                    <rect
+                      ref={innerTrackRef}
+                      x="29"
+                      y="12"
+                      width="127"
+                      height="40"
+                      rx="20"
+                      fill="white"
+                    />
+                  </g>
+
+                  {/* Movable Knob Group */}
+                  <g ref={knobRef} filter="url(#wk-filter-knob-shadow)">
+                    <circle cx="32" cy="32" r="28" fill="white" />
+                    <circle
+                      ref={knobCenterRef}
+                      cx="31.5"
+                      cy="32.5"
+                      r="24.5"
+                      fill="#C6C6C6"
+                    />
+                  </g>
                 </svg>
               </button>
 
@@ -659,7 +602,7 @@ export const AboutHero: React.FC = () => {
             className="wk-about-hero__line"
           >
             your business
-            {/* Design anchor for custom SVG cursor starting & final location */}
+            {/* Design anchor for custom SVG cursor starting location */}
             <span
               ref={cursorStartAnchorRef}
               className="wk-about-hero__cursor-anchor"
@@ -685,4 +628,3 @@ export const AboutHero: React.FC = () => {
     </section>
   );
 };
-
