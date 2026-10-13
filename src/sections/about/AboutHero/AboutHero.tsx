@@ -5,8 +5,6 @@ import gsap from 'gsap';
 import { HeroCursor } from './HeroCursor';
 import './AboutHero.css';
 
-type ToggleState = 'off' | 'hover' | 'on';
-
 export const AboutHero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
@@ -15,30 +13,30 @@ export const AboutHero: React.FC = () => {
   const toggleBtnRef = useRef<HTMLButtonElement>(null);
   const trackRef = useRef<HTMLSpanElement>(null);
   const knobRef = useRef<HTMLSpanElement>(null);
-  const turnHintRef = useRef<HTMLSpanElement>(null);
+  const turnTextRef = useRef<HTMLSpanElement>(null);
   const cursorWrapperRef = useRef<HTMLDivElement>(null);
   const cursorStartAnchorRef = useRef<HTMLSpanElement>(null);
 
-  const [toggleState, setToggleState] = useState<ToggleState>('off');
+  const [isOn, setIsOn] = useState<boolean>(false);
   const [isAnimationComplete, setIsAnimationComplete] = useState<boolean>(false);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
-  // Calculate dynamic travel distance for the knob
+  // Dynamic travel distance for knob between OFF (0) and ON (maxTravel)
   const getKnobTravelDistance = useCallback((): number => {
-    if (!trackRef.current || !knobRef.current) return 72;
-    const trackWidth = trackRef.current.clientWidth;
+    if (!toggleBtnRef.current || !knobRef.current) return 76;
+    const btnWidth = toggleBtnRef.current.clientWidth;
     const knobWidth = knobRef.current.clientWidth;
-    return Math.max(trackWidth - knobWidth + 2, 40);
+    return Math.max(btnWidth - knobWidth + 2, 44);
   }, []);
 
-  // Update cursor position relative to current state and container
+  // Update cursor position relative to toggle and container on window resize
   const updateCursorPosition = useCallback(() => {
-    if (!containerRef.current || !cursorWrapperRef.current) return;
+    if (!containerRef.current || !cursorWrapperRef.current || !toggleBtnRef.current) return;
     const containerRect = containerRef.current.getBoundingClientRect();
+    const toggleRect = toggleBtnRef.current.getBoundingClientRect();
 
-    if (toggleState === 'on' && toggleBtnRef.current) {
-      const toggleRect = toggleBtnRef.current.getBoundingClientRect();
-      const finalX = toggleRect.right - containerRect.left + 12;
+    if (isOn) {
+      const finalX = toggleRect.right - containerRect.left + 14;
       const finalY = toggleRect.top - containerRect.top + toggleRect.height * 0.25;
       gsap.set(cursorWrapperRef.current, { x: finalX, y: finalY });
     } else if (cursorStartAnchorRef.current && !isAnimationComplete && !timelineRef.current?.isActive()) {
@@ -47,15 +45,14 @@ export const AboutHero: React.FC = () => {
       const startY = startRect.top - containerRect.top;
       gsap.set(cursorWrapperRef.current, { x: startX, y: startY });
     }
-  }, [toggleState, isAnimationComplete]);
+  }, [isOn, isAnimationComplete]);
 
-  // Master GSAP sequence on page load / refresh
+  // Master GSAP Sequence — runs on initial mount & every full refresh
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {
-      // Immediate accessible reveal
-      setToggleState('off');
+      setIsOn(false);
       setIsAnimationComplete(true);
       if (badgeRef.current) gsap.set(badgeRef.current, { opacity: 1, y: 0 });
       headingLinesRef.current.forEach((el) => {
@@ -70,11 +67,12 @@ export const AboutHero: React.FC = () => {
       const container = containerRef.current;
       const startEl = cursorStartAnchorRef.current;
       const toggleEl = toggleBtnRef.current;
+      const trackEl = trackRef.current;
       const knobEl = knobRef.current;
-      const turnHintEl = turnHintRef.current;
+      const turnTextEl = turnTextRef.current;
       const cursorEl = cursorWrapperRef.current;
 
-      if (!container || !startEl || !toggleEl || !knobEl || !turnHintEl || !cursorEl) {
+      if (!container || !startEl || !toggleEl || !trackEl || !knobEl || !turnTextEl || !cursorEl) {
         return;
       }
 
@@ -82,33 +80,32 @@ export const AboutHero: React.FC = () => {
       const startRect = startEl.getBoundingClientRect();
       const toggleRect = toggleEl.getBoundingClientRect();
 
-      // Start coordinate (beside "your business" at bottom of headline)
+      // Coordinates
       const startX = startRect.left - containerRect.left + 8;
       const startY = startRect.top - containerRect.top - 4;
 
-      // Target coordinate (at the toggle knob on line 1)
-      const targetX = toggleRect.left - containerRect.left + toggleRect.width * 0.32;
-      const targetY = toggleRect.top - containerRect.top + toggleRect.height * 0.28;
+      const toggleCenterX = toggleRect.left - containerRect.left + toggleRect.width * 0.42;
+      const toggleCenterY = toggleRect.top - containerRect.top + toggleRect.height * 0.3;
 
-      // Resting coordinate beside switch when ON
       const finalX = toggleRect.right - containerRect.left + 14;
       const finalY = toggleRect.top - containerRect.top + toggleRect.height * 0.25;
 
       const maxTravel = getKnobTravelDistance();
 
       // ========================================================
-      // Phase A — Set Explicit Initial State
+      // Phase 1 — Explicit Initial State (Toggle OFF, Cursor Hidden)
       // ========================================================
       gsap.set(badgeRef.current, { opacity: 0, y: -16 });
       headingLinesRef.current.forEach((el) => {
         if (el) gsap.set(el, { opacity: 0, y: 28 });
       });
       gsap.set(descriptionRef.current, { opacity: 0, y: 20 });
-      gsap.set(knobEl, { x: 0 });
-      gsap.set(turnHintEl, { opacity: 0, x: -10 });
+      gsap.set(trackEl, { width: '100%' });
+      gsap.set(knobEl, { x: 0, scale: 1, opacity: 1 });
+      gsap.set(turnTextEl, { opacity: 0, scale: 0.6 });
       gsap.set(cursorEl, { x: startX, y: startY, opacity: 0, scale: 0.9 });
 
-      // Create single controlled master timeline
+      // Master coordinated timeline
       const tl = gsap.timeline({
         onComplete: () => {
           setIsAnimationComplete(true);
@@ -116,13 +113,11 @@ export const AboutHero: React.FC = () => {
       });
       timelineRef.current = tl;
 
-      // ========================================================
-      // Phase B — Reveal Heading and Supporting Copy
-      // ========================================================
+      // Heading and badge entrance
       tl.to(badgeRef.current, {
         opacity: 1,
         y: 0,
-        duration: 0.6,
+        duration: 0.65,
         ease: 'power2.out',
       })
         .to(
@@ -141,112 +136,164 @@ export const AboutHero: React.FC = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.65,
+            duration: 0.6,
             ease: 'power2.out',
           },
           '-=0.45'
         );
 
       // ========================================================
-      // Phase C — Cursor Travels toward the Toggle Switch
+      // Phase 2 — Cursor Approaches OFF Toggle
       // ========================================================
       tl.to(
         cursorEl,
         {
           opacity: 1,
           scale: 1,
-          duration: 0.45,
+          duration: 0.4,
           ease: 'power2.out',
         },
-        '+=0.15'
-      ).to(cursorEl, {
-        x: targetX,
-        y: targetY,
-        duration: 1.35,
-        ease: 'power2.inOut',
-      });
-
-      // ========================================================
-      // Phase D — Hover and Reveal "Turn"
-      // ========================================================
-      tl.add(() => {
-        setToggleState('hover');
-      })
-        .to(turnHintEl, {
-          opacity: 1,
-          x: 0,
-          duration: 0.35,
-          ease: 'power2.out',
-        })
-        .to(
-          toggleEl,
-          {
-            scale: 1.04,
-            duration: 0.25,
-            ease: 'power1.out',
-          },
-          '<'
-        )
-        // Intentional pause so viewers clearly absorb the "Turn" interaction hint
-        .to({}, { duration: 0.75 });
-
-      // ========================================================
-      // Phase E — Click to Turn ON
-      // ========================================================
-      // Subtle click press simulation on the cursor
-      tl.to(cursorEl, {
-        scale: 0.88,
-        duration: 0.12,
-        ease: 'power1.in',
-      })
+        '+=0.1'
+      )
         .to(cursorEl, {
-          scale: 1,
-          duration: 0.14,
-          ease: 'power1.out',
+          x: toggleCenterX,
+          y: toggleCenterY,
+          duration: 1.15,
+          ease: 'power2.inOut',
         })
-        .add(() => {
-          setToggleState('on');
-        })
-        // Smooth knob travel to ON position
+        // Brief pause so interaction is clear and readable
+        .to({}, { duration: 0.25 });
+
+      // ========================================================
+      // Phase 3 — Toggle Morphs into "Turn" Pill
+      // ========================================================
+      // 1. Knob slides toward center and shrinks
+      tl.to(knobEl, {
+        x: maxTravel * 0.45,
+        scale: 0.2,
+        opacity: 0,
+        duration: 0.42,
+        ease: 'power2.inOut',
+      })
+        // 2. Track smoothly contracts into compact text pill
         .to(
-          knobEl,
+          trackEl,
           {
-            x: maxTravel,
-            duration: 0.55,
+            width: '1.48em',
+            duration: 0.42,
             ease: 'power2.inOut',
           },
           '<'
         )
-        // Fade out "Turn" hint
+        // 3. Word "Turn" fades and scales into view inside the resulting pill
         .to(
-          turnHintEl,
+          turnTextEl,
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.35,
+            ease: 'power2.out',
+          },
+          '-=0.22'
+        )
+        // Cursor remains centered over the morphing text
+        .to(
+          cursorEl,
+          {
+            x: toggleCenterX,
+            y: toggleCenterY,
+            duration: 0.35,
+            ease: 'power2.out',
+          },
+          '<'
+        )
+        // Pause briefly with "Turn" fully visible
+        .to({}, { duration: 0.45 });
+
+      // ========================================================
+      // Phase 4 — Cursor Performs Click Automatically
+      // ========================================================
+      // Simulate natural mouse click on the "Turn" pill
+      tl.to(cursorEl, {
+        scale: 0.88,
+        y: '+=3',
+        duration: 0.12,
+        ease: 'power1.in',
+      })
+        .to(
+          toggleEl,
+          {
+            scale: 0.94,
+            duration: 0.12,
+            ease: 'power1.in',
+          },
+          '<'
+        )
+        .to(cursorEl, {
+          scale: 1,
+          y: '-=3',
+          duration: 0.14,
+          ease: 'power1.out',
+        })
+        .to(
+          toggleEl,
+          {
+            scale: 1,
+            duration: 0.14,
+            ease: 'power1.out',
+          },
+          '<'
+        )
+        // Programmatic state update to ON
+        .add(() => {
+          setIsOn(true);
+        })
+        // Animate text pill back into toggle's ON appearance
+        .to(
+          turnTextEl,
           {
             opacity: 0,
-            x: -8,
-            duration: 0.3,
+            scale: 0.6,
+            duration: 0.25,
             ease: 'power2.in',
           },
           '<'
         )
         .to(
-          toggleEl,
+          trackEl,
           {
-            scale: 1,
-            duration: 0.25,
-            ease: 'power1.out',
+            width: '100%',
+            duration: 0.45,
+            ease: 'power2.inOut',
           },
           '<'
         )
-        // Cursor settles beside the switch
+        // Move blue knob to ON position (right)
+        .fromTo(
+          knobEl,
+          {
+            x: maxTravel * 0.45,
+            scale: 0.35,
+            opacity: 0,
+          },
+          {
+            x: maxTravel,
+            scale: 1,
+            opacity: 1,
+            duration: 0.48,
+            ease: 'power2.out',
+          },
+          '<+=0.06'
+        )
+        // Move cursor slightly away from the switch to final resting position
         .to(cursorEl, {
           x: finalX,
           y: finalY,
-          duration: 0.45,
+          duration: 0.4,
           ease: 'power2.out',
         });
     }, containerRef);
 
-    // Window resize handler to maintain accurate positioning
     const handleResize = () => {
       updateCursorPosition();
     };
@@ -258,85 +305,73 @@ export const AboutHero: React.FC = () => {
     };
   }, [getKnobTravelDistance, updateCursorPosition]);
 
-  // Handle genuine user click on toggle
+  // Real user manual click handler (accessible & reversible)
   const handleToggleClick = () => {
-    // Stop ongoing entrance timeline safely if user clicks during intro
+    // If user clicks while initial animation is playing, safely interrupt
     if (timelineRef.current && timelineRef.current.isActive()) {
       timelineRef.current.kill();
       setIsAnimationComplete(true);
+      if (trackRef.current) gsap.set(trackRef.current, { width: '100%' });
+      if (turnTextRef.current) gsap.set(turnTextRef.current, { opacity: 0 });
     }
 
-    const nextState: ToggleState = toggleState === 'on' ? 'off' : 'on';
-    setToggleState(nextState);
+    const nextState = !isOn;
+    setIsOn(nextState);
 
     const maxTravel = getKnobTravelDistance();
 
-    if (nextState === 'on') {
-      // Animate knob to ON position
+    if (nextState) {
+      // Transition to ON
       gsap.to(knobRef.current, {
         x: maxTravel,
+        scale: 1,
+        opacity: 1,
         duration: 0.45,
         ease: 'power2.inOut',
       });
-      // Hide "Turn" hint
-      gsap.to(turnHintRef.current, {
-        opacity: 0,
-        x: -8,
-        duration: 0.25,
-        ease: 'power2.in',
-      });
-      // Position cursor beside switch
+      if (trackRef.current) {
+        gsap.to(trackRef.current, {
+          width: '100%',
+          duration: 0.35,
+        });
+      }
+      if (turnTextRef.current) {
+        gsap.to(turnTextRef.current, {
+          opacity: 0,
+          duration: 0.2,
+        });
+      }
       if (containerRef.current && toggleBtnRef.current && cursorWrapperRef.current) {
         const containerRect = containerRef.current.getBoundingClientRect();
         const toggleRect = toggleBtnRef.current.getBoundingClientRect();
         gsap.to(cursorWrapperRef.current, {
           x: toggleRect.right - containerRect.left + 14,
           y: toggleRect.top - containerRect.top + toggleRect.height * 0.25,
-          opacity: 1,
           duration: 0.35,
           ease: 'power2.out',
         });
       }
     } else {
-      // Return to OFF position
+      // Transition to OFF
       gsap.to(knobRef.current, {
         x: 0,
+        scale: 1,
+        opacity: 1,
         duration: 0.45,
         ease: 'power2.inOut',
       });
-    }
-  };
-
-  // Real mouse hover handlers
-  const handleMouseEnter = () => {
-    if (toggleState === 'off') {
-      setToggleState('hover');
-      gsap.to(turnHintRef.current, {
-        opacity: 1,
-        x: 0,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-      gsap.to(toggleBtnRef.current, {
-        scale: 1.04,
-        duration: 0.2,
-      });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (toggleState === 'hover') {
-      setToggleState('off');
-      gsap.to(turnHintRef.current, {
-        opacity: 0,
-        x: -8,
-        duration: 0.25,
-        ease: 'power2.in',
-      });
-      gsap.to(toggleBtnRef.current, {
-        scale: 1,
-        duration: 0.2,
-      });
+      if (trackRef.current) {
+        gsap.to(trackRef.current, {
+          width: '100%',
+          duration: 0.35,
+        });
+      }
+      if (turnTextRef.current) {
+        gsap.to(turnTextRef.current, {
+          opacity: 0,
+          duration: 0.2,
+        });
+      }
     }
   };
 
@@ -362,7 +397,7 @@ export const AboutHero: React.FC = () => {
           <span className="wk-about-hero__badge">About us</span>
         </div>
 
-        {/* Main Heading with Interactive 3-State Toggle & Custom SVG Cursor */}
+        {/* Main Heading with Interactive Toggle-to-Text Morph Animation */}
         <h1 id="about-hero-heading" className="wk-about-hero__heading">
           <span
             ref={(el) => {
@@ -371,21 +406,22 @@ export const AboutHero: React.FC = () => {
             className="wk-about-hero__line"
           >
             We{' '}
-            <span className="wk-about-hero__toggle-interactive-slot">
-              {/* Accessible, Interactive 3-State Toggle Switch */}
+            {/* Stable bounding slot to prevent any heading reflow */}
+            <span className="wk-about-hero__toggle-slot">
               <button
                 ref={toggleBtnRef}
                 type="button"
                 role="switch"
-                aria-checked={toggleState === 'on'}
-                aria-label="Turn on technology interaction"
-                className={`wk-about-hero__toggle wk-about-hero__toggle--${toggleState}`}
+                aria-checked={isOn}
+                aria-label={isOn ? 'Technology interaction enabled' : 'Turn on technology interaction'}
+                className={`wk-about-hero__toggle ${isOn ? 'is-on' : 'is-off'}`}
                 onClick={handleToggleClick}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
               >
+                {/* Outer Morphable Gradient Track */}
                 <span ref={trackRef} className="wk-about-hero__toggle-track">
+                  {/* Recessed White Inner Track */}
                   <span className="wk-about-hero__toggle-inner-track">
+                    {/* Blue Knob (Thumb) */}
                     <span
                       ref={knobRef}
                       className="wk-about-hero__toggle-knob-wrapper"
@@ -395,18 +431,18 @@ export const AboutHero: React.FC = () => {
                         <span className="wk-about-hero__toggle-knob-blue" />
                       </span>
                     </span>
+
+                    {/* Morph Target Text: "Turn" */}
+                    <span
+                      ref={turnTextRef}
+                      className="wk-about-hero__toggle-morph-text"
+                      aria-hidden="true"
+                    >
+                      Turn
+                    </span>
                   </span>
                 </span>
               </button>
-
-              {/* Interaction Hint: "Turn" */}
-              <span
-                ref={turnHintRef}
-                className="wk-about-hero__turn-hint"
-                aria-hidden="true"
-              >
-                Turn
-              </span>
             </span>{' '}
             technology into
           </span>
@@ -427,7 +463,7 @@ export const AboutHero: React.FC = () => {
             className="wk-about-hero__line"
           >
             your business
-            {/* Start anchor for custom cursor path */}
+            {/* Design anchor for custom cursor starting position */}
             <span
               ref={cursorStartAnchorRef}
               className="wk-about-hero__cursor-anchor"
