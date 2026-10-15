@@ -34,7 +34,7 @@
 }
 
 .wk-oem__title-accent {
-  color: var(--color-brand-primary, #1887C9);
+  color: var(--color-brand-primary, #1A87C8);
 }
 
 /* ==========================================================================
@@ -156,7 +156,7 @@
 }
 
 .wk-oem__badge:focus-visible {
-  outline: 2px solid var(--color-brand-primary, #1887C9);
+  outline: 2px solid var(--color-brand-primary, #1A87C8);
   outline-offset: 3px;
 }
 

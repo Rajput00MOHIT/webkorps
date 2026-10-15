@@ -8,13 +8,15 @@
      COLOR TOKENS
      ========================================================================== */
 
-  /* Brand Colors */
-  --color-brand-primary: #1887C9;
-  --color-brand-primary-hover: #0072b4;
-  --color-brand-primary-light: #EBF3FF;
-  --color-brand-primary-subtle: #F0F6FF;
+  /* Brand Colors - Primary: #1A87C8 */
+  --color-brand-primary: #1A87C8;
+  --color-brand-primary-rgb: 26, 135, 200;
+  --color-brand-primary-hover: #1572a8;
+  --color-brand-primary-active: #0f5c88;
+  --color-brand-primary-light: #E7F6FF;
+  --color-brand-primary-subtle: #F0F8FD;
   --color-brand-secondary: #0B132B;
-  --color-brand-accent: #1887C9;
+  --color-brand-accent: #1A87C8;
 
   /* Backgrounds & Surfaces */
   --color-bg-canvas: #FFFFFF;
@@ -30,13 +32,13 @@
   --color-text-muted: #64748B;
   --color-text-light: #94A3B8;
   --color-text-white: #FFFFFF;
-  --color-text-brand: #1887C9;
+  --color-text-brand: #1A87C8;
 
   /* Borders */
   --color-border-subtle: #EDF2F7;
   --color-border-default: #E2E8F0;
   --color-border-strong: #CBD5E1;
-  --color-border-brand: #1887C9;
+  --color-border-brand: #1A87C8;
 
   /* Status & Accents */
   --color-success: #10B981;
@@ -45,12 +47,12 @@
   --color-warning-bg: #FFFBEB;
   --color-error: #EF4444;
   --color-error-bg: #FEF2F2;
-  --color-info: #0066FF;
+  --color-info: #1A87C8;
   --color-info-bg: #EFF6FF;
 
   /* Interactive States */
-  --color-focus-ring: rgba(0, 102, 255, 0.4);
-  --color-card-hover-border: #BFDBFE;
+  --color-focus-ring: rgba(26, 135, 200, 0.4);
+  --color-card-hover-border: rgba(26, 135, 200, 0.35);
 
   /* ==========================================================================
      TYPOGRAPHY TOKENS
@@ -190,7 +192,7 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
   --shadow-card: 0 4px 24px 0 rgba(15, 23, 42, 0.04);
-  --shadow-card-hover: 0 12px 32px 0 rgba(0, 102, 255, 0.12);
+  --shadow-card-hover: 0 12px 32px 0 rgba(26, 135, 200, 0.16);
   --shadow-dropdown: 0 10px 38px -10px rgba(22, 23, 24, 0.35), 0 10px 20px -15px rgba(22, 23, 24, 0.2);
 
   /* ==========================================================================

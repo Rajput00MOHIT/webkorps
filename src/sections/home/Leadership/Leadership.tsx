@@ -307,7 +307,7 @@ export const Leadership: React.FC = () => {
                       onClick={(e) => e.stopPropagation()}
                     >
                       <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-                        <rect width="24" height="24" rx="4" fill="#1887C9" />
+                        <rect width="24" height="24" rx="4" fill="#1A87C8" />
                         <path
                           d="M5 7H19C19.55 7 20 7.45 20 8V16C20 16.55 19.55 17 19 17H5C4.45 17 4 16.55 4 16V8C4 7.45 4.45 7 5 7ZM18 9.25L12 13L6 9.25V15.5H18V9.25ZM12 11.75L17.5 8.25H6.5L12 11.75Z"
                           fill="#FFFFFF"

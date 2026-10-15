@@ -536,7 +536,7 @@ export const AboutHero: React.FC = () => {
                       y2="28.5"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stopColor="#1887C9" />
+                      <stop stopColor="#1A87C8" />
                       <stop offset="1" stopColor="#E7F6FF" />
                     </linearGradient>
                   </defs>
@@ -622,7 +622,7 @@ export const AboutHero: React.FC = () => {
                       y2="28.5"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stopColor="#1887C9" />
+                      <stop stopColor="#1A87C8" />
                       <stop offset="1" stopColor="#E7F6FF" />
                     </linearGradient>
                   </defs>

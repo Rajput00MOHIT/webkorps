@@ -161,7 +161,7 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
                 <div className="wk-mega-menu__item-content">
                   <div className="wk-mega-menu__insight-meta">
                     <span className="wk-mega-menu__category-tag">{event.badge}</span>
-                    <span className="wk-mega-menu__read-time" style={{ color: '#1887C9', fontWeight: 600 }}>
+                    <span className="wk-mega-menu__read-time" style={{ color: '#1A87C8', fontWeight: 600 }}>
                       {event.date}
                     </span>
                   </div>
@@ -188,7 +188,7 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
                 <div className="wk-mega-menu__item-content">
                   <div className="wk-mega-menu__insight-meta">
                     <span className="wk-mega-menu__category-tag">{study.category}</span>
-                    <span className="wk-mega-menu__read-time" style={{ color: '#1887C9', fontWeight: 600 }}>
+                    <span className="wk-mega-menu__read-time" style={{ color: '#1A87C8', fontWeight: 600 }}>
                       {study.client}
                     </span>
                   </div>

@@ -103,19 +103,19 @@
 }
 
 .wk-nav-trigger:hover {
-  color: #1887C9;
+  color: #1A87C8;
   background: rgba(239, 246, 255, 0.8);
 }
 
 .wk-nav-trigger:focus-visible {
-  outline: 2px solid #1887C9;
+  outline: 2px solid #1A87C8;
   outline-offset: 2px;
 }
 
 /* Active State: Services × */
 .wk-nav-trigger--active {
   background: #EFF6FF;
-  color: #1887C9;
+  color: #1A87C8;
   font-weight: 600;
   border-color: rgba(24, 135, 201, 0.2);
   box-shadow: 0 2px 6px rgba(24, 135, 201, 0.08);
@@ -137,7 +137,7 @@
 }
 
 .wk-nav-trigger--active .wk-nav-trigger__icon-wrap {
-  color: #1887C9;
+  color: #1A87C8;
 }
 
 /* Tablet & Mobile Buttons (Hidden on full desktop) */
@@ -161,7 +161,7 @@
   align-items: center;
   gap: 10px;
   height: 48px;
-  background: #1887C9;
+  background: #1A87C8;
   color: #FFFFFF;
   border: none;
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
@@ -184,7 +184,7 @@
 }
 
 .wk-bottom-nav__cta:focus-visible {
-  outline: 2px solid #1887C9;
+  outline: 2px solid #1A87C8;
   outline-offset: 2px;
 }
 
@@ -316,14 +316,14 @@
 }
 
 .wk-mega-menu__tab-btn:hover {
-  color: #1887C9;
+  color: #1A87C8;
   background: #F1F5F9;
 }
 
 .wk-mega-menu__tab-btn--active {
   background: #EFF6FF;
   border-color: rgba(24, 135, 201, 0.2);
-  color: #1887C9;
+  color: #1A87C8;
 }
 
 .wk-mega-menu__title {
@@ -351,7 +351,7 @@
 
 .wk-mega-menu__close-btn:hover {
   background: #EFF6FF;
-  color: #1887C9;
+  color: #1A87C8;
   border-color: #BFDBFE;
 }
 
@@ -417,7 +417,7 @@
 }
 
 .wk-mega-menu__item:focus-visible {
-  outline: 2px solid #1887C9;
+  outline: 2px solid #1A87C8;
   outline-offset: 1px;
 }
 
@@ -430,7 +430,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #1887C9;
+  color: #1A87C8;
 }
 
 .wk-mega-menu__item-content {
@@ -451,7 +451,7 @@
 }
 
 .wk-mega-menu__item:hover .wk-mega-menu__item-title {
-  color: #1887C9;
+  color: #1A87C8;
 }
 
 .wk-mega-menu__item-desc {
@@ -493,7 +493,7 @@
   border-radius: 50%;
   background: #EFF6FF;
   border: 1px solid #BFDBFE;
-  color: #1887C9;
+  color: #1A87C8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -535,7 +535,7 @@
   font-size: 20px;
   font-weight: 800;
   line-height: 1.1;
-  color: #1887C9;
+  color: #1A87C8;
 }
 
 .wk-mega-menu__impact-stat-lbl {
@@ -585,7 +585,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #1887C9;
+  color: #1A87C8;
   margin-bottom: 6px;
 }
 
@@ -651,7 +651,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #1887C9;
+  color: #1A87C8;
 }
 
 .wk-mega-menu__industry-info {
@@ -713,7 +713,7 @@
 .wk-mega-menu__industry-spotlight-badge {
   display: inline-block;
   align-self: flex-start;
-  background: #1887C9;
+  background: #1A87C8;
   color: #FFFFFF;
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: 10.5px;
@@ -747,7 +747,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #1887C9;
+  color: #1A87C8;
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: 13.5px;
   font-weight: 600;
@@ -805,7 +805,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: #1887C9;
+  color: #1A87C8;
 }
 
 .wk-mega-menu__tech-info {
@@ -867,7 +867,7 @@
 .wk-mega-menu__tech-spotlight-badge {
   display: inline-block;
   align-self: flex-start;
-  background: #1887C9;
+  background: #1A87C8;
   color: #FFFFFF;
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: 10.5px;
@@ -901,7 +901,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #1887C9;
+  color: #1A87C8;
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: 13.5px;
   font-weight: 600;
@@ -1090,7 +1090,7 @@
   .wk-bottom-nav__tablet-menu-btn--active {
     background: #EFF6FF;
     border-color: rgba(24, 135, 201, 0.3);
-    color: #1887C9;
+    color: #1A87C8;
   }
 
   .wk-bottom-nav__action {
@@ -1187,7 +1187,7 @@
   .wk-bottom-nav__mobile-menu-btn--active {
     background: #EFF6FF;
     border-color: rgba(24, 135, 201, 0.3);
-    color: #1887C9;
+    color: #1A87C8;
   }
 
   .wk-bottom-nav__brand {
@@ -1282,7 +1282,7 @@
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.05em;
-    color: #1887C9;
+    color: #1A87C8;
     cursor: pointer;
     text-transform: uppercase;
   }
@@ -1294,7 +1294,7 @@
 
   .wk-mega-menu__cat-chevron--open {
     transform: rotate(180deg);
-    color: #1887C9;
+    color: #1A87C8;
   }
 
   .wk-mega-menu__items-list {

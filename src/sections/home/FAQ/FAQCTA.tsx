@@ -1,4 +1,5 @@
 import React from 'react';
+import { CTA } from '../../../components/CTA';
 
 export const FAQCTA: React.FC = () => {
   return (
@@ -7,26 +8,17 @@ export const FAQCTA: React.FC = () => {
       <p className="wk-faq-cta__desc">
         Can’t find what you’re looking for? Our team is here to help you with clear answers and quick guidance.
       </p>
-      <a
+      <CTA
         href="#contact"
+        variant="primary"
+        size="md"
+        pill
+        arrow="diagonal"
         className="wk-faq-cta__btn"
         aria-label="Book a Consultation with Webkorps"
       >
-        <span>Book a Consultation</span>
-        <svg
-          className="wk-faq-cta__btn-arrow"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <line x1="7" y1="17" x2="17" y2="7" />
-          <polyline points="7 7 17 7 17 17" />
-        </svg>
-      </a>
+        Book a Consultation
+      </CTA>
     </div>
   );
 };

@@ -41,7 +41,7 @@
 }
 
 .wk-milestones__title-brand {
-  color: #1887C9;
+  color: #1A87C8;
 }
 
 .wk-milestones__subtitle {
@@ -54,7 +54,7 @@
 }
 
 .wk-milestones__highlight {
-  color: #1887C9;
+  color: #1A87C8;
   font-weight: 600;
 }
 
@@ -88,7 +88,7 @@
 }
 
 .wk-milestones__path-progress {
-  stroke: #1887C9;
+  stroke: #1A87C8;
   stroke-width: 3.5px;
   transition: stroke-dashoffset 2.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -106,12 +106,12 @@
 }
 
 .wk-milestones__node-group.is-completed .wk-milestones__node-circle {
-  fill: #1887C9;
-  stroke: #1887C9;
+  fill: #1A87C8;
+  stroke: #1A87C8;
 }
 
 .wk-milestones__node-group.is-active .wk-milestones__node-circle {
-  fill: #1887C9;
+  fill: #1A87C8;
   stroke: #FFFFFF;
   stroke-width: 3px;
 }
@@ -131,7 +131,7 @@
 }
 
 .wk-milestones__node-group.is-active .wk-milestones__node-label {
-  fill: #1887C9;
+  fill: #1A87C8;
   font-weight: 700;
   font-size: 16.5px;
 }
@@ -192,7 +192,7 @@
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.03em;
-  color: #1887C9;
+  color: #1A87C8;
   margin: 0 0 12px;
   animation: wkMotionSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.06s both;
 }
@@ -240,7 +240,7 @@
   font-size: clamp(28px, 3.2vw, 38px);
   font-weight: 800;
   line-height: 1.1;
-  color: #1887C9;
+  color: #1A87C8;
   letter-spacing: -0.02em;
 }
 

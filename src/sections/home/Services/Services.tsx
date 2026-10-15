@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Container } from '../../../components/Container/Container';
+import { CTA } from '../../../components/CTA';
 import serviceMobile from '../../../assets/services/service-mobile.png';
 import serviceWeb from '../../../assets/services/service-web.png';
 import serviceCustom from '../../../assets/services/service-custom.png';
@@ -127,16 +128,17 @@ export const Services: React.FC = () => {
                 />
                 <div className="wk-service-card__overlay">
                   <p className="wk-service-card__overlay-text">Not sure which fits?</p>
-                  <a
+                  <CTA
                     href={service.href}
+                    variant="primary"
+                    size="sm"
+                    pill
+                    arrow="diagonal"
                     className="wk-service-card__overlay-btn"
                     aria-label={`Chat with us about ${service.title}`}
                   >
-                    <span>Chat with us</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M15.707 0.999999C15.707 0.447715 15.2593 -2.87362e-07 14.707 -5.40243e-07L5.70703 2.60547e-07C5.15475 -7.66277e-08 4.70703 0.447715 4.70703 1C4.70703 1.55228 5.15475 2 5.70703 2L13.707 2L13.707 10C13.707 10.5523 14.1547 11 14.707 11C15.2593 11 15.707 10.5523 15.707 10L15.707 0.999999ZM0.707031 15L1.41414 15.7071L15.4141 1.70711L14.707 1L13.9999 0.292893L-7.55191e-05 14.2929L0.707031 15Z" fill="white" />
-                    </svg>
-                  </a>
+                    Chat with us
+                  </CTA>
                 </div>
               </div>
               <div className="wk-service-card__content">

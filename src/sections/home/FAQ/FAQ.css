@@ -47,7 +47,7 @@
 }
 
 .wk-faq__title-accent {
-  color: var(--color-brand-primary, #1887C9);
+  color: var(--color-brand-primary, #1A87C8);
 }
 
 /* ==========================================================================
@@ -110,7 +110,7 @@
 }
 
 .wk-faq-item__trigger:focus-visible {
-  outline: 2px solid var(--color-brand-primary, #1887C9);
+  outline: 2px solid var(--color-brand-primary, #1A87C8);
   outline-offset: -2px;
 }
 
@@ -244,7 +244,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--color-brand-primary, #1887C9);
+  background-color: var(--color-brand-primary, #1A87C8);
   color: #FFFFFF;
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.95rem;
@@ -264,7 +264,7 @@
 }
 
 .wk-faq-cta__btn:focus-visible {
-  outline: 2px solid var(--color-brand-primary, #1887C9);
+  outline: 2px solid var(--color-brand-primary, #1A87C8);
   outline-offset: 3px;
 }
 

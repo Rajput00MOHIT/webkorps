@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../../components/Container/Container';
+import { CTA } from '../../../components/CTA';
 import technologyPartnerImg from '../../../assets/Technology Partner/Entrepreneur_giving_positive_fee…_202609081049 1.png';
 import { getImgSrc } from '../../../utils/image';
 import './NeedPartnerCallout.css';
@@ -52,28 +53,17 @@ export const NeedPartnerCallout: React.FC = () => {
             </p>
 
             <div className="wk-tech-partner__action">
-              <a
+              <CTA
                 href="#contact"
+                variant="white"
+                size="lg"
+                pill
+                arrow="diagonal"
                 className="wk-tech-partner__btn"
                 aria-label="Let's Talk - Contact Webkorps"
               >
-                <span>Let's Talk</span>
-                <svg
-                  className="wk-tech-partner__btn-icon"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </a>
+                Let's Talk
+              </CTA>
             </div>
           </div>
 

@@ -46,7 +46,7 @@
 }
 
 .wk-integrations__title-accent {
-  color: var(--color-brand-primary, #1887C9);
+  color: var(--color-brand-primary, #1A87C8);
   font-weight: inherit;
 }
 
@@ -114,14 +114,14 @@
 }
 
 .wk-integrations__tab:focus-visible {
-  outline: 2px solid var(--color-brand-primary, #1887C9);
+  outline: 2px solid var(--color-brand-primary, #1A87C8);
   outline-offset: 2px;
 }
 
 /* Active Tab State (Figma Blue Fill) */
 .wk-integrations__tab--active {
-  background-color: var(--color-brand-primary, #1887C9);
-  border-color: var(--color-brand-primary, #1887C9);
+  background-color: var(--color-brand-primary, #1A87C8);
+  border-color: var(--color-brand-primary, #1A87C8);
   color: #FFFFFF;
   box-shadow: 0 8px 24px -4px rgba(24, 135, 201, 0.38);
   transform: none;

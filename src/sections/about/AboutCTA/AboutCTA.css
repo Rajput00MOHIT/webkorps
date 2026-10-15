@@ -16,12 +16,12 @@
 .wk-about-cta__card {
   position: relative;
   width: 100%;
-  background: linear-gradient(105deg, #0077B6 0%, #0096C7 45%, #0077B6 100%);
+  background: linear-gradient(105deg, #1A87C8 0%, #1572a8 45%, #1A87C8 100%);
 
   padding: clamp(48px, 7vw, 72px) clamp(24px, 5vw, 56px);
   overflow: hidden;
   box-shadow:
-    0 16px 40px -8px rgba(2, 132, 199, 0.25),
+    0 16px 40px -8px rgba(26, 135, 200, 0.28),
     0 4px 12px rgba(15, 23, 42, 0.05);
   display: flex;
   justify-content: center;
@@ -94,7 +94,7 @@
   align-items: center;
   gap: 8px;
   background-color: #FFFFFF;
-  color: #0077B6;
+  color: #1A87C8;
   font-family: var(--font-family-heading);
   font-size: 15px;
   font-weight: 600;
@@ -108,7 +108,7 @@
 .wk-about-cta__btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  color: #0096C7;
+  color: #1572a8;
 }
 
 .wk-about-cta__btn-icon {

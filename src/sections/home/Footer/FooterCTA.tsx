@@ -1,5 +1,6 @@
 import React from 'react';
 import { FOOTER_SOCIAL_LINKS } from './footerData';
+import { CTA } from '../../../components/CTA';
 
 export const FooterCTA: React.FC = () => {
   return (
@@ -11,33 +12,27 @@ export const FooterCTA: React.FC = () => {
           Create an account instantly, or contact us to design a custom package for your business.
         </p>
         <div className="wk-footer__cta-actions">
-          <a
+          <CTA
             href="#contact"
+            variant="outline"
+            size="md"
+            pill
             className="wk-footer__btn wk-footer__btn--outline"
             aria-label="Contact Sales team"
           >
             Contact Sales
-          </a>
-          <a
+          </CTA>
+          <CTA
             href="#contact"
+            variant="primary"
+            size="md"
+            pill
+            arrow="diagonal"
             className="wk-footer__btn wk-footer__btn--primary"
             aria-label="Start Now with Webkorps"
           >
-            <span>Start Now</span>
-            <svg
-              className="wk-footer__btn-arrow"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
+            Start Now
+          </CTA>
         </div>
       </div>
 

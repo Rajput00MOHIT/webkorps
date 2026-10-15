@@ -1,6 +1,7 @@
 import React from 'react';
 import type { BlogPost } from './insightsData';
 import { getImgSrc } from '../../../utils/image';
+import { CTA } from '../../../components/CTA';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -26,28 +27,17 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
 
         {/* Read Blog Primary Action */}
         <div className="wk-blog-card__action">
-          <a
+          <CTA
             href={post.href}
+            variant="primary"
+            size="sm"
+            pill
+            arrow="diagonal"
             className="wk-blog-card__btn"
             aria-label={`Read Blog: ${post.title}`}
           >
-            <span>Read Blog</span>
-            <svg
-              className="wk-blog-card__btn-icon"
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="3" y1="11" x2="11" y2="3" />
-              <polyline points="4 3 11 3 11 10" />
-            </svg>
-          </a>
+            Read Blog
+          </CTA>
         </div>
       </div>
 
