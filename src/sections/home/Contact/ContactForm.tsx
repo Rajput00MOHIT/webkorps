@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { submitLead } from '../../../lib/api';
 
 interface FormValues {
   fullName: string;
@@ -126,9 +125,9 @@ export const ContactForm: React.FC = () => {
     setStatus('submitting');
 
     try {
-      await submitLead(values);
+      // Standalone client-side form interaction
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
-      // Successfully processed by backend
       setStatus('success');
       setValues({ fullName: '', email: '', phone: '', message: '' });
       setTouched({ fullName: false, email: false, phone: false, message: false });

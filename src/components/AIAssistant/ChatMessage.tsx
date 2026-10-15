@@ -41,7 +41,7 @@ function extractSourcesAndCleanText(
   const sourcesMap = new Map<string, SourceItem>();
   let sourceIndex = 1;
 
-  // 1. Add citations from structured backend payload if present
+  // 1. Add citations from structured payload if present
   if (existingCitations && existingCitations.length > 0) {
     existingCitations.forEach((c) => {
       if (c.url && !sourcesMap.has(c.url)) {
