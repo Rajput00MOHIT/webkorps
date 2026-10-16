@@ -28,6 +28,11 @@ export const Header: React.FC = () => {
               </a>
             </li>
             <li>
+              <a href="/ai-solutions" className="wk-header__nav-link">
+                AI Solutions
+              </a>
+            </li>
+            <li>
               <a href="/#case-studies" className="wk-header__nav-link">
                 Case Studies
               </a>

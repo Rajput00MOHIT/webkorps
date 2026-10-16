@@ -1,0 +1,961 @@
+/**
+ * Webkorps AI Capability Detail Page Styles
+ * Reusable Template for Enterprise AI Capability Deep Dives
+ * Brand Primary Color: #1A87C8
+ */
+
+.wk-cap-detail-page {
+  background-color: var(--color-bg-canvas, #FFFFFF);
+  color: var(--color-text-primary, #0F172A);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-cap-detail-page__main {
+  flex: 1;
+}
+
+.wk-cap-section {
+  padding-top: clamp(4rem, 7vw, 6.5rem);
+  padding-bottom: clamp(4rem, 7vw, 6.5rem);
+  position: relative;
+}
+
+/* ==========================================================================
+   1. HERO
+   ========================================================================== */
+
+.wk-cap-hero {
+  position: relative;
+  background-color: #FAFCFE;
+  padding-top: clamp(3rem, 6vh, 5rem);
+  padding-bottom: clamp(4rem, 7vh, 6rem);
+  border-bottom: 1px solid var(--color-border-subtle, #EDF2F7);
+  overflow: hidden;
+}
+
+.wk-cap-hero__bg-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 20%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 20%, black 40%, transparent 85%);
+}
+
+.wk-cap-hero__content {
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.wk-cap-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(26, 135, 200, 0.25);
+  box-shadow: 0 2px 8px rgba(26, 135, 200, 0.08);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-full, 9999px);
+  font-family: var(--font-family-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-brand-primary, #1A87C8);
+  margin-bottom: 1.5rem;
+}
+
+.wk-cap-hero__badge-icon {
+  color: var(--color-brand-primary, #1A87C8);
+}
+
+.wk-cap-hero__title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary, #0F172A);
+  margin: 0 0 1.25rem 0;
+}
+
+.wk-cap-hero__subtitle {
+  font-family: var(--font-family-sans);
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary, #334155);
+  margin: 0 auto 2.5rem;
+  max-width: 780px;
+}
+
+.wk-cap-hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+.wk-cap-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  padding: 1.5rem clamp(1rem, 2vw, 2rem);
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-subtle, #EDF2F7);
+  border-radius: var(--radius-xl, 16px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.wk-cap-hero__stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.wk-cap-hero__stat-val {
+  font-family: var(--font-family-heading);
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+  font-weight: 800;
+  color: var(--color-brand-primary, #1A87C8);
+  line-height: 1.2;
+}
+
+.wk-cap-hero__stat-lbl {
+  font-family: var(--font-family-sans);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted, #64748B);
+  margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+   2. PROBLEM & OUTCOMES SPLIT
+   ========================================================================== */
+
+.wk-cap-section--split {
+  background-color: #FFFFFF;
+}
+
+.wk-cap-split-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.wk-cap-split-card {
+  border-radius: var(--radius-2xl, 24px);
+  padding: clamp(2rem, 3.5vw, 2.75rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-cap-split-card--problem {
+  background-color: #FEF7F7;
+  border: 1px solid #FEE2E2;
+}
+
+.wk-cap-split-card--outcome {
+  background-color: #F0F8FD;
+  border: 1px solid #D6EBF8;
+}
+
+.wk-cap-split-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.wk-cap-split-card__icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg, 12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wk-cap-split-card__icon-box--problem {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}
+
+.wk-cap-split-card__icon-box--outcome {
+  background-color: var(--color-brand-primary-light, #E7F6FF);
+  color: var(--color-brand-primary, #1A87C8);
+}
+
+.wk-cap-split-card__kicker {
+  display: block;
+  font-family: var(--font-family-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #DC2626;
+  margin-bottom: 0.2rem;
+}
+
+.wk-cap-split-card__kicker--outcome {
+  color: var(--color-brand-primary, #1A87C8);
+}
+
+.wk-cap-split-card__title {
+  font-family: var(--font-family-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-text-primary, #0F172A);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.wk-cap-split-card__desc {
+  font-family: var(--font-family-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #334155);
+  margin: 0 0 1.5rem 0;
+}
+
+.wk-cap-split-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.wk-cap-split-card__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-family: var(--font-family-sans);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.wk-cap-split-card__list-item--problem {
+  color: #7F1D1D;
+}
+
+.wk-cap-split-card__list-item--outcome {
+  color: #0F172A;
+}
+
+.wk-cap-split-card__bullet {
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.wk-cap-split-card__bullet--problem {
+  color: #DC2626;
+}
+
+.wk-cap-split-card__bullet--outcome {
+  color: var(--color-brand-primary, #1A87C8);
+}
+
+/* ==========================================================================
+   3. PILLARS / WHAT THE SOLUTION DOES
+   ========================================================================== */
+
+.wk-cap-pillars-section {
+  background-color: #F8FAFD;
+  border-top: 1px solid var(--color-border-subtle, #EDF2F7);
+  border-bottom: 1px solid var(--color-border-subtle, #EDF2F7);
+}
+
+.wk-cap-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.wk-cap-pillar-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-default, #E2E8F0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 1.75rem;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wk-cap-pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+}
+
+.wk-cap-pillar-card__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-lg, 12px);
+  background-color: var(--color-brand-primary-light, #E7F6FF);
+  color: var(--color-brand-primary, #1A87C8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.wk-cap-pillar-card__title {
+  font-family: var(--font-family-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #0F172A);
+  margin: 0 0 0.5rem 0;
+}
+
+.wk-cap-pillar-card__desc {
+  font-family: var(--font-family-sans);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #475569);
+  margin: 0;
+}
+
+/* ==========================================================================
+   4. USE CASES
+   ========================================================================== */
+
+.wk-cap-use-cases-section {
+  background-color: #FFFFFF;
+}
+
+.wk-cap-usecases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+.wk-cap-uc-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-default, #E2E8F0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+}
+
+.wk-cap-uc-card__number {
+  font-family: var(--font-family-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: rgba(26, 135, 200, 0.25);
+  margin-bottom: 0.5rem;
+}
+
+.wk-cap-uc-card__title {
+  font-family: var(--font-family-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-text-primary, #0F172A);
+  margin: 0 0 0.75rem 0;
+}
+
+.wk-cap-uc-card__desc {
+  font-family: var(--font-family-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #334155);
+  margin: 0 0 1.5rem 0;
+  flex: 1;
+}
+
+.wk-cap-uc-card__meta {
+  background-color: var(--color-bg-subtle, #F8FAFC);
+  border-radius: var(--radius-md, 8px);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wk-cap-uc-card__meta-item {
+  font-family: var(--font-family-sans);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary, #334155);
+}
+
+.wk-cap-uc-card__meta-item strong {
+  font-family: var(--font-family-heading);
+  color: var(--color-text-primary, #0F172A);
+  margin-right: 0.35rem;
+}
+
+.wk-cap-uc-card__meta-item--impact {
+  color: var(--color-brand-primary, #1A87C8);
+}
+
+.wk-cap-uc-card__meta-item--impact strong {
+  color: var(--color-brand-primary, #1A87C8);
+}
+
+/* ==========================================================================
+   5. ARCHITECTURE
+   ========================================================================== */
+
+.wk-cap-arch-section {
+  background-color: #FAFCFE;
+  border-top: 1px solid var(--color-border-subtle, #EDF2F7);
+  border-bottom: 1px solid var(--color-border-subtle, #EDF2F7);
+}
+
+.wk-cap-arch-flow {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.wk-cap-arch-step {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.wk-cap-arch-step__sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.wk-cap-arch-step__badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 2px solid var(--color-brand-primary, #1A87C8);
+  color: var(--color-brand-primary, #1A87C8);
+  font-family: var(--font-family-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(26, 135, 200, 0.15);
+  z-index: 2;
+}
+
+.wk-cap-arch-step__line {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(to bottom, var(--color-brand-primary, #1A87C8), #E2E8F0);
+  margin-top: 0.5rem;
+  min-height: 60px;
+}
+
+.wk-cap-arch-step__content {
+  flex: 1;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-default, #E2E8F0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.02);
+}
+
+.wk-cap-arch-step__layer {
+  font-family: var(--font-family-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-brand-primary, #1A87C8);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.wk-cap-arch-step__title {
+  font-family: var(--font-family-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #0F172A);
+  margin: 0 0 0.5rem 0;
+}
+
+.wk-cap-arch-step__details {
+  font-family: var(--font-family-sans);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary, #475569);
+  margin: 0 0 1rem 0;
+}
+
+.wk-cap-arch-step__tech-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--color-border-subtle, #EDF2F7);
+}
+
+.wk-cap-arch-step__tech-label {
+  font-family: var(--font-family-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted, #64748B);
+}
+
+.wk-cap-arch-step__tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.wk-cap-arch-step__pill {
+  font-family: var(--font-family-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #334155);
+  background-color: var(--color-bg-subtle, #F8FAFC);
+  border: 1px solid var(--color-border-subtle, #EDF2F7);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm, 4px);
+}
+
+/* ==========================================================================
+   6. TECH GRID
+   ========================================================================== */
+
+.wk-cap-tech-section {
+  background-color: #FFFFFF;
+}
+
+.wk-cap-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.wk-cap-tech-col {
+  background-color: var(--color-bg-subtle, #F8FAFC);
+  border: 1px solid var(--color-border-subtle, #EDF2F7);
+  border-radius: var(--radius-xl, 16px);
+  padding: 1.5rem;
+}
+
+.wk-cap-tech-col__title {
+  font-family: var(--font-family-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-brand-primary, #1A87C8);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border-subtle, #EDF2F7);
+}
+
+.wk-cap-tech-col__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.wk-cap-tech-col__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-family-sans);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #334155);
+}
+
+.wk-cap-tech-col__check {
+  color: var(--color-brand-primary, #1A87C8);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   7. CASE STUDY DEEP DIVE
+   ========================================================================== */
+
+.wk-cap-case-section {
+  background-color: #F8FAFD;
+  border-top: 1px solid var(--color-border-subtle, #EDF2F7);
+  border-bottom: 1px solid var(--color-border-subtle, #EDF2F7);
+}
+
+.wk-cap-case-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-default, #E2E8F0);
+  border-radius: var(--radius-2xl, 24px);
+  padding: clamp(2rem, 4vw, 3.25rem);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.wk-cap-case-card__kicker {
+  font-family: var(--font-family-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-brand-primary, #1A87C8);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.wk-cap-case-card__title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--color-text-primary, #0F172A);
+  margin: 0 0 0.5rem 0;
+}
+
+.wk-cap-case-card__industry-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-family-sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #64748B);
+  margin-bottom: 2rem;
+}
+
+.wk-cap-case-card__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border-subtle, #EDF2F7);
+}
+
+.wk-cap-case-card__subtitle {
+  font-family: var(--font-family-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #0F172A);
+  margin: 0 0 0.5rem 0;
+}
+
+.wk-cap-case-card__text {
+  font-family: var(--font-family-sans);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary, #334155);
+  margin: 0;
+}
+
+.wk-cap-case-card__outcomes {
+  margin-top: 2rem;
+}
+
+.wk-cap-case-card__outcomes-title {
+  font-family: var(--font-family-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted, #64748B);
+  margin: 0 0 1rem 0;
+}
+
+.wk-cap-case-card__metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.wk-cap-case-metric {
+  background-color: var(--color-bg-subtle, #F8FAFC);
+  border: 1px solid var(--color-border-subtle, #EDF2F7);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-cap-case-metric__val {
+  font-family: var(--font-family-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-brand-primary, #1A87C8);
+}
+
+.wk-cap-case-metric__lbl {
+  font-family: var(--font-family-sans);
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #64748B);
+  margin-top: 0.35rem;
+}
+
+/* ==========================================================================
+   8. FAQS ACCORDION
+   ========================================================================== */
+
+.wk-cap-faq-section {
+  background-color: #FFFFFF;
+}
+
+.wk-cap-faq-list {
+  max-width: 840px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wk-cap-faq-item {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-default, #E2E8F0);
+  border-radius: var(--radius-xl, 16px);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.wk-cap-faq-item--open {
+  border-color: var(--color-brand-primary, #1A87C8);
+}
+
+.wk-cap-faq-btn {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.wk-cap-faq-question {
+  font-family: var(--font-family-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #0F172A);
+}
+
+.wk-cap-faq-chevron {
+  width: 20px;
+  height: 20px;
+  color: var(--color-brand-primary, #1A87C8);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.wk-cap-faq-chevron--open {
+  transform: rotate(180deg);
+}
+
+.wk-cap-faq-body {
+  padding: 0 1.5rem 1.5rem;
+  border-top: 1px solid var(--color-border-subtle, #EDF2F7);
+}
+
+.wk-cap-faq-answer {
+  font-family: var(--font-family-sans);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary, #334155);
+  margin: 1rem 0 0 0;
+}
+
+/* ==========================================================================
+   9. RELATED SERVICES & INDUSTRIES
+   ========================================================================== */
+
+.wk-cap-related-section {
+  background-color: #F8FAFD;
+  border-top: 1px solid var(--color-border-subtle, #EDF2F7);
+  border-bottom: 1px solid var(--color-border-subtle, #EDF2F7);
+}
+
+.wk-cap-related-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 2.5rem;
+}
+
+.wk-cap-related-title {
+  font-family: var(--font-family-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-text-primary, #0F172A);
+  margin: 0 0 1.25rem 0;
+}
+
+.wk-cap-related-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wk-cap-rel-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-default, #E2E8F0);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.wk-cap-rel-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-brand-primary, #1A87C8);
+}
+
+.wk-cap-rel-card__title {
+  font-family: var(--font-family-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #0F172A);
+  margin: 0 0 0.35rem 0;
+}
+
+.wk-cap-rel-card__desc {
+  font-family: var(--font-family-sans);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #64748B);
+  margin: 0 0 0.5rem 0;
+}
+
+.wk-cap-rel-card__arrow {
+  font-family: var(--font-family-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-brand-primary, #1A87C8);
+}
+
+.wk-cap-related-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.wk-cap-ind-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-default, #E2E8F0);
+  border-radius: var(--radius-md, 8px);
+  padding: 0.85rem 1.15rem;
+  font-family: var(--font-family-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #0F172A);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.wk-cap-ind-pill:hover {
+  border-color: var(--color-brand-primary, #1A87C8);
+  color: var(--color-brand-primary, #1A87C8);
+  transform: translateX(4px);
+}
+
+.wk-cap-ind-pill__arrow {
+  color: var(--color-brand-primary, #1A87C8);
+}
+
+/* ==========================================================================
+   10. CONTEXTUAL ENQUIRY
+   ========================================================================== */
+
+.wk-cap-enquiry-section {
+  background-color: #FFFFFF;
+}
+
+.wk-cap-enquiry-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-default, #E2E8F0);
+  border-radius: var(--radius-2xl, 24px);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.05);
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.wk-cap-enquiry-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.wk-cap-enquiry-title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--color-text-primary, #0F172A);
+  margin: 0.5rem 0 0.75rem 0;
+}
+
+.wk-cap-enquiry-subtitle {
+  font-family: var(--font-family-sans);
+  font-size: 1.05rem;
+  color: var(--color-text-secondary, #475569);
+  margin: 0;
+}
+
+.wk-cap-enquiry-form__actions {
+  margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1080px) {
+  .wk-cap-hero__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wk-cap-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wk-cap-tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wk-cap-case-card__metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wk-cap-related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .wk-cap-split-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wk-cap-usecases-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wk-cap-case-card__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .wk-cap-tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wk-cap-hero__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .wk-cap-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
