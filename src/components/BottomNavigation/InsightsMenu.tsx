@@ -16,13 +16,14 @@ interface InsightsMenuProps {
   onItemClick?: () => void;
 }
 
-type InsightCategoryTab = 'all' | 'blogs' | 'events' | 'research';
+type InsightCategoryTab = 'all' | 'case-study' | 'blogs' | 'events' | 'webinar';
 
 const INSIGHT_CATEGORY_TABS: { id: InsightCategoryTab; label: string }[] = [
   { id: 'all', label: 'All Insights' },
-  { id: 'blogs', label: 'Blogs & Tech Trends' },
-  { id: 'events', label: 'Events & Webinars' },
-  { id: 'research', label: 'Case Studies & Research' },
+  { id: 'case-study', label: 'Case Study' },
+  { id: 'blogs', label: 'Blogs' },
+  { id: 'events', label: 'Events' },
+  { id: 'webinar', label: 'Webinar' },
 ];
 
 export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
@@ -133,17 +134,17 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
         </div>
       )}
 
-      {/* Tab: EVENTS & WEBINARS */}
+      {/* Tab: EVENTS */}
       {activeTab === 'events' && (
         <div className="wk-insights-menu__tab-view">
           <div className="wk-insights-menu__featured-side">
             <FeaturedInsightCard
-              id="preview-events-webinars-tab"
+              id="preview-events-tab"
               badge="EVENTS & SUMMITS"
-              title="Industry Events & Webinars"
+              title="Industry Events & Summits"
               description="Connect with Webkorps thought leaders at upcoming summits and live workshops."
               image={eventsWebinarsImg}
-              imageAlt="Industry Events & Webinars"
+              imageAlt="Industry Events & Summits"
               ctaText="Explore Calendar"
               href="#insights"
               onClick={(e) => handleLinkClick(e, '#insights')}
@@ -151,7 +152,7 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
           </div>
 
           <div className="wk-insights-menu__articles-list">
-            {INSIGHT_EVENTS_DATA.map((event) => (
+            {INSIGHT_EVENTS_DATA.filter((event) => event.badge !== 'WEBINAR').map((event) => (
               <a
                 key={event.id}
                 href={event.href}
@@ -161,7 +162,7 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
                 <div className="wk-mega-menu__item-content">
                   <div className="wk-mega-menu__insight-meta">
                     <span className="wk-mega-menu__category-tag">{event.badge}</span>
-                    <span className="wk-mega-menu__read-time" style={{ color: '#1A87C8', fontWeight: 600 }}>
+                    <span className="wk-mega-menu__read-time" style={{ color: '#1887C9', fontWeight: 600 }}>
                       {event.date}
                     </span>
                   </div>
@@ -174,8 +175,49 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
         </div>
       )}
 
-      {/* Tab: RESEARCH & CASE STUDIES */}
-      {activeTab === 'research' && (
+      {/* Tab: WEBINARS */}
+      {activeTab === 'webinar' && (
+        <div className="wk-insights-menu__tab-view">
+          <div className="wk-insights-menu__featured-side">
+            <FeaturedInsightCard
+              id="preview-webinars-tab"
+              badge="WEBINAR"
+              title="Interactive Webinars & Tech Sessions"
+              description="Live masterclasses and architectural deep dives hosted by Webkorps experts."
+              image={eventsWebinarsImg}
+              imageAlt="Webinars and Tech Sessions"
+              ctaText="Join Next Webinar"
+              href="#insights"
+              onClick={(e) => handleLinkClick(e, '#insights')}
+            />
+          </div>
+
+          <div className="wk-insights-menu__articles-list">
+            {INSIGHT_EVENTS_DATA.filter((event) => event.badge === 'WEBINAR').map((event) => (
+              <a
+                key={event.id}
+                href={event.href}
+                className="wk-mega-menu__item wk-mega-menu__item--card"
+                onClick={(e) => handleLinkClick(e, event.href)}
+              >
+                <div className="wk-mega-menu__item-content">
+                  <div className="wk-mega-menu__insight-meta">
+                    <span className="wk-mega-menu__category-tag">{event.badge}</span>
+                    <span className="wk-mega-menu__read-time" style={{ color: '#1887C9', fontWeight: 600 }}>
+                      {event.date}
+                    </span>
+                  </div>
+                  <span className="wk-mega-menu__item-title">{event.title}</span>
+                  <p className="wk-mega-menu__item-desc">{event.description}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Tab: CASE STUDY */}
+      {activeTab === 'case-study' && (
         <div className="wk-insights-page__grid">
           <div className="wk-insights-menu__case-grid">
             {CASE_STUDIES_NAV_DATA.map((study) => (
@@ -188,7 +230,7 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
                 <div className="wk-mega-menu__item-content">
                   <div className="wk-mega-menu__insight-meta">
                     <span className="wk-mega-menu__category-tag">{study.category}</span>
-                    <span className="wk-mega-menu__read-time" style={{ color: '#1A87C8', fontWeight: 600 }}>
+                    <span className="wk-mega-menu__read-time" style={{ color: '#1887C9', fontWeight: 600 }}>
                       {study.client}
                     </span>
                   </div>

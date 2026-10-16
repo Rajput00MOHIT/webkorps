@@ -67,6 +67,13 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
       <path d="M7.99923 13.3328H8.0059M1.33203 5.87926C3.16559 4.23941 5.53926 3.33282 7.99923 3.33282C10.4592 3.33282 12.8329 4.23941 14.6664 5.87926M3.33219 8.57187C4.57848 7.35036 6.25407 6.66616 7.99923 6.66616C9.74439 6.66616 11.42 7.35036 12.6663 8.57187M5.66571 10.9523C6.28886 10.3416 7.12665 9.99949 7.99923 9.99949C8.87181 9.99949 9.70961 10.3416 10.3328 10.9523" stroke="#1A87C8" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   ),
+  'mobile-dev': (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 17 23" fill="none">
+      <path d="M8.33398 18.6112L8.34398 18.6005" stroke="#1A87C8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M14.834 17.551V21.1213C14.834 21.204 14.8172 21.2859 14.7845 21.3624C14.7518 21.4388 14.704 21.5083 14.6436 21.5668C14.5832 21.6253 14.5116 21.6717 14.4327 21.7033C14.3539 21.735 14.2693 21.7513 14.184 21.7513H2.48398C2.39863 21.7513 2.3141 21.735 2.23524 21.7033C2.15638 21.6717 2.08472 21.6253 2.02436 21.5668C1.96401 21.5083 1.91613 21.4388 1.88346 21.3624C1.8508 21.2859 1.83398 21.204 1.83398 21.1213V17.551M14.834 4.95026V1.38004C14.834 1.21294 14.7655 1.05269 14.6436 0.934534C14.5217 0.816379 14.3564 0.75 14.184 0.75H2.48398C2.31159 0.75 2.14626 0.816379 2.02436 0.934534C1.90247 1.05269 1.83398 1.21294 1.83398 1.38004V4.95026" stroke="#1A87C8" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M12.125 7.5748L15.9167 11.25L12.125 14.9253M4.54167 7.5748L0.75 11.25L4.54167 14.9253" stroke="#1A87C8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
   'salesforce': (
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
       <path d="M14 3.33292C14 4.43758 11.3137 5.33308 8 5.33308C4.68629 5.33308 2 4.43758 2 3.33292M14 3.33292C14 2.22827 11.3137 1.33276 8 1.33276C4.68629 1.33276 2 2.22827 2 3.33292M14 3.33292V12.667C14 13.1975 13.3679 13.7062 12.2426 14.0813C11.1174 14.4564 9.5913 14.6672 8 14.6672C6.4087 14.6672 4.88258 14.4564 3.75736 14.0813C2.63214 13.7062 2 13.1975 2 12.667V3.33292M2 7.99996C2 8.53044 2.63214 9.03919 3.75736 9.41429C4.88258 9.78939 6.4087 10.0001 8 10.0001C9.5913 10.0001 11.1174 9.78939 12.2426 9.41429C13.3679 9.03919 14 8.53044 14 7.99996" stroke="#1A87C8" strokeWidth="1.5" strokeLinecap="round" />
@@ -77,9 +84,9 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
 export const ServicesMenu: React.FC<ServicesMenuProps> = ({ onItemClick }) => {
   // Mobile accordion state for sub-categories
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({
-    'web-mobile': true,
+    'core-mobile': true,
     'enterprise-cloud': true,
-    'emerging-tech': true,
+    'specialized-commerce': true,
   });
 
   const toggleCategory = (id: string) => {

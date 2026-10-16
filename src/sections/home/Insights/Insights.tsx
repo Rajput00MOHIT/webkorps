@@ -39,18 +39,18 @@ export const Insights: React.FC = () => {
         {/* Section Header: Title & View All Link */}
         <div className="wk-insights__header">
           <h2 id="insights-heading" className="wk-insights__title">
-            Explore Blogs, insights, and
+            Explore Insights Shaping the
             <br />
-            stories <span className="wk-insights__title-accent">shaping the future.</span>
+            <span className="wk-insights__title-accent">Future of Technology</span>
           </h2>
 
           <div className="wk-insights__action">
             <a
               href="#insights"
               className="wk-insights__view-all"
-              aria-label="View all blogs and insights"
+              aria-label="Explore All Insights"
             >
-              <span>View all</span>
+              <span>Explore All Insights</span>
               <span className="wk-insights__view-all-chevron" aria-hidden="true">
                 &raquo;
               </span>

@@ -1,7 +1,6 @@
 import React from 'react';
 import mainLogo from '../../../assets/main logo.png';
 import { getImgSrc } from '../../../utils/image';
-import { CTA } from '../../../components/CTA';
 import './Header.css';
 
 export const Header: React.FC = () => {
@@ -28,8 +27,8 @@ export const Header: React.FC = () => {
               </a>
             </li>
             <li>
-              <a href="/ai-solutions" className="wk-header__nav-link">
-                AI Solutions
+              <a href="#insights" className="wk-header__nav-link">
+                Insights
               </a>
             </li>
             <li>
@@ -47,16 +46,26 @@ export const Header: React.FC = () => {
 
         {/* Header Right Action CTA */}
         <div className="wk-header__actions">
-          <CTA
-            href="#contact"
-            variant="primary"
-            size="sm"
-            pill
-            arrow="diagonal"
-            aria-label="Contact us"
-          >
-            Contact us
-          </CTA>
+          <a href="#contact" className="wk-header__contact-btn">
+            <span>Contact us</span>
+            <svg
+              className="wk-header__btn-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M3.5 10.5L10.5 3.5M10.5 3.5H4.66667M10.5 3.5V9.33333"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
         </div>
       </div>
     </header>

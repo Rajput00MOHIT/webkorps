@@ -44,7 +44,7 @@
 }
 
 .wk-insights__title-accent {
-  color: var(--color-brand-primary, #1A87C8);
+  color: var(--color-brand-primary, #1887C9);
 }
 
 .wk-insights__action {
@@ -68,7 +68,7 @@
   font-family: var(--font-family-heading);
   font-size: clamp(1rem, 1.1vw, 1.125rem);
   font-weight: 700;
-  color: var(--color-brand-primary, #1A87C8);
+  color: var(--color-brand-primary, #1887C9);
   text-decoration: none;
   white-space: nowrap;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -80,7 +80,7 @@
 }
 
 .wk-insights__view-all:focus-visible {
-  outline: 2px solid #1A87C8;
+  outline: 2px solid #1887C9;
   outline-offset: 4px;
   border-radius: 4px;
 }
@@ -198,7 +198,7 @@
 }
 
 .wk-blog-card__category {
-  color: #1A87C8;
+  color: #1887C9;
   font-weight: 700;
 }
 
@@ -222,7 +222,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background-color: var(--color-brand-primary, #1A87C8);
+  background-color: var(--color-brand-primary, #1887C9);
   color: #FFFFFF;
   font-family: var(--font-family-heading);
   font-size: 0.875rem;
@@ -307,7 +307,7 @@
 
 .wk-blog-carousel__progress-fill {
   height: 100%;
-  background-color: var(--color-brand-primary, #1A87C8);
+  background-color: var(--color-brand-primary, #1887C9);
   border-radius: 9999px;
   transition: width 0.3s ease;
 }
@@ -337,13 +337,13 @@
 
 .wk-blog-carousel__nav-btn:hover:not(:disabled) {
   background-color: #F8FAFC;
-  border-color: #1A87C8;
-  color: #1A87C8;
+  border-color: #1887C9;
+  color: #1887C9;
   transform: scale(1.05);
 }
 
 .wk-blog-carousel__nav-btn:focus-visible {
-  outline: 2px solid #1A87C8;
+  outline: 2px solid #1887C9;
   outline-offset: 3px;
 }
 

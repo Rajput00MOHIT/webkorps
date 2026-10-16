@@ -16,9 +16,9 @@ export const TrustedOEMPartners: React.FC = () => {
         {/* Section Heading */}
         <div className="wk-oem__header">
           <h2 id="oem-partners-heading" className="wk-oem__title">
-            Trusted <span className="wk-oem__title-accent">OEM Partners.</span> Proven
+            Trusted <span className="wk-oem__title-accent">Technology Partners.</span> Proven
             <br />
-            Technology
+            Expertise.
           </h2>
         </div>
 

@@ -25,7 +25,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
   {
     id: 'manufacturing',
     title: 'Manufacturing',
-    description: 'Automation and systems to improve productivity and operations.',
+    description: 'Improve productivity, streamline production workflows, and connect operations with purpose-built digital solutions.',
     image: manufacturingArt,
     imageAlt: 'High-tech precision industrial robotics and automation equipment',
     href: '#contact',
@@ -33,7 +33,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
   {
     id: 'logistics-supply-chain',
     title: 'Logistics & Supply Chain',
-    description: 'Real-time tracking and smarter operational workflows.',
+    description: 'Improve shipment visibility, coordinate supply chain activities, and optimize operational workflows with connected technology.',
     image: logisticsArt,
     imageAlt: 'Global logistics cargo freight and intelligent supply chain systems',
     href: '#contact',
@@ -41,7 +41,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
   {
     id: 'education-e-learning',
     title: 'Education & E-Learning',
-    description: 'Scalable platforms for modern digital learning experiences.',
+    description: 'Create engaging digital learning experiences with scalable platforms, interactive features, and streamlined learning management.',
     image: educationArt,
     imageAlt: 'Digital e-learning platform and modern knowledge delivery ecosystems',
     href: '#contact',
@@ -49,15 +49,15 @@ const INDUSTRIES_DATA: IndustryItem[] = [
   {
     id: 'healthcare',
     title: 'Healthcare',
-    description: 'HIPAA-compliant platforms for smarter patient care and clinical workflows.',
+    description: 'Enhance patient experiences, streamline clinical workflows, and improve care coordination with secure, scalable digital healthcare solutions.',
     image: healthcareArt,
     imageAlt: 'Intelligent digital healthcare diagnostics and clinical data systems',
     href: '#contact',
   },
   {
     id: 'fintech',
-    title: 'FinTech',
-    description: 'Secure, high-frequency financial platforms and digital payment ecosystems.',
+    title: 'Fintech',
+    description: 'Strengthen financial operations, enhance transaction security, and deliver seamless digital banking experiences with innovative fintech solutions.',
     image: fintechArt,
     imageAlt: 'Secure digital banking architecture and algorithmic financial technology',
     href: '#contact',
@@ -65,7 +65,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
   {
     id: 'real-estate',
     title: 'Real Estate',
-    description: 'Intelligent property management, virtual tours, and automated leasing.',
+    description: 'Simplify property management, streamline real estate operations, and enhance customer experiences with connected digital solutions.',
     image: realestateArt,
     imageAlt: 'Modern smart property management architecture and connected spaces',
     href: '#contact',
@@ -150,8 +150,8 @@ export const Industries: React.FC = () => {
         <div className="wk-industries__header">
           <div className="wk-industries__header-text">
             <h2 id="industry-heading" className="wk-industries__title">
-              Industry-focused solutions for<br />
-              <span className="wk-industries__title-accent">real business challenges</span>
+              Industry-Focused Solutions for<br />
+              <span className="wk-industries__title-accent">Real Business Challenges</span>
             </h2>
           </div>
           <div className="wk-industries__header-action">
@@ -204,9 +204,9 @@ export const Industries: React.FC = () => {
                   <a
                     href={industry.href}
                     className="wk-industry-card__link"
-                    aria-label={`Learn more about ${industry.title} solutions`}
+                    aria-label={`Explore ${industry.title} solutions`}
                   >
-                    <span>Learn More</span>
+                    <span>Explore Solutions</span>
                     <ArrowRight className="wk-industry-card__arrow" aria-hidden="true" />
                   </a>
                 </div>

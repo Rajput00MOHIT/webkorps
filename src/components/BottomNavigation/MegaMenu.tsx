@@ -22,7 +22,7 @@ const MENU_ITEMS = [
   { id: 'insights', label: 'Insights' },
 ] as const;
 
-export const MegaMenu: React.FC<MegaMenuProps> = ({ activeMenu, onClose, onSelectMenu }) => {
+export const MegaMenu: React.FC<MegaMenuProps> = ({ activeMenu, onClose, onSelectMenu: _onSelectMenu }) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Close on Escape key press

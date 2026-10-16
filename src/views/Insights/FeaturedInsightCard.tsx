@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { getImgSrc } from '../../utils/image';
-import { CTA } from '../../components/CTA';
 
 export interface FeaturedInsightCardProps {
   id: string;
@@ -50,16 +49,12 @@ export const FeaturedInsightCard: React.FC<FeaturedInsightCardProps> = ({
         <h2 className="wk-insight-card__title">{title}</h2>
         <p className="wk-insight-card__desc">{description}</p>
 
-        <CTA
-          href={href}
-          variant="ghost"
-          size="sm"
-          arrow="right"
-          className="wk-insight-card__cta"
-          onClick={handleClick}
-        >
-          {ctaText}
-        </CTA>
+        <a href={href} className="wk-insight-card__cta" onClick={handleClick}>
+          <span>{ctaText}</span>
+          <span className="wk-insight-card__cta-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
       </div>
     </article>
   );

@@ -9,6 +9,7 @@ import './Stats.css';
 interface StatItem {
   id: string;
   targetNum: number;
+  suffix?: string;
   formatLeadingZero: boolean;
   label: string;
 }
@@ -16,19 +17,22 @@ interface StatItem {
 const STATS_DATA: StatItem[] = [
   {
     id: 'years-in-business',
-    targetNum: 8,
-    formatLeadingZero: true,
+    targetNum: 10,
+    suffix: '+',
+    formatLeadingZero: false,
     label: 'Years in Business',
   },
   {
-    id: 'clients-served',
-    targetNum: 150,
+    id: 'technology-professionals',
+    targetNum: 250,
+    suffix: '+',
     formatLeadingZero: false,
-    label: 'Clients Served',
+    label: 'Technology Professionals',
   },
   {
     id: 'projects-delivered',
-    targetNum: 180,
+    targetNum: 500,
+    suffix: '+',
     formatLeadingZero: false,
     label: 'Projects Delivered',
   },
@@ -99,7 +103,7 @@ export const Stats: React.FC = () => {
         <div className="wk-stats__header">
           <h2 id="stats-heading" className="wk-stats__title">
             Every Number<br />
-            <span className="wk-stats__title-accent">Holds a Story</span>
+            <span className="wk-stats__title-accent">Tells a Story</span>
           </h2>
         </div>
 
@@ -111,9 +115,10 @@ export const Stats: React.FC = () => {
             aria-hidden="true"
           />
           {STATS_DATA.map((stat, index) => {
-            const displayValue = stat.formatLeadingZero
+            const rawValue = stat.formatLeadingZero
               ? String(counts[index]).padStart(2, '0')
               : String(counts[index]);
+            const displayValue = `${rawValue}${stat.suffix || ''}`;
 
             return (
               <React.Fragment key={stat.id}>
@@ -129,7 +134,7 @@ export const Stats: React.FC = () => {
                   style={{
                     transitionDelay: `${index * 140}ms`,
                   }}
-                  aria-label={`${stat.formatLeadingZero ? String(stat.targetNum).padStart(2, '0') : stat.targetNum} ${stat.label}`}
+                  aria-label={`${stat.targetNum}${stat.suffix || ''} ${stat.label}`}
                 >
                   <div
                     className="wk-stats__number"

@@ -37,27 +37,18 @@
   width: 100%;
 }
 
-.wk-btn--pill {
-  border-radius: var(--radius-full);
-}
-
-.wk-btn:focus-visible {
-  outline: 2px solid var(--color-brand-primary);
-  outline-offset: 2px;
-}
-
 /* Variants */
 .wk-btn--primary {
   background-color: var(--color-brand-primary);
   color: var(--color-text-white);
   border-color: var(--color-brand-primary);
-  box-shadow: 0 2px 8px rgba(26, 135, 200, 0.24);
+  box-shadow: 0 2px 8px rgba(0, 102, 255, 0.2);
 }
 
 .wk-btn--primary:hover:not(:disabled) {
   background-color: var(--color-brand-primary-hover);
   border-color: var(--color-brand-primary-hover);
-  box-shadow: 0 4px 14px rgba(26, 135, 200, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.3);
   color: var(--color-text-white);
 }
 

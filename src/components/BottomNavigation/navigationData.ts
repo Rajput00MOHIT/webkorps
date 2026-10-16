@@ -57,25 +57,31 @@ export type ActiveMenuType = 'services' | 'industries' | 'case-studies' | 'techn
 
 export const SERVICES_DATA: ServiceCategory[] = [
   {
-    id: 'web-mobile',
-    name: 'WEB & MOBILE',
+    id: 'core-mobile',
+    name: 'CORE & MOBILE',
     items: [
+      {
+        id: 'ai-ml',
+        title: 'AI-ML Solutions',
+        description: 'Intelligent automation, predictive insights, and AI-powered innovation.',
+        href: '#ai-innovation',
+      },
+      {
+        id: 'mobile-dev',
+        title: 'Mobile App Development',
+        description: 'Deliver intuitive mobile experiences that connect users across platforms.',
+        href: '#services',
+      },
       {
         id: 'web-dev',
         title: 'Web Development',
-        description: 'Creating scalable, high-performance web solutions and custom portals.',
+        description: 'Build fast, secure, and scalable web applications tailored to your goals.',
         href: '#services',
       },
       {
         id: 'custom-software',
         title: 'Custom Software Development',
-        description: 'Custom software built to solve unique business challenges and goals.',
-        href: '#services',
-      },
-      {
-        id: 'ecommerce',
-        title: 'E-Commerce Development',
-        description: 'Empowering online stores with scalable high-converting solutions.',
+        description: 'Custom software built to solve unique business challenges and operations.',
         href: '#services',
       },
     ],
@@ -87,56 +93,56 @@ export const SERVICES_DATA: ServiceCategory[] = [
       {
         id: 'enterprise-software',
         title: 'Enterprise Software Development',
-        description: 'Driving business efficiency through robust enterprise-grade platforms.',
+        description: 'Streamline complex workflows with secure, scalable enterprise software.',
         href: '#services',
       },
       {
         id: 'cloud-app',
-        title: 'Cloud Application Development',
-        description: 'Scalable and secure cloud solutions built for resilient performance.',
+        title: 'Cloud Solutions',
+        description: 'Modernize infrastructure, automate delivery, and build resilient cloud systems.',
         href: '#services',
+      },
+      {
+        id: 'iot',
+        title: 'IoT Solutions',
+        description: 'Connect devices and systems to enable real-time monitoring and smarter operations.',
+        href: '#integrations',
       },
       {
         id: 'staff-aug',
         title: 'IT Staff Augmentation',
-        description: 'Empower your projects with skilled IT professionals on demand.',
+        description: 'Empower your projects with high-caliber technology professionals on demand.',
         href: '#contact',
       },
+    ],
+  },
+  {
+    id: 'specialized-commerce',
+    name: 'SPECIALIZED & COMMERCE',
+    items: [
       {
         id: 'managed-it',
         title: 'Managed IT Services',
         description: 'Reliable IT management for seamless operations and infrastructure health.',
         href: '#contact',
       },
-    ],
-  },
-  {
-    id: 'emerging-tech',
-    name: 'EMERGING TECH',
-    items: [
-      {
-        id: 'ai-ml',
-        title: 'AI-ML Development',
-        description: 'Unlock business potential through AI and machine learning solutions.',
-        href: '#ai-innovation',
-      },
-      {
-        id: 'blockchain',
-        title: 'Blockchain Development',
-        description: 'Powering the future of industries with secure decentralized blockchain solutions.',
-        href: '#services',
-      },
-      {
-        id: 'iot',
-        title: 'IoT Application Development',
-        description: 'Elevate efficiency with custom IoT ecosystems and connected devices.',
-        href: '#integrations',
-      },
       {
         id: 'salesforce',
         title: 'Salesforce Development',
         description: 'Empowering businesses with customized CRM and Salesforce solutions.',
         href: '#contact',
+      },
+      {
+        id: 'ecommerce',
+        title: 'E-commerce Solutions',
+        description: 'Create seamless digital shopping experiences designed to improve conversions.',
+        href: '#services',
+      },
+      {
+        id: 'blockchain',
+        title: 'Blockchain Solutions',
+        description: 'Enable transparent, traceable, and secure digital transactions and workflows.',
+        href: '#services',
       },
     ],
   },
@@ -152,8 +158,8 @@ export const IMPACT_DATA: ImpactStats = {
       label: 'Products Delivered',
     },
     {
-      value: '350+',
-      label: 'Satisfied Clients',
+      value: '250+',
+      label: 'Technology Experts',
     },
   ],
 };
@@ -161,44 +167,44 @@ export const IMPACT_DATA: ImpactStats = {
 export const INDUSTRIES_NAV_DATA: IndustryItem[] = [
   {
     id: 'logistic',
-    title: 'Logistic Industry',
-    description: 'Driving Efficiency Through Smart Logistics Solutions',
+    title: 'Logistics',
+    description: 'Improve shipment visibility and coordinate supply chain workflows.',
+    href: '#industries',
+  },
+  {
+    id: 'healthcare',
+    title: 'Healthcare',
+    description: 'Enhance patient care and clinical workflows with secure digital solutions.',
+    href: '#industries',
+  },
+  {
+    id: 'fintech',
+    title: 'Fintech',
+    description: 'Strengthen financial operations and enhance transaction security.',
     href: '#industries',
   },
   {
     id: 'real-estate',
     title: 'Real Estate',
-    description: 'Transforming Real Estate with Smart Tech Solutions',
-    href: '#industries',
-  },
-  {
-    id: 'healthcare',
-    title: 'HealthCare',
-    description: 'Innovative Tech Solutions for Better Healthcare Outcomes',
+    description: 'Simplify property management and streamline operations with connected tech.',
     href: '#industries',
   },
   {
     id: 'retail',
     title: 'Retail',
-    description: 'Empowering Retailers with Smart Technology',
-    href: '#industries',
-  },
-  {
-    id: 'fintech',
-    title: 'FinTech',
-    description: 'Secure and Scalable Fintech Solutions',
+    description: 'Create seamless customer shopping journeys and modern digital retail.',
     href: '#industries',
   },
   {
     id: 'travel',
     title: 'Travel and Hospitality',
-    description: 'Enhancing Experiences with Travel Tech Solutions',
+    description: 'Enhance guest journeys and booking operations with connected digital systems.',
     href: '#industries',
   },
   {
     id: 'warehouse',
     title: 'Warehouse',
-    description: 'Optimizing Warehouse Operations with Smart Solutions',
+    description: 'Optimize fulfillment, inventory tracking, and warehouse automation.',
     href: '#industries',
   },
 ];

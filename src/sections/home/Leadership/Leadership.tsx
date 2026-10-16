@@ -232,10 +232,10 @@ export const Leadership: React.FC = () => {
         {/* Section Header */}
         <header className="wk-leadership__header">
           <h2 id="leadership-heading" className="wk-leadership__title">
-            Meet the leaders
+            Meet the Leaders
             <span className="wk-leadership__title-break">
               <span className="wk-leadership__title-accent">
-                building what's next.
+                Building What’s Next
               </span>
             </span>
           </h2>
@@ -298,28 +298,8 @@ export const Leadership: React.FC = () => {
                         />
                       </svg>
                     </a>
-
-                    {/* Email Badge */}
-                    <a
-                      href={leader.emailUrl}
-                      className="wk-leader-card__social-link"
-                      aria-label={`Email ${leader.name}`}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-                        <rect width="24" height="24" rx="4" fill="#1A87C8" />
-                        <path
-                          d="M5 7H19C19.55 7 20 7.45 20 8V16C20 16.55 19.55 17 19 17H5C4.45 17 4 16.55 4 16V8C4 7.45 4.45 7 5 7ZM18 9.25L12 13L6 9.25V15.5H18V9.25ZM12 11.75L17.5 8.25H6.5L12 11.75Z"
-                          fill="#FFFFFF"
-                        />
-                      </svg>
-                    </a>
                   </div>
                 </div>
-
-                <blockquote className="wk-leader-card__quote">
-                  <p>{leader.quote}</p>
-                </blockquote>
               </div>
             </article>
           ))}

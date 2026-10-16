@@ -171,7 +171,7 @@
 }
 
 .wk-ai-welcome__accent {
-  color: #1A87C8;
+  color: #1887C9;
 }
 
 .wk-ai-welcome__input-box {
@@ -200,7 +200,7 @@
   border: none !important;
   outline: none !important;
   border-radius: 9999px;
-  border: 5px solid #1A87C8;
+  border: 5px solid #1887C9;
   box-shadow:
     0 4px 14px rgba(15, 23, 42, 0.05),
     0 1px 3px rgba(15, 23, 42, 0.03);
@@ -224,7 +224,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1A87C8;
+  color: #1887C9;
   flex-shrink: 0;
 }
 
@@ -273,7 +273,7 @@
 }
 
 .wk-ai-send-btn--active {
-  background: #1A87C8;
+  background: #1887C9;
   color: #FFFFFF;
   cursor: pointer;
   box-shadow: 0 3px 10px rgba(24, 135, 201, 0.35);
@@ -396,7 +396,7 @@
 
 .wk-ai-chat-header__close-btn:hover {
   background: #EFF6FF;
-  color: #1A87C8;
+  color: #1887C9;
   border-color: #BFDBFE;
 }
 
@@ -472,7 +472,7 @@
 }
 
 .wk-ai-message__bubble--user {
-  background: #1A87C8;
+  background: #1887C9;
   color: #FFFFFF;
   border-radius: 18px 18px 4px 18px;
   max-width: min(480px, 82%);
@@ -549,7 +549,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #1A87C8;
+  background: #1887C9;
   margin-top: 8px;
   flex-shrink: 0;
 }
@@ -559,7 +559,7 @@
 }
 
 .wk-ai-message__inline-link {
-  color: #1A87C8;
+  color: #1887C9;
   text-decoration: none;
   font-weight: 500;
 }
@@ -620,7 +620,7 @@
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: 11px;
   font-weight: 700;
-  color: #1A87C8;
+  color: #1887C9;
   background: #E0F2FE;
   border-radius: 6px;
   padding: 2px 6px;
@@ -659,7 +659,7 @@
 }
 
 .wk-ai-source-item:hover .wk-ai-source-item__icon {
-  color: #1A87C8;
+  color: #1887C9;
   transform: translate(1.5px, -1.5px);
 }
 
@@ -695,14 +695,14 @@
 
 .wk-ai-message__action-btn--primary {
   background: #EFF6FF;
-  color: #1A87C8;
+  color: #1887C9;
   border: 1px solid #BFDBFE;
 }
 
 .wk-ai-message__action-btn--primary:hover {
-  background: #1A87C8;
+  background: #1887C9;
   color: #FFFFFF;
-  border-color: #1A87C8;
+  border-color: #1887C9;
 }
 
 .wk-ai-message__action-btn--secondary {
@@ -740,7 +740,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #1A87C8;
+  background: #1887C9;
   animation: aiTypingBounce 1.2s infinite ease-in-out;
 }
 

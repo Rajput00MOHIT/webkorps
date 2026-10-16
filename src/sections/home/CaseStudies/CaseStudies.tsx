@@ -94,9 +94,9 @@ export const CaseStudies: React.FC = () => {
         <div className="wk-case-studies__top">
           <div className="wk-case-studies__heading-group">
             <h2 id="case-studies-heading" className="wk-case-studies__title">
-              Industry-focused solutions for
+              Real Business Challenges.{' '}
               <span className="wk-case-studies__title-accent">
-                real business challenges
+                Meaningful Digital Outcomes.
               </span>
             </h2>
           </div>
@@ -104,9 +104,9 @@ export const CaseStudies: React.FC = () => {
           <a
             href="#case-studies"
             className="wk-case-studies__view-all"
-            aria-label="View all case studies"
+            aria-label="Explore All Case Studies"
           >
-            View all
+            Explore All Case Studies
             <span className="wk-case-studies__view-all-arrow" aria-hidden="true">
               &gt;&gt;
             </span>

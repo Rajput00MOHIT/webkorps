@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../../components/Container/Container';
-import { CTA } from '../../../components/CTA';
 import technologyPartnerImg from '../../../assets/Technology Partner/Entrepreneur_giving_positive_fee…_202609081049 1.png';
 import { getImgSrc } from '../../../utils/image';
 import './NeedPartnerCallout.css';
@@ -41,29 +40,26 @@ export const NeedPartnerCallout: React.FC = () => {
           {/* Left Column: Typography & Conversion Action */}
           <div className="wk-tech-partner__content">
             <h2 id="tech-partner-heading" className="wk-tech-partner__title">
-              Need the Right
+              Big Ideas Deserve
               <br />
-              <span className="wk-tech-partner__title-accent">Technology</span>
-              <br />
-              Partner?
+              <span className="wk-tech-partner__title-accent">Better Technology</span>
             </h2>
 
             <p className="wk-tech-partner__subtitle">
-              Build faster, innovate smarter, and scale confidently with Webkorps.
+              Turn your business vision into digital solutions built to perform, scale, and evolve. We bring the right expertise and technology to help you solve challenges, seize opportunities, and move business forward.
             </p>
 
             <div className="wk-tech-partner__action">
-              <CTA
+              <a
                 href="#contact"
-                variant="white"
-                size="lg"
-                pill
-                arrow="diagonal"
                 className="wk-tech-partner__btn"
-                aria-label="Let's Talk - Contact Webkorps"
+                aria-label="Let’s Make It Happen - Contact Webkorps"
               >
-                Let's Talk
-              </CTA>
+                <span>Let’s Make It Happen</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M15.707 0.999999C15.707 0.447715 15.2593 -2.87362e-07 14.707 -5.40243e-07L5.70703 2.60547e-07C5.15475 -7.66277e-08 4.70703 0.447715 4.70703 1C4.70703 1.55228 5.15475 2 5.70703 2L13.707 2L13.707 10C13.707 10.5523 14.1547 11 14.707 11C15.2593 11 15.707 10.5523 15.707 10L15.707 0.999999ZM0.707031 15L1.41414 15.7071L15.4141 1.70711L14.707 1L13.9999 0.292893L-7.55191e-05 14.2929L0.707031 15Z" fill="white" />
+                </svg>
+              </a>
             </div>
           </div>
 

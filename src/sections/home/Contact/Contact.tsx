@@ -40,9 +40,12 @@ export const Contact: React.FC = () => {
           {/* Left Column: Heading and 3D Visual Asset */}
           <div className="wk-contact__info">
             <h2 id="contact-heading" className="wk-contact__title">
-              Talk to Our <br className="wk-contact__title-break" />
-              <span className="wk-contact__title-accent">Support Team</span>
+              <span className="wk-contact__title-line">We&apos;re Just One Click Away from</span>
+              <span className="wk-contact__title-line wk-contact__title-accent">Making Magic Happen!</span>
             </h2>
+            <p className="wk-contact__subtitle">
+              Let us know your story, and we'll craft a tailored solution just for you.
+            </p>
             <ContactVisual />
           </div>
 

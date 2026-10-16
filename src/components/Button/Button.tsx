@@ -4,7 +4,6 @@ import './Button.css';
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'white';
   size?: 'sm' | 'md' | 'lg';
-  pill?: boolean;
   fullWidth?: boolean;
   iconLeading?: React.ReactNode;
   iconTrailing?: React.ReactNode;
@@ -17,7 +16,6 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   variant = 'primary',
   size = 'md',
-  pill = false,
   fullWidth = false,
   iconLeading,
   iconTrailing,
@@ -32,7 +30,6 @@ export const Button: React.FC<ButtonProps> = ({
     'wk-btn',
     `wk-btn--${variant}`,
     `wk-btn--${size}`,
-    pill ? 'wk-btn--pill' : '',
     fullWidth ? 'wk-btn--full' : '',
     disabled ? 'wk-btn--disabled' : '',
     className

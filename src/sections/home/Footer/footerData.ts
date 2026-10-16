@@ -52,7 +52,7 @@ export const FOOTER_NAV_GROUPS: FooterNavGroup[] = [
       { label: 'Web Development', href: '#services' },
       { label: 'Cloud Solutions', href: '#services' },
       { label: 'E-Commerce Development', href: '#services' },
-      { label: 'AI & ML Solutions', href: '/ai-solutions' },
+      { label: 'AI&ML services', href: '#services' },
     ],
   },
   {

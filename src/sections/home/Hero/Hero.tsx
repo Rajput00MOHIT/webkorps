@@ -3,7 +3,6 @@
 import React from 'react';
 import cardImage from '../../../assets/cardimage.png';
 import { getImgSrc } from '../../../utils/image';
-import { CTA } from '../../../components/CTA';
 import './Hero.css';
 
 interface ServiceItem {
@@ -16,21 +15,21 @@ interface ServiceItem {
 
 const SERVICES: ServiceItem[] = [
   {
-    id: 'web-dev',
-    title: 'Web Development',
-    description: 'Fast, scalable web solutions.',
-    href: '#services-web',
+    id: 'ai-ml',
+    title: 'AI & ML Development',
+    description: 'Make data work smarter with intelligent automation, predictive insights, and AI-powered innovation.',
+    href: '#ai-innovation',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-        <path d="M1.29167 6.16667H19.7083M0.75 10.5C0.75 5.90342 0.75 3.60567 2.17783 2.17783C3.60567 0.75 5.9045 0.75 10.5 0.75C15.0955 0.75 17.3943 0.75 18.8222 2.17783C20.25 3.60567 20.25 5.9045 20.25 10.5C20.25 15.0955 20.25 17.3943 18.8222 18.8222C17.3943 20.25 15.0955 20.25 10.5 20.25C5.9045 20.25 3.60567 20.25 2.17783 18.8222C0.75 17.3943 0.75 15.0955 0.75 10.5Z" stroke="#1A87C8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M7.79232 10.5L6.13157 11.9322C5.43282 12.5334 5.08398 12.8346 5.08398 13.2083C5.08398 13.5821 5.43282 13.8833 6.13157 14.4845L7.79232 15.9167M13.209 10.5L14.8697 11.9322C15.5685 12.5334 15.9173 12.8346 15.9173 13.2083C15.9173 13.5821 15.5685 13.8833 14.8697 14.4845L13.209 15.9167" stroke="#1A87C8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M21.4375 13.8125C22.7814 13.8125 23.875 12.7189 23.875 11.375C23.875 10.0311 22.7814 8.9375 21.4375 8.9375C20.935 8.93899 20.4453 9.096 20.0357 9.38696C19.626 9.67791 19.3164 10.0886 19.1495 10.5625H14.4614L20.3926 4.63125C20.7111 4.78319 21.0621 4.875 21.4375 4.875C22.7814 4.875 23.875 3.78137 23.875 2.4375C23.875 1.09362 22.7814 0 21.4375 0C20.0936 0 19 1.09362 19 2.4375C19 2.81288 19.0926 3.16387 19.2437 3.48156L12.5 10.2261V4.875C12.5 3.97962 13.2288 3.25 14.125 3.25H15.75V1.625H14.125C13.15 1.625 12.2839 2.06619 11.6875 2.74787C11.3853 2.39712 11.0113 2.11536 10.5907 1.92164C10.1702 1.72792 9.71299 1.62676 9.25 1.625H8.4375C4.40588 1.625 1.125 4.90506 1.125 8.9375V12.1875H2.75V9.75H5.1875C6.53137 9.75 7.625 8.65637 7.625 7.3125V5.6875H6V7.3125C6 7.52799 5.9144 7.73465 5.76202 7.88702C5.60965 8.0394 5.40299 8.125 5.1875 8.125H2.815C3.2115 5.37306 5.5775 3.25 8.4375 3.25H9.25C10.1462 3.25 10.875 3.97962 10.875 4.875V8.125H9.25V9.75H10.875V17.875C10.875 19.6674 12.3326 21.125 14.125 21.125H15.75V19.5H14.125C13.2288 19.5 12.5 18.7712 12.5 17.875V12.5239L19.2437 19.2684C19.0918 19.5861 19 19.9371 19 20.3125C19 21.6572 20.0936 22.75 21.4375 22.75C22.7814 22.75 23.875 21.6572 23.875 20.3125C23.875 18.9678 22.7814 17.875 21.4375 17.875C21.0755 17.8769 20.7186 17.9605 20.3934 18.1196L14.4614 12.1883H19.1495C19.3166 12.6621 19.6262 13.0726 20.0358 13.3634C20.4455 13.6542 20.9351 13.8111 21.4375 13.8125ZM21.4375 10.5625C21.653 10.5625 21.8597 10.6481 22.012 10.8005C22.1644 10.9528 22.25 11.1595 22.25 11.375C22.25 11.5905 22.1644 11.7972 22.012 11.9495C21.8597 12.1019 21.653 12.1875 21.4375 12.1875C21.222 12.1875 21.0153 12.1019 20.863 11.9495C20.7106 11.7972 20.625 11.5905 20.625 11.375C20.625 11.1595 20.7106 10.9528 20.863 10.8005C21.0153 10.6481 21.222 10.5625 21.4375 10.5625ZM21.4375 1.625C21.6467 1.63436 21.8442 1.72405 21.989 1.8754C22.1337 2.02675 22.2145 2.22809 22.2145 2.4375C22.2145 2.64691 22.1337 2.84825 21.989 2.9996C21.8442 3.15095 21.6467 3.24064 21.4375 3.25C21.222 3.25 21.0153 3.1644 20.863 3.01202C20.7106 2.85965 20.625 2.65299 20.625 2.4375C20.625 2.22201 20.7106 2.01535 20.863 1.86298C21.0153 1.7106 21.222 1.625 21.4375 1.625ZM21.4375 19.5C21.6467 19.5094 21.8442 19.599 21.989 19.7504C22.1337 19.9017 22.2145 20.1031 22.2145 20.3125C22.2145 20.5219 22.1337 20.7233 21.989 20.8746C21.8442 21.026 21.6467 21.1156 21.4375 21.125C21.222 21.125 21.0153 21.0394 20.863 20.887C20.7106 20.7347 20.625 20.528 20.625 20.3125C20.625 20.097 20.7106 19.8903 20.863 19.738C21.0153 19.5856 21.222 19.5 21.4375 19.5Z" fill="#1A87C8" />
+        <path d="M1.875 14.1875V16.0625H6.17438L0 22.2369L1.32563 23.5625L7.5 17.3881V21.6875H9.375V14.1875H1.875Z" fill="#1887C9" />
       </svg>
     )
   },
   {
     id: 'mobile-dev',
     title: 'Mobile App Development',
-    description: 'Seamless apps for every platform.',
+    description: 'Deliver intuitive mobile experiences that connect users with your business across platforms.',
     href: '#services-mobile',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="17" height="23" viewBox="0 0 17 23" fill="none">
@@ -41,21 +40,21 @@ const SERVICES: ServiceItem[] = [
     )
   },
   {
-    id: 'ai-ml',
-    title: 'AI & ML Development',
-    description: 'Smart solutions powered by AI.',
-    href: '#services-ai-ml',
+    id: 'web-dev',
+    title: 'Web Development',
+    description: 'Build fast, secure, and scalable web applications tailored to your business goals.',
+    href: '#services-web',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M21.4375 13.8125C22.7814 13.8125 23.875 12.7189 23.875 11.375C23.875 10.0311 22.7814 8.9375 21.4375 8.9375C20.935 8.93899 20.4453 9.096 20.0357 9.38696C19.626 9.67791 19.3164 10.0886 19.1495 10.5625H14.4614L20.3926 4.63125C20.7111 4.78319 21.0621 4.875 21.4375 4.875C22.7814 4.875 23.875 3.78137 23.875 2.4375C23.875 1.09362 22.7814 0 21.4375 0C20.0936 0 19 1.09362 19 2.4375C19 2.81288 19.0926 3.16387 19.2437 3.48156L12.5 10.2261V4.875C12.5 3.97962 13.2288 3.25 14.125 3.25H15.75V1.625H14.125C13.15 1.625 12.2839 2.06619 11.6875 2.74787C11.3853 2.39712 11.0113 2.11536 10.5907 1.92164C10.1702 1.72792 9.71299 1.62676 9.25 1.625H8.4375C4.40588 1.625 1.125 4.90506 1.125 8.9375V12.1875H2.75V9.75H5.1875C6.53137 9.75 7.625 8.65637 7.625 7.3125V5.6875H6V7.3125C6 7.52799 5.9144 7.73465 5.76202 7.88702C5.60965 8.0394 5.40299 8.125 5.1875 8.125H2.815C3.2115 5.37306 5.5775 3.25 8.4375 3.25H9.25C10.1462 3.25 10.875 3.97962 10.875 4.875V8.125H9.25V9.75H10.875V17.875C10.875 19.6674 12.3326 21.125 14.125 21.125H15.75V19.5H14.125C13.2288 19.5 12.5 18.7712 12.5 17.875V12.5239L19.2437 19.2684C19.0918 19.5861 19 19.9371 19 20.3125C19 21.6572 20.0936 22.75 21.4375 22.75C22.7814 22.75 23.875 21.6572 23.875 20.3125C23.875 18.9678 22.7814 17.875 21.4375 17.875C21.0755 17.8769 20.7186 17.9605 20.3934 18.1196L14.4614 12.1883H19.1495C19.3166 12.6621 19.6262 13.0726 20.0358 13.3634C20.4455 13.6542 20.9351 13.8111 21.4375 13.8125ZM21.4375 10.5625C21.653 10.5625 21.8597 10.6481 22.012 10.8005C22.1644 10.9528 22.25 11.1595 22.25 11.375C22.25 11.5905 22.1644 11.7972 22.012 11.9495C21.8597 12.1019 21.653 12.1875 21.4375 12.1875C21.222 12.1875 21.0153 12.1019 20.863 11.9495C20.7106 11.7972 20.625 11.5905 20.625 11.375C20.625 11.1595 20.7106 10.9528 20.863 10.8005C21.0153 10.6481 21.222 10.5625 21.4375 10.5625ZM21.4375 1.625C21.6467 1.63436 21.8442 1.72405 21.989 1.8754C22.1337 2.02675 22.2145 2.22809 22.2145 2.4375C22.2145 2.64691 22.1337 2.84825 21.989 2.9996C21.8442 3.15095 21.6467 3.24064 21.4375 3.25C21.222 3.25 21.0153 3.1644 20.863 3.01202C20.7106 2.85965 20.625 2.65299 20.625 2.4375C20.625 2.22201 20.7106 2.01535 20.863 1.86298C21.0153 1.7106 21.222 1.625 21.4375 1.625ZM21.4375 19.5C21.6467 19.5094 21.8442 19.599 21.989 19.7504C22.1337 19.9017 22.2145 20.1031 22.2145 20.3125C22.2145 20.5219 22.1337 20.7233 21.989 20.8746C21.8442 21.026 21.6467 21.1156 21.4375 21.125C21.222 21.125 21.0153 21.0394 20.863 20.887C20.7106 20.7347 20.625 20.528 20.625 20.3125C20.625 20.097 20.7106 19.8903 20.863 19.738C21.0153 19.5856 21.222 19.5 21.4375 19.5Z" fill="#1A87C8" />
-        <path d="M1.875 14.1875V16.0625H6.17438L0 22.2369L1.32563 23.5625L7.5 17.3881V21.6875H9.375V14.1875H1.875Z" fill="#1A87C8" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+        <path d="M1.29167 6.16667H19.7083M0.75 10.5C0.75 5.90342 0.75 3.60567 2.17783 2.17783C3.60567 0.75 5.9045 0.75 10.5 0.75C15.0955 0.75 17.3943 0.75 18.8222 2.17783C20.25 3.60567 20.25 5.9045 20.25 10.5C20.25 15.0955 20.25 17.3943 18.8222 18.8222C17.3943 20.25 15.0955 20.25 10.5 20.25C5.9045 20.25 3.60567 20.25 2.17783 18.8222C0.75 17.3943 0.75 15.0955 0.75 10.5Z" stroke="#1887C9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M7.79232 10.5L6.13157 11.9322C5.43282 12.5334 5.08398 12.8346 5.08398 13.2083C5.08398 13.5821 5.43282 13.8833 6.13157 14.4845L7.79232 15.9167M13.209 10.5L14.8697 11.9322C15.5685 12.5334 15.9173 12.8346 15.9173 13.2083C15.9173 13.5821 15.5685 13.8833 14.8697 14.4845L13.209 15.9167" stroke="#1887C9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     )
   },
   {
     id: 'enterprise-software',
-    title: 'Enterprise Software',
-    description: 'Scalable solutions for complex needs.',
+    title: 'Enterprise Software Development',
+    description: 'Streamline complex workflows with secure, scalable software built around your operations.',
     href: '#services-enterprise',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 22 24" fill="none">
@@ -66,7 +65,7 @@ const SERVICES: ServiceItem[] = [
   {
     id: 'cloud-devops',
     title: 'Cloud & DevOps',
-    description: 'Secure, scalable cloud infrastructure.',
+    description: 'Modernize infrastructure, automate delivery, and build resilient cloud environments.',
     href: '#services-cloud',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 18" fill="none">
@@ -77,8 +76,8 @@ const SERVICES: ServiceItem[] = [
   },
   {
     id: 'ecommerce',
-    title: 'E-Commerce Solutions',
-    description: 'Digital experiences built to convert.',
+    title: 'E-commerce Solutions',
+    description: 'Create seamless digital shopping experiences designed to improve engagement and conversions.',
     href: '#services-ecommerce',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
@@ -96,48 +95,42 @@ export const Hero: React.FC = () => {
         {/* Centered Top Value Proposition */}
         <div className="wk-hero__content">
           <h1 id="hero-heading" className="wk-hero__title">
-            Building Digital Products
+            Turning Digital Innovation
             <br />
-            That <span className="wk-hero__title-accent">Drive Real Impact</span>
+            Into <span className="wk-hero__title-accent">Real Business Impact</span>
           </h1>
 
           <p className="wk-hero__subtitle">
-            We design, build, and scale digital solutions that help businesses{' '}
+            We design, develop, and scale custom software, AI-powered solutions, and digital products
             <br className="wk-hero__br-desktop" />
-            innovate, grow, and stay ahead.
+            that help businesses innovate faster, operate smarter, and grow confidently.
           </p>
 
           <div className="wk-hero__actions">
-            <CTA
-              variant="outline"
-              size="lg"
-              pill
+            <button
+              type="button"
               className="wk-hero__btn-secondary"
               onClick={() => {
-                const el = document.getElementById('about');
+                const el = document.getElementById('case-studies');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              aria-label="Watch how it works"
             >
-              Watch how it works
-            </CTA>
+              Explore Our Success Stories
+            </button>
 
-            <CTA
-              href="#contact"
-              variant="primary"
-              size="lg"
-              pill
-              arrow="circle"
-              className="wk-hero__btn-primary"
-              aria-label="Start a Project with Webkorps"
-            >
-              Start a Project
-            </CTA>
+            <a href="#contact" className="wk-hero__btn-primary">
+              <span>Start the Conversation</span>
+              <span className="wk-hero__btn-icon-circle" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 19 18" fill="none">
+                  <path d="M10.3361 17.1441L8.6823 15.5087L14.4246 9.76644H0V7.37766H14.4246L8.6823 1.64459L10.3361 0L18.9081 8.57205L10.3361 17.1441Z" fill="#1887C9" />
+                </svg>
+              </span>
+            </a>
           </div>
         </div>
 
         {/* Feature Explorer Card */}
-        <div className="wk-hero__card" role="region" aria-label="Explore Services Feature">
+        <div className="wk-hero__card" role="region" aria-label="Our Services Feature">
           {/* Left Column: Visual Acrylic Puzzle Image */}
           <div className="wk-hero__card-visual">
             <img
@@ -154,17 +147,7 @@ export const Hero: React.FC = () => {
           {/* Right Column: Services Directory Grid */}
           <div className="wk-hero__card-content">
             <div className="wk-hero__card-header">
-              <h2 className="wk-hero__card-title">Explore services</h2>
-              <CTA
-                href="#services"
-                variant="ghost"
-                size="sm"
-                arrow="right"
-                className="wk-hero__card-explore-all"
-                aria-label="Explore all services"
-              >
-                Explore all services
-              </CTA>
+              <h2 className="wk-hero__card-title">Our Services</h2>
             </div>
 
             <div className="wk-hero__services-grid">

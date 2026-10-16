@@ -44,8 +44,6 @@ import '../sections/about/AboutCTA/AboutCTA.css';
 import '../sections/about/ClientTestimonials/ClientTestimonials.css';
 import '../views/Home/HomePage.css';
 import '../views/AboutUs/AboutUsPage.css';
-import '../views/AISolutions/AISolutionsPage.css';
-import '../views/AICapabilityDetail/AICapabilityDetailPage.css';
 
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 
@@ -98,8 +96,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }
