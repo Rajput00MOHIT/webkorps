@@ -37,6 +37,16 @@
   overflow-wrap: break-word;
 }
 
+.wk-brands__title-line {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .wk-brands__title-line {
+    white-space: nowrap;
+  }
+}
+
 .wk-brands__highlight {
   color: var(--color-brand-primary);
   font-weight: inherit;

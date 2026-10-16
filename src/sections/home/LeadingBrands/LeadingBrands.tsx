@@ -64,7 +64,10 @@ export const LeadingBrands: React.FC = () => {
         {/* Section Heading */}
         <div className="wk-brands__header">
           <h2 id="brands-heading" className="wk-brands__title">
-            Trusted to Turn ‘What If’ Into <span className="wk-brands__highlight">‘What’s Next’</span>
+            <span className="wk-brands__title-line">Trusted to Turn ‘What If’</span>
+            <span className="wk-brands__title-line">
+              Into <span className="wk-brands__highlight">‘What’s Next’</span>
+            </span>
           </h2>
         </div>
 
