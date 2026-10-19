@@ -1,0 +1,266 @@
+/**
+ * Services Hero Section Styles
+ * Source of Truth: Figma node 2222-10618 & service.pdf
+ * Reuses the same architectural column & row grid background as About Us Hero
+ */
+
+.wk-services-hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 76px);
+  min-height: calc(100dvh - 76px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  padding: clamp(64px, 10vh, 112px) 0 clamp(64px, 10vh, 120px);
+}
+
+/* Background Column & Row Grid Guides (same as About page hero) */
+.wk-services-hero__grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-services-hero__columns {
+  position: absolute;
+  inset: 0;
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(12px, 1.8vw, 24px);
+  padding: 0 24px;
+}
+
+.wk-services-hero__col-guide {
+  height: 100%;
+  border-left: 1px solid rgba(226, 232, 240, 0.45);
+  border-right: 1px solid rgba(226, 232, 240, 0.45);
+  background: rgba(248, 250, 252, 0.2);
+}
+
+.wk-services-hero__rows {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wk-services-hero__row-guide {
+  height: 1px;
+  width: 100%;
+  background-color: rgba(226, 232, 240, 0.35);
+}
+
+/* Hero Content Container */
+.wk-services-hero__container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+}
+
+/* Top Pill Badge */
+.wk-services-hero__badge-wrapper {
+  margin-bottom: clamp(20px, 3.5vh, 32px);
+}
+
+.wk-services-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EBF5FB;
+  color: #0F172A;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 8px 22px;
+  border-radius: 9999px;
+  border: 1px solid rgba(24, 135, 201, 0.16);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+
+/* Main Display 3-Line Heading */
+.wk-services-hero__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(32px, 5.2vw, 68px);
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -0.035em;
+  color: #0F172A;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.08em;
+}
+
+.wk-services-hero__title-line {
+  display: block;
+  text-align: center;
+  white-space: normal;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .wk-services-hero__title-line {
+    white-space: nowrap;
+  }
+}
+
+.wk-services-hero__growth-word {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Black Circular Pointer Cursor Beside "business" */
+.wk-services-hero__cursor-wrap {
+  display: inline-block;
+  vertical-align: top;
+  width: clamp(38px, 3.2vw, 56px);
+  height: clamp(40px, 3.4vw, 58px);
+  margin-left: 8px;
+  margin-top: -10px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wk-services-hero__cursor-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-services-hero:hover .wk-services-hero__cursor-svg {
+  transform: translate(2px, 2px);
+}
+
+/* White Circle with Blue Diagonal Arrow in "growth" — sized proportionally to letter "o" */
+.wk-services-hero__growth-arrow-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 0.72em;
+  height: 0.72em;
+  margin: 0 0.015em;
+  transform: translateY(0.085em);
+
+  padding-left: 5px;
+  user-select: none;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
+}
+
+.wk-services-hero__growth-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-services-hero:hover .wk-services-hero__growth-svg {
+  transform: scale(1.08) rotate(3deg);
+}
+
+/* Centered Supporting Paragraph */
+.wk-services-hero__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.65;
+  color: #64748B;
+  max-width: 620px;
+  margin: clamp(20px, 3vh, 32px) auto 0;
+  text-align: center;
+}
+
+@media (max-width: 899px) {
+  .wk-services-hero__title {
+    font-size: clamp(28px, 5.5vw, 44px);
+    line-height: 1.22;
+  }
+
+  .wk-services-hero__cursor-wrap {
+    width: 38px;
+    height: 40px;
+    margin-top: -6px;
+    margin-left: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wk-services-hero {
+    min-height: auto;
+    padding: 48px 0 64px;
+  }
+
+  .wk-services-hero__columns {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .wk-services-hero__br-desktop {
+    display: none;
+  }
+
+  .wk-services-hero {
+    padding-top: 56px;
+    padding-bottom: 48px;
+  }
+
+  .wk-services-hero__title {
+    font-size: clamp(24px, 5.5vw, 32px);
+    letter-spacing: -0.025em;
+    line-height: 1.24;
+  }
+
+  .wk-services-hero__cursor-wrap {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-services-hero {
+    padding: 36px 0 48px;
+  }
+
+  .wk-services-hero__badge {
+    font-size: 12px;
+    padding: 6px 16px;
+  }
+
+  .wk-services-hero__title {
+    font-size: clamp(20px, 5.8vw, 26px);
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+  }
+
+  .wk-services-hero__subtitle {
+    font-size: 14px;
+    max-width: 320px;
+  }
+}

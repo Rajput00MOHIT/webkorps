@@ -1,0 +1,278 @@
+/**
+ * Agile Workflow Section Styles
+ * Source of Truth: Figma node 2244-1067 & Services Agile Workflow Reference
+ */
+
+.wk-agile-workflow {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(64px, 8.5vh, 112px) 0 clamp(80px, 11vh, 136px);
+}
+
+.wk-agile-workflow__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* ========================================================
+   Section Header (Left-Aligned per Figma reference)
+   ======================================================== */
+.wk-agile-workflow__header {
+  text-align: left;
+  margin-bottom: clamp(44px, 6vh, 68px);
+}
+
+.wk-agile-workflow__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-agile-workflow__title-blue {
+  color: #1887C9;
+}
+
+.wk-agile-workflow__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.1vw, 16.5px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 12px 0 0;
+  max-width: 680px;
+}
+
+/* ========================================================
+   Two-Column Grid Layout
+   ======================================================== */
+.wk-agile-workflow__grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(40px, 5.5vw, 76px);
+}
+
+/* Left Column: Visual Illustration Card */
+.wk-agile-workflow__visual-col {
+  flex: 1 1 46%;
+  max-width: 530px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wk-agile-workflow__image-card {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.05);
+  background-color: #F8FAFC;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.wk-agile-workflow__image-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.09);
+}
+
+.wk-agile-workflow__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2292 / 2808;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right Column: Accordion List */
+.wk-agile-workflow__accordion-col {
+  flex: 1 1 54%;
+  max-width: 580px;
+}
+
+.wk-agile-workflow__accordion-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #E2E8F0;
+}
+
+.wk-agile-workflow__item {
+  border-bottom: 1px solid #E2E8F0;
+  transition: border-color 0.25s ease;
+}
+
+/* Accordion Header Button */
+.wk-agile-workflow__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: clamp(20px, 2.4vh, 26px) 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.wk-agile-workflow__trigger:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.wk-agile-workflow__item-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(18px, 1.4vw, 21px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0F172A;
+  transition: color 0.2s ease;
+}
+
+.wk-agile-workflow__trigger:hover .wk-agile-workflow__item-title {
+  color: #1887C9;
+}
+
+.wk-agile-workflow__item.is-open .wk-agile-workflow__item-title {
+  color: #0F172A;
+}
+
+/* Icon Wrapper */
+.wk-agile-workflow__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #0F172A;
+  flex-shrink: 0;
+  margin-left: 16px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.wk-agile-workflow__trigger:hover .wk-agile-workflow__icon-wrap {
+  color: #1887C9;
+}
+
+.wk-agile-workflow__icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+/* Smooth Accordion Panel Content Transition */
+.wk-agile-workflow__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  opacity: 0;
+}
+
+.wk-agile-workflow__item.is-open .wk-agile-workflow__panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.wk-agile-workflow__panel-content {
+  overflow: hidden;
+}
+
+.wk-agile-workflow__description {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(14px, 1.05vw, 15.5px);
+  line-height: 1.65;
+  color: #475569;
+  margin: 0;
+  padding: 0 clamp(16px, 3vw, 40px) clamp(20px, 2.4vh, 26px) 0;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 960px) {
+  .wk-agile-workflow__grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .wk-agile-workflow__visual-col,
+  .wk-agile-workflow__accordion-col {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .wk-agile-workflow__image-card {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .wk-agile-workflow {
+    padding: 48px 0 72px;
+  }
+
+  .wk-agile-workflow__header {
+    margin-bottom: 36px;
+  }
+
+  .wk-agile-workflow__title {
+    font-size: 26px;
+    line-height: 1.25;
+  }
+
+  .wk-agile-workflow__subtitle {
+    font-size: 14.5px;
+    margin-top: 10px;
+  }
+
+  .wk-agile-workflow__trigger {
+    padding: 18px 0;
+  }
+
+  .wk-agile-workflow__item-title {
+    font-size: 17.5px;
+  }
+
+  .wk-agile-workflow__description {
+    font-size: 14px;
+    padding-bottom: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-agile-workflow__title {
+    font-size: 23px;
+    letter-spacing: -0.02em;
+  }
+
+  .wk-agile-workflow__subtitle {
+    font-size: 14px;
+  }
+
+  .wk-agile-workflow__trigger {
+    padding: 15px 0;
+  }
+
+  .wk-agile-workflow__item-title {
+    font-size: 16px;
+  }
+
+  .wk-agile-workflow__icon-wrap {
+    width: 26px;
+    height: 26px;
+  }
+
+  .wk-agile-workflow__icon {
+    width: 18px;
+    height: 18px;
+  }
+}

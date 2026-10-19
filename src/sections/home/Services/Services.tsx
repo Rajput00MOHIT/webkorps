@@ -95,6 +95,7 @@ export const Services: React.FC = () => {
 
   return (
     <section
+      id="services"
       ref={sectionRef}
       className={`wk-services ${isVisible ? 'is-visible' : ''}`}
       aria-labelledby="services-heading"

@@ -1,0 +1,143 @@
+/**
+ * Services Industries Section Styles
+ * Source of Truth: Figma node 2252-1078 & Services Industries Reference
+ */
+
+.wk-services-industries {
+  position: relative;
+  width: 100%;
+  background-color: #F8FAFC;
+  padding: clamp(64px, 8.5vh, 108px) 0 clamp(80px, 10.5vh, 128px);
+}
+
+.wk-services-industries__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* ========================================================
+   Section Header (Centered per Figma reference)
+   ======================================================== */
+.wk-services-industries__header {
+  text-align: center;
+  margin-bottom: clamp(44px, 6vh, 68px);
+}
+
+.wk-services-industries__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(30px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-services-industries__title-blue {
+  color: #1887C9;
+}
+
+.wk-services-industries__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.1vw, 16.5px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 12px auto 0;
+  max-width: 620px;
+}
+
+/* ========================================================
+   3-Column Card Grid
+   ======================================================== */
+.wk-services-industries__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.4vw, 28px);
+}
+
+.wk-services-industries__card {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  border-left: 4.5px solid #1887C9;
+  border-radius: 20px;
+  padding: clamp(28px, 3.2vw, 36px) clamp(24px, 2.8vw, 32px);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.25s ease;
+}
+
+.wk-services-industries__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  border-left-color: #1274AF;
+}
+
+.wk-services-industries__card-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-services-industries__card-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(14px, 1.05vw, 15px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 14px 0 0;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 960px) {
+  .wk-services-industries__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .wk-services-industries {
+    padding: 48px 0 72px;
+  }
+
+  .wk-services-industries__header {
+    margin-bottom: 36px;
+  }
+
+  .wk-services-industries__title {
+    font-size: 26px;
+  }
+
+  .wk-services-industries__subtitle {
+    font-size: 14.5px;
+    margin-top: 10px;
+  }
+
+  .wk-services-industries__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .wk-services-industries__card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .wk-services-industries__card-title {
+    font-size: 19px;
+  }
+
+  .wk-services-industries__card-desc {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}

@@ -103,7 +103,7 @@ export const Industries: React.FC = () => {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
     const maxScroll = scrollWidth - clientWidth;
-    
+
     if (maxScroll <= 5) {
       setScrollProgress(1);
       setCanScrollLeft(false);
@@ -219,8 +219,8 @@ export const Industries: React.FC = () => {
                   alt=""
                   className="wk-industry-card__art"
                   loading="lazy"
-                  width="260"
-                  height="462"
+                  width="220"
+                  height="410"
                 />
               </div>
             </article>

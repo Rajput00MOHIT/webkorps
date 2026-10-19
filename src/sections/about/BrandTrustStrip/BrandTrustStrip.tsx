@@ -42,9 +42,16 @@ const TRUSTED_BRANDS: TrustBrandItem[] = [
   },
 ];
 
-export const BrandTrustStrip: React.FC = () => {
+export interface BrandTrustStripProps {
+  variant?: 'default' | 'services';
+}
+
+export const BrandTrustStrip: React.FC<BrandTrustStripProps> = ({ variant = 'default' }) => {
   return (
-    <section className="wk-brand-strip" aria-label="Trusted Technology Brands">
+    <section
+      className={`wk-brand-strip ${variant === 'services' ? 'wk-brand-strip--services' : ''}`}
+      aria-label="Trusted Technology Brands"
+    >
       <div className="site-container wk-brand-strip__container">
         <div className="wk-brand-strip__inner">
           {/* Trust Statement Column */}

@@ -1,0 +1,17 @@
+/**
+ * Services Landing Page Styles
+ * Source of Truth: service.pdf
+ */
+
+.wk-services-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-canvas, #ffffff);
+}
+
+.wk-services-page__main {
+  flex: 1 0 auto;
+  position: relative;
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import cardImage from '../../../assets/cardimage.png';
 import { getImgSrc } from '../../../utils/image';
 import './Hero.css';
@@ -148,6 +149,29 @@ export const Hero: React.FC = () => {
           <div className="wk-hero__card-content">
             <div className="wk-hero__card-header">
               <h2 className="wk-hero__card-title">Our Services</h2>
+              <Link
+                href="/services"
+                className="wk-hero__card-explore-all"
+                aria-label="Explore all services"
+              >
+                <span>Explore Services</span>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5.25 3.5L8.75 7L5.25 10.5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
             </div>
 
             <div className="wk-hero__services-grid">
@@ -156,6 +180,13 @@ export const Hero: React.FC = () => {
                   key={service.id}
                   href={service.href}
                   className="wk-hero__service-item"
+                  onClick={(e) => {
+                    const el = document.getElementById('services');
+                    if (el) {
+                      e.preventDefault();
+                      el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                 >
                   <div className="wk-hero__service-icon" aria-hidden="true">
                     {service.icon}

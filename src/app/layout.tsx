@@ -42,8 +42,13 @@ import '../sections/about/Milestones/Milestones.css';
 import '../sections/about/OurValues/OurValues.css';
 import '../sections/about/AboutCTA/AboutCTA.css';
 import '../sections/about/ClientTestimonials/ClientTestimonials.css';
+import '../sections/services/ServicesHero/ServicesHero.css';
+import '../sections/services/ServicesGrid/ServicesGrid.css';
+import '../sections/services/AgileWorkflow/AgileWorkflow.css';
+import '../sections/services/ServicesIndustries/ServicesIndustries.css';
 import '../views/Home/HomePage.css';
 import '../views/AboutUs/AboutUsPage.css';
+import '../views/Services/ServicesPage.css';
 
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 

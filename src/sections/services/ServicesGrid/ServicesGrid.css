@@ -1,0 +1,249 @@
+/**
+ * Services Grid Section Styles
+ * Source of Truth: Figma node 2239-1064 & Services Reference
+ */
+
+.wk-services-grid {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(48px, 7vh, 88px) 0 clamp(80px, 12vh, 140px);
+}
+
+.wk-services-grid__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* ========================================================
+   Section Header
+   ======================================================== */
+.wk-services-grid__header {
+  text-align: center;
+  margin-bottom: clamp(56px, 8vh, 96px);
+}
+
+.wk-services-grid__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-services-grid__title-blue {
+  color: #1887C9;
+}
+
+.wk-services-grid__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 14px auto 0;
+  max-width: 580px;
+}
+
+/* ========================================================
+   Services Alternating Rows
+   ======================================================== */
+.wk-services-grid__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-services-grid__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(40px, 6vw, 92px);
+  margin-bottom: clamp(64px, 8.5vh, 108px);
+}
+
+.wk-services-grid__row:last-child {
+  margin-bottom: 0;
+}
+
+.wk-services-grid__row--reverse {
+  flex-direction: row-reverse;
+}
+
+/* Text Content Column */
+.wk-services-grid__content {
+  flex: 1 1 45%;
+  max-width: 480px;
+}
+
+.wk-services-grid__service-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(26px, 2.8vw, 38px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-services-grid__service-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.1vw, 16.5px);
+  line-height: 1.65;
+  color: #475569;
+  margin: 16px 0 28px;
+  max-width: 420px;
+}
+
+/* Know More ↗ Button */
+.wk-services-grid__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1887C9;
+  color: #FFFFFF;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(24, 135, 201, 0.24);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.wk-services-grid__btn:hover {
+  background-color: #1374AD;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(24, 135, 201, 0.34);
+  color: #FFFFFF;
+}
+
+.wk-services-grid__btn:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 3px;
+}
+
+.wk-services-grid__btn-icon {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-services-grid__btn:hover .wk-services-grid__btn-icon {
+  transform: translate(2px, -2px);
+}
+
+/* Illustration Visual Column */
+.wk-services-grid__visual {
+  flex: 1 1 52%;
+  max-width: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wk-services-grid__image-card {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.05);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  background-color: #F8FAFC;
+}
+
+.wk-services-grid__row:hover .wk-services-grid__image-card {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.09);
+}
+
+.wk-services-grid__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2192 / 1664;
+  object-fit: cover;
+  display: block;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 960px) {
+  .wk-services-grid__row {
+    gap: clamp(32px, 4vw, 48px);
+    margin-bottom: clamp(48px, 6vh, 80px);
+  }
+
+  .wk-services-grid__service-title {
+    font-size: clamp(22px, 2.5vw, 30px);
+  }
+
+  .wk-services-grid__service-desc {
+    margin: 12px 0 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wk-services-grid {
+    padding: 44px 0 72px;
+  }
+
+  .wk-services-grid__header {
+    margin-bottom: 44px;
+  }
+
+  .wk-services-grid__title {
+    font-size: 28px;
+    line-height: 1.22;
+  }
+
+  .wk-services-grid__subtitle {
+    font-size: 15px;
+  }
+
+  .wk-services-grid__row,
+  .wk-services-grid__row--reverse {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    margin-bottom: 56px;
+  }
+
+  .wk-services-grid__content {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .wk-services-grid__visual {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .wk-services-grid__image-card {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-services-grid__title {
+    font-size: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .wk-services-grid__service-title {
+    font-size: 22px;
+  }
+
+  .wk-services-grid__service-desc {
+    font-size: 14px;
+    margin: 10px 0 20px;
+  }
+
+  .wk-services-grid__btn {
+    padding: 10px 20px;
+    font-size: 13.5px;
+  }
+}

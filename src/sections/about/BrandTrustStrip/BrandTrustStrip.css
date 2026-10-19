@@ -92,6 +92,32 @@
   max-height: 26px;
 }
 
+/* Services Page Variant: Slightly enlarged logo display sizes */
+.wk-brand-strip--services .wk-brand-strip__logo-item {
+  padding: clamp(18px, 2.2vw, 24px) clamp(20px, 2.5vw, 28px);
+}
+
+.wk-brand-strip--services .wk-brand-strip__logo-img {
+  max-width: 155px;
+}
+
+.wk-brand-strip--services .wk-brand-strip__logo-img--microsoft {
+  max-height: 30px;
+}
+
+.wk-brand-strip--services .wk-brand-strip__logo-img--fortinet {
+  max-height: 26px;
+}
+
+.wk-brand-strip--services .wk-brand-strip__logo-img--hubspot {
+  max-height: 35px;
+}
+
+.wk-brand-strip--services .wk-brand-strip__logo-img--manageengine {
+  max-height: 32px;
+}
+
+
 /* Responsive Rules */
 @media (max-width: 960px) {
   .wk-brand-strip__inner {
