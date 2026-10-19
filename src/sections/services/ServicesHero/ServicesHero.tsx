@@ -10,19 +10,6 @@ import './ServicesHero.css';
 export const ServicesHero: React.FC = () => {
   return (
     <section className="wk-services-hero" aria-labelledby="services-hero-heading">
-      {/* Background Architectural Grid Lines (matching About page hero) */}
-      <div className="wk-services-hero__grid-bg" aria-hidden="true">
-        <div className="wk-services-hero__columns">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="wk-services-hero__col-guide" />
-          ))}
-        </div>
-        <div className="wk-services-hero__rows">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="wk-services-hero__row-guide" />
-          ))}
-        </div>
-      </div>
 
       <div className="wk-services-hero__container">
         {/* Top Eyebrow Pill Badge */}

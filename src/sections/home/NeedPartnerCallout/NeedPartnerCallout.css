@@ -23,10 +23,10 @@
   align-items: center;
   gap: clamp(2rem, 4vw, 4.5rem);
   background: linear-gradient(135deg, #F0F7FD 0%, #FFFFFF 52%, #F4F9FD 100%);
-  border: 1px solid rgba(24, 135, 201, 0.16);
-  border-radius: clamp(24px, 3.2vw, 40px);
+
+
   padding: clamp(.5rem, 1vw, 4.5rem) clamp(2rem, 4.5vw, 5rem);
-  box-shadow: 0 20px 50px -15px rgba(24, 135, 201, 0.08), 0 1px 3px rgba(15, 23, 42, 0.03);
+
   overflow: hidden;
 }
 

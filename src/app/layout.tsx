@@ -46,9 +46,15 @@ import '../sections/services/ServicesHero/ServicesHero.css';
 import '../sections/services/ServicesGrid/ServicesGrid.css';
 import '../sections/services/AgileWorkflow/AgileWorkflow.css';
 import '../sections/services/ServicesIndustries/ServicesIndustries.css';
+import '../sections/technologies/TechnologiesHero/TechnologiesHero.css';
+import '../sections/technologies/CoreTechnologies/CoreTechnologies.css';
+import '../sections/technologies/DevelopmentApproach/DevelopmentApproach.css';
+import '../sections/technologies/OurOfferings/OurOfferings.css';
+import '../sections/technologies/TechnologyExpertise/TechnologyExpertise.css';
 import '../views/Home/HomePage.css';
 import '../views/AboutUs/AboutUsPage.css';
 import '../views/Services/ServicesPage.css';
+import '../views/Technologies/TechnologiesPage.css';
 
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 

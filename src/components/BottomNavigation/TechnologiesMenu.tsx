@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import techSpotlightImg from '../../assets/technologies/tech-spotlight.png';
 import { getImgSrc } from '../../utils/image';
 
@@ -162,25 +163,53 @@ export const TechnologiesMenu: React.FC<TechnologiesMenuProps> = ({ onItemClick 
 
   return (
     <div className="wk-mega-menu__tech-layout">
-      {/* Left: 2-Column Technology Grid (8 Cards) */}
-      <div className="wk-mega-menu__tech-grid">
-        {TECHNOLOGIES_LIST.map((tech, idx) => (
-          <a
-            key={tech.id}
-            href={tech.href}
-            className="wk-mega-menu__tech-card"
-            onClick={(e) => handleLinkClick(e, tech.href)}
-            style={{ '--item-stagger': `${idx * 25}ms` } as React.CSSProperties}
+      {/* Left: 2-Column Technology Grid (8 Cards) + View All Technologies Link */}
+      <div className="wk-mega-menu__tech-left">
+        <div className="wk-mega-menu__tech-grid">
+          {TECHNOLOGIES_LIST.map((tech, idx) => (
+            <a
+              key={tech.id}
+              href={tech.href}
+              className="wk-mega-menu__tech-card"
+              onClick={(e) => handleLinkClick(e, tech.href)}
+              style={{ '--item-stagger': `${idx * 25}ms` } as React.CSSProperties}
+            >
+              <div className="wk-mega-menu__tech-icon-box" aria-hidden="true">
+                {renderTechIcon(tech.id)}
+              </div>
+              <div className="wk-mega-menu__tech-info">
+                <span className="wk-mega-menu__tech-title">{tech.title}</span>
+                <p className="wk-mega-menu__tech-desc">{tech.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div className="wk-mega-menu__tech-footer">
+          <Link
+            href="/technologies"
+            className="wk-mega-menu__tech-view-all-link"
+            onClick={() => onItemClick && onItemClick()}
+            aria-label="View all technologies and digital services"
           >
-            <div className="wk-mega-menu__tech-icon-box" aria-hidden="true">
-              {renderTechIcon(tech.id)}
-            </div>
-            <div className="wk-mega-menu__tech-info">
-              <span className="wk-mega-menu__tech-title">{tech.title}</span>
-              <p className="wk-mega-menu__tech-desc">{tech.description}</p>
-            </div>
-          </a>
-        ))}
+            <span>View all technologies</span>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M5.25 3.5L8.75 7L5.25 10.5"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
+        </div>
       </div>
 
       {/* Right: Tech Spotlight Card */}
@@ -201,10 +230,10 @@ export const TechnologiesMenu: React.FC<TechnologiesMenuProps> = ({ onItemClick 
           <p className="wk-mega-menu__tech-spotlight-desc">
             Discover how our stack enabling AI, cloud-first engineering, and secure mobile solutions is reshaping global industries.
           </p>
-          <a
-            href="#integrations"
+          <Link
+            href="/technologies"
             className="wk-mega-menu__tech-spotlight-link"
-            onClick={(e) => handleLinkClick(e, '#integrations')}
+            onClick={() => onItemClick && onItemClick()}
           >
             <span>Read More</span>
             <svg
@@ -221,7 +250,7 @@ export const TechnologiesMenu: React.FC<TechnologiesMenuProps> = ({ onItemClick 
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
-          </a>
+          </Link>
         </div>
       </aside>
     </div>

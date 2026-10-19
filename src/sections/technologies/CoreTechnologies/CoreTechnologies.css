@@ -1,0 +1,237 @@
+/**
+ * Core Technologies We Work With Section Styles
+ * Source of Truth: Figma node 2255-1410 & Reference Screenshot
+ */
+
+.wk-core-tech {
+  position: relative;
+  width: 100%;
+  background-color: #F8FAFC;
+  padding: clamp(64px, 8.5vh, 108px) 0 clamp(80px, 10.5vh, 128px);
+}
+
+.wk-core-tech__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* ========================================================
+   Centered Section Header
+   ======================================================== */
+.wk-core-tech__header {
+  text-align: center;
+  margin-bottom: clamp(44px, 6vh, 68px);
+}
+
+.wk-core-tech__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(30px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-core-tech__title-blue {
+  color: #1887C9;
+}
+
+.wk-core-tech__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.1vw, 16.5px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 12px auto 0;
+  max-width: 620px;
+}
+
+/* ========================================================
+   3-Column Responsive Grid
+   ======================================================== */
+.wk-core-tech__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.4vw, 28px);
+}
+
+.wk-core-tech__card {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  border-radius: 20px;
+  padding: clamp(28px, 3.2vw, 36px) clamp(24px, 2.8vw, 32px);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.25s ease;
+}
+
+.wk-core-tech__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  border-color: #BFDBFE;
+}
+
+/* ========================================================
+   Upper-Right Logo Area
+   ======================================================== */
+.wk-core-tech__card-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: clamp(28px, 4vh, 48px);
+}
+
+.wk-core-tech__logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 56px;
+  width: 90px;
+}
+
+.wk-core-tech__logo-img {
+  max-width: 100%;
+  max-height: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.wk-core-tech__card:hover .wk-core-tech__logo-img {
+  transform: scale(1.05);
+}
+
+/* Tailored Logo Dimensions to Match Reference Visual Weight */
+.wk-core-tech__logo-img--ror {
+  max-height: 38px;
+  max-width: 85px;
+}
+
+.wk-core-tech__logo-img--java {
+  max-height: 52px;
+}
+
+.wk-core-tech__logo-img--android {
+  max-height: 50px;
+}
+
+.wk-core-tech__logo-img--ios {
+  max-height: 52px;
+}
+
+.wk-core-tech__logo-img--python {
+  max-height: 52px;
+}
+
+.wk-core-tech__logo-img--dotnet {
+  max-height: 36px;
+}
+
+.wk-core-tech__logo-img--react-native {
+  max-height: 54px;
+}
+
+.wk-core-tech__logo-img--php {
+  max-height: 38px;
+}
+
+.wk-core-tech__logo-img--angular {
+  max-height: 52px;
+}
+
+/* ========================================================
+   Lower-Left Title & Description
+   ======================================================== */
+.wk-core-tech__card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.wk-core-tech__card-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-core-tech__card-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(14px, 1.05vw, 15px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 12px 0 0;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 960px) {
+  .wk-core-tech__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .wk-core-tech {
+    padding: 48px 0 72px;
+  }
+
+  .wk-core-tech__header {
+    margin-bottom: 36px;
+  }
+
+  .wk-core-tech__title {
+    font-size: 26px;
+  }
+
+  .wk-core-tech__subtitle {
+    font-size: 14.5px;
+    margin-top: 10px;
+  }
+
+  .wk-core-tech__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .wk-core-tech__card {
+    padding: 24px 20px;
+    border-radius: 16px;
+    min-height: 200px;
+  }
+
+  .wk-core-tech__card-header {
+    margin-bottom: 24px;
+  }
+
+  .wk-core-tech__card-title {
+    font-size: 19px;
+  }
+
+  .wk-core-tech__card-desc {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wk-core-tech__card,
+  .wk-core-tech__logo-img {
+    transition: none !important;
+    transform: none !important;
+  }
+}

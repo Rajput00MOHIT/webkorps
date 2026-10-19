@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
+import Link from 'next/link';
 import { Container } from '../../../components/Container/Container';
 import integrationIot from '../../../assets/integrations/integration-iot.png';
 import integrationRpa from '../../../assets/integrations/integration-rpa.png';
@@ -207,6 +208,31 @@ export const Integrations: React.FC = () => {
               </span>
             </span>
           </h2>
+          <div className="wk-integrations__view-all-wrap">
+            <Link
+              href="/technologies"
+              className="wk-integrations__view-all"
+              aria-label="View all technologies and digital services"
+            >
+              <span>View all technologies</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5.25 3.5L8.75 7L5.25 10.5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
+          </div>
         </header>
 
         {/* Semantic Headings & Descriptions for Search/AI Discoverability */}

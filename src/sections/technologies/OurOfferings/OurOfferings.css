@@ -1,0 +1,198 @@
+/**
+ * Our Offerings Section Styles
+ * Source of Truth: Figma node 1233-10564
+ *
+ * Coordinated horizontal 4-column layout with left-aligned heading,
+ * thin blue vertical dividers, large blue numbers, 3D illustrations,
+ * dark titles and muted-grey descriptions.
+ */
+
+.wk-our-offerings {
+  position: relative;
+  width: 100%;
+  background-color: #F8FAFC;
+  padding: clamp(64px, 8vh, 100px) 0;
+  overflow: hidden;
+}
+
+.wk-our-offerings__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* ========================================================
+   Section Header (Left-aligned)
+   ======================================================== */
+.wk-our-offerings__header {
+  text-align: left;
+  margin-bottom: clamp(48px, 6vh, 68px);
+}
+
+.wk-our-offerings__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(32px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-our-offerings__title-blue {
+  color: #1887C9;
+}
+
+.wk-our-offerings__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 12px 0 0;
+  max-width: 680px;
+}
+
+/* ========================================================
+   Offerings 4-Column Grid
+   ======================================================== */
+.wk-our-offerings__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(24px, 3vw, 44px);
+  align-items: stretch;
+}
+
+/* ========================================================
+   Individual Offering Card
+   ======================================================== */
+.wk-our-offerings__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  border-left: 2px solid #1887C9;
+  padding-left: clamp(18px, 1.8vw, 26px);
+  padding-top: 4px;
+  padding-bottom: 4px;
+  box-sizing: border-box;
+}
+
+.wk-our-offerings__card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Two-digit Step Number */
+.wk-our-offerings__number {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 2.5vw, 36px);
+  font-weight: 700;
+  color: #1887C9;
+  line-height: 1;
+  margin-bottom: clamp(28px, 4vh, 38px);
+  letter-spacing: -0.02em;
+}
+
+/* 3D Illustration Area */
+.wk-our-offerings__illustration-wrap {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: clamp(24px, 3.5vh, 32px);
+}
+
+.wk-our-offerings__illustration {
+  max-height: 110px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.wk-our-offerings__card:hover .wk-our-offerings__illustration {
+  transform: scale(1.05) translateY(-3px);
+}
+
+/* Offering Title */
+.wk-our-offerings__card-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(20px, 1.6vw, 23px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0 0 12px 0;
+}
+
+/* Offering Description */
+.wk-our-offerings__card-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(14px, 1vw, 15px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 0;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+
+/* Tablet (2 columns) */
+@media (max-width: 1024px) {
+  .wk-our-offerings__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 44px 32px;
+  }
+
+  .wk-our-offerings__card {
+    padding-left: 20px;
+  }
+
+  .wk-our-offerings__illustration-wrap {
+    height: 120px;
+    margin-bottom: 24px;
+  }
+
+  .wk-our-offerings__illustration {
+    max-height: 100px;
+  }
+}
+
+/* Mobile (1 column stack) */
+@media (max-width: 640px) {
+  .wk-our-offerings {
+    padding: 56px 0;
+  }
+
+  .wk-our-offerings__header {
+    margin-bottom: 40px;
+  }
+
+  .wk-our-offerings__grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .wk-our-offerings__card {
+    padding-left: 20px;
+  }
+
+  .wk-our-offerings__number {
+    margin-bottom: 20px;
+  }
+
+  .wk-our-offerings__illustration-wrap {
+    height: 110px;
+    margin-bottom: 20px;
+  }
+
+  .wk-our-offerings__illustration {
+    max-height: 95px;
+  }
+}

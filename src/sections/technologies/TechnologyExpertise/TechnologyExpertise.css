@@ -1,0 +1,264 @@
+/**
+ * Technology Expertise Section Styles
+ * Source of Truth: Figma node 2262-1423
+ */
+
+.wk-tech-exp {
+  position: relative;
+  width: 100%;
+  background-color: #F8FAFC;
+  padding: clamp(64px, 8vh, 100px) 0;
+  overflow: hidden;
+}
+
+.wk-tech-exp__container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* ========================================================
+   Section Header (Centered)
+   ======================================================== */
+.wk-tech-exp__header {
+  text-align: center;
+  margin-bottom: clamp(40px, 5vh, 56px);
+}
+
+.wk-tech-exp__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(32px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.wk-tech-exp__title-blue {
+  color: #1887C9;
+}
+
+.wk-tech-exp__title-dark {
+  color: #0F172A;
+}
+
+.wk-tech-exp__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 12px auto 0;
+  max-width: 640px;
+}
+
+/* ========================================================
+   Two-Column Body Layout
+   ======================================================== */
+.wk-tech-exp__body {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  gap: clamp(24px, 3vw, 36px);
+  align-items: stretch;
+}
+
+/* ========================================================
+   Left Column — 9 Categories List
+   ======================================================== */
+.wk-tech-exp__categories {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wk-tech-exp__cat-btn {
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  color: #0F172A;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.wk-tech-exp__cat-btn:hover:not(.wk-tech-exp__cat-btn--active) {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+  color: #1887C9;
+}
+
+.wk-tech-exp__cat-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(24, 135, 201, 0.35);
+}
+
+.wk-tech-exp__cat-btn--active {
+  background-color: #1887C9;
+  border-color: #1887C9;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(24, 135, 201, 0.28);
+}
+
+.wk-tech-exp__cat-btn-text {
+  display: block;
+}
+
+/* ========================================================
+   Right Column — Selected Category Panel
+   ======================================================== */
+.wk-tech-exp__panel {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: clamp(32px, 3.8vw, 40px);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.wk-tech-exp__panel-header {
+  margin-bottom: clamp(24px, 3.2vh, 32px);
+}
+
+.wk-tech-exp__panel-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0 0 10px 0;
+  max-width: 260px;
+}
+
+.wk-tech-exp__panel-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(14px, 1.1vw, 15px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 0;
+  max-width: 580px;
+}
+
+/* ========================================================
+   3×2 Grid of Technology Tiles
+   ======================================================== */
+.wk-tech-exp__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.wk-tech-exp__tile {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 16px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 124px;
+  aspect-ratio: 1 / 0.95;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.wk-tech-exp__tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  border-color: #CBD5E1;
+}
+
+.wk-tech-exp__tile-label {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.wk-tech-exp__tile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+}
+
+.wk-tech-exp__tile-icon svg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+
+/* Tablet (Stacked columns) */
+@media (max-width: 992px) {
+  .wk-tech-exp__body {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .wk-tech-exp__categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .wk-tech-exp__panel {
+    padding: 32px 24px;
+  }
+}
+
+/* Mobile (1-column categories, 2-column tiles) */
+@media (max-width: 640px) {
+  .wk-tech-exp {
+    padding: 56px 0;
+  }
+
+  .wk-tech-exp__header {
+    margin-bottom: 36px;
+  }
+
+  .wk-tech-exp__categories {
+    grid-template-columns: 1fr;
+  }
+
+  .wk-tech-exp__panel {
+    padding: 24px 18px;
+    border-radius: 10px;
+  }
+
+  .wk-tech-exp__panel-header {
+    margin-bottom: 24px;
+  }
+
+  .wk-tech-exp__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .wk-tech-exp__tile {
+    min-height: 110px;
+    padding: 16px 12px;
+  }
+
+  .wk-tech-exp__tile-icon {
+    height: 42px;
+    width: 42px;
+  }
+}

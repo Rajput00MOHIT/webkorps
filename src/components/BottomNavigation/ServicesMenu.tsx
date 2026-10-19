@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { SERVICES_DATA, IMPACT_DATA } from './navigationData';
 import wekorpsIcon from '../../assets/wekorps iconsvg.svg';
 import { getImgSrc } from '../../utils/image';
@@ -210,6 +211,34 @@ export const ServicesMenu: React.FC<ServicesMenuProps> = ({ onItemClick }) => {
             </div>
           </div>
         </aside>
+      </div>
+
+      {/* Bottom Bar: Explore All Services on /services */}
+      <div className="wk-mega-menu__services-footer">
+        <Link
+          href="/services"
+          className="wk-mega-menu__services-view-all-link"
+          onClick={() => onItemClick && onItemClick()}
+          aria-label="Explore all services and digital solutions"
+        >
+          <span>Explore All Digital Services &amp; Solutions</span>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M5.25 3.5L8.75 7L5.25 10.5"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </Link>
       </div>
     </div>
   );

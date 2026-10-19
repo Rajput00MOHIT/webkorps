@@ -1,0 +1,292 @@
+/**
+ * Technologies Hero Section Styles
+ * Source of Truth: Figma node 2253-1234
+ * Features:
+ * - Signature technical blue grid background
+ * - Balanced typography, inline code badge & 3D stack illustration
+ * - Responsive breakpoints across desktop, tablet, and mobile
+ */
+
+.wk-tech-hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 76px);
+  min-height: calc(100dvh - 76px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  background-image:
+    linear-gradient(to right, rgba(24, 135, 201, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(24, 135, 201, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-position: center top;
+  overflow: hidden;
+  padding: clamp(64px, 10vh, 112px) 0 clamp(64px, 10vh, 120px);
+}
+
+/* Subtle radial glow to give depth behind content */
+.wk-tech-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(240, 249, 255, 0.85) 0%, rgba(255, 255, 255, 0.2) 65%, transparent 100%);
+  pointer-events: none;
+}
+
+.wk-tech-hero__container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+}
+
+/* Top Pill Eyebrow Badge */
+.wk-tech-hero__badge-wrapper {
+  margin-bottom: clamp(20px, 3.5vh, 32px);
+}
+
+.wk-tech-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EBF5FB;
+  color: #0F172A;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 8px 24px;
+  border-radius: 9999px;
+  border: 1px solid rgba(24, 135, 201, 0.18);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+
+/* Main Display 3-Line Heading */
+.wk-tech-hero__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(32px, 5.2vw, 68px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  color: #0F172A;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.08em;
+}
+
+.wk-tech-hero__title-line {
+  display: block;
+  text-align: center;
+  white-space: normal;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .wk-tech-hero__title-line {
+    white-space: nowrap;
+  }
+}
+
+.wk-tech-hero__title-line--last {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Word: "Developing" with embedded < > code icon replacing "o" */
+.wk-tech-hero__developing-word {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.wk-tech-hero__code-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 0.72em;
+  height: 0.72em;
+  margin: 0 0.02em;
+  transform: translateY(0.04em);
+  padding: 4px;
+  user-select: none;
+  filter: drop-shadow(0 2px 6px rgba(24, 135, 201, 0.18));
+}
+
+.wk-tech-hero__code-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-tech-hero:hover .wk-tech-hero__code-icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+/* 3D Isometric Tech Stack Illustration */
+.wk-tech-hero__stack-img-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: clamp(48px, 4.6vw, 68px);
+  height: auto;
+  margin-right: 2px;
+  transform: translateY(0.02em);
+  user-select: none;
+  filter: drop-shadow(0 6px 14px rgba(15, 23, 42, 0.12));
+}
+
+.wk-tech-hero__stack-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-tech-hero:hover .wk-tech-hero__stack-img {
+  transform: scale(1.06) translateY(-2px);
+}
+
+/* Black Circular Pointer Cursor */
+.wk-tech-hero__cursor-wrap {
+  display: inline-block;
+  vertical-align: top;
+  width: clamp(38px, 3.2vw, 54px);
+  height: clamp(40px, 3.4vw, 56px);
+  margin-left: 8px;
+  margin-top: -10px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wk-tech-hero__cursor-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-tech-hero:hover .wk-tech-hero__cursor-svg {
+  transform: translate(3px, 3px);
+}
+
+/* Centered Supporting Paragraph */
+.wk-tech-hero__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.65;
+  color: #64748B;
+  max-width: 640px;
+  margin: clamp(20px, 3vh, 32px) auto 0;
+  text-align: center;
+}
+
+/* Responsive Adaptations */
+@media (max-width: 899px) {
+  .wk-tech-hero__title {
+    font-size: clamp(28px, 5.5vw, 44px);
+    line-height: 1.22;
+  }
+
+  .wk-tech-hero__cursor-wrap {
+    width: 36px;
+    height: 38px;
+    margin-top: -6px;
+    margin-left: 6px;
+  }
+
+  .wk-tech-hero__stack-img-wrap {
+    width: clamp(40px, 5vw, 52px);
+  }
+}
+
+@media (max-width: 768px) {
+  .wk-tech-hero {
+    min-height: auto;
+    padding: 56px 0 68px;
+  }
+}
+
+@media (max-width: 640px) {
+  .wk-tech-hero__br-desktop {
+    display: none;
+  }
+
+  .wk-tech-hero {
+    padding-top: 56px;
+    padding-bottom: 52px;
+  }
+
+  .wk-tech-hero__title {
+    font-size: clamp(24px, 5.5vw, 32px);
+    letter-spacing: -0.025em;
+    line-height: 1.24;
+  }
+
+  .wk-tech-hero__cursor-wrap {
+    display: none;
+  }
+
+  .wk-tech-hero__stack-img-wrap {
+    width: 36px;
+  }
+
+  .wk-tech-hero__title-line--last {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-tech-hero {
+    padding: 40px 0 52px;
+  }
+
+  .wk-tech-hero__badge {
+    font-size: 12px;
+    padding: 6px 18px;
+  }
+
+  .wk-tech-hero__title {
+    font-size: clamp(20px, 5.8vw, 26px);
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+  }
+
+  .wk-tech-hero__subtitle {
+    font-size: 14px;
+    max-width: 320px;
+  }
+
+  .wk-tech-hero__stack-img-wrap {
+    width: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .wk-tech-hero__code-icon,
+  .wk-tech-hero__stack-img,
+  .wk-tech-hero__cursor-svg {
+    transition: none !important;
+    transform: none !important;
+  }
+}
