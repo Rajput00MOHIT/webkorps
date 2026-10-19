@@ -20,6 +20,20 @@ import './TechnologiesHero.css';
 export const TechnologiesHero: React.FC = () => {
   return (
     <section className="wk-tech-hero" aria-labelledby="technologies-hero-heading">
+      {/* Background Architectural Grid Lines (Exact About Hero Background) */}
+      <div className="wk-about-hero__grid-bg" aria-hidden="true">
+        <div className="wk-about-hero__columns">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="wk-about-hero__col-guide" />
+          ))}
+        </div>
+        <div className="wk-about-hero__rows">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="wk-about-hero__row-guide" />
+          ))}
+        </div>
+      </div>
+
       <div className="wk-tech-hero__container">
         {/* Top Eyebrow Pill Badge */}
         <div className="wk-tech-hero__badge-wrapper">

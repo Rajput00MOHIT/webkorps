@@ -13,9 +13,6 @@
   align-items: center;
   justify-content: center;
   background-color: #FFFFFF;
-  background-image: url('../../../assets/herobgdot.png');
-  background-repeat: repeat;
-  background-position: top center;
   overflow: hidden;
   padding: clamp(64px, 10vh, 112px) 0 clamp(64px, 10vh, 120px);
 }
