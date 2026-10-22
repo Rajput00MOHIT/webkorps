@@ -15,19 +15,16 @@
 /* ==========================================================================
    Card Container
    ========================================================================== */
-
 .wk-tech-partner__card {
   position: relative;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  align-items: center;
-  gap: clamp(2rem, 4vw, 4.5rem);
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: clamp(2rem, 3vw, 4rem);
   background: linear-gradient(135deg, #F0F7FD 0%, #FFFFFF 52%, #F4F9FD 100%);
-
-
-  padding: clamp(.5rem, 1vw, 4.5rem) clamp(2rem, 4.5vw, 5rem);
-
+  padding: clamp(2.5rem, 4.5vw, 4.5rem) 0 0 clamp(2rem, 4.5vw, 5rem);
   overflow: hidden;
+
 }
 
 /* ==========================================================================
@@ -40,6 +37,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-bottom: clamp(2.5rem, 4.5vw, 4.5rem);
 }
 
 .wk-tech-partner__title {
@@ -142,14 +140,14 @@
 }
 
 /* ==========================================================================
-   Right Column: Smartphone Mockup & Backdrop
+   Right Column: Illustration Mockup & Backdrop
    ========================================================================== */
 
 .wk-tech-partner__phone-wrapper {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
   min-height: 380px;
   opacity: 0;
   transform: scale(0.97);
@@ -168,16 +166,20 @@
 
 .wk-tech-partner__phone-img {
   display: block;
-  max-height: clamp(340px, 34vw, 480px);
+  height: auto;
+  max-height: clamp(430px, 46vw, 580px);
   width: auto;
-  max-width: 100%;
+  max-width: 114%;
   object-fit: contain;
+  object-position: bottom right;
   user-select: none;
+  margin-bottom: -10px;
+  margin-right: -10px;
   transition: transform 0.35s ease;
 }
 
 .wk-tech-partner__card:hover .wk-tech-partner__phone-img {
-  transform: scale(1.015);
+  transform: scale(1.02);
 }
 
 /* ==========================================================================
@@ -189,11 +191,12 @@
     grid-template-columns: 1fr;
     text-align: center;
     gap: 3rem;
-    padding: 3rem 2rem;
+    padding: 3rem 2rem 0;
   }
 
   .wk-tech-partner__content {
     align-items: center;
+    padding-bottom: 0;
   }
 
   .wk-tech-partner__subtitle {
@@ -202,12 +205,15 @@
     margin-right: auto;
   }
 
-  .wk-tech-partner__visual {
+  .wk-tech-partner__phone-wrapper {
     min-height: 320px;
+    justify-content: center;
   }
 
   .wk-tech-partner__phone-img {
-    max-height: 360px;
+    max-height: 400px;
+    margin-right: 0;
+    object-position: bottom center;
   }
 }
 
@@ -218,7 +224,7 @@
   }
 
   .wk-tech-partner__card {
-    padding: 2.25rem 1.5rem;
+    padding: 2.25rem 1.5rem 0;
     border-radius: 24px;
     gap: 2.25rem;
   }
@@ -237,12 +243,12 @@
     padding: 0.9rem 1.75rem;
   }
 
-  .wk-tech-partner__visual {
+  .wk-tech-partner__phone-wrapper {
     min-height: 280px;
   }
 
   .wk-tech-partner__phone-img {
-    max-height: 300px;
+    max-height: 340px;
   }
 }
 

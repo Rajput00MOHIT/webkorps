@@ -46,7 +46,7 @@ export const Insights: React.FC = () => {
 
           <div className="wk-insights__action">
             <a
-              href="#insights"
+              href="/insights"
               className="wk-insights__view-all"
               aria-label="Explore All Insights"
             >

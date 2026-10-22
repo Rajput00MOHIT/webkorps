@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import heroImg from '../../../assets/technologies/Hero_img.png';
 import { getImgSrc } from '../../../utils/image';
+import { HeroBackground } from '../../../components/HeroBackground';
 import './TechnologiesHero.css';
 
 /**
@@ -18,25 +20,130 @@ import './TechnologiesHero.css';
  * - Centered supporting subtitle
  */
 export const TechnologiesHero: React.FC = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const wordsRef = useRef<HTMLSpanElement[]>([]);
+  const cursorWrapRef = useRef<HTMLSpanElement>(null);
+  const cursorSvgRef = useRef<SVGSVGElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (!heroRef.current) return;
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const ctx = gsap.context(() => {
+      if (prefersReducedMotion) {
+        gsap.set([badgeRef.current, wordsRef.current, subtitleRef.current], {
+          opacity: 1,
+          y: 0,
+          filter: 'blur(0px)',
+        });
+        if (cursorSvgRef.current) {
+          gsap.set(cursorSvgRef.current, { opacity: 1, x: 0 });
+        }
+        return;
+      }
+
+      // Initial states
+      gsap.set(badgeRef.current, { opacity: 0, y: 10 });
+      gsap.set(wordsRef.current, {
+        opacity: 0,
+        y: 10,
+        filter: 'blur(6px)',
+      });
+      gsap.set(subtitleRef.current, {
+        opacity: 0,
+        y: 10,
+        filter: 'blur(6px)',
+      });
+
+      // Cursor entrance calculation from viewport right
+      let cursorStartX = 600;
+      if (cursorWrapRef.current) {
+        const wrapRect = cursorWrapRef.current.getBoundingClientRect();
+        cursorStartX = Math.max(window.innerWidth - wrapRect.left + 80, 500);
+      }
+      if (cursorSvgRef.current) {
+        gsap.set(cursorSvgRef.current, {
+          x: cursorStartX,
+          opacity: 0,
+        });
+      }
+
+      const tl = gsap.timeline({
+        defaults: { ease: 'power2.out' },
+      });
+
+      // 1. Badge reveals first
+      tl.to(badgeRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.45,
+      });
+
+      // 2. Heading: Word-by-word staggered reveal
+      tl.to(
+        wordsRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          duration: 0.55,
+          stagger: 0.045,
+          ease: 'power2.out',
+        },
+        '-=0.2'
+      );
+
+      // 3. Cursor Graphic: Enters horizontally from right
+      if (cursorSvgRef.current) {
+        tl.to(
+          cursorSvgRef.current,
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.95,
+            ease: 'power3.out',
+            clearProps: 'transform',
+          },
+          0.35
+        );
+      }
+
+      // 4. Supporting text: blur-to-clear transition with 10px upward movement
+      tl.to(
+        subtitleRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          duration: 0.65,
+          ease: 'power2.out',
+        },
+        '-=0.3'
+      );
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const addWordRef = (el: HTMLSpanElement | null) => {
+    if (el && !wordsRef.current.includes(el)) {
+      wordsRef.current.push(el);
+    }
+  };
+
   return (
-    <section className="wk-tech-hero" aria-labelledby="technologies-hero-heading">
+    <section ref={heroRef} className="wk-tech-hero" aria-labelledby="technologies-hero-heading">
       {/* Background Architectural Grid Lines (Exact About Hero Background) */}
-      <div className="wk-about-hero__grid-bg" aria-hidden="true">
-        <div className="wk-about-hero__columns">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="wk-about-hero__col-guide" />
-          ))}
-        </div>
-        <div className="wk-about-hero__rows">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="wk-about-hero__row-guide" />
-          ))}
-        </div>
-      </div>
+      <HeroBackground />
 
       <div className="wk-tech-hero__container">
         {/* Top Eyebrow Pill Badge */}
-        <div className="wk-tech-hero__badge-wrapper">
+        <div ref={badgeRef} className="wk-tech-hero__badge-wrapper">
           <span className="wk-tech-hero__badge">Technologies</span>
         </div>
 
@@ -48,7 +155,7 @@ export const TechnologiesHero: React.FC = () => {
         >
           {/* Line 1: Devel< >ping High-Performance */}
           <span className="wk-tech-hero__title-line">
-            <span className="wk-tech-hero__developing-word">
+            <span ref={addWordRef} className="wk-tech-hero__developing-word">
               Devel
               <span className="wk-tech-hero__code-icon-wrap" aria-hidden="true">
                 <svg
@@ -66,9 +173,10 @@ export const TechnologiesHero: React.FC = () => {
               </span>
               ping
             </span>{' '}
-            High-Performance
-            <span className="wk-tech-hero__cursor-wrap" aria-hidden="true">
+            <span ref={addWordRef}>High-Performance</span>
+            <span ref={cursorWrapRef} className="wk-tech-hero__cursor-wrap" aria-hidden="true">
               <svg
+                ref={cursorSvgRef}
                 viewBox="0 0 70 73"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -126,12 +234,15 @@ export const TechnologiesHero: React.FC = () => {
 
           {/* Line 2: Systems Powered by Modern */}
           <span className="wk-tech-hero__title-line">
-            Systems Powered by Modern
+            <span ref={addWordRef}>Systems</span>{' '}
+            <span ref={addWordRef}>Powered</span>{' '}
+            <span ref={addWordRef}>by</span>{' '}
+            <span ref={addWordRef}>Modern</span>
           </span>
 
           {/* Line 3: [Hero_img.png] Tech Stacks */}
           <span className="wk-tech-hero__title-line wk-tech-hero__title-line--last">
-            <span className="wk-tech-hero__stack-img-wrap" aria-hidden="true">
+            <span ref={addWordRef} className="wk-tech-hero__stack-img-wrap" aria-hidden="true">
               <img
                 src={getImgSrc(heroImg)}
                 alt=""
@@ -141,12 +252,12 @@ export const TechnologiesHero: React.FC = () => {
                 loading="eager"
               />
             </span>
-            <span>Tech Stacks</span>
+            <span ref={addWordRef}>Tech Stacks</span>
           </span>
         </h1>
 
         {/* Supporting Copy */}
-        <p className="wk-tech-hero__subtitle">
+        <p ref={subtitleRef} className="wk-tech-hero__subtitle">
           End-to-end development from frontend to backend and cloud,
           <br className="wk-tech-hero__br-desktop" />
           built on scalable and maintainable tech stacks.

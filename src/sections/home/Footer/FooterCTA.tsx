@@ -12,14 +12,14 @@ export const FooterCTA: React.FC = () => {
         </p>
         <div className="wk-footer__cta-actions">
           <a
-            href="#contact"
+            href="/contact-us"
             className="wk-footer__btn wk-footer__btn--outline"
             aria-label="Contact Sales team"
           >
             Contact Sales
           </a>
           <a
-            href="#contact"
+            href="/contact-us"
             className="wk-footer__btn wk-footer__btn--primary"
             aria-label="Start Now with Webkorps"
           >

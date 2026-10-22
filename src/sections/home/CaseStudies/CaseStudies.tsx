@@ -102,7 +102,7 @@ export const CaseStudies: React.FC = () => {
           </div>
 
           <a
-            href="#case-studies"
+            href="/case-studies"
             className="wk-case-studies__view-all"
             aria-label="Explore All Case Studies"
           >

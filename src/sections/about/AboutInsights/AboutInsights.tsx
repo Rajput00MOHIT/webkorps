@@ -36,9 +36,13 @@ const ArrowIcon: React.FC = () => (
   </svg>
 );
 
-export const AboutInsights: React.FC = () => {
+export interface AboutInsightsProps {
+  id?: string;
+}
+
+export const AboutInsights: React.FC<AboutInsightsProps> = ({ id }) => {
   return (
-    <section className="wk-about-insights" aria-labelledby="about-insights-heading">
+    <section id={id} className="wk-about-insights" aria-labelledby="about-insights-heading">
       <div className="site-container wk-about-insights__container">
         {/* Section Header */}
         <div className="wk-about-insights__header">
@@ -73,7 +77,7 @@ export const AboutInsights: React.FC = () => {
               </div>
 
               <a
-                href="#culture"
+                href="/careers"
                 className="wk-about-insights__arrow-btn"
                 aria-label="Explore Inclusive Culture"
               >
@@ -100,7 +104,7 @@ export const AboutInsights: React.FC = () => {
               </div>
 
               <a
-                href="#leadership"
+                href="/insights"
                 className="wk-about-insights__arrow-btn"
                 aria-label="Explore Our Leadership"
               >
@@ -130,7 +134,7 @@ export const AboutInsights: React.FC = () => {
               </div>
 
               <a
-                href="#infrastructure"
+                href="/technologies"
                 className="wk-about-insights__arrow-btn"
                 aria-label="Explore Infrastructure"
               >
@@ -157,7 +161,7 @@ export const AboutInsights: React.FC = () => {
               </div>
 
               <a
-                href="#csr"
+                href="/insights"
                 className="wk-about-insights__arrow-btn"
                 aria-label="Explore Corporate Social Responsibility"
               >

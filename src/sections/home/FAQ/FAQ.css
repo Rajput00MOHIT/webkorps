@@ -50,6 +50,28 @@
   color: var(--color-brand-primary, #1887C9);
 }
 
+.wk-faq__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  color: #64748B;
+  margin: 0.75rem auto 0;
+  max-width: 620px;
+  line-height: 1.55;
+}
+
+.wk-faq-item__answer a,
+.wk-faq-link {
+  color: var(--color-brand-primary, #1887C9);
+  text-decoration: underline;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.wk-faq-item__answer a:hover,
+.wk-faq-link:hover {
+  opacity: 0.8;
+}
+
 /* ==========================================================================
    Accordion List & Items
    ========================================================================== */

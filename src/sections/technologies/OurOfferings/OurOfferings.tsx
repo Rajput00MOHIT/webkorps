@@ -1,10 +1,18 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import fullStackImg from '../../../assets/technologies/our-offerings/full-stack-engineering.png';
 import cloudSolutionsImg from '../../../assets/technologies/our-offerings/cloud-solutions.png';
 import apiDevImg from '../../../assets/technologies/our-offerings/api-development.png';
 import techConsultingImg from '../../../assets/technologies/our-offerings/technology-consulting.png';
 import { getImgSrc } from '../../../utils/image';
 import './OurOfferings.css';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface OfferingItem {
   id: string;
@@ -55,11 +63,80 @@ const OFFERINGS: OfferingItem[] = [
  * Source of Truth: Figma node 1233-10564 & attached visual reference
  */
 export const OurOfferings: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<(HTMLElement | null)[]>([]);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const ctx = gsap.context(() => {
+      if (prefersReducedMotion) return;
+
+      // 1. Header reveal
+      if (headerRef.current) {
+        const title = headerRef.current.querySelector('.wk-our-offerings__title');
+        const subtitle = headerRef.current.querySelector('.wk-our-offerings__subtitle');
+
+        gsap.fromTo(
+          [title, subtitle],
+          { opacity: 0, y: 10, filter: 'blur(5px)' },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: headerRef.current,
+              start: 'top 85%',
+              once: true,
+            },
+          }
+        );
+      }
+
+      // 2. 4 Offering Cards enter from the left
+      const validCards = cardsRef.current.filter(Boolean);
+      if (validCards.length > 0) {
+        gsap.fromTo(
+          validCards,
+          {
+            x: -35,
+            opacity: 0,
+            filter: 'blur(4px)',
+          },
+          {
+            x: 0,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 0.68,
+            ease: 'power3.out',
+            stagger: 0.14,
+            clearProps: 'transform,filter',
+            scrollTrigger: {
+              trigger: validCards[0],
+              start: 'top 82%',
+              once: true,
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="wk-our-offerings" aria-labelledby="our-offerings-heading">
+    <section ref={sectionRef} className="wk-our-offerings" aria-labelledby="our-offerings-heading">
       <div className="wk-our-offerings__container">
         {/* Section Header (Left-aligned) */}
-        <header className="wk-our-offerings__header">
+        <header ref={headerRef} className="wk-our-offerings__header">
           <h2 id="our-offerings-heading" className="wk-our-offerings__title">
             Our <span className="wk-our-offerings__title-blue">Offerings</span>
           </h2>
@@ -70,9 +147,12 @@ export const OurOfferings: React.FC = () => {
 
         {/* 4 Offering Columns */}
         <div className="wk-our-offerings__grid" role="list">
-          {OFFERINGS.map((offering) => (
+          {OFFERINGS.map((offering, index) => (
             <article
               key={offering.id}
+              ref={(el) => {
+                cardsRef.current[index] = el;
+              }}
               role="listitem"
               className="wk-our-offerings__card"
             >

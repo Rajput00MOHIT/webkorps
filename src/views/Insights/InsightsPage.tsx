@@ -2,95 +2,101 @@
 
 import React, { useEffect } from 'react';
 import { Header } from '../../sections/home/Header/Header';
+import { InsightsHero } from '../../sections/insights/InsightsHero/InsightsHero';
+import { FeaturedArticle } from '../../sections/insights/FeaturedArticle/FeaturedArticle';
+import { OurInsights } from '../../sections/insights/OurInsights/OurInsights';
+import { WomenInLeadership } from '../../sections/insights/WomenInLeadership/WomenInLeadership';
+import { InsightsQuote } from '../../sections/insights/InsightsQuote/InsightsQuote';
+import { RecentEvent } from '../../sections/insights/RecentEvent/RecentEvent';
+import { BrandTrustStrip } from '../../sections/about/BrandTrustStrip/BrandTrustStrip';
+import { ClientTestimonials } from '../../sections/about/ClientTestimonials/ClientTestimonials';
+import { Footer } from '../../sections/home/Footer/Footer';
 import { BottomNavigation } from '../../components/BottomNavigation';
-import { FeaturedInsightCard } from './FeaturedInsightCard';
-import { ImpactPanel } from './ImpactPanel';
-import trendsTechImg from '../../assets/insights/trends-tech.png';
-import eventsWebinarsImg from '../../assets/insights/events-webinars.png';
 import { updateSEOMetadata } from '../../lib/seo/meta';
+import { getOrganizationSchema, getWebSiteSchema } from '../../lib/structured-data/schema';
 import './InsightsPage.css';
 
+/**
+ * Insights Landing Page Component
+ * Source of Truth: Insights.pdf (9-Section Strict Structural Sequence)
+ *
+ * Section Sequence:
+ * 1. Insights Hero — "Thought Leadership & Industry Insights"
+ * 2. Featured Article — "A Practical AI Operations Framework"
+ * 3. Our Insights — Inclusive Culture, Our Leadership, Infrastructure, CSR
+ * 4. Women in Leadership — "Women in Leadership at Webkorps"
+ * 5. Quote — "Data is only valuable when it drives decisions insights make that possible."
+ * 6. Recent Event — "We are part of CES 2026 Webkorps"
+ * 7. Trusted by Fast-Growing Companies (Reused: BrandTrustStrip variant="services")
+ * 8. What Our Clients Say About Us (Reused: ClientTestimonials)
+ * 9. Existing Closing CTA & Footer (Reused: Footer)
+ * + Global Header & BottomNavigation
+ */
 export const InsightsPage: React.FC = () => {
   useEffect(() => {
     updateSEOMetadata({
-      title: 'Featured Insights | Webkorps — Trends on Modern Technologies & Events',
+      title: 'Thought Leadership & Industry Insights | Webkorps',
       description:
-        'Explore expert perspectives on AI, cloud, mobile, and enterprise technologies, plus upcoming industry summits, webinars, and networking events.',
+        'Explore industry trends, expert perspectives, and innovative ideas shaping the future of business. Practical frameworks, leadership insights, and technology solutions.',
       canonicalUrl: 'https://www.webkorps.com/insights',
     });
   }, []);
 
-  const collectionSchema = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Featured Insights — Webkorps',
-    description:
-      'Expert perspectives on AI, cloud, mobile, and enterprise technologies, and industry events.',
-    url: 'https://www.webkorps.com/insights',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Webkorps',
-      url: 'https://www.webkorps.com/',
-    },
-  });
+  const orgSchema = JSON.stringify(getOrganizationSchema());
+  const websiteSchema = JSON.stringify(getWebSiteSchema());
 
   return (
     <div className="wk-insights-page-wrapper">
       {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: collectionSchema }}
+        dangerouslySetInnerHTML={{ __html: orgSchema }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: websiteSchema }}
       />
 
       {/* Accessible skip link */}
-      <a href="#main-insights" className="skip-to-content">
+      <a href="#insights-main-content" className="skip-to-content">
         Skip to main content
       </a>
 
       {/* Global Header */}
       <Header />
 
-      {/* Main Content Area */}
-      <main id="main-insights" className="wk-insights-page" tabIndex={-1}>
-        <div className="wk-insights-container">
-          <header className="wk-insights-page__header">
-            <h1 className="wk-insights-page__title">Featured Insights</h1>
-          </header>
+      {/* Main Content Area — Strict 9-Section Sequence per Insights.pdf */}
+      <main id="insights-main-content" tabIndex={-1} className="wk-insights-page__main">
+        {/* Section 1: Insights Hero */}
+        <InsightsHero />
 
-          <div className="wk-insights-page__grid">
-            {/* Left: 2 Side-by-Side Featured Cards */}
-            <div className="wk-insights-page__cards">
-              <FeaturedInsightCard
-                id="trends-modern-tech"
-                badge="BLOGS"
-                title="Trends on Modern Technologies"
-                description="Expert perspectives on AI, cloud, mobile, and enterprise tech."
-                image={trendsTechImg}
-                imageAlt="Modern workspace with laptop displaying futuristic digital tech hologram"
-                ctaText="Explore Blogs"
-                href="#insights"
-              />
+        {/* Section 2: Featured Article */}
+        <FeaturedArticle />
 
-              <FeaturedInsightCard
-                id="industry-events-webinars"
-                badge="EVENTS"
-                title="Industry Events & Webinars"
-                description="Stay updated with the latest tech summits, webinars, and networking events."
-                image={eventsWebinarsImg}
-                imageAlt="Technology conference auditorium with keynote speaker and audience"
-                ctaText="View Events"
-                href="#events"
-              />
-            </div>
+        {/* Section 3: Our Insights */}
+        <OurInsights />
 
-            {/* Right: Vertical Impact Block */}
-            <ImpactPanel />
-          </div>
-        </div>
+        {/* Section 4: Women in Leadership */}
+        <WomenInLeadership />
+
+        {/* Section 5: Quote */}
+        <InsightsQuote />
+
+        {/* Section 6: Recent Event */}
+        <RecentEvent />
+
+        {/* Section 7: Trusted by Fast-Growing Companies (Shared Component) */}
+        <BrandTrustStrip variant="services" />
+
+        {/* Section 8: What Our Clients Say About Us (Shared Component) */}
+        <ClientTestimonials />
       </main>
 
-      {/* Floating Bottom Navigation */}
-      <BottomNavigation isInsightsPage={true} />
+      {/* Section 9: Closing CTA, Directory Navigation, Locations & Legal (Shared Component) */}
+      <Footer />
+
+      {/* Bottom Mega-Menu Navigation */}
+      <BottomNavigation />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { CASE_STUDIES_NAV_DATA } from './navigationData';
 
 interface CaseStudiesMenuProps {
@@ -8,29 +9,15 @@ interface CaseStudiesMenuProps {
 }
 
 export const CaseStudiesMenu: React.FC<CaseStudiesMenuProps> = ({ onItemClick }) => {
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (onItemClick) {
-      onItemClick();
-    }
-    if (href.startsWith('#')) {
-      const targetId = href.replace('#', '');
-      const el = document.getElementById(targetId);
-      if (el) {
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
-
   return (
     <div className="wk-mega-menu__generic">
       <div className="wk-mega-menu__generic-grid wk-mega-menu__generic-grid--2col">
         {CASE_STUDIES_NAV_DATA.map((study, idx) => (
-          <a
+          <Link
             key={study.id}
-            href={study.href}
+            href={study.href || '/case-studies'}
             className="wk-mega-menu__item wk-mega-menu__item--card"
-            onClick={(e) => handleLinkClick(e, study.href)}
+            onClick={onItemClick}
             style={{ '--item-stagger': `${idx * 40}ms` } as React.CSSProperties}
           >
             <div className="wk-mega-menu__item-content">
@@ -43,8 +30,29 @@ export const CaseStudiesMenu: React.FC<CaseStudiesMenuProps> = ({ onItemClick })
               <span className="wk-mega-menu__item-title">{study.title}</span>
               <p className="wk-mega-menu__item-desc">{study.description}</p>
             </div>
-          </a>
+          </Link>
         ))}
+      </div>
+
+      <div style={{ marginTop: '20px', textAlign: 'center' }}>
+        <Link
+          href="/case-studies"
+          onClick={onItemClick}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: '#1887C9',
+            fontWeight: 600,
+            fontSize: '14.5px',
+            textDecoration: 'none',
+          }}
+        >
+          <span>Explore All Case Studies</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </Link>
       </div>
     </div>
   );

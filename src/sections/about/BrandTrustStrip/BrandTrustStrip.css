@@ -93,11 +93,13 @@
 }
 
 /* Services Page Variant: Slightly enlarged logo display sizes */
-.wk-brand-strip--services .wk-brand-strip__logo-item {
+.wk-brand-strip--services .wk-brand-strip__logo-item,
+.wk-brand-strip--case-studies .wk-brand-strip__logo-item {
   padding: clamp(18px, 2.2vw, 24px) clamp(20px, 2.5vw, 28px);
 }
 
-.wk-brand-strip--services .wk-brand-strip__logo-img {
+.wk-brand-strip--services .wk-brand-strip__logo-img,
+.wk-brand-strip--case-studies .wk-brand-strip__logo-img {
   max-width: 155px;
 }
 
@@ -115,6 +117,23 @@
 
 .wk-brand-strip--services .wk-brand-strip__logo-img--manageengine {
   max-height: 32px;
+}
+
+/* Case Studies Page Variant: Slightly larger without distortion */
+.wk-brand-strip--case-studies .wk-brand-strip__logo-img--microsoft {
+  max-height: 32px;
+}
+
+.wk-brand-strip--case-studies .wk-brand-strip__logo-img--fortinet {
+  max-height: 28px;
+}
+
+.wk-brand-strip--case-studies .wk-brand-strip__logo-img--hubspot {
+  max-height: 38px;
+}
+
+.wk-brand-strip--case-studies .wk-brand-strip__logo-img--manageengine {
+  max-height: 34px;
 }
 
 

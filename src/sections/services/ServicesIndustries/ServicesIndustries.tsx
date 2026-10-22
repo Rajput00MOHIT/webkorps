@@ -1,7 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ServicesIndustries.css';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface IndustryCardItem {
   id: string;
@@ -64,11 +70,76 @@ const INDUSTRIES_DATA: IndustryCardItem[] = [
 ];
 
 export const ServicesIndustries: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLElement | null)[]>([]);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const ctx = gsap.context(() => {
+      if (prefersReducedMotion) return;
+
+      // 1. Header Reveal
+      if (headerRef.current) {
+        const title = headerRef.current.querySelector('.wk-services-industries__title');
+        const subtitle = headerRef.current.querySelector('.wk-services-industries__subtitle');
+
+        gsap.fromTo(
+          [title, subtitle],
+          { opacity: 0, y: 10, filter: 'blur(5px)' },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: headerRef.current,
+              start: 'top 85%',
+              once: true,
+            },
+          }
+        );
+      }
+
+      // 2. 9 Industry Cards Staggered Reveal
+      const validCards = cardsRef.current.filter(Boolean);
+      if (validCards.length > 0) {
+        gsap.fromTo(
+          validCards,
+          { opacity: 0, y: 20, filter: 'blur(4px)' },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.6,
+            stagger: 0.06,
+            ease: 'power3.out',
+            clearProps: 'transform,filter',
+            scrollTrigger: {
+              trigger: validCards[0],
+              start: 'top 82%',
+              once: true,
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="wk-services-industries" aria-labelledby="services-industries-heading">
+    <section ref={sectionRef} className="wk-services-industries" aria-labelledby="services-industries-heading">
       <div className="wk-services-industries__container">
         {/* Section Heading */}
-        <div className="wk-services-industries__header">
+        <div ref={headerRef} className="wk-services-industries__header">
           <h2 id="services-industries-heading" className="wk-services-industries__title">
             <span className="wk-services-industries__title-blue">Industries</span> We Empower
           </h2>
@@ -79,9 +150,12 @@ export const ServicesIndustries: React.FC = () => {
 
         {/* 3-Column Responsive Grid */}
         <div className="wk-services-industries__grid" role="list">
-          {INDUSTRIES_DATA.map((industry) => (
+          {INDUSTRIES_DATA.map((industry, index) => (
             <article
               key={industry.id}
+              ref={(el) => {
+                cardsRef.current[index] = el;
+              }}
               role="listitem"
               className="wk-services-industries__card"
             >

@@ -7,11 +7,14 @@
   position: relative;
   min-height: 100vh;
   background-color: #FFFFFF;
-  background-image: url('../../assets/herobgdot.png');
-  background-repeat: repeat;
-  background-position: top center;
   display: flex;
   flex-direction: column;
+}
+
+.wk-insights-page__main {
+  flex: 1 0 auto;
+  position: relative;
+  width: 100%;
 }
 
 /* Main Content Area */

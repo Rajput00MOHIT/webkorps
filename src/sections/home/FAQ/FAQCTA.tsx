@@ -1,18 +1,30 @@
 import React from 'react';
 
-export const FAQCTA: React.FC = () => {
+export interface FAQCTAProps {
+  title?: string;
+  desc?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  buttonAriaLabel?: string;
+}
+
+export const FAQCTA: React.FC<FAQCTAProps> = ({
+  title = 'Curious What the Right Tech Can Do?',
+  desc = 'Have a challenge to solve or an idea to explore? Connect with our experts for practical insights, tailored recommendations, and a clearer path to your next milestone.',
+  buttonText = 'Talk to Our Experts',
+  buttonHref = '/contact-us',
+  buttonAriaLabel = 'Talk to Our Experts - Webkorps Consultation',
+}) => {
   return (
     <div className="wk-faq-cta">
-      <h3 className="wk-faq-cta__title">Curious What the Right Tech Can Do?</h3>
-      <p className="wk-faq-cta__desc">
-        Have a challenge to solve or an idea to explore? Connect with our experts for practical insights, tailored recommendations, and a clearer path to your next milestone.
-      </p>
+      <h3 className="wk-faq-cta__title">{title}</h3>
+      <p className="wk-faq-cta__desc">{desc}</p>
       <a
-        href="#contact"
+        href={buttonHref}
         className="wk-faq-cta__btn"
-        aria-label="Talk to Our Experts - Webkorps Consultation"
+        aria-label={buttonAriaLabel}
       >
-        <span>Talk to Our Experts</span>
+        <span>{buttonText}</span>
         <svg
           className="wk-faq-cta__btn-arrow"
           viewBox="0 0 24 24"
@@ -30,3 +42,5 @@ export const FAQCTA: React.FC = () => {
     </div>
   );
 };
+
+export default FAQCTA;

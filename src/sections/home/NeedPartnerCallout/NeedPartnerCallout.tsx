@@ -51,7 +51,7 @@ export const NeedPartnerCallout: React.FC = () => {
 
             <div className="wk-tech-partner__action">
               <a
-                href="#contact"
+                href="/contact-us"
                 className="wk-tech-partner__btn"
                 aria-label="Let’s Make It Happen - Contact Webkorps"
               >

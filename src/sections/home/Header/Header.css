@@ -75,6 +75,11 @@
   color: var(--color-brand-primary);
 }
 
+.wk-header__nav-link--active {
+  color: var(--color-brand-primary, #0066FF);
+  font-weight: 600;
+}
+
 .wk-header__chevron {
   width: 9px;
   height: 6px;

@@ -3,13 +3,34 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from '../../../components/Container/Container';
 import { FAQItem } from './FAQItem';
-import { FAQCTA } from './FAQCTA';
-import { FAQ_DATA } from './faqData';
+import { FAQCTA, FAQCTAProps } from './FAQCTA';
+import { FAQ_DATA, FAQItemData } from './faqData';
 import './FAQ.css';
 
-export const FAQ: React.FC = () => {
+export interface FAQProps {
+  id?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  items?: FAQItemData[];
+  showCta?: boolean;
+  ctaProps?: FAQCTAProps;
+}
+
+export const FAQ: React.FC<FAQProps> = ({
+  id = 'faq',
+  title = (
+    <>
+      Frequently Asked <span className="wk-faq__title-accent">Questions</span>
+    </>
+  ),
+  subtitle,
+  items = FAQ_DATA,
+  showCta = true,
+  ctaProps,
+}) => {
   // First item open by default per Figma design
-  const [openId, setOpenId] = useState<string | null>('founded');
+  const defaultOpenId = items.length > 0 ? items[0].id : null;
+  const [openId, setOpenId] = useState<string | null>(defaultOpenId);
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -31,29 +52,30 @@ export const FAQ: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleToggle = (id: string) => {
-    setOpenId((prevId) => (prevId === id ? null : id));
+  const handleToggle = (itemId: string) => {
+    setOpenId((prevId) => (prevId === itemId ? null : itemId));
   };
 
   return (
     <section
       ref={sectionRef}
-      id="faq"
+      id={id}
       className={`wk-faq ${isVisible ? 'is-visible' : ''}`}
-      aria-labelledby="faq-heading"
+      aria-labelledby={`${id}-heading`}
     >
       <Container size="normal">
         <div className="wk-faq__wrapper">
           {/* Section Heading */}
           <div className="wk-faq__header">
-            <h2 id="faq-heading" className="wk-faq__title">
-              Frequently Asked <span className="wk-faq__title-accent">Questions</span>
+            <h2 id={`${id}-heading`} className="wk-faq__title">
+              {title}
             </h2>
+            {subtitle && <p className="wk-faq__subtitle">{subtitle}</p>}
           </div>
 
           {/* FAQ Accordion List */}
           <div className="wk-faq__list" role="list">
-            {FAQ_DATA.map((item, index) => (
+            {items.map((item, index) => (
               <div
                 key={item.id}
                 role="listitem"
@@ -70,9 +92,11 @@ export const FAQ: React.FC = () => {
           </div>
 
           {/* CTA Card */}
-          <FAQCTA />
+          {showCta && <FAQCTA {...ctaProps} />}
         </div>
       </Container>
     </section>
   );
 };
+
+export default FAQ;

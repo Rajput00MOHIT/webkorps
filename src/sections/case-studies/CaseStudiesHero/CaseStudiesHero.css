@@ -1,0 +1,189 @@
+/**
+ * Case Studies Landing Page Hero Styles
+ * Source of Truth: Figma node 2310-6946 & Case Studies.pdf
+ * Reuses the exact architectural grid background styling from Insights Hero
+ */
+
+.wk-case-studies-hero {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding-top: clamp(140px, 16vh, 190px);
+  padding-bottom: clamp(64px, 8vh, 90px);
+  overflow: hidden;
+}
+
+.wk-case-studies-hero__container {
+  position: relative;
+  z-index: 2;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  text-align: center;
+}
+
+/* ========================================================
+   Eyebrow Pill Badge
+   ======================================================== */
+.wk-case-studies-hero__badge-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(20px, 2.8vh, 28px);
+}
+
+.wk-case-studies-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 18px;
+  background-color: #E0F2FE;
+  color: #0F172A;
+  border-radius: 9999px;
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(13px, 1.05vw, 14px);
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  border: 1px solid rgba(186, 230, 253, 0.6);
+  user-select: none;
+}
+
+/* ========================================================
+   Main Display Heading
+   ======================================================== */
+.wk-case-studies-hero__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(34px, 4.4vw, 62px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: #0F172A;
+  margin: 0 auto clamp(24px, 3vh, 32px);
+  max-width: 1080px;
+  text-wrap: balance;
+}
+
+.wk-case-studies-hero__title-line {
+  display: block;
+}
+
+/* 3D Glass Window Element on Line 1 */
+.wk-case-studies-hero__element-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin-left: clamp(8px, 1.2vw, 16px);
+  width: clamp(48px, 5.2vw, 76px);
+  height: clamp(48px, 5.2vw, 76px);
+}
+
+.wk-case-studies-hero__element-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Circular Icon Replacing "u" in "Business" on Line 3 */
+.wk-case-studies-hero__business-word {
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+}
+
+.wk-case-studies-hero__u-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: clamp(28px, 3.2vw, 42px);
+  height: clamp(28px, 3.2vw, 42px);
+  margin: 0 clamp(1px, 0.2vw, 3px);
+}
+
+.wk-case-studies-hero__u-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Black Circular Pointer Cursor */
+.wk-case-studies-hero__cursor-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin-left: clamp(8px, 1vw, 14px);
+  width: clamp(34px, 3.6vw, 46px);
+  height: clamp(34px, 3.6vw, 46px);
+}
+
+.wk-case-studies-hero__cursor-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform-origin: center center;
+}
+
+/* ========================================================
+   Subtitle
+   ======================================================== */
+.wk-case-studies-hero__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #64748B;
+  max-width: 680px;
+  margin: 0 auto;
+  text-wrap: balance;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 991px) {
+  .wk-case-studies-hero {
+    padding-top: clamp(120px, 14vh, 150px);
+    padding-bottom: clamp(48px, 6vh, 64px);
+  }
+
+  .wk-case-studies-hero__title {
+    font-size: clamp(28px, 4.2vw, 42px);
+  }
+}
+
+@media (max-width: 768px) {
+  .wk-case-studies-hero {
+    padding-top: 110px;
+    padding-bottom: 44px;
+  }
+
+  .wk-case-studies-hero__title {
+    font-size: clamp(24px, 6.2vw, 32px);
+    line-height: 1.22;
+  }
+
+  .wk-case-studies-hero__element-wrap {
+    width: 36px;
+    height: 36px;
+    margin-left: 6px;
+  }
+
+  .wk-case-studies-hero__u-icon-wrap {
+    width: 24px;
+    height: 24px;
+  }
+
+  .wk-case-studies-hero__cursor-wrap {
+    width: 30px;
+    height: 30px;
+    margin-left: 6px;
+  }
+
+  .wk-case-studies-hero__subtitle {
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+}

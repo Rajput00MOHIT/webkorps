@@ -1,4 +1,8 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import customSoftwareImg from '../../../assets/services/services page/custom_software.png';
 import webDevImg from '../../../assets/services/services page/web development.png';
 import mobileDevImg from '../../../assets/services/services page/Mobile_app_development.png';
@@ -11,6 +15,10 @@ import managedItImg from '../../../assets/services/services page/IT_service.png'
 import blockchainImg from '../../../assets/services/services page/blockchain.png';
 import { getImgSrc } from '../../../utils/image';
 import './ServicesGrid.css';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface ServiceEntry {
   id: string;
@@ -30,7 +38,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Build tailored software solutions designed around your business goals and workflows.',
     image: customSoftwareImg,
     alt: '3D isometric cylinder pedestal with data screens and growth chart representing custom software development',
-    href: '#contact',
+    href: '/contact-us',
   },
   {
     id: 'web-development',
@@ -39,7 +47,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Create fast, scalable web platforms that deliver seamless digital experiences.',
     image: webDevImg,
     alt: '3D circular platform with web browser window and calendar interface representing web development',
-    href: '#contact',
+    href: '/contact-us',
   },
   {
     id: 'mobile-app',
@@ -48,7 +56,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Build engaging iOS and Android apps that connect businesses with users.',
     image: mobileDevImg,
     alt: '3D smartphone displaying financial app interface on a display stage representing mobile app development',
-    href: '#contact',
+    href: '/contact-us',
   },
   {
     id: 'ai-ml',
@@ -57,7 +65,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Use AI-powered solutions to automate operations and unlock smarter decisions.',
     image: aiMlImg,
     alt: '3D architectural cube matrix with luminous blue AI block representing AI-ML development',
-    href: '#contact',
+    href: '/contact-us',
   },
   {
     id: 'cloud-application',
@@ -66,7 +74,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Scale securely with cloud applications built for performance and flexibility.',
     image: cloudAppImg,
     alt: '3D layered translucent blue cloud icon elevated on illuminated pedestal representing cloud application development',
-    href: '#contact',
+    href: '/contact-us',
   },
   {
     id: 'enterprise-software',
@@ -75,7 +83,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Streamline complex operations with enterprise-ready digital solutions.',
     image: enterpriseImg,
     alt: '3D document stack with integrated workflow tree hierarchy representing enterprise software',
-    href: '#contact',
+    href: '/contact-us',
   },
   {
     id: 'iot-application',
@@ -84,7 +92,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Connect systems and devices with intelligent IoT solutions.',
     image: iotImg,
     alt: '3D glass network gateway portals with glowing interconnecting pathway representing IoT application development',
-    href: '#contact',
+    href: '/contact-us',
   },
   {
     id: 'it-staff-augmentation',
@@ -93,7 +101,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Extend your team with experienced tech professionals when you need them.',
     image: itStaffImg,
     alt: '3D modular structural engineering blocks with luminous blue glass slab representing IT staff augmentation',
-    href: '#contact',
+    href: '/contact-us',
   },
   {
     id: 'managed-it-services',
@@ -102,7 +110,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Keep systems secure and running smoothly with reliable IT support.',
     image: managedItImg,
     alt: '3D stack of rounded acrylic glass server plates illuminated with blue gradient representing managed IT services',
-    href: '#contact',
+    href: '/contact-us',
   },
   {
     id: 'blockchain-development',
@@ -111,16 +119,106 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Build secure and transparent blockchain-powered business solutions.',
     image: blockchainImg,
     alt: '3D diagonal sequence of blue blockchain nodes and sphere representing blockchain development',
-    href: '#contact',
+    href: '/contact-us',
   },
 ];
 
 export const ServicesGrid: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const rowsRef = useRef<(HTMLElement | null)[]>([]);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const ctx = gsap.context(() => {
+      if (prefersReducedMotion) return;
+
+      // 1. Header reveal on scroll
+      if (headerRef.current) {
+        const title = headerRef.current.querySelector('.wk-services-grid__title');
+        const subtitle = headerRef.current.querySelector('.wk-services-grid__subtitle');
+
+        gsap.fromTo(
+          [title, subtitle],
+          { opacity: 0, y: 10, filter: 'blur(5px)' },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.6,
+            stagger: 0.12,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: headerRef.current,
+              start: 'top 85%',
+              once: true,
+            },
+          }
+        );
+      }
+
+      // 2. Individual service rows on scroll
+      rowsRef.current.forEach((rowEl) => {
+        if (!rowEl) return;
+
+        const textElements = rowEl.querySelectorAll(
+          '.wk-services-grid__service-title, .wk-services-grid__service-desc, .wk-services-grid__btn'
+        );
+        const visualCard = rowEl.querySelector('.wk-services-grid__visual');
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: rowEl,
+            start: 'top 80%',
+            once: true,
+          },
+        });
+
+        // Text reveal: 10px upward movement + blur-to-clear + subtle stagger
+        tl.fromTo(
+          textElements,
+          { opacity: 0, y: 10, filter: 'blur(5px)' },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.55,
+            stagger: 0.08,
+            ease: 'power2.out',
+          }
+        );
+
+        // Service illustration: rise gently from below without modifying layout dimensions or overlapping
+        if (visualCard) {
+          tl.fromTo(
+            visualCard,
+            { opacity: 0, y: 35 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.75,
+              ease: 'power3.out',
+              clearProps: 'transform',
+            },
+            0.1
+          );
+        }
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="wk-services-grid" aria-labelledby="services-grid-heading">
+    <section ref={sectionRef} className="wk-services-grid" aria-labelledby="services-grid-heading">
       <div className="wk-services-grid__container">
         {/* Section Header */}
-        <div className="wk-services-grid__header">
+        <div ref={headerRef} className="wk-services-grid__header">
           <h2 id="services-grid-heading" className="wk-services-grid__title">
             <span className="wk-services-grid__title-blue">Services</span> Built for{' '}
             <span className="wk-services-grid__title-blue">Growth</span>
@@ -138,6 +236,9 @@ export const ServicesGrid: React.FC = () => {
             return (
               <article
                 key={service.id}
+                ref={(el) => {
+                  rowsRef.current[index] = el;
+                }}
                 role="listitem"
                 className={`wk-services-grid__row ${
                   isReverse ? 'wk-services-grid__row--reverse' : ''

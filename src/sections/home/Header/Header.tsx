@@ -1,9 +1,14 @@
+'use client';
+
 import React from 'react';
+import { usePathname } from 'next/navigation';
 import mainLogo from '../../../assets/main logo.png';
 import { getImgSrc } from '../../../utils/image';
 import './Header.css';
 
 export const Header: React.FC = () => {
+  const pathname = usePathname();
+
   return (
     <header className="wk-header" role="banner">
       <div className="site-container wk-header__inner">
@@ -22,22 +27,42 @@ export const Header: React.FC = () => {
         <nav className="wk-header__nav" aria-label="Main Navigation">
           <ul className="wk-header__nav-list">
             <li>
-              <a href="/about-us" className="wk-header__nav-link">
+              <a
+                href="/about-us"
+                className={`wk-header__nav-link ${
+                  pathname === '/about-us' ? 'wk-header__nav-link--active' : ''
+                }`}
+              >
                 About
               </a>
             </li>
             <li>
-              <a href="#insights" className="wk-header__nav-link">
+              <a
+                href="/insights"
+                className={`wk-header__nav-link ${
+                  pathname === '/insights' ? 'wk-header__nav-link--active' : ''
+                }`}
+              >
                 Insights
               </a>
             </li>
             <li>
-              <a href="/#case-studies" className="wk-header__nav-link">
+              <a
+                href="/case-studies"
+                className={`wk-header__nav-link ${
+                  pathname === '/case-studies' ? 'wk-header__nav-link--active' : ''
+                }`}
+              >
                 Case Studies
               </a>
             </li>
             <li>
-              <a href="/#careers" className="wk-header__nav-link">
+              <a
+                href="/careers"
+                className={`wk-header__nav-link ${
+                  pathname === '/careers' ? 'wk-header__nav-link--active' : ''
+                }`}
+              >
                 Careers
               </a>
             </li>
@@ -46,7 +71,7 @@ export const Header: React.FC = () => {
 
         {/* Header Right Action CTA */}
         <div className="wk-header__actions">
-          <a href="#contact" className="wk-header__contact-btn">
+          <a href="/contact-us" className="wk-header__contact-btn">
             <span>Contact us</span>
             <svg
               className="wk-header__btn-icon"

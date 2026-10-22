@@ -1,0 +1,215 @@
+/**
+ * Women in Leadership Section Styles
+ * Source of Truth: Figma node 1233-11190 & attached reference
+ */
+
+.wk-women-in-leadership {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(64px, 9vh, 110px) 0 clamp(72px, 10vh, 120px);
+  overflow: hidden;
+}
+
+.wk-women-in-leadership__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* ========================================================
+   Overlapping Composition Layout
+   ======================================================== */
+.wk-women-lead__wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+/* Left: Visual Column with Light-Blue Accent Backdrop */
+.wk-women-lead__visual-col {
+  position: relative;
+  flex: 0 0 54%;
+  max-width: 980px;
+}
+
+.wk-women-lead__accent-bg {
+  position: absolute;
+  top: -24px;
+  left: 16px;
+  right: -24px;
+  bottom: 32px;
+  background-color: #D9EAFD;
+
+  z-index: 1;
+}
+
+.wk-women-lead__img-wrap {
+  position: relative;
+  z-index: 2;
+
+  overflow: hidden;
+  box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.14);
+  aspect-ratio: 1.16 / 1;
+  background-color: #F1F5F9;
+  width: 100%;
+  height: 100%;
+}
+
+.wk-women-lead__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* Right: Light-Colored Overlapping Content Card */
+.wk-women-lead__content-card {
+  position: relative;
+  z-index: 3;
+  flex: 0 0 56%;
+  max-width: 640px;
+  margin-left: -10%;
+  background-color: #F9FAFB;
+
+  padding: clamp(38px, 4.5vw, 56px) clamp(32px, 4vw, 52px);
+
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Heading: "Women in Leadership at Webkorps" */
+.wk-women-lead__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0 0 clamp(18px, 2.2vh, 26px);
+}
+
+.wk-women-lead__title-blue {
+  color: #1887C9;
+}
+
+/* Body Copy */
+.wk-women-lead__body {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(14.5px, 1.15vw, 16px);
+  font-weight: 450;
+  line-height: 1.68;
+  color: #475569;
+  margin: 0;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 991px) {
+  .wk-women-lead__wrapper {
+    align-items: center;
+  }
+
+  .wk-women-lead__visual-col {
+    flex: 0 0 50%;
+  }
+
+  .wk-women-lead__content-card {
+    flex: 0 0 58%;
+    margin-left: -8%;
+    padding: 32px 28px;
+    border-radius: 20px;
+  }
+
+  .wk-women-lead__title {
+    font-size: clamp(24px, 3vw, 32px);
+    margin-bottom: 16px;
+  }
+
+  .wk-women-lead__body {
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 767px) {
+  .wk-women-in-leadership {
+    padding: 48px 0 64px;
+  }
+
+  .wk-women-lead__wrapper {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .wk-women-lead__visual-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .wk-women-lead__accent-bg {
+    top: -12px;
+    left: 12px;
+    right: -12px;
+    bottom: 20px;
+    border-radius: 16px;
+  }
+
+  .wk-women-lead__img-wrap {
+    border-radius: 16px;
+    aspect-ratio: 1.25 / 1;
+  }
+
+  .wk-women-lead__content-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin-left: 0;
+    width: 100%;
+    padding: 28px 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  .wk-women-lead__title {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+
+  .wk-women-lead__body {
+    font-size: 14px;
+    line-height: 1.62;
+  }
+}
+
+/* ========================================================
+   Careers Page: "Be Part of Something Bigger" (100% Width & Height)
+   ======================================================== */
+#be-part-of-something-bigger .wk-women-lead__visual-col {
+  width: 100%;
+}
+
+#be-part-of-something-bigger .wk-women-lead__img-wrap {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+#be-part-of-something-bigger .wk-women-lead__img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+@media (max-width: 767px) {
+  #be-part-of-something-bigger .wk-women-lead__img-wrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}

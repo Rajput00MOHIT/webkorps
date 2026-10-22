@@ -2,7 +2,12 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './DevelopmentApproach.css';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface ProcessStep {
   id: string;
@@ -211,13 +216,82 @@ const PROCESS_STEPS: ProcessStep[] = [
 
 export const DevelopmentApproach: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeStep, setActiveStep] = useState<number>(0);
-  const [hasAnimated, setHasAnimated] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [activeStep, setActiveStep] = useState<number>(() =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 6
+      : 0
+  );
+  const [hasAnimated, setHasAnimated] = useState<boolean>(() =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
 
-  const runSequenceAnimation = () => {
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      return;
+    }
+
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
+      // 1. Master Section Entrance & Timeline Sequence
+      const masterTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          once: true,
+          onEnter: () => setHasAnimated(true),
+        },
+      });
 
+      // 1A. Subtle Zoom-in Section Entrance
+      if (containerRef.current) {
+        masterTl.fromTo(
+          containerRef.current,
+          {
+            scale: 0.96,
+            opacity: 0,
+            filter: 'blur(5px)',
+          },
+          {
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 0.7,
+            ease: 'power2.out',
+            clearProps: 'transform,filter',
+          }
+        );
+      }
+
+      // 1B. Heading and Description blur-to-clear reveal with max 10px vertical movement
+      if (headerRef.current) {
+        const title = headerRef.current.querySelector('.wk-dev-appr__title');
+        const subtitle = headerRef.current.querySelector('.wk-dev-appr__subtitle');
+
+        masterTl.fromTo(
+          [title, subtitle],
+          { opacity: 0, y: 10, filter: 'blur(5px)' },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.55,
+            stagger: 0.08,
+            ease: 'power2.out',
+          },
+          '-=0.45'
+        );
+      }
+
+      // 1C. Timeline Sequence: Preserve approved circle-and-path animation
       PROCESS_STEPS.forEach((step, idx) => {
         const stepNum = idx + 1;
         const nodeSelector = `.wk-dev-appr__step-node--${step.id}`;
@@ -227,8 +301,8 @@ export const DevelopmentApproach: React.FC = () => {
         const textSelector = `${nodeSelector} .wk-dev-appr__content`;
         const hSegmentSelector = `.wk-dev-appr__h-line-seg--${idx}`;
 
-        // 1. Activate circle (color transition from grey to active blue)
-        tl.to(
+        // Activate circle
+        masterTl.to(
           circleSelector,
           {
             backgroundColor: '#1887C9',
@@ -239,10 +313,10 @@ export const DevelopmentApproach: React.FC = () => {
             ease: 'back.out(1.5)',
             onStart: () => setActiveStep(stepNum),
           },
-          idx === 0 ? '+=0.1' : undefined
+          idx === 0 ? '-=0.15' : undefined
         );
 
-        tl.to(
+        masterTl.to(
           circleSelector,
           {
             scale: 1,
@@ -252,31 +326,31 @@ export const DevelopmentApproach: React.FC = () => {
           '>-0.05'
         );
 
-        // 2. Draw vertical line, divider, and text concurrently
-        tl.fromTo(
+        // Draw vertical line, divider, and text concurrently
+        masterTl.fromTo(
           vLineSelector,
           { scaleY: 0, transformOrigin: step.position === 'below' ? 'top center' : 'bottom center' },
           { scaleY: 1, duration: 0.2, ease: 'power2.out' },
           '<'
         );
 
-        tl.fromTo(
+        masterTl.fromTo(
           hDividerSelector,
           { scaleX: 0, opacity: 0, transformOrigin: 'center center' },
           { scaleX: 1, opacity: 1, duration: 0.2, ease: 'power2.out' },
           '<+0.05'
         );
 
-        tl.fromTo(
+        masterTl.fromTo(
           textSelector,
           { opacity: 0, y: step.position === 'below' ? 10 : -10 },
           { opacity: 1, y: 0, duration: 0.22, ease: 'power2.out' },
           '<+0.05'
         );
 
-        // 3. Draw connecting horizontal path to next node (if not the last step)
+        // Draw connecting horizontal path to next node
         if (idx < PROCESS_STEPS.length - 1) {
-          tl.fromTo(
+          masterTl.fromTo(
             hSegmentSelector,
             { strokeDashoffset: 200 },
             { strokeDashoffset: 0, duration: 0.28, ease: 'power1.inOut' },
@@ -285,47 +359,13 @@ export const DevelopmentApproach: React.FC = () => {
         }
       });
 
-      tl.add(() => {
+      masterTl.add(() => {
         setActiveStep(6);
       });
     }, sectionRef);
 
     return () => ctx.revert();
-  };
-
-  useEffect(() => {
-    const prefersReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (prefersReducedMotion) {
-      // In reduced motion mode, show all steps immediately
-      const timer = setTimeout(() => {
-        setActiveStep(6);
-        setHasAnimated(true);
-      }, 0);
-      return () => clearTimeout(timer);
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          runSequenceAnimation();
-        }
-      },
-      { threshold: 0.25 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [hasAnimated]);
+  }, []);
 
   return (
     <section
@@ -333,9 +373,9 @@ export const DevelopmentApproach: React.FC = () => {
       className="wk-dev-appr"
       aria-labelledby="dev-approach-heading"
     >
-      <div className="wk-dev-appr__container">
+      <div ref={containerRef} className="wk-dev-appr__container">
         {/* Section Heading & Subtitle */}
-        <div className="wk-dev-appr__header">
+        <div ref={headerRef} className="wk-dev-appr__header">
           <h2 id="dev-approach-heading" className="wk-dev-appr__title">
             <span className="wk-dev-appr__title-blue">Development</span> Approach
           </h2>

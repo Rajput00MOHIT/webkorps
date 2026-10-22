@@ -1,0 +1,20 @@
+/**
+ * Industries Page Layout Styles
+ */
+
+.wk-industries-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+}
+
+.wk-industries-page__main {
+  flex: 1 0 auto;
+  width: 100%;
+  position: relative;
+  outline: none;
+}

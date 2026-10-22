@@ -108,9 +108,9 @@ export const IndustriesMenu: React.FC<IndustriesMenuProps> = ({ onItemClick }) =
             Discover how AI, automation, and cloud-first engineering are reshaping operations across logistics, healthcare, fintech, and retail.
           </p>
           <a
-            href="#insights"
+            href="/insights"
             className="wk-mega-menu__industry-spotlight-link"
-            onClick={(e) => handleLinkClick(e, '#insights')}
+            onClick={(e) => handleLinkClick(e, '/insights')}
           >
             <span>Read More</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -120,6 +120,28 @@ export const IndustriesMenu: React.FC<IndustriesMenuProps> = ({ onItemClick }) =
           </a>
         </div>
       </aside>
+
+      {/* Direct Route Action to Full Industries Page */}
+      <div style={{ gridColumn: '1 / -1', marginTop: '16px', textAlign: 'center' }}>
+        <a
+          href="/industries"
+          onClick={onItemClick}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: '#1887C9',
+            fontWeight: 600,
+            fontSize: '14.5px',
+            textDecoration: 'none',
+          }}
+        >
+          <span>Explore All Industries</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
+      </div>
     </div>
   );
 };

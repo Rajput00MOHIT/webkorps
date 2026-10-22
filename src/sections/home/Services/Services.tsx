@@ -128,7 +128,7 @@ export const Services: React.FC = () => {
                 <div className="wk-service-card__overlay">
                   <p className="wk-service-card__overlay-text">Not sure which fits?</p>
                   <a
-                    href="#contact"
+                    href="/contact-us"
                     className="wk-service-card__overlay-btn"
                     aria-label={`Chat with us about ${service.title}`}
                   >

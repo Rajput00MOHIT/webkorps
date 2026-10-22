@@ -1,0 +1,537 @@
+/**
+ * Contact Us Forms — Sales Enquiry & Apply for a Job
+ * Source of truth: Reference screenshots
+ */
+
+.wk-contact-forms-section {
+  position: relative;
+  width: 100%;
+  background-color: #F8FAFC;
+  padding: clamp(48px, 6vw, 80px) 0 clamp(64px, 8vw, 100px);
+}
+
+.wk-contact-forms-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================================================
+   Segmented Tab Control
+   ========================================================================== */
+
+.wk-contact-tabs-wrapper {
+  margin-bottom: clamp(32px, 4vw, 44px);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.wk-contact-tabs {
+  display: inline-flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+
+  padding: 6px;
+
+  max-width: 100%;
+}
+
+.wk-contact-tab {
+  border: none;
+  background: transparent;
+  padding: 12px 28px;
+
+  font-family: inherit;
+  font-size: clamp(14px, 1.1vw, 15px);
+  font-weight: 600;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.wk-contact-tab:hover:not(.wk-contact-tab--active) {
+  color: #0F172A;
+  background-color: #F1F5F9;
+}
+
+.wk-contact-tab:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 2px;
+}
+
+.wk-contact-tab--active {
+  background-color: #1887C9;
+  color: #FFFFFF;
+
+}
+
+/* ==========================================================================
+   Main Form Card
+   ========================================================================== */
+
+.wk-contact-card {
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+
+  padding: clamp(28px, 5vw, 56px);
+}
+
+/* Feedback Banner */
+.wk-contact-feedback {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+
+  margin-bottom: 28px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.wk-contact-feedback--success {
+  background-color: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  color: #166534;
+}
+
+/* Header inside Form */
+.wk-contact-header {
+  text-align: center;
+  margin-bottom: clamp(32px, 4vw, 44px);
+}
+
+.wk-contact-title {
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+
+.wk-contact-title--accent {
+  color: #1887C9;
+}
+
+.wk-contact-subtitle {
+  font-size: clamp(15px, 1.2vw, 17px);
+  color: #64748B;
+  margin: 0 auto;
+  max-width: 620px;
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   Form Grid & Fields
+   ========================================================================== */
+
+.wk-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wk-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 28px;
+}
+
+.wk-contact-grid--bottom {
+  align-items: stretch;
+}
+
+.wk-contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wk-contact-field--full {
+  grid-column: 1 / -1;
+}
+
+.wk-contact-label {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.wk-contact-required {
+  color: #EF4444;
+  font-weight: 700;
+}
+
+.wk-contact-input,
+.wk-contact-textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+  color: #0F172A;
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+
+  padding: 14px 18px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.wk-contact-input::placeholder,
+.wk-contact-textarea::placeholder {
+  color: #94A3B8;
+  opacity: 1;
+}
+
+.wk-contact-input:hover,
+.wk-contact-textarea:hover {
+  border-color: #CBD5E1;
+}
+
+.wk-contact-input:focus,
+.wk-contact-textarea:focus {
+  outline: none;
+  border-color: #1887C9;
+  box-shadow: 0 0 0 3px rgba(24, 135, 201, 0.12);
+}
+
+.wk-contact-input--error,
+.wk-contact-textarea--error {
+  border-color: #EF4444 !important;
+  background-color: #FEF2F2;
+}
+
+.wk-contact-input--error:focus,
+.wk-contact-textarea--error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+.wk-contact-textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.5;
+}
+
+.wk-contact-textarea--job {
+  min-height: 140px;
+  height: 100%;
+}
+
+.wk-contact-error {
+  font-size: 12.5px;
+  color: #EF4444;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   File Upload Dropzone (Apply for a Job)
+   ========================================================================== */
+
+.wk-contact-dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1.5px dashed #CBD5E1;
+
+  background-color: #F8FAFC;
+  padding: 24px 20px;
+  min-height: 140px;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.wk-contact-dropzone:hover {
+  border-color: #1887C9;
+  background-color: rgba(24, 135, 201, 0.03);
+}
+
+.wk-contact-dropzone--dragging {
+  border-color: #1887C9;
+  background-color: rgba(24, 135, 201, 0.08);
+}
+
+.wk-contact-dropzone--error {
+  border-color: #EF4444 !important;
+  background-color: #FEF2F2;
+}
+
+.wk-contact-file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wk-contact-dropzone-prompt {
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.wk-contact-browse-btn {
+  background: none;
+  border: none;
+  color: #1887C9;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.wk-contact-browse-btn:hover {
+  color: #126ba0;
+}
+
+.wk-contact-dropzone-specs {
+  font-size: 12px;
+  color: #94A3B8;
+  line-height: 1.4;
+}
+
+.wk-contact-uploaded-file-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.wk-contact-uploaded-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.wk-contact-uploaded-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1E40AF;
+}
+
+.wk-contact-uploaded-name {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wk-contact-remove-file-btn {
+  background: none;
+  border: none;
+  color: #64748B;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+}
+
+.wk-contact-remove-file-btn:hover {
+  color: #EF4444;
+}
+
+/* ==========================================================================
+   Submit Button
+   ========================================================================== */
+
+.wk-contact-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.wk-contact-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #1887C9;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  padding: 13px 40px;
+  font-family: inherit;
+  font-size: 15.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(24, 135, 201, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-contact-submit-btn:hover:not(:disabled) {
+  background-color: #1374ae;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(24, 135, 201, 0.4);
+}
+
+.wk-contact-submit-btn:hover:not(:disabled) svg {
+  transform: translate(2px, -2px);
+}
+
+.wk-contact-submit-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.wk-contact-submit-btn:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 3px;
+}
+
+.wk-contact-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Shared Contact Information Footer Row
+   ========================================================================== */
+
+.wk-contact-footer-row {
+  margin-top: clamp(36px, 5vw, 48px);
+  padding-top: clamp(24px, 3.5vw, 36px);
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.wk-contact-footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.wk-contact-footer-heading {
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -0.01em;
+}
+
+.wk-contact-footer-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 36px);
+  flex-wrap: wrap;
+}
+
+.wk-contact-info-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #0F172A;
+  transition: opacity 0.2s ease;
+}
+
+.wk-contact-info-item:hover {
+  opacity: 0.85;
+}
+
+.wk-contact-info-item:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 4px;
+
+
+}
+
+.wk-contact-info-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #1887C9;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background-color 0.2s ease;
+}
+
+.wk-contact-info-item:hover .wk-contact-info-icon-circle {
+  transform: scale(1.06);
+  background-color: #1374ae;
+}
+
+.wk-contact-info-text {
+  font-size: clamp(14px, 1.1vw, 15.5px);
+  font-weight: 600;
+  color: #0F172A;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 840px) {
+  .wk-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .wk-contact-footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .wk-contact-footer-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  .wk-contact-card {
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .wk-contact-tabs {
+    width: 100%;
+  }
+
+  .wk-contact-tab {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    text-align: center;
+  }
+
+  .wk-contact-submit-btn {
+    width: 100%;
+  }
+}

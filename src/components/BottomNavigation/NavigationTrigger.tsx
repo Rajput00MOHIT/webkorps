@@ -9,6 +9,7 @@ interface NavigationTriggerProps {
   controlsId: string;
   onClick: () => void;
   className?: string;
+  isCurrentPage?: boolean;
 }
 
 export const NavigationTrigger: React.FC<NavigationTriggerProps> = ({
@@ -18,12 +19,15 @@ export const NavigationTrigger: React.FC<NavigationTriggerProps> = ({
   controlsId,
   onClick,
   className = '',
+  isCurrentPage = false,
 }) => {
   return (
     <button
       id={id}
       type="button"
-      className={`wk-nav-trigger ${isOpen ? 'wk-nav-trigger--active' : ''} ${className}`}
+      className={`wk-nav-trigger ${isOpen ? 'wk-nav-trigger--active' : ''} ${
+        isCurrentPage ? 'wk-nav-trigger--current-page' : ''
+      } ${className}`}
       onClick={onClick}
       aria-expanded={isOpen}
       aria-controls={controlsId}

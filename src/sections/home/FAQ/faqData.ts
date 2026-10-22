@@ -1,7 +1,9 @@
+import React from 'react';
+
 export interface FAQItemData {
   id: string;
   question: string;
-  answer: string;
+  answer: string | React.ReactNode;
   isApproved: boolean;
 }
 

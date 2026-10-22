@@ -1,0 +1,182 @@
+/**
+ * Global Presence Section
+ * Source of Truth: Figma node 1233-13677 & design reference
+ * Layout:
+ * - Solid black section background (#000000)
+ * - Centered display title ("Our" in white for contrast on black, "Global Presence" in Webkorps blue #1887C9)
+ * - Centered subtitle ("Delivering excellence to clients across multiple countries and industries.")
+ * - Clean 80px spacing (no debug lines, pink stripes, or 80 markers)
+ * - 2-column, 3-row office cards grid with light-blue (#D9F0FF) overlapping title tabs
+ */
+
+.wk-global-presence-section {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  padding: clamp(64px, 7vw, 100px) 0 clamp(80px, 9vw, 120px);
+  overflow: hidden;
+}
+
+.wk-global-presence-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Header (Title + Subtitle)
+   ========================================================================== */
+
+.wk-global-presence-header {
+  text-align: center;
+  margin-bottom: 80px;
+  /* Exact 80px spacing from Figma inspect without any debug markers */
+}
+
+.wk-global-presence-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(32px, 3.8vw, 46px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+.wk-global-presence-title--prefix {
+  color: #000000;
+}
+
+.wk-global-presence-title--accent {
+  color: #1887C9;
+}
+
+.wk-global-presence-subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  color: #94A3B8;
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   Two-Column, Three-Row Grid
+   ========================================================================== */
+
+.wk-global-presence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px clamp(20px, 2.5vw, 36px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Office Card with Overlapping Blue Title Tab
+   ========================================================================== */
+
+.wk-office-card {
+  position: relative;
+  background-color: #F9FAFB;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  padding: 38px clamp(20px, 2.5vw, 32px) 28px clamp(20px, 2.5vw, 32px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 180px;
+
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-office-card:hover {
+  transform: translateY(-3px);
+
+}
+
+/* Overlapping Blue Title Tab */
+.wk-office-card__tab {
+  position: absolute;
+  top: -24px;
+  left: -1px;
+  height: 48px;
+  background-color: #D9F0FF;
+  padding: 0 clamp(24px, 2.5vw, 36px) 0 clamp(20px, 2vw, 28px);
+  display: inline-flex;
+  align-items: center;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-bottom-left-radius: 0;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.wk-office-card__tab-text {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(16px, 1.25vw, 18.5px);
+  font-weight: 700;
+  color: #1E293B;
+  margin: 0;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+/* Card Body Content */
+.wk-office-card__content {
+  margin-top: 6px;
+}
+
+.wk-office-card__address {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(14.5px, 1.1vw, 16px);
+  line-height: 1.6;
+  color: #334155;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 880px) {
+  .wk-global-presence-header {
+    margin-bottom: 60px;
+  }
+
+  .wk-global-presence-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .wk-office-card {
+    min-height: auto;
+    padding: 34px 22px 24px;
+  }
+
+  .wk-office-card__tab {
+    top: -22px;
+    height: 44px;
+    padding: 0 24px 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-global-presence-header {
+    margin-bottom: 48px;
+  }
+
+  .wk-office-card {
+    border-radius: 14px;
+  }
+
+  .wk-office-card__tab {
+    border-top-left-radius: 14px;
+    padding: 0 20px 0 16px;
+  }
+}

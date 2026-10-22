@@ -1,0 +1,17 @@
+/**
+ * Case Studies Page Top-Level Layout Styles
+ */
+
+.wk-case-studies-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  overflow-x: hidden;
+}
+
+.wk-case-studies-page__main {
+  position: relative;
+  width: 100%;
+}

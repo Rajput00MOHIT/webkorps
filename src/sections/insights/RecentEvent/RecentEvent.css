@@ -1,0 +1,263 @@
+/**
+ * Recent Event Section Styles
+ * Source of Truth: Figma node 1233-11204 & reference screenshot
+ */
+
+.wk-recent-event {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(64px, 9vh, 100px) 0 clamp(72px, 10vh, 110px);
+  overflow: hidden;
+}
+
+.wk-recent-event__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* ========================================================
+   Header Row: Title & Circular CES Logo
+   ======================================================== */
+.wk-recent-event__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: clamp(32px, 4.5vh, 48px);
+}
+
+.wk-recent-event__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(30px, 3.8vw, 46px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-recent-event__title-accent {
+  color: #1887C9;
+}
+
+.wk-recent-event__logo-badge {
+  flex-shrink: 0;
+  width: clamp(100px, 11vw, 136px);
+  height: clamp(100px, 11vw, 136px);
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.wk-recent-event__logo-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.1);
+}
+
+.wk-recent-event__logo-img {
+  width: 100%;
+  max-width: 106px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========================================================
+   Main Grid: Image Column & Content Column
+   ======================================================== */
+.wk-recent-event__grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(36px, 5vw, 64px);
+  width: 100%;
+}
+
+/* Left: Media Column */
+.wk-recent-event__media-col {
+  flex: 0 0 54%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wk-recent-event__image-card {
+  width: 100%;
+
+  overflow: hidden;
+  background-color: #0F172A;
+
+  aspect-ratio: 1.48 / 1;
+}
+
+.wk-recent-event__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* 5-Position Pagination Indicator */
+.wk-recent-event__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.wk-recent-event__dot {
+  padding: 0;
+  border: none;
+  background-color: #E2E8F0;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-recent-event__dot:hover {
+  background-color: #CBD5E1;
+}
+
+.wk-recent-event__dot--active {
+  width: 24px;
+  border-radius: 9999px;
+  background-color: #1887C9;
+}
+
+/* Right: Content Column */
+.wk-recent-event__content-col {
+  flex: 0 0 42%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.wk-recent-event__badge {
+  display: inline-block;
+  background-color: #E0F2FE;
+  color: #0F172A;
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  margin-bottom: clamp(16px, 2.4vh, 24px);
+}
+
+.wk-recent-event__desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 450;
+  line-height: 1.68;
+  color: #475569;
+  margin: 0 0 clamp(24px, 3vh, 32px);
+}
+
+.wk-recent-event__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1887C9;
+  color: #FFFFFF;
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px -4px rgba(24, 135, 201, 0.35);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.wk-recent-event__cta:hover {
+  background-color: #1574ad;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(24, 135, 201, 0.45);
+  color: #FFFFFF;
+}
+
+.wk-recent-event__cta-arrow {
+  display: inline-block;
+  font-size: 16px;
+  transition: transform 0.25s ease;
+}
+
+.wk-recent-event__cta:hover .wk-recent-event__cta-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 991px) {
+  .wk-recent-event__grid {
+    gap: 32px;
+  }
+
+  .wk-recent-event__media-col {
+    flex: 0 0 52%;
+  }
+
+  .wk-recent-event__content-col {
+    flex: 0 0 44%;
+  }
+}
+
+@media (max-width: 768px) {
+  .wk-recent-event {
+    padding: 52px 0 64px;
+  }
+
+  .wk-recent-event__header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .wk-recent-event__logo-badge {
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+  }
+
+  .wk-recent-event__grid {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .wk-recent-event__media-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .wk-recent-event__content-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .wk-recent-event__title {
+    font-size: 28px;
+  }
+
+  .wk-recent-event__desc {
+    font-size: 15px;
+    line-height: 1.62;
+  }
+}

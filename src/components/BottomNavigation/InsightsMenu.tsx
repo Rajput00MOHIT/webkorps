@@ -75,8 +75,8 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
               image={trendsTechImg}
               imageAlt="Trends on Modern Technologies"
               ctaText="Explore Blogs"
-              href="#insights"
-              onClick={(e) => handleLinkClick(e, '#insights')}
+              href="/insights"
+              onClick={(e) => handleLinkClick(e, '/insights')}
             />
 
             <FeaturedInsightCard
@@ -87,8 +87,8 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
               image={eventsWebinarsImg}
               imageAlt="Industry Events & Webinars"
               ctaText="View Events"
-              href="#insights"
-              onClick={(e) => handleLinkClick(e, '#insights')}
+              href="/insights"
+              onClick={(e) => handleLinkClick(e, '/insights')}
             />
           </div>
 
@@ -108,8 +108,8 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
               image={trendsTechImg}
               imageAlt="Trends on Modern Technologies"
               ctaText="Read Latest Articles"
-              href="#insights"
-              onClick={(e) => handleLinkClick(e, '#insights')}
+              href="/insights"
+              onClick={(e) => handleLinkClick(e, '/insights')}
             />
           </div>
 
@@ -146,8 +146,8 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
               image={eventsWebinarsImg}
               imageAlt="Industry Events & Summits"
               ctaText="Explore Calendar"
-              href="#insights"
-              onClick={(e) => handleLinkClick(e, '#insights')}
+              href="/insights"
+              onClick={(e) => handleLinkClick(e, '/insights')}
             />
           </div>
 
@@ -187,8 +187,8 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
               image={eventsWebinarsImg}
               imageAlt="Webinars and Tech Sessions"
               ctaText="Join Next Webinar"
-              href="#insights"
-              onClick={(e) => handleLinkClick(e, '#insights')}
+              href="/insights"
+              onClick={(e) => handleLinkClick(e, '/insights')}
             />
           </div>
 
@@ -244,6 +244,28 @@ export const InsightsMenu: React.FC<InsightsMenuProps> = ({ onItemClick }) => {
           <ImpactPanel />
         </div>
       )}
+
+      {/* Direct Route Action to Full Insights Page */}
+      <div style={{ marginTop: '20px', textAlign: 'center' }}>
+        <a
+          href="/insights"
+          onClick={onItemClick}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: '#1887C9',
+            fontWeight: 600,
+            fontSize: '14.5px',
+            textDecoration: 'none',
+          }}
+        >
+          <span>Explore All Thought Leadership & Insights</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
+      </div>
     </div>
   );
 };

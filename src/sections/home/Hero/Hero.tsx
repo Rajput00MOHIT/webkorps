@@ -108,25 +108,21 @@ export const Hero: React.FC = () => {
           </p>
 
           <div className="wk-hero__actions">
-            <button
-              type="button"
+            <Link
+              href="/case-studies"
               className="wk-hero__btn-secondary"
-              onClick={() => {
-                const el = document.getElementById('case-studies');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
             >
               Explore Our Success Stories
-            </button>
+            </Link>
 
-            <a href="#contact" className="wk-hero__btn-primary">
+            <Link href="/contact-us" className="wk-hero__btn-primary">
               <span>Start the Conversation</span>
               <span className="wk-hero__btn-icon-circle" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 19 18" fill="none">
                   <path d="M10.3361 17.1441L8.6823 15.5087L14.4246 9.76644H0V7.37766H14.4246L8.6823 1.64459L10.3361 0L18.9081 8.57205L10.3361 17.1441Z" fill="#1887C9" />
                 </svg>
               </span>
-            </a>
+            </Link>
           </div>
         </div>
 

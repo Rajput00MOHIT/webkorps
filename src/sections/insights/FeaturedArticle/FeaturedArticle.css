@@ -1,0 +1,195 @@
+/**
+ * Featured Article Section Styles
+ * Source of Truth: Figma node 2288-1015 & attached reference
+ */
+
+.wk-featured-article {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(48px, 6vh, 80px) 0 clamp(64px, 8vh, 100px);
+}
+
+.wk-featured-article__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* ========================================================
+   Header Row: Two-Column Headline & CTA
+   ======================================================== */
+.wk-featured-article__header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: clamp(28px, 4vh, 40px);
+}
+
+.wk-featured-article__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(26px, 3.2vw, 42px);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0;
+  max-width: 840px;
+}
+
+.wk-featured-article__title-highlight {
+  color: #1887C9;
+}
+
+.wk-featured-article__title-br {
+  display: block;
+}
+
+.wk-featured-article__action-wrap {
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+/* Primary "Read Now ↗" Button */
+.wk-featured-article__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #1887C9;
+  color: #FFFFFF;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(24, 135, 201, 0.22);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.wk-featured-article__btn:hover {
+  background-color: #1474AE;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(24, 135, 201, 0.35);
+}
+
+.wk-featured-article__btn:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 3px;
+}
+
+.wk-featured-article__btn-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.wk-featured-article__btn:hover .wk-featured-article__btn-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* ========================================================
+   Featured Image Panel & Badge
+   ======================================================== */
+.wk-featured-article__banner-panel {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: clamp(14px, 1.8vw, 22px);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+}
+
+.wk-featured-article__img-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.wk-featured-article__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Latest Blog Badge */
+.wk-featured-article__badge-wrap {
+  position: absolute;
+  bottom: clamp(14px, 2.2vw, 24px);
+  right: clamp(14px, 2.2vw, 24px);
+  z-index: 2;
+}
+
+.wk-featured-article__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E0F2FE;
+  color: #0F172A;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  border: 1px solid rgba(24, 135, 201, 0.16);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05);
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 860px) {
+  .wk-featured-article__header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .wk-featured-article__title-br {
+    display: inline;
+  }
+
+  .wk-featured-article__action-wrap {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .wk-featured-article {
+    padding: 36px 0 56px;
+  }
+
+  .wk-featured-article__title {
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
+  .wk-featured-article__title-br {
+    display: none;
+  }
+
+  .wk-featured-article__btn {
+    font-size: 13px;
+    padding: 10px 20px;
+  }
+
+  .wk-featured-article__badge-wrap {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .wk-featured-article__badge {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+}

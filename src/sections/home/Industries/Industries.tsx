@@ -28,7 +28,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Improve productivity, streamline production workflows, and connect operations with purpose-built digital solutions.',
     image: manufacturingArt,
     imageAlt: 'High-tech precision industrial robotics and automation equipment',
-    href: '#contact',
+    href: '/industries',
   },
   {
     id: 'logistics-supply-chain',
@@ -36,7 +36,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Improve shipment visibility, coordinate supply chain activities, and optimize operational workflows with connected technology.',
     image: logisticsArt,
     imageAlt: 'Global logistics cargo freight and intelligent supply chain systems',
-    href: '#contact',
+    href: '/industries',
   },
   {
     id: 'education-e-learning',
@@ -44,7 +44,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Create engaging digital learning experiences with scalable platforms, interactive features, and streamlined learning management.',
     image: educationArt,
     imageAlt: 'Digital e-learning platform and modern knowledge delivery ecosystems',
-    href: '#contact',
+    href: '/industries',
   },
   {
     id: 'healthcare',
@@ -52,7 +52,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Enhance patient experiences, streamline clinical workflows, and improve care coordination with secure, scalable digital healthcare solutions.',
     image: healthcareArt,
     imageAlt: 'Intelligent digital healthcare diagnostics and clinical data systems',
-    href: '#contact',
+    href: '/industries',
   },
   {
     id: 'fintech',
@@ -60,7 +60,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Strengthen financial operations, enhance transaction security, and deliver seamless digital banking experiences with innovative fintech solutions.',
     image: fintechArt,
     imageAlt: 'Secure digital banking architecture and algorithmic financial technology',
-    href: '#contact',
+    href: '/industries',
   },
   {
     id: 'real-estate',
@@ -68,7 +68,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Simplify property management, streamline real estate operations, and enhance customer experiences with connected digital solutions.',
     image: realestateArt,
     imageAlt: 'Modern smart property management architecture and connected spaces',
-    href: '#contact',
+    href: '/industries',
   },
 ];
 
@@ -156,7 +156,7 @@ export const Industries: React.FC = () => {
           </div>
           <div className="wk-industries__header-action">
             <a
-              href="#contact"
+              href="/industries"
               className="wk-industries__view-all"
               aria-label="View all industry solutions"
             >

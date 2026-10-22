@@ -44,7 +44,7 @@ export const AboutCTA: React.FC = () => {
 
             <div className="wk-about-cta__action">
               <a
-                href="#contact"
+                href="/contact-us"
                 className="wk-about-cta__btn"
                 aria-label="Let's Talk - Contact Webkorps"
               >

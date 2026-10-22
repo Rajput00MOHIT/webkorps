@@ -125,9 +125,11 @@ export const ContactForm: React.FC = () => {
     setStatus('submitting');
 
     try {
-      // Standalone client-side form interaction
-      await new Promise((resolve) => setTimeout(resolve, 500));
-
+      const subject = encodeURIComponent(`Consultation Request from ${values.fullName}`);
+      const body = encodeURIComponent(
+        `Full Name: ${values.fullName}\nEmail: ${values.email}\nPhone: ${values.phone || 'Not provided'}\n\nProject Requirements / Message:\n${values.message}`
+      );
+      window.location.href = `mailto:contact@webkorps.com?subject=${subject}&body=${body}`;
       setStatus('success');
       setValues({ fullName: '', email: '', phone: '', message: '' });
       setTouched({ fullName: false, email: false, phone: false, message: false });
@@ -146,9 +148,9 @@ export const ContactForm: React.FC = () => {
               <polyline points="22 4 12 14.01 9 11.01" />
             </svg>
           </div>
-          <h3 className="wk-contact__success-title">Message Sent Successfully!</h3>
+          <h3 className="wk-contact__success-title">Message Prepared!</h3>
           <p className="wk-contact__success-text">
-            Thank you for reaching out. A Webkorps technical expert will review your requirements and respond within 24 hours.
+            Opening your email client to send your message to contact@webkorps.com. If your application did not launch automatically, you can write to us directly at contact@webkorps.com.
           </p>
           <button
             type="button"

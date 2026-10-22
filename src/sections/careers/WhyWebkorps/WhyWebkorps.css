@@ -1,0 +1,277 @@
+/**
+ * Why Webkorps Section Styles
+ * Source of Truth: Figma node 1233-13051 & reference screenshot
+ * Features:
+ * - Generous card height providing distinct breathing space / gap between top text and bottom SVG
+ * - 2-row layout: Row 1 (3 tall cards), Row 2 (2 wide cards)
+ * - Precision corner-anchored vector wireframes
+ * - Responsive breakpoints
+ */
+
+.wk-why-webkorps {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(64px, 7vw, 108px) 0;
+  overflow: hidden;
+}
+
+.wk-why-webkorps__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ==========================================================================
+   Centered Section Header
+   ========================================================================== */
+
+.wk-why-webkorps__header {
+  text-align: center;
+  margin-bottom: clamp(44px, 5.5vw, 64px);
+}
+
+.wk-why-webkorps__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2.4rem, 3.6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0 0 12px;
+}
+
+.wk-why-webkorps__title--accent {
+  color: #1887C9;
+}
+
+.wk-why-webkorps__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: #475569;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Grids for Row 1 (3 cards) & Row 2 (2 cards)
+   ========================================================================== */
+
+.wk-why-webkorps__grid {
+  display: grid;
+  gap: 20px;
+}
+
+.wk-why-webkorps__grid--row1 {
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 20px;
+}
+
+.wk-why-webkorps__grid--row2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ==========================================================================
+   Card Styling with Generous Vertical Space
+   ========================================================================== */
+
+.wk-why-card {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+
+  padding: 40px 36px;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wk-why-card--wide {
+  min-height: 430px;
+  padding: 40px 36px;
+}
+
+.wk-why-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+}
+
+/* Featured Card (Card 2 - Custom Solutions) */
+.wk-why-card--featured {
+  background-color: #1787C9;
+  border-color: #1787C9;
+}
+
+.wk-why-card--featured:hover {
+  box-shadow: 0 16px 36px rgba(23, 135, 201, 0.28);
+}
+
+.wk-why-card--featured .wk-why-card__title {
+  color: #FFFFFF;
+}
+
+.wk-why-card--featured .wk-why-card__desc {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Card Content Area (Text Block at Top) */
+.wk-why-card__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-why-card__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.75rem, 2.2vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0 0 14px;
+}
+
+.wk-why-card__br {
+  display: inline;
+}
+
+.wk-why-card__desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 0.925rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #475569;
+  max-width: 240px;
+  margin: 0;
+}
+
+.wk-why-card--wide .wk-why-card__desc {
+  max-width: 250px;
+}
+
+/* ==========================================================================
+   Decorative SVG (Bottom-Right Anchored with Clear Gap from Top Text)
+   ========================================================================== */
+
+.wk-why-card__svg-wrap {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: visible;
+  width: 220px;
+  height: 235px;
+}
+
+.wk-why-card--wide .wk-why-card__svg-wrap {
+  width: 270px;
+  height: 260px;
+}
+
+.wk-why-card__svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom right;
+  display: block;
+}
+
+.wk-why-card__svg--custom {
+  width: 95%;
+  height: 95%;
+}
+
+.wk-why-card__svg--latest {
+  width: 100%;
+  height: 100%;
+}
+
+.wk-why-card__svg--longterm {
+  width: 95%;
+  height: 95%;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+/* Tablet (1024px and down) */
+@media (max-width: 1024px) {
+  .wk-why-webkorps__grid--row1 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wk-why-webkorps__grid--row1 .wk-why-card:nth-child(3) {
+    grid-column: span 2;
+  }
+
+  .wk-why-webkorps__grid--row2 {
+    grid-template-columns: 1fr;
+  }
+
+  .wk-why-card {
+    min-height: 420px;
+    padding: 36px 30px;
+  }
+}
+
+/* Mobile (768px and down) */
+@media (max-width: 768px) {
+  .wk-why-webkorps {
+    padding: 52px 0;
+  }
+
+  .wk-why-webkorps__container {
+    padding: 0 20px;
+  }
+
+  .wk-why-webkorps__header {
+    margin-bottom: 32px;
+  }
+
+  .wk-why-webkorps__grid--row1,
+  .wk-why-webkorps__grid--row2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .wk-why-webkorps__grid--row1 .wk-why-card:nth-child(3) {
+    grid-column: span 1;
+  }
+
+  .wk-why-card {
+    min-height: 360px;
+    padding: 30px 24px;
+    border-radius: 10px;
+  }
+
+  .wk-why-card__title {
+    font-size: 1.65rem;
+  }
+
+  .wk-why-card__br {
+    display: inline;
+  }
+
+  .wk-why-card__desc {
+    max-width: 100%;
+  }
+
+  .wk-why-card__svg-wrap,
+  .wk-why-card--wide .wk-why-card__svg-wrap {
+    width: 180px;
+    height: 185px;
+  }
+}

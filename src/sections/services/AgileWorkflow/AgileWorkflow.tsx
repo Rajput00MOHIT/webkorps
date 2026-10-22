@@ -1,9 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import agileWorkflowImg from '../../../assets/services/Agile_workflow.png';
 import { getImgSrc } from '../../../utils/image';
 import './AgileWorkflow.css';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface WorkflowStep {
   id: string;
@@ -53,16 +59,94 @@ const WORKFLOW_STEPS: WorkflowStep[] = [
 export const AgileWorkflow: React.FC = () => {
   // Product Vision open by default per Figma reference
   const [openId, setOpenId] = useState<string | null>('product-vision');
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const visualRef = useRef<HTMLDivElement>(null);
+  const accordionItemsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const handleToggle = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const ctx = gsap.context(() => {
+      if (prefersReducedMotion) return;
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 78%',
+          once: true,
+        },
+      });
+
+      // 1. Reveal header with short fade and 10px upward movement
+      if (headerRef.current) {
+        const title = headerRef.current.querySelector('.wk-agile-workflow__title');
+        const subtitle = headerRef.current.querySelector('.wk-agile-workflow__subtitle');
+
+        tl.fromTo(
+          [title, subtitle],
+          { opacity: 0, y: 10, filter: 'blur(5px)' },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.55,
+            stagger: 0.1,
+            ease: 'power2.out',
+          }
+        );
+      }
+
+      // 2. Reveal illustration from below
+      if (visualRef.current) {
+        tl.fromTo(
+          visualRef.current,
+          { opacity: 0, y: 35 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.75,
+            ease: 'power3.out',
+            clearProps: 'transform',
+          },
+          '-=0.3'
+        );
+      }
+
+      // 3. Reveal accordion items in a controlled stagger
+      if (accordionItemsRef.current.length > 0) {
+        tl.fromTo(
+          accordionItemsRef.current,
+          { opacity: 0, y: 15 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.07,
+            ease: 'power2.out',
+            clearProps: 'transform',
+          },
+          '-=0.5'
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="wk-agile-workflow" aria-labelledby="agile-workflow-heading">
+    <section ref={sectionRef} className="wk-agile-workflow" aria-labelledby="agile-workflow-heading">
       <div className="wk-agile-workflow__container">
         {/* Section Header */}
-        <div className="wk-agile-workflow__header">
+        <div ref={headerRef} className="wk-agile-workflow__header">
           <h2 id="agile-workflow-heading" className="wk-agile-workflow__title">
             <span className="wk-agile-workflow__title-blue">Agile workflows</span> that deliver
             real results
@@ -76,7 +160,7 @@ export const AgileWorkflow: React.FC = () => {
         {/* 2-Column Grid: Left Illustration + Right Accordion */}
         <div className="wk-agile-workflow__grid">
           {/* Left Column: 3D Illustration Card */}
-          <div className="wk-agile-workflow__visual-col">
+          <div ref={visualRef} className="wk-agile-workflow__visual-col">
             <div className="wk-agile-workflow__image-card">
               <img
                 src={getImgSrc(agileWorkflowImg)}
@@ -93,7 +177,7 @@ export const AgileWorkflow: React.FC = () => {
           {/* Right Column: Accordion List */}
           <div className="wk-agile-workflow__accordion-col">
             <div className="wk-agile-workflow__accordion-list" role="list">
-              {WORKFLOW_STEPS.map((step) => {
+              {WORKFLOW_STEPS.map((step, index) => {
                 const isOpen = openId === step.id;
                 const headerId = `wk-agile-header-${step.id}`;
                 const panelId = `wk-agile-panel-${step.id}`;
@@ -101,6 +185,9 @@ export const AgileWorkflow: React.FC = () => {
                 return (
                   <div
                     key={step.id}
+                    ref={(el) => {
+                      accordionItemsRef.current[index] = el;
+                    }}
                     role="listitem"
                     className={`wk-agile-workflow__item ${isOpen ? 'is-open' : ''}`}
                   >

@@ -1,0 +1,230 @@
+/**
+ * What We Value Most Section Styles
+ * Source of Truth: Figma node 1233-12945 & reference screenshot
+ * Features:
+ * - Left-aligned header with "Value Most" in Webkorps blue (#1887C9)
+ * - 3 equal-width cards in a single row on desktop
+ * - Off-white card surface (#F8FAFC) with rounded top corners (28px 28px 0 0)
+ * - Large light-grey decorative numbers (01, 02, 03) partially cropped at the card bottom
+ * - Responsive vertical stacking on mobile
+ */
+
+.wk-value-most {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(64px, 8vw, 108px) 0 0;
+  overflow: hidden;
+}
+
+.wk-value-most__container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ==========================================================================
+   Left-Aligned Section Header
+   ========================================================================== */
+
+.wk-value-most__header {
+  text-align: left;
+  margin-bottom: clamp(48px, 6vw, 68px);
+}
+
+.wk-value-most__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2.25rem, 3.8vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0 0 16px;
+}
+
+.wk-value-most__title--accent {
+  color: #1887C9;
+}
+
+.wk-value-most__desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #475569;
+  max-width: 680px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   3 Value Cards Grid
+   ========================================================================== */
+
+.wk-value-most__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 28px);
+  align-items: stretch;
+}
+
+.wk-value-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #F8FAFC;
+  border-radius: 28px 28px 0 0;
+  border: 1px solid #EDF2F7;
+  border-bottom: none;
+  overflow: hidden;
+  padding: clamp(36px, 4vw, 48px) clamp(24px, 3vw, 40px) 0;
+  min-height: clamp(440px, 40vw, 540px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wk-value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+}
+
+/* Card Content Area */
+.wk-value-card__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-value-card__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.85rem, 2.3vw, 2.375rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-value-card__title-line {
+  display: block;
+}
+
+.wk-value-card__supporting {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #334155;
+  margin: 22px 0 6px;
+}
+
+.wk-value-card__desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #64748B;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Large Decorative Number (01, 02, 03)
+   ========================================================================== */
+
+.wk-value-card__number-wrap {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  padding-top: 24px;
+  line-height: 0.8;
+  overflow: hidden;
+  margin-bottom: -0.16em;
+  user-select: none;
+  pointer-events: none;
+}
+
+.wk-value-card__number {
+  display: block;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(140px, 14vw, 210px);
+  font-weight: 800;
+  color: #E2E8F0;
+  letter-spacing: -0.05em;
+  line-height: 0.82;
+  text-align: left;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+/* Tablet (1024px and down) */
+@media (max-width: 1024px) {
+  .wk-value-most {
+    padding-top: 64px;
+  }
+
+  .wk-value-most__grid {
+    gap: 16px;
+  }
+
+  .wk-value-card {
+    padding: 32px 24px 0;
+    min-height: 400px;
+  }
+
+  .wk-value-card__title {
+    font-size: 1.75rem;
+  }
+
+  .wk-value-card__number {
+    font-size: 130px;
+  }
+}
+
+/* Mobile (768px and down) */
+@media (max-width: 768px) {
+  .wk-value-most {
+    padding-top: 56px;
+  }
+
+  .wk-value-most__container {
+    padding: 0 20px;
+  }
+
+  .wk-value-most__header {
+    margin-bottom: 40px;
+  }
+
+  .wk-value-most__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .wk-value-card {
+    border-radius: 24px;
+    border-bottom: 1px solid #EDF2F7;
+    min-height: 320px;
+    padding: 32px 24px 0;
+  }
+
+  .wk-value-card__title {
+    font-size: 1.75rem;
+  }
+
+  .wk-value-card__number-wrap {
+    margin-bottom: -0.12em;
+  }
+
+  .wk-value-card__number {
+    font-size: 120px;
+  }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .wk-value-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}

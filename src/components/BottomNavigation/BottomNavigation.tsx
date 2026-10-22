@@ -178,6 +178,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = () => {
               id="trigger-services"
               label="Services"
               isOpen={activeMenu === 'services'}
+              isCurrentPage={pathname === '/services'}
               controlsId="mega-menu-services"
               onClick={() => toggleMenu('services')}
             />
@@ -186,6 +187,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = () => {
               id="trigger-industries"
               label="Industries"
               isOpen={activeMenu === 'industries'}
+              isCurrentPage={pathname === '/industries'}
               controlsId="mega-menu-industries"
               onClick={() => toggleMenu('industries')}
             />
@@ -194,6 +196,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = () => {
               id="trigger-case-studies"
               label="Case Studies"
               isOpen={activeMenu === 'case-studies'}
+              isCurrentPage={pathname === '/case-studies'}
               controlsId="mega-menu-case-studies"
               onClick={() => toggleMenu('case-studies')}
             />
@@ -202,6 +205,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = () => {
               id="trigger-technologies"
               label="Technologies"
               isOpen={activeMenu === 'technologies'}
+              isCurrentPage={pathname === '/technologies'}
               controlsId="mega-menu-technologies"
               onClick={() => toggleMenu('technologies')}
             />
@@ -210,6 +214,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = () => {
               id="trigger-insights"
               label="Insights"
               isOpen={activeMenu === 'insights'}
+              isCurrentPage={pathname === '/insights'}
               controlsId="mega-menu-insights"
               onClick={() => toggleMenu('insights')}
             />

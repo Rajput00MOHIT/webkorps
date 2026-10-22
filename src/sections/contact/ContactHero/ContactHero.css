@@ -1,0 +1,232 @@
+/**
+ * Contact Us Hero Section Styles
+ * Source of Truth: Figma node 1233-13323 & reference screenshot
+ * Features:
+ * - Reuses exact architectural grid background from About Hero (.wk-about-hero__grid-bg)
+ * - Eyebrow pill badge: "Contact Us"
+ * - Centered 2-line display heading:
+ *   Line 1: "Conn[phone icon]ct With Our"
+ *   Line 2: "Experts [cursor pointer]"
+ * - Micro-interactive cursor pointer
+ * - Centered supporting subtitle
+ */
+
+.wk-contact-hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 76px);
+  min-height: calc(100dvh - 76px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  padding: clamp(64px, 10vh, 112px) 0 clamp(64px, 10vh, 120px);
+}
+
+.wk-contact-hero__container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+}
+
+/* ==========================================================================
+   Top Pill Eyebrow Badge
+   ========================================================================== */
+
+.wk-contact-hero__badge-wrapper {
+  margin-bottom: clamp(20px, 3.5vh, 32px);
+}
+
+.wk-contact-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E0F2FE;
+  color: #0F172A;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 8px 24px;
+  border-radius: 9999px;
+  border: 1px solid rgba(24, 135, 201, 0.18);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Main Display 2-Line Heading
+   ========================================================================== */
+
+.wk-contact-hero__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(34px, 5.2vw, 68px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  color: #0F172A;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1em;
+}
+
+.wk-contact-hero__title-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28em;
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wk-contact-hero__title-line {
+    white-space: nowrap;
+  }
+}
+
+.wk-contact-hero__title-line--second {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Word: "Connect" with embedded Phone SVG replacing "e" */
+.wk-contact-hero__connect-word {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.wk-contact-hero__phone-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 0.74em;
+  height: 0.74em;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  margin: 0 0.03em;
+  transform: translateY(0.01em);
+  padding: 3px;
+  box-shadow: 0 2px 10px rgba(24, 135, 201, 0.2);
+  user-select: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.wk-contact-hero__phone-icon-wrap:hover {
+  transform: translateY(-0.06em) scale(1.08);
+  box-shadow: 0 6px 16px rgba(24, 135, 201, 0.32);
+}
+
+.wk-contact-hero__phone-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Word: "Experts" with trailing custom pointer cursor */
+.wk-contact-hero__experts-word {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  white-space: nowrap;
+}
+
+.wk-contact-hero__cursor-wrap {
+  display: inline-block;
+  position: relative;
+  width: 0.72em;
+  height: 0.72em;
+  margin-left: 0.1em;
+  vertical-align: -0.06em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wk-contact-hero__cursor-svg {
+  position: absolute;
+  top: -0.1em;
+  left: -0.05em;
+  width: 1.15em;
+  height: 1.2em;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-contact-hero:hover .wk-contact-hero__cursor-svg {
+  transform: translate(3px, -3px) rotate(4deg);
+}
+
+/* ==========================================================================
+   Supporting Subtitle
+   ========================================================================== */
+
+.wk-contact-hero__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(16px, 1.35vw, 19px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #64748B;
+  max-width: 620px;
+  margin: clamp(20px, 3vh, 32px) auto 0;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .wk-contact-hero {
+    padding: clamp(48px, 8vh, 80px) 0;
+  }
+
+  .wk-contact-hero__title {
+    font-size: clamp(30px, 7vw, 42px);
+    line-height: 1.22;
+  }
+
+  .wk-contact-hero__title-line {
+    flex-wrap: wrap;
+    gap: 0.2em;
+  }
+
+  .wk-contact-hero__subtitle {
+    font-size: 15px;
+    padding: 0 8px;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-contact-hero__title {
+    font-size: clamp(26px, 7.5vw, 32px);
+  }
+
+  .wk-contact-hero__badge {
+    font-size: 13px;
+    padding: 6px 18px;
+  }
+
+  .wk-contact-hero__phone-icon-wrap {
+    width: 0.8em;
+    height: 0.8em;
+  }
+}

@@ -1,0 +1,132 @@
+/**
+ * Insights Quote Section Styles
+ * Source of Truth: Figma node 1233-11198 & reference screenshot
+ */
+
+.wk-insights-quote {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(72px, 11vh, 130px) 0 clamp(80px, 12vh, 140px);
+  overflow: hidden;
+}
+
+.wk-insights-quote__container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wk-insights-quote__inner {
+  position: relative;
+  display: inline-block;
+  max-width: 940px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Decorative Oversized Quotation Marks */
+.wk-insights-quote__mark-wrap {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.wk-insights-quote__mark-wrap--tr {
+  top: -26px;
+  right: -24px;
+}
+
+.wk-insights-quote__mark-wrap--bl {
+  bottom: -32px;
+  left: 60px;
+}
+
+.wk-insights-quote__mark {
+  display: block;
+  width: clamp(56px, 6.2vw, 88px);
+  height: auto;
+  object-fit: contain;
+}
+
+.wk-insights-quote__mark--inverted {
+  transform: rotate(180deg);
+}
+
+/* Quote Text */
+.wk-insights-quote__text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(26px, 3.6vw, 46px);
+  font-weight: 700;
+  line-height: 1.32;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0;
+  padding: 0;
+}
+
+.wk-insights-quote__highlight {
+  color: #1887C9;
+}
+
+.wk-insights-quote__br {
+  display: inline;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 991px) {
+  .wk-insights-quote__mark-wrap--tr {
+    top: -18px;
+    right: -8px;
+  }
+
+  .wk-insights-quote__mark-wrap--bl {
+    bottom: -22px;
+    left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wk-insights-quote {
+    padding: 60px 0 72px;
+  }
+
+  .wk-insights-quote__container {
+    padding: 0 20px;
+  }
+
+  .wk-insights-quote__inner {
+    padding: 0 16px;
+  }
+
+  .wk-insights-quote__text {
+    font-size: clamp(20px, 5.2vw, 26px);
+    line-height: 1.42;
+  }
+
+  .wk-insights-quote__br {
+    display: none;
+  }
+
+  .wk-insights-quote__mark-wrap--tr {
+    top: -22px;
+    right: 4px;
+  }
+
+  .wk-insights-quote__mark-wrap--bl {
+    bottom: -22px;
+    left: 4px;
+  }
+
+  .wk-insights-quote__mark {
+    width: 38px;
+  }
+}

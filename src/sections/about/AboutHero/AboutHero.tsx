@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import gsap from 'gsap';
 import { HeroCursor } from './HeroCursor';
+import { HeroBackground } from '../../../components/HeroBackground';
 import './AboutHero.css';
 
 export const AboutHero: React.FC = () => {
@@ -416,18 +417,7 @@ export const AboutHero: React.FC = () => {
   return (
     <section className="wk-about-hero" aria-labelledby="about-hero-heading">
       {/* Background Architectural Grid Lines */}
-      <div className="wk-about-hero__grid-bg" aria-hidden="true">
-        <div className="wk-about-hero__columns">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="wk-about-hero__col-guide" />
-          ))}
-        </div>
-        <div className="wk-about-hero__rows">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="wk-about-hero__row-guide" />
-          ))}
-        </div>
-      </div>
+      <HeroBackground />
 
       <div ref={containerRef} className="site-container wk-about-hero__container">
         {/* Top Pill Badge */}

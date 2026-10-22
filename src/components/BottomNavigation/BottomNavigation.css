@@ -121,6 +121,11 @@
   box-shadow: 0 2px 6px rgba(24, 135, 201, 0.08);
 }
 
+.wk-nav-trigger--current-page {
+  color: #1887C9;
+  font-weight: 600;
+}
+
 .wk-nav-trigger__label {
   line-height: 1;
 }

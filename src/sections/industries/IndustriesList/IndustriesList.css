@@ -1,0 +1,279 @@
+/**
+ * Industries List Section Styling
+ * Visual Source: Reference screenshot ("Industries We Empower")
+ * Features:
+ * - Centered section title & subtitle
+ * - Generously spaced alternating 2-column layout (9 rows)
+ * - Restrained 3D image aspect ratios with soft rounded corners
+ * - Signature Webkorps blue (#1887C9) pill action buttons with arrow
+ * - Tablet and mobile responsive vertical stacking
+ */
+
+.wk-industries-list {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 100px 0 140px;
+  overflow: hidden;
+}
+
+.wk-industries-list__container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ==========================================================================
+   Section Header
+   ========================================================================== */
+
+.wk-industries-list__header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.wk-industries-list__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0 0 16px;
+}
+
+.wk-industries-list__title--blue {
+  color: #1887C9;
+}
+
+.wk-industries-list__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #475569;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Alternating Industry Rows
+   ========================================================================== */
+
+.wk-industries-list__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.wk-industries-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* Alternating reversed row (Image Left, Text Right) */
+.wk-industries-row--reversed {
+  flex-direction: row-reverse;
+}
+
+/* ==========================================================================
+   Text Column
+   ========================================================================== */
+
+.wk-industries-row__text {
+  flex: 1 1 45%;
+  max-width: 480px;
+}
+
+.wk-industries-row__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.875rem, 3vw, 2.375rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0 0 16px;
+}
+
+.wk-industries-row__desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(0.975rem, 1.2vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: #475569;
+  margin: 0 0 32px;
+  max-width: 420px;
+}
+
+/* Pill CTA Button */
+.wk-industries-row__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #1887C9;
+  color: #FFFFFF;
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 11px 24px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(24, 135, 201, 0.22);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.wk-industries-row__btn:hover {
+  background-color: #0072B4;
+  transform: translateY(-2px);
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(24, 135, 201, 0.32);
+}
+
+.wk-industries-row__btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(24, 135, 201, 0.2);
+}
+
+.wk-industries-row__btn:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 3px;
+}
+
+.wk-industries-row__btn-icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.wk-industries-row__btn:hover .wk-industries-row__btn-icon {
+  transform: translate(2px, -2px);
+}
+
+/* ==========================================================================
+   Visual Column
+   ========================================================================== */
+
+.wk-industries-row__visual {
+  flex: 1 1 50%;
+  max-width: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wk-industries-row__img-wrap {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.wk-industries-row__img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 2192 / 1664;
+  object-fit: contain;
+  display: block;
+  border-radius: 16px;
+  transition: transform 0.4s ease;
+}
+
+.wk-industries-row__img-wrap:hover .wk-industries-row__img {
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* Tablet (1024px and down) */
+@media (max-width: 1024px) {
+  .wk-industries-list {
+    padding: 80px 0 110px;
+  }
+
+  .wk-industries-list__header {
+    margin-bottom: 72px;
+  }
+
+  .wk-industries-list__rows {
+    gap: 90px;
+  }
+
+  .wk-industries-row {
+    gap: 48px;
+  }
+
+  .wk-industries-row__text {
+    flex: 1 1 45%;
+  }
+
+  .wk-industries-row__visual {
+    flex: 1 1 55%;
+  }
+}
+
+/* Mobile & Small Tablet (768px and down) */
+@media (max-width: 768px) {
+  .wk-industries-list {
+    padding: 60px 0 90px;
+  }
+
+  .wk-industries-list__container {
+    padding: 0 20px;
+  }
+
+  .wk-industries-list__header {
+    margin-bottom: 56px;
+  }
+
+  .wk-industries-list__rows {
+    gap: 72px;
+  }
+
+  .wk-industries-row,
+  .wk-industries-row--reversed {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .wk-industries-row__text {
+    width: 100%;
+    max-width: 100%;
+    order: 1;
+  }
+
+  .wk-industries-row__visual {
+    width: 100%;
+    max-width: 100%;
+    order: 2;
+  }
+
+  .wk-industries-row__desc {
+    margin-bottom: 24px;
+  }
+
+  .wk-industries-row__btn {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .wk-industries-row__btn,
+  .wk-industries-row__btn-icon,
+  .wk-industries-row__img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
