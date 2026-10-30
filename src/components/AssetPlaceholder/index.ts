@@ -1,0 +1,2 @@
+export { AssetPlaceholder } from './AssetPlaceholder';
+

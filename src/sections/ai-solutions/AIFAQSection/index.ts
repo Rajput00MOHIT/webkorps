@@ -1,0 +1,2 @@
+export { AIFAQSection } from './AIFAQSection';
+

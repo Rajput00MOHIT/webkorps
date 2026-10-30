@@ -1,0 +1,146 @@
+.wk-ai-stack {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(60px, 8vh, 96px) 0;
+}
+
+.wk-ai-stack__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5.14vw, 74px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wk-ai-stack__header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(32px, 4.5vh, 44px);
+}
+
+.wk-ai-stack__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-ai-stack__title-accent {
+  color: #1887C9;
+}
+
+.wk-ai-stack__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 12px 0 0;
+}
+
+/* Stage Process Pills */
+.wk-ai-stack__stages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 1040px;
+}
+
+.wk-ai-stack__stage-pill {
+  padding: 9px 20px;
+  border-radius: 9999px;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.wk-ai-stack__stage-pill:hover {
+  background-color: #EBF5FB;
+  color: #1887C9;
+  border-color: #BAE6FD;
+}
+
+.wk-ai-stack__stage-pill.is-active {
+  background-color: #1887C9;
+  color: #FFFFFF;
+  border-color: #1887C9;
+  box-shadow: 0 4px 14px rgba(24, 135, 201, 0.28);
+}
+
+/* Subtle separator line */
+.wk-ai-stack__divider {
+  width: 100%;
+  max-width: 1040px;
+  height: 1px;
+  background: #E2E8F0;
+  margin: clamp(36px, 5vh, 48px) auto;
+}
+
+/* Logos Row: ChatGPT, Claude, Perplexity, NotebookLM */
+.wk-ai-stack__logos-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(32px, 6vw, 76px);
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.wk-ai-stack__logo-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  user-select: none;
+}
+
+.wk-ai-stack__logo-cell:hover {
+  transform: translateY(-2px);
+}
+
+.wk-ai-stack__logo-img {
+  height: clamp(24px, 2.2vw, 30px);
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.wk-ai-stack__logo-img--notebooklm {
+  height: clamp(19px, 1.7vw, 23px);
+}
+
+@media (max-width: 768px) {
+  .wk-ai-stack__stages {
+    gap: 8px;
+  }
+
+  .wk-ai-stack__stage-pill {
+    padding: 7px 14px;
+    font-size: 12.5px;
+  }
+
+  .wk-ai-stack__logos-row {
+    gap: 24px 32px;
+  }
+
+  .wk-ai-stack__logo-cell {
+    font-size: 16px;
+  }
+
+  .wk-ai-stack__model-icon {
+    width: 24px;
+    height: 24px;
+  }
+}

@@ -1,0 +1,2 @@
+export { SmarterProjectsBanner } from './SmarterProjectsBanner';
+

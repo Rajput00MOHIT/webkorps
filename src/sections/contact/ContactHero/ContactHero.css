@@ -127,10 +127,6 @@
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
 }
 
-.wk-contact-hero__phone-icon-wrap:hover {
-  transform: translateY(-0.06em) scale(1.08);
-  box-shadow: 0 6px 16px rgba(24, 135, 201, 0.32);
-}
 
 .wk-contact-hero__phone-icon {
   width: 100%;

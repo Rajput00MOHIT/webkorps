@@ -1,0 +1,203 @@
+/**
+ * Enterprise AI Solutions at Scale - Section 02 Styles
+ * Source of Truth: Figma node 2370-8465 & Reference Screenshot
+ */
+
+.wk-ent-ai {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 55px 0;
+}
+
+.wk-ent-ai__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5.14vw, 74px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Centered Header */
+.wk-ent-ai__header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(48px, 7vh, 72px);
+}
+
+.wk-ent-ai__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.8vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-ent-ai__title-accent {
+  color: #1887C9;
+}
+
+.wk-ent-ai__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: 12px 0 0;
+}
+
+/* 6 Vertically Arranged Alternating Solution Blocks */
+.wk-ent-ai__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(56px, 8vh, 96px);
+}
+
+.wk-ent-ai__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(36px, 5vw, 72px);
+}
+
+.wk-ent-ai__row.is-reversed .wk-ent-ai__content {
+  order: 2;
+}
+
+.wk-ent-ai__row.is-reversed .wk-ent-ai__visual {
+  order: 1;
+}
+
+/* Content Side */
+.wk-ent-ai__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.wk-ent-ai__row-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 800;
+  line-height: 1.22;
+  color: #0F172A;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-ent-ai__row-title-line {
+  display: block;
+}
+
+/* Capability Tags */
+.wk-ent-ai__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 16px;
+}
+
+.wk-ent-ai__tag {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  color: #334155;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  letter-spacing: -0.01em;
+}
+
+/* Description */
+.wk-ent-ai__desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0 0 24px;
+  max-width: 440px;
+}
+
+/* CTA Button */
+.wk-ent-ai__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  background-color: #1887C9;
+  color: #FFFFFF;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 8px rgba(24, 135, 201, 0.25);
+}
+
+.wk-ent-ai__btn:hover {
+  background-color: #0072b4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(24, 135, 201, 0.35);
+}
+
+/* Visual Side - Card with Background */
+.wk-ent-ai__visual {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wk-ent-ai__img-wrap {
+  width: 100%;
+  max-width: 480px;
+  background-color: #F4F5F6;
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  border-radius: 16px;
+  padding: clamp(24px, 3.5vw, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wk-ent-ai__img-wrap:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+}
+
+.wk-ent-ai__img {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+  .wk-ent-ai__row,
+  .wk-ent-ai__row.is-reversed {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .wk-ent-ai__row.is-reversed .wk-ent-ai__content {
+    order: 1;
+  }
+
+  .wk-ent-ai__row.is-reversed .wk-ent-ai__visual {
+    order: 2;
+  }
+
+  .wk-ent-ai__img-wrap {
+    max-width: 360px;
+  }
+}

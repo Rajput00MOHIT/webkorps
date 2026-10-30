@@ -76,22 +76,6 @@ import '../views/Industries/IndustriesPage.css';
 import '../views/Careers/CareersPage.css';
 import '../views/Contact/ContactUsPage.css';
 
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-family-sans',
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
-  display: 'swap',
-  variable: '--font-family-heading',
-});
-
 export const metadata: Metadata = {
   title: 'Webkorps | Digital Engineering, AI Innovation & Enterprise Software Solutions',
   description: 'Webkorps designs, builds, and scales digital products, AI solutions, and enterprise software that drive real business impact. Certified ISO 27001, CMMI Level 3.',
@@ -127,7 +111,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );

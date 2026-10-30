@@ -1,0 +1,258 @@
+/**
+ * Domain-Specific AI for Mission-Critical Sectors - Section 03
+ * Source of Truth: AI Solution(2).pdf & Figma node 2370-8460
+ */
+
+.wk-domain-ai {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(56px, 7vh, 88px) 0;
+}
+
+.wk-domain-ai__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5.14vw, 74px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Left-aligned Section Header */
+.wk-domain-ai__header {
+  text-align: left;
+  margin-bottom: clamp(36px, 4.5vh, 48px);
+  width: 100%;
+}
+
+.wk-domain-ai__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .wk-domain-ai__title {
+    white-space: nowrap;
+  }
+}
+
+.wk-domain-ai__title-accent {
+  color: #1887C9;
+}
+
+.wk-domain-ai__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.5;
+  color: #64748B;
+  margin: 10px 0 0;
+}
+
+/* Main Two-Column Composition: ~55% Left, ~45% Right */
+.wk-domain-ai__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.98fr);
+  gap: clamp(32px, 4vw, 56px);
+  align-items: stretch;
+}
+
+/* Left Column: Interactive Industry Selector */
+.wk-domain-ai__selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #E5E7EB;
+}
+
+.wk-domain-ai__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: clamp(18px, 2.4vh, 24px) 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #E5E7EB;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  flex: 1;
+}
+
+.wk-domain-ai__item:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 4px;
+}
+
+.wk-domain-ai__item-text {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(17px, 1.45vw, 20px);
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  transition: color 0.2s ease;
+}
+
+.wk-domain-ai__item:hover .wk-domain-ai__item-text {
+  color: #1887C9;
+}
+
+.wk-domain-ai__item.is-active .wk-domain-ai__item-text {
+  color: #1887C9;
+}
+
+/* Inactive Row: Arrow in Light-Gray Square Box */
+.wk-domain-ai__arrow-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background-color: #F8FAFC;
+  border: 1px solid #F1F5F9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.wk-domain-ai__item:hover .wk-domain-ai__arrow-box {
+  background-color: #F1F5F9;
+  transform: translate(2px, -2px);
+}
+
+/* Active Row: Clean Blue Right Arrow */
+.wk-domain-ai__arrow-active {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.wk-domain-ai__item:hover .wk-domain-ai__arrow-active {
+  transform: translateX(4px);
+}
+
+/* Right Column: Industry Solution Detail Panel */
+.wk-domain-ai__panel {
+  background-color: #F8FAFC;
+  border-radius: 16px;
+  border: 1px solid #EDF2F7;
+  padding: clamp(28px, 3.2vw, 38px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Compliance Badge */
+.wk-domain-ai__badge-wrap {
+  margin-bottom: 14px;
+}
+
+.wk-domain-ai__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background-color: #E7F6FF;
+  color: #1887C9;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Solution Heading */
+.wk-domain-ai__panel-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(21px, 2vw, 25px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0;
+}
+
+/* Operational Challenge & Engineering Sections */
+.wk-domain-ai__section {
+  margin-top: clamp(16px, 2vh, 22px);
+}
+
+.wk-domain-ai__section-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1887C9;
+  margin: 0 0 6px;
+}
+
+.wk-domain-ai__section-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0;
+}
+
+/* Three Outcome Proof Points */
+.wk-domain-ai__proof-list {
+  margin-top: clamp(18px, 2.2vh, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wk-domain-ai__proof-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.wk-domain-ai__proof-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.wk-domain-ai__proof-text {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #334155;
+  font-weight: 500;
+}
+
+/* Responsive Behavior */
+@media (max-width: 960px) {
+  .wk-domain-ai__layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .wk-domain-ai__selector {
+    height: auto;
+  }
+
+  .wk-domain-ai__item {
+    padding: 16px 0;
+  }
+
+  .wk-domain-ai__item-text {
+    font-size: 17px;
+  }
+}

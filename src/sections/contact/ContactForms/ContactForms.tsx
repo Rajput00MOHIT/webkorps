@@ -410,6 +410,7 @@ export const ContactForms: React.FC = () => {
                       aria-invalid={!!salesErrors.email}
                       aria-describedby={salesErrors.email ? 'sales-email-error' : undefined}
                       required
+                      suppressHydrationWarning
                     />
                     {salesErrors.email && (
                       <span id="sales-email-error" className="wk-contact-error">
@@ -585,6 +586,7 @@ export const ContactForms: React.FC = () => {
                       aria-invalid={!!jobErrors.email}
                       aria-describedby={jobErrors.email ? 'job-email-error' : undefined}
                       required
+                      suppressHydrationWarning
                     />
                     {jobErrors.email && (
                       <span id="job-email-error" className="wk-contact-error">

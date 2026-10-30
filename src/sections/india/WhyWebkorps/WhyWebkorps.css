@@ -1,0 +1,113 @@
+.wk-why-webkorps {
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(64px, 9vh, 108px) 0;
+}
+
+.wk-why-webkorps__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.wk-why-webkorps__header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(48px, 6vh, 64px);
+}
+
+.wk-why-webkorps__eyebrow {
+  display: inline-block;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #1887C9;
+  margin-bottom: 12px;
+}
+
+.wk-why-webkorps__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0;
+}
+
+.wk-why-webkorps__title-accent {
+  color: #1887C9;
+}
+
+.wk-why-webkorps__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
+}
+
+.wk-why-webkorps__card {
+  background: #F8FAFC;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  padding: clamp(24px, 2.8vw, 36px);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.wk-why-webkorps__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+  border-color: #BFDBFE;
+}
+
+.wk-why-webkorps__icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  color: #1887C9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 1px solid rgba(24, 135, 201, 0.2);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.wk-why-webkorps__icon-box svg {
+  width: 24px;
+  height: 24px;
+}
+
+.wk-why-webkorps__card-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0F172A;
+  margin: 0 0 10px;
+}
+
+.wk-why-webkorps__card-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .wk-why-webkorps__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .wk-why-webkorps__grid {
+    grid-template-columns: 1fr;
+  }
+}
+

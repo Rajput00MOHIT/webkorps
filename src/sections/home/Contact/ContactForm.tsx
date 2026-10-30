@@ -213,6 +213,7 @@ export const ContactForm: React.FC = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               className="wk-contact__input"
+              suppressHydrationWarning
             />
             {errors.email && touched.email && (
               <span id="contact-email-error" className="wk-contact__error-msg" role="alert">

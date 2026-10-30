@@ -1,0 +1,174 @@
+/**
+ * AI Solutions Hero Section Styles
+ * Source of Truth: Figma node 2342-13369 & Attached Reference Screenshot
+ * Features:
+ * - Subtle light-blue technical blueprint graph grid background
+ * - Centered pale-blue "AI Solutions" pill badge
+ * - Centered 3-line display heading:
+ *   Line 1: Produ[Sparkle SVG]tion-Ready AI
+ *   Line 2: Solutions That Deliver
+ *   Line 3: Measurable ROI [Black Cursor Target Pointer]
+ * - 2-line centered muted gray supporting text
+ */
+
+.wk-ai-hero-exact {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 76px);
+  min-height: calc(100dvh - 76px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  padding: clamp(64px, 10vh, 112px) 0 clamp(64px, 10vh, 120px);
+}
+
+.wk-ai-hero-exact .wk-hero-bg__columns {
+  max-width: 1440px;
+  padding: 0 clamp(20px, 5.14vw, 74px);
+  box-sizing: border-box;
+}
+
+.wk-ai-hero-exact__container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5.14vw, 74px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Eyebrow Pill */
+.wk-ai-hero-exact__badge-wrap {
+  margin-bottom: clamp(24px, 3.8vh, 36px);
+}
+
+.wk-ai-hero-exact__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #DDF2FE;
+  color: #0F172A;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 9px 24px;
+  border-radius: 9999px;
+  border: 1px solid rgba(26, 135, 200, 0.16);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+
+/* 3-Line Display Heading */
+.wk-ai-hero-exact__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(34px, 5.2vw, 68px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  color: #0B132B;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.06em;
+  width: 100%;
+}
+
+.wk-ai-hero-exact__line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: normal;
+  text-align: center;
+}
+
+.wk-ai-hero-exact__word {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sparkle SVG Icon Circle (Replaces/Acts as the "c" in Production) */
+.wk-ai-hero-exact__sparkle-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(28px, 3.4vw, 42px);
+  height: clamp(28px, 3.4vw, 42px);
+  margin: 0 2px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.wk-ai-hero-exact__sparkle-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Black Circle Cursor Pointer Target Badge */
+.wk-ai-hero-exact__cursor-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(34px, 4vw, 54px);
+  height: clamp(34px, 4vw, 54px);
+  margin-left: clamp(8px, 1.2vw, 16px);
+  vertical-align: middle;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.wk-ai-hero-exact__cursor-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Supporting Subtitle */
+.wk-ai-hero-exact__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.6;
+  color: #64748B;
+  margin: clamp(22px, 3.2vh, 32px) auto 0;
+  max-width: 580px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .wk-ai-hero-exact {
+    padding: 72px 0 80px;
+  }
+
+  .wk-ai-hero-exact__title {
+    font-size: clamp(28px, 6.8vw, 40px);
+    line-height: 1.22;
+  }
+
+  .wk-ai-hero-exact__sparkle-wrap {
+    width: 26px;
+    height: 26px;
+  }
+
+  .wk-ai-hero-exact__cursor-wrap {
+    width: 32px;
+    height: 32px;
+    margin-left: 6px;
+  }
+}
