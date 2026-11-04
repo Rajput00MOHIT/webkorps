@@ -12,6 +12,9 @@ import { ProvenDeliveryProcess } from '../../sections/custom-software/ProvenDeli
 import { TechnologyExpertise } from '../../sections/technologies/TechnologyExpertise/TechnologyExpertise';
 import { RealBusinessesRealImpact } from '../../sections/custom-software/RealBusinessesRealImpact';
 import { IndustrySolutionsForGrowth } from '../../sections/custom-software/IndustrySolutionsForGrowth';
+import { BrandTrustStrip } from '../../sections/about/BrandTrustStrip/BrandTrustStrip';
+import { ClientTestimonials } from '../../sections/about/ClientTestimonials/ClientTestimonials';
+import { CustomSoftwareFAQ } from '../../sections/custom-software/CustomSoftwareFAQ';
 import { updateSEOMetadata } from '../../lib/seo/meta';
 import { getOrganizationSchema, getWebSiteSchema } from '../../lib/structured-data/schema';
 import './CustomSoftwareDevelopmentPage.css';
@@ -80,6 +83,15 @@ export const CustomSoftwareDevelopmentPage: React.FC = () => {
 
         {/* Section 08: Industry Solutions for Growth */}
         <IndustrySolutionsForGrowth />
+
+        {/* Section 09: Trusted by Fast-Growing Companies Around the World */}
+        <BrandTrustStrip variant="services" />
+
+        {/* Section 10: What Our Clients Say About Us */}
+        <ClientTestimonials />
+
+        {/* Section 11 & 12: Frequently Asked Questions & Still Have Questions? */}
+        <CustomSoftwareFAQ />
       </main>
 
       {/* Global Footer */}

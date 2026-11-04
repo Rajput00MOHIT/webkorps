@@ -181,18 +181,30 @@ const MarqueeRow: React.FC<MarqueeRowProps> = ({ items, direction, durationClass
   );
 };
 
-export const ClientTestimonials: React.FC = () => {
+export interface ClientTestimonialsProps {
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  id?: string;
+}
+
+export const ClientTestimonials: React.FC<ClientTestimonialsProps> = ({
+  title = (
+    <>
+      What <span className="wk-testimonials__title-accent">Our Clients</span> Say About Us
+    </>
+  ),
+  subtitle = 'Hear from our clients about their experience, trust, and success with our services.',
+  id = 'client-testimonials',
+}) => {
   return (
-    <section className="wk-testimonials" aria-labelledby="client-testimonials-heading">
+    <section className="wk-testimonials" id={id} aria-labelledby={`${id}-heading`}>
       {/* Centered Section Header */}
       <div className="site-container wk-testimonials__header-container">
         <div className="wk-testimonials__header">
-          <h2 id="client-testimonials-heading" className="wk-testimonials__title">
-            What <span className="wk-testimonials__title-accent">Our Clients</span> Say About Us
+          <h2 id={`${id}-heading`} className="wk-testimonials__title">
+            {title}
           </h2>
-          <p className="wk-testimonials__subtitle">
-            Hear from our clients about their experience, trust, and success with our services.
-          </p>
+          {subtitle && <p className="wk-testimonials__subtitle">{subtitle}</p>}
         </div>
       </div>
 
