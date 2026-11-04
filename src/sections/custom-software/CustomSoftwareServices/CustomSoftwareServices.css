@@ -15,7 +15,7 @@
    ======================================================== */
 .wk-cs-services__header-band {
   width: 100%;
-  background-color: #F8FAFC;
+
   border-bottom: 1px solid #E2E8F0;
   padding: clamp(48px, 5.5vw, 72px) 24px;
   text-align: center;
@@ -92,7 +92,7 @@
   flex-direction: column;
   align-items: flex-start;
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
@@ -145,8 +145,8 @@
   text-decoration: none;
   box-shadow: 0 2px 8px rgba(24, 135, 201, 0.24);
   transition: background-color 0.25s ease,
-              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s ease;
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease;
   user-select: none;
 }
 
@@ -181,7 +181,7 @@
   align-items: center;
   justify-content: center;
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
@@ -199,8 +199,8 @@
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s ease,
-              border-color 0.35s ease;
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .wk-cs-services__visual-card:hover {
@@ -225,9 +225,12 @@
 
 /* Floating animation */
 @keyframes wk-cs-float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
@@ -278,6 +281,7 @@
    Responsive Breakpoints
    ======================================================== */
 @media (max-width: 960px) {
+
   .wk-cs-services__row,
   .wk-cs-services__row--reversed {
     flex-direction: column;
@@ -355,6 +359,7 @@
    Accessibility: Reduced Motion
    ======================================================== */
 @media (prefers-reduced-motion: reduce) {
+
   .wk-cs-services__content-col,
   .wk-cs-services__visual-col,
   .wk-cs-services__visual-card,
@@ -367,4 +372,3 @@
     opacity: 1 !important;
   }
 }
-
