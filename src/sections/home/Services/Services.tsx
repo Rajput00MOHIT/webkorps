@@ -5,7 +5,7 @@ import { Container } from '../../../components/Container/Container';
 import serviceMobile from '../../../assets/services/service-mobile.png';
 import serviceWeb from '../../../assets/services/service-web.png';
 import serviceCustom from '../../../assets/services/service-custom.png';
-import serviceBlockchain from '../../../assets/services/service-blockchain.png';
+import serviceIoT from '../../../assets/services/service-IOT.png';
 import serviceEnterprise from '../../../assets/services/service-enterprise.png';
 import serviceAiml from '../../../assets/services/service-aiml.png';
 import { getImgSrc } from '../../../utils/image';
@@ -46,11 +46,11 @@ const SERVICES_DATA: ServiceItem[] = [
     href: '#contact',
   },
   {
-    id: 'blockchain-development',
-    title: 'Blockchain Development',
-    description: 'Powering the future of industries with blockchain solutions',
-    image: serviceBlockchain,
-    imageAlt: 'Isometric 3D blocks representing blockchain and decentralized technology',
+    id: 'iot-development',
+    title: 'IoT Development',
+    description: 'Powering the future of industries with connected solutions.',
+    image: serviceIoT,
+    imageAlt: 'IoT development with connected devices, smart homes, industrial IoT, and sensors',
     href: '#contact',
   },
   {

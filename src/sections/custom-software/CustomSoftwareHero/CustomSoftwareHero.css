@@ -1,0 +1,70 @@
+/**
+ * Custom Software Development Hero Section Styles (Setup Phase)
+ * Reuses exact architectural grid guide background and treatment from site services
+ */
+
+.wk-custom-software-hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 76px);
+  min-height: calc(100dvh - 76px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  padding: clamp(64px, 10vh, 112px) 0 clamp(64px, 10vh, 120px);
+}
+
+.wk-custom-software-hero .wk-hero-bg__columns {
+  max-width: 1440px;
+  padding: 0 clamp(20px, 5.14vw, 74px);
+  box-sizing: border-box;
+}
+
+.wk-custom-software-hero__container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5.14vw, 74px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Eyebrow Pill Badge */
+.wk-custom-software-hero__badge-wrap {
+  margin-bottom: clamp(20px, 3.5vh, 32px);
+}
+
+.wk-custom-software-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EBF5FB;
+  color: #1887C9;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 8px 22px;
+  border-radius: 9999px;
+  border: 1px solid rgba(24, 135, 201, 0.18);
+  letter-spacing: -0.01em;
+}
+
+/* Setup Title */
+.wk-custom-software-hero__setup-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin: 0;
+}
+

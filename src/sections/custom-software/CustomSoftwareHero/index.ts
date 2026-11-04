@@ -1,0 +1,2 @@
+export { CustomSoftwareHero } from './CustomSoftwareHero';
+

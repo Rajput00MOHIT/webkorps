@@ -82,7 +82,7 @@ export const SERVICES_DATA: ServiceCategory[] = [
         id: 'custom-software',
         title: 'Custom Software Development',
         description: 'Custom software built to solve unique business challenges and operations.',
-        href: '/services',
+        href: '/services/custom-software-development',
       },
     ],
   },
