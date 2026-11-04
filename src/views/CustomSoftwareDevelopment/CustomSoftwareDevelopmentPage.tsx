@@ -5,6 +5,13 @@ import { Header } from '../../sections/home/Header/Header';
 import { Footer } from '../../sections/home/Footer/Footer';
 import { BottomNavigation } from '../../components/BottomNavigation';
 import { CustomSoftwareHero } from '../../sections/custom-software/CustomSoftwareHero';
+import { OurChallenge } from '../../sections/custom-software/OurChallenge';
+import { CustomSoftwareServices } from '../../sections/custom-software/CustomSoftwareServices';
+import { SoftwareForEveryBusiness } from '../../sections/custom-software/SoftwareForEveryBusiness';
+import { ProvenDeliveryProcess } from '../../sections/custom-software/ProvenDeliveryProcess';
+import { TechnologyExpertise } from '../../sections/technologies/TechnologyExpertise/TechnologyExpertise';
+import { RealBusinessesRealImpact } from '../../sections/custom-software/RealBusinessesRealImpact';
+import { IndustrySolutionsForGrowth } from '../../sections/custom-software/IndustrySolutionsForGrowth';
 import { updateSEOMetadata } from '../../lib/seo/meta';
 import { getOrganizationSchema, getWebSiteSchema } from '../../lib/structured-data/schema';
 import './CustomSoftwareDevelopmentPage.css';
@@ -48,6 +55,31 @@ export const CustomSoftwareDevelopmentPage: React.FC = () => {
       >
         {/* Hero Section with Reused HeroBackground */}
         <CustomSoftwareHero />
+
+        {/* Section 02: Our Challenge */}
+        <OurChallenge />
+
+        {/* Section 03: Custom Software Development Services */}
+        <CustomSoftwareServices />
+
+        {/* Section 04: Software for Every Business */}
+        <SoftwareForEveryBusiness />
+
+        {/* Section 05: A Proven Delivery Process */}
+        <ProvenDeliveryProcess />
+
+        {/* Section 06: Future-Ready Technology */}
+        <TechnologyExpertise
+          titlePart1="Future-Ready"
+          titlePart2="Technology"
+          subtitle="We use reliable, modern technologies to build secure, scalable software."
+        />
+
+        {/* Section 07: Real Businesses. Real Impact. */}
+        <RealBusinessesRealImpact />
+
+        {/* Section 08: Industry Solutions for Growth */}
+        <IndustrySolutionsForGrowth />
       </main>
 
       {/* Global Footer */}

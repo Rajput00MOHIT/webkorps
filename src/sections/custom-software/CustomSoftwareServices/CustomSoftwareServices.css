@@ -1,0 +1,370 @@
+/* ========================================================
+   Custom Software Development - Services Section
+   Clean alternating two-column layout with scroll reveal & micro-interactions
+   ======================================================== */
+
+.wk-cs-services {
+  width: 100%;
+  background-color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ========================================================
+   Section Header Band (Light Gray Background)
+   ======================================================== */
+.wk-cs-services__header-band {
+  width: 100%;
+  background-color: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  padding: clamp(48px, 5.5vw, 72px) 24px;
+  text-align: center;
+}
+
+.wk-cs-services__header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wk-cs-services__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0 0 14px;
+}
+
+.wk-cs-services__title-accent {
+  color: #1887C9;
+}
+
+.wk-cs-services__subtitle {
+  font-family: var(--font-family-body, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #475569;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ========================================================
+   Services Rows Container
+   ======================================================== */
+.wk-cs-services__body {
+  width: 100%;
+  padding: clamp(60px, 7vw, 100px) 24px clamp(80px, 9vw, 120px);
+}
+
+.wk-cs-services__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(56px, 7vw, 92px);
+}
+
+/* ========================================================
+   Service Row (Alternating Layout)
+   ======================================================== */
+.wk-cs-services__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(36px, 5vw, 72px);
+  width: 100%;
+}
+
+.wk-cs-services__row--reversed {
+  flex-direction: row-reverse;
+}
+
+/* ========================================================
+   Content Column (Text Block)
+   ======================================================== */
+.wk-cs-services__content-col {
+  flex: 1 1 48%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* Heading */
+.wk-cs-services__row-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: #0F172A;
+  margin: 0 0 16px;
+}
+
+.wk-cs-services__row-num {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+.wk-cs-services__row-title-text {
+  color: #0F172A;
+}
+
+/* Supporting Description */
+.wk-cs-services__row-desc {
+  font-family: var(--font-family-body, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: #475569;
+  margin: 0 0 28px;
+  max-width: 480px;
+}
+
+/* ========================================================
+   CTA Button ("Know More ↗")
+   ======================================================== */
+.wk-cs-services__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1887C9;
+  color: #FFFFFF;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(24, 135, 201, 0.24);
+  transition: background-color 0.25s ease,
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.wk-cs-services__btn:hover {
+  background-color: #1374AD;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(24, 135, 201, 0.34);
+  color: #FFFFFF;
+}
+
+.wk-cs-services__btn:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 3px;
+}
+
+.wk-cs-services__btn-icon {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-cs-services__btn:hover .wk-cs-services__btn-icon {
+  transform: translate(2px, -2px);
+}
+
+/* ========================================================
+   Visual Illustration Column & Card
+   ======================================================== */
+.wk-cs-services__visual-col {
+  flex: 1 1 52%;
+  max-width: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.wk-cs-services__visual-card {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 24vw, 370px);
+  background: #EBF5FB;
+  border: 1px solid rgba(24, 135, 201, 0.12);
+  border-radius: 24px;
+  padding: clamp(24px, 3.5vw, 44px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+.wk-cs-services__visual-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(24, 135, 201, 0.28);
+  box-shadow: 0 16px 36px rgba(24, 135, 201, 0.14);
+}
+
+/* 3D Illustration Graphic */
+.wk-cs-services__visual-img {
+  width: 100%;
+  height: 100%;
+  max-height: 310px;
+  object-fit: contain;
+  display: block;
+  animation: wk-cs-float 5s ease-in-out infinite;
+  will-change: transform;
+  filter: drop-shadow(0 10px 20px rgba(15, 23, 42, 0.08));
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Floating animation */
+@keyframes wk-cs-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ========================================================
+   Scroll Reveal Animations
+   - Odd rows (isReversed = false): text from left, image from right
+   - Even rows (isReversed = true): image from left, text from right
+   ======================================================== */
+.wk-cs-services--animated .wk-cs-services__row:not(.wk-cs-services__row--reversed) .wk-cs-services__content-col {
+  opacity: 0;
+  transform: translateX(-35px) translateY(8px);
+}
+
+.wk-cs-services--animated .wk-cs-services__row:not(.wk-cs-services__row--reversed) .wk-cs-services__visual-col {
+  opacity: 0;
+  transform: translateX(35px) scale(0.96);
+}
+
+.wk-cs-services--animated .wk-cs-services__row--reversed .wk-cs-services__content-col {
+  opacity: 0;
+  transform: translateX(35px) translateY(8px);
+}
+
+.wk-cs-services--animated .wk-cs-services__row--reversed .wk-cs-services__visual-col {
+  opacity: 0;
+  transform: translateX(-35px) scale(0.96);
+}
+
+/* When visible */
+.wk-cs-services--animated .wk-cs-services__row.is-visible .wk-cs-services__content-col,
+.wk-cs-services--animated .wk-cs-services__row.is-visible .wk-cs-services__visual-col {
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+/* Stagger text elements slightly inside the row */
+.wk-cs-services--animated .wk-cs-services__row.is-visible .wk-cs-services__row-desc {
+  transition-delay: 0.1s;
+}
+
+.wk-cs-services--animated .wk-cs-services__row.is-visible .wk-cs-services__btn {
+  transition-delay: 0.18s;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 960px) {
+  .wk-cs-services__row,
+  .wk-cs-services__row--reversed {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  .wk-cs-services__content-col {
+    max-width: 100%;
+  }
+
+  .wk-cs-services__row-desc {
+    max-width: 100%;
+    margin-bottom: 22px;
+  }
+
+  .wk-cs-services__visual-col {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .wk-cs-services__visual-card {
+    height: 300px;
+  }
+
+  /* Directional movement stacks upward nicely on mobile/tablet */
+  .wk-cs-services--animated .wk-cs-services__row .wk-cs-services__content-col,
+  .wk-cs-services--animated .wk-cs-services__row--reversed .wk-cs-services__content-col {
+    transform: translateY(24px);
+  }
+
+  .wk-cs-services--animated .wk-cs-services__row .wk-cs-services__visual-col,
+  .wk-cs-services--animated .wk-cs-services__row--reversed .wk-cs-services__visual-col {
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+@media (max-width: 640px) {
+  .wk-cs-services__header-band {
+    padding: 40px 20px;
+  }
+
+  .wk-cs-services__body {
+    padding: 44px 16px 72px;
+  }
+
+  .wk-cs-services__container {
+    gap: 48px;
+  }
+
+  .wk-cs-services__title {
+    font-size: 26px;
+  }
+
+  .wk-cs-services__subtitle {
+    font-size: 15px;
+  }
+
+  .wk-cs-services__row-title {
+    font-size: 22px;
+  }
+
+  .wk-cs-services__visual-card {
+    height: 240px;
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .wk-cs-services__visual-img {
+    max-height: 200px;
+  }
+}
+
+/* ========================================================
+   Accessibility: Reduced Motion
+   ======================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .wk-cs-services__content-col,
+  .wk-cs-services__visual-col,
+  .wk-cs-services__visual-card,
+  .wk-cs-services__visual-img,
+  .wk-cs-services__btn,
+  .wk-cs-services__btn-icon {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+

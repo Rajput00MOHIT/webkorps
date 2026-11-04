@@ -1,0 +1,367 @@
+/* ========================================================
+   Custom Software Development - Real Businesses. Real Impact.
+   Interactive two-column case study section with industry tab switching
+   ======================================================== */
+
+.wk-real-impact {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(68px, 8vw, 110px) 24px clamp(76px, 9vw, 120px);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.wk-real-impact__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ========================================================
+   Section Header Area
+   ======================================================== */
+.wk-real-impact__header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto clamp(40px, 4.5vw, 56px);
+}
+
+.wk-real-impact__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0 0 12px;
+}
+
+.wk-real-impact__title-accent {
+  color: #1887C9;
+}
+
+.wk-real-impact__subtitle {
+  font-family: var(--font-family-body, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #64748B;
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+/* ========================================================
+   Industry Navigation Tabs
+   Two centered rows on desktop matching reference
+   ======================================================== */
+.wk-real-impact__tabs-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: clamp(48px, 6vw, 72px);
+  width: 100%;
+}
+
+.wk-real-impact__tabs-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.wk-real-impact__tab-btn {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  border: 1.5px solid #CBD5E1;
+  background-color: #FFFFFF;
+  color: #334155;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.wk-real-impact__tab-btn:hover:not(.wk-real-impact__tab-btn--active) {
+  border-color: #1887C9;
+  color: #1887C9;
+  background-color: #F8FAFC;
+}
+
+.wk-real-impact__tab-btn:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 3px;
+}
+
+.wk-real-impact__tab-btn--active {
+  background-color: #1887C9;
+  color: #FFFFFF;
+  border-color: #1887C9;
+  box-shadow: 0 4px 14px rgba(24, 135, 201, 0.28);
+}
+
+/* ========================================================
+   Two-Column Case Study Layout
+   ======================================================== */
+.wk-real-impact__case-study {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(36px, 5vw, 68px);
+  align-items: flex-start;
+  width: 100%;
+  background-color: #F9FAFB;
+  padding: 24px;
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-real-impact__case-study--transitioning {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* ========================================================
+   Left Column: Overview, Tags, & Metrics
+   ======================================================== */
+.wk-real-impact__left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.wk-real-impact__industry-badge {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: #1887C9;
+  margin-bottom: 12px;
+}
+
+.wk-real-impact__case-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0 0 16px;
+}
+
+.wk-real-impact__case-desc {
+  font-family: var(--font-family-body, 'Inter', sans-serif);
+  font-size: clamp(14.5px, 1.15vw, 15.5px);
+  font-weight: 400;
+  line-height: 1.62;
+  color: #475569;
+  margin: 0 0 28px;
+}
+
+/* Service Tags */
+.wk-real-impact__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: clamp(32px, 4vw, 44px);
+}
+
+.wk-real-impact__tag {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #1887C9;
+  background-color: #F8FAFC;
+  border: 1.5px solid #2493EA;
+  border-radius: 9999px;
+  padding: 6px 16px;
+  line-height: 1.2;
+}
+
+/* 3-Column Metrics */
+.wk-real-impact__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 24px;
+}
+
+.wk-real-impact__metric-item {
+  display: flex;
+  flex-direction: column;
+  padding-right: 16px;
+  border-right: 1px solid #E2E8F0;
+}
+
+.wk-real-impact__metric-item:last-child {
+  border-right: none;
+  padding-right: 0;
+  padding-left: 16px;
+}
+
+.wk-real-impact__metric-item:nth-child(2) {
+  padding-left: 16px;
+}
+
+.wk-real-impact__metric-val {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(30px, 2.8vw, 40px);
+  font-weight: 800;
+  color: #1887C9;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.wk-real-impact__metric-label {
+  font-family: var(--font-family-body, 'Inter', sans-serif);
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: #64748B;
+  white-space: pre-line;
+}
+
+/* ========================================================
+   Right Column: Challenge, Solution, Impact Card
+   ======================================================== */
+.wk-real-impact__right-col {
+  background-color: #FFFFFF;
+
+
+  padding: clamp(30px, 3.8vw, 48px);
+  box-sizing: border-box;
+}
+
+.wk-real-impact__block {
+  margin-bottom: 28px;
+}
+
+.wk-real-impact__block:last-child {
+  margin-bottom: 0;
+}
+
+.wk-real-impact__block-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #0F172A;
+  margin: 0 0 12px;
+}
+
+.wk-real-impact__bullet-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wk-real-impact__bullet-item {
+  position: relative;
+  font-family: var(--font-family-body, 'Inter', sans-serif);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #475569;
+  padding-left: 18px;
+  margin-bottom: 6px;
+}
+
+.wk-real-impact__bullet-item:last-child {
+  margin-bottom: 0;
+}
+
+.wk-real-impact__bullet-item::before {
+  content: '•';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  color: #334155;
+  font-size: 16px;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 960px) {
+  .wk-real-impact__case-study {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .wk-real-impact__left-col,
+  .wk-real-impact__right-col {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .wk-real-impact__tabs-row {
+    gap: 8px;
+  }
+
+  .wk-real-impact__tab-btn {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .wk-real-impact {
+    padding: 52px 16px 68px;
+  }
+
+  .wk-real-impact__header {
+    margin-bottom: 32px;
+  }
+
+  .wk-real-impact__title {
+    font-size: 26px;
+  }
+
+  .wk-real-impact__subtitle {
+    font-size: 15px;
+  }
+
+  .wk-real-impact__case-title {
+    font-size: 22px;
+  }
+
+  .wk-real-impact__metrics {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .wk-real-impact__metric-item,
+  .wk-real-impact__metric-item:nth-child(2),
+  .wk-real-impact__metric-item:last-child {
+    border-right: none;
+    padding: 0 0 12px;
+    border-bottom: 1px solid #F1F5F9;
+  }
+
+  .wk-real-impact__metric-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .wk-real-impact__right-col {
+    padding: 24px 20px;
+
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .wk-real-impact__case-study,
+  .wk-real-impact__tab-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}

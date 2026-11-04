@@ -1,0 +1,280 @@
+/* ========================================================
+   Custom Software Development - Industry Solutions for Growth
+   Cinematic 3D Depth-Based Image Track (Hidden Offscreen Track)
+   ======================================================== */
+
+.wk-ind-sol {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: clamp(68px, 8vw, 110px) 24px clamp(76px, 9vw, 120px);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.wk-ind-sol__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ========================================================
+   Section Header Area (Left-Aligned per Figma / Reference)
+   ======================================================== */
+.wk-ind-sol__header {
+  text-align: left;
+  max-width: 760px;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+.wk-ind-sol__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0 0 12px;
+}
+
+.wk-ind-sol__title-accent {
+  color: #1887C9;
+}
+
+.wk-ind-sol__subtitle {
+  font-family: var(--font-family-body, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0;
+}
+
+/* ========================================================
+   Two-Column Main Stage
+   ======================================================== */
+.wk-ind-sol__body {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(40px, 5.5vw, 72px);
+  align-items: center;
+  width: 100%;
+}
+
+/* ========================================================
+   Left Column: Accordion Navigation
+   ======================================================== */
+.wk-ind-sol__accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1px solid #E2E8F0;
+}
+
+.wk-ind-sol__accordion-item {
+  width: 100%;
+  border-bottom: 1px solid #E2E8F0;
+  transition: border-color 0.25s ease;
+}
+
+.wk-ind-sol__accordion-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  user-select: none;
+  gap: 16px;
+  transition: color 0.2s ease;
+}
+
+.wk-ind-sol__accordion-btn:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.wk-ind-sol__item-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(19px, 1.7vw, 23px);
+  font-weight: 600;
+  color: #0F172A;
+  margin: 0;
+  transition: color 0.2s ease;
+  line-height: 1.3;
+}
+
+.wk-ind-sol__accordion-item--active .wk-ind-sol__item-title {
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.wk-ind-sol__accordion-btn:hover .wk-ind-sol__item-title {
+  color: #1887C9;
+}
+
+/* Icon Toggle (+ / -) */
+.wk-ind-sol__toggle-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0F172A;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.2s ease;
+}
+
+.wk-ind-sol__accordion-btn:hover .wk-ind-sol__toggle-icon {
+  color: #1887C9;
+}
+
+.wk-ind-sol__accordion-item--active .wk-ind-sol__toggle-icon {
+  color: #0F172A;
+}
+
+/* Accordion Collapsible Content */
+.wk-ind-sol__item-content {
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease;
+}
+
+.wk-ind-sol__item-desc {
+  font-family: var(--font-family-body, 'Inter', sans-serif);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.62;
+  color: #475569;
+  margin: 0 0 22px 0;
+  max-width: 480px;
+}
+
+/* ========================================================
+   Right Column: Cinematic 3D Visual Viewport
+   CRITICAL: overflow: hidden strictly clips offscreen images
+   ======================================================== */
+.wk-ind-sol__visual-col {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wk-ind-sol__viewport {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  height: clamp(380px, 35vw, 500px);
+  overflow: hidden; /* Prevents offscreen track images from showing */
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: transparent;
+}
+
+/* Track item layer */
+.wk-ind-sol__track-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 520px;
+  height: 100%;
+  max-height: 440px;
+  margin-top: -220px;
+  margin-left: -260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+  pointer-events: none;
+}
+
+.wk-ind-sol__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  filter: drop-shadow(0 14px 28px rgba(15, 23, 42, 0.09));
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 960px) {
+  .wk-ind-sol__body {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .wk-ind-sol__viewport {
+    max-width: 480px;
+    height: 380px;
+  }
+
+  .wk-ind-sol__track-item {
+    max-width: 440px;
+    max-height: 360px;
+    margin-top: -180px;
+    margin-left: -220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .wk-ind-sol {
+    padding: 52px 16px 68px;
+  }
+
+  .wk-ind-sol__header {
+    margin-bottom: 32px;
+  }
+
+  .wk-ind-sol__title {
+    font-size: 26px;
+  }
+
+  .wk-ind-sol__subtitle {
+    font-size: 15px;
+  }
+
+  .wk-ind-sol__accordion-btn {
+    padding: 18px 0;
+  }
+
+  .wk-ind-sol__item-title {
+    font-size: 18px;
+  }
+
+  .wk-ind-sol__viewport {
+    max-width: 100%;
+    height: 290px;
+  }
+
+  .wk-ind-sol__track-item {
+    max-width: 320px;
+    max-height: 270px;
+    margin-top: -135px;
+    margin-left: -160px;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .wk-ind-sol__track-item {
+    transition: none !important;
+  }
+}

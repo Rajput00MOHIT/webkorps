@@ -14,7 +14,19 @@ if (typeof window !== 'undefined') {
  * Technology Expertise Section Component
  * Source of Truth: Figma node 2262-1423 & attached visual reference
  */
-export const TechnologyExpertise: React.FC = () => {
+export interface TechnologyExpertiseProps {
+  titlePart1?: string;
+  titlePart2?: string;
+  subtitle?: string;
+  id?: string;
+}
+
+export const TechnologyExpertise: React.FC<TechnologyExpertiseProps> = ({
+  titlePart1 = 'Technology',
+  titlePart2 = 'Expertise',
+  subtitle = 'A diverse technology stack powering innovative web, mobile, and enterprise applications.',
+  id = 'tech-expertise',
+}) => {
   const [activeCategoryId, setActiveCategoryId] = useState<string>('frontend');
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLElement>(null);
@@ -172,17 +184,20 @@ export const TechnologyExpertise: React.FC = () => {
   }, [activeCategoryId]);
 
   return (
-    <section ref={sectionRef} className="wk-tech-exp" aria-labelledby="tech-expertise-heading">
+    <section
+      ref={sectionRef}
+      id={id}
+      className="wk-tech-exp"
+      aria-labelledby={`${id}-heading`}
+    >
       <div className="wk-tech-exp__container">
         {/* Section Header (Centered) */}
         <header ref={headerRef} className="wk-tech-exp__header">
-          <h2 id="tech-expertise-heading" className="wk-tech-exp__title">
-            <span className="wk-tech-exp__title-blue">Technology</span>{' '}
-            <span className="wk-tech-exp__title-dark">Expertise</span>
+          <h2 id={`${id}-heading`} className="wk-tech-exp__title">
+            <span className="wk-tech-exp__title-blue">{titlePart1}</span>{' '}
+            <span className="wk-tech-exp__title-dark">{titlePart2}</span>
           </h2>
-          <p className="wk-tech-exp__subtitle">
-            A diverse technology stack powering innovative web, mobile, and enterprise applications.
-          </p>
+          <p className="wk-tech-exp__subtitle">{subtitle}</p>
         </header>
 
         {/* Two-Column Layout */}
