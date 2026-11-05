@@ -3,7 +3,10 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SOFTWARE_FOR_EVERY_BUSINESS_ITEMS } from './softwareForEveryBusinessData';
+import {
+  SOFTWARE_FOR_EVERY_BUSINESS_ITEMS,
+  SolutionCardItem,
+} from './softwareForEveryBusinessData';
 import { SolutionCard } from './SolutionCard';
 import './SoftwareForEveryBusiness.css';
 
@@ -11,7 +14,21 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export const SoftwareForEveryBusiness: React.FC = () => {
+export interface SoftwareForEveryBusinessProps {
+  id?: string;
+  titleAccent?: string;
+  titleRest?: string;
+  subtitle?: string;
+  items?: SolutionCardItem[];
+}
+
+export const SoftwareForEveryBusiness: React.FC<SoftwareForEveryBusinessProps> = ({
+  id = 'software-for-every-business',
+  titleAccent = 'Software',
+  titleRest = 'for Every Business.',
+  subtitle = 'Custom software solutions for every industry and need.',
+  items = SOFTWARE_FOR_EVERY_BUSINESS_ITEMS,
+}) => {
   const containerRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -73,28 +90,28 @@ export const SoftwareForEveryBusiness: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      id="software-for-every-business"
+      id={id}
       className="wk-software-business"
-      aria-labelledby="software-business-heading"
+      aria-labelledby={`${id}-heading`}
     >
       {/* 1. Section Heading */}
       <div ref={headerRef} className="wk-software-business__header">
         <h2
-          id="software-business-heading"
+          id={`${id}-heading`}
           className="wk-software-business__title"
         >
-          <span className="wk-software-business__title-accent">Software</span>{' '}
-          for Every Business.
+          <span className="wk-software-business__title-accent">{titleAccent}</span>{' '}
+          {titleRest}
         </h2>
         <p className="wk-software-business__subtitle">
-          Custom software solutions for every industry and need.
+          {subtitle}
         </p>
       </div>
 
       {/* 2. Six Solution Cards (3x2 Grid) */}
       <div className="wk-software-business__container">
         <div className="wk-software-business__grid">
-          {SOFTWARE_FOR_EVERY_BUSINESS_ITEMS.map((item, index) => (
+          {items.map((item, index) => (
             <SolutionCard
               key={item.id}
               ref={(el) => {

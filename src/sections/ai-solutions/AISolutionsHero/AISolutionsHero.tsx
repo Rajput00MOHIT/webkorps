@@ -48,12 +48,12 @@ export const AISolutionsHero: React.FC = () => {
 
           {/* Line 2: Solutions That Deliver */}
           <span className="wk-ai-hero-exact__line">
-            Solutions That Deliver
+            <span className='solution'>Solutions</span>    That Deliver
           </span>
 
           {/* Line 3: Measurable ROI [Cursor Pointer] */}
           <span className="wk-ai-hero-exact__line">
-            Measurable ROI
+            <span className='solution'>Measurable </span> ROI
             <span className="wk-ai-hero-exact__cursor-wrap" aria-hidden="true">
               <svg
                 viewBox="0 0 70 73"

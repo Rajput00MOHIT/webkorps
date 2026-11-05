@@ -44,18 +44,17 @@
 .wk-oem__stage {
   position: relative;
   width: 100%;
-  max-width: 1600px;
-  height: clamp(380px, 44vw, 620px);
+  max-width: 1440px;
+  height: clamp(420px, 46vw, 660px);
   margin: 0 auto;
-  overflow: hidden;
   user-select: none;
 
-  /* Responsive Orbital Geometric Radii Variables */
-  --stage-r: clamp(260px, 35vw, 560px);
-  --r-outer: calc(var(--stage-r) * 0.95);
-  --r-middle: calc(var(--stage-r) * 0.78);
-  --r-inner: calc(var(--stage-r) * 0.61);
-  --r-dome: calc(var(--stage-r) * 0.38);
+  /* Responsive Orbital Geometric Radii Variables matching SVG exactly */
+  --stage-h: clamp(420px, 46vw, 660px);
+  --r-outer: calc(var(--stage-h) * 0.755);
+  --r-middle: calc(var(--stage-h) * 0.598);
+  --r-inner: calc(var(--stage-h) * 0.446);
+  --r-dome: calc(var(--stage-h) * 0.315);
 
   /* Responsive Badge Scaling */
   --badge-scale: 1;
@@ -74,6 +73,7 @@
 .wk-oem__bg-arcs {
   position: absolute;
   left: 50%;
+
   bottom: 0;
   transform: translateX(-50%);
   width: 100%;
@@ -142,7 +142,7 @@
   padding: 8px;
   box-sizing: border-box;
   animation: wk-badge-counter var(--duration) linear infinite,
-             wk-badge-depth var(--duration) linear infinite;
+    wk-badge-depth var(--duration) linear infinite;
   animation-delay: var(--delay), var(--delay);
   transition: box-shadow 0.25s ease, border-color 0.25s ease;
 }
@@ -237,6 +237,7 @@
   0% {
     transform: rotate(-180deg);
   }
+
   100% {
     transform: rotate(180deg);
   }
@@ -246,6 +247,7 @@
   0% {
     transform: translate(-50%, -50%) rotate(180deg);
   }
+
   100% {
     transform: translate(-50%, -50%) rotate(-180deg);
   }
@@ -253,35 +255,41 @@
 
 /* Depth, Scale, and Staggered Horizon Fade Modulation */
 @keyframes wk-badge-depth {
+
   /* Left Horizon Entry: Smoothly emerges onto the path */
   0% {
     opacity: 0;
     scale: 1.04;
     z-index: 8;
   }
+
   3% {
     opacity: 1;
     scale: 1.02;
     z-index: 8;
   }
+
   /* Rising toward Zenith */
   25% {
     opacity: 1;
     scale: 0.94;
     z-index: 5;
   }
+
   /* Descending toward Right Horizon */
   47% {
     opacity: 1;
     scale: 1.02;
     z-index: 8;
   }
+
   /* Right Horizon Exit: Fades out smoothly as it crosses below horizon */
   50% {
     opacity: 0;
     scale: 1.04;
     z-index: 8;
   }
+
   /* Return Path Underneath: Silent travel back to Left Horizon outside viewport */
   50.1% {
     opacity: 0;
@@ -289,12 +297,14 @@
     pointer-events: none;
     z-index: 1;
   }
+
   99.9% {
     opacity: 0;
     scale: 1.04;
     pointer-events: none;
     z-index: 1;
   }
+
   /* Seamless Mathematical Loop */
   100% {
     opacity: 0;
@@ -308,6 +318,7 @@
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
   .wk-oem__track,
   .wk-oem__badge {
     animation: none !important;
@@ -344,8 +355,8 @@
   }
 
   .wk-oem__stage {
-    height: clamp(340px, 78vw, 440px);
-    --stage-r: clamp(210px, 44vw, 320px);
+    height: clamp(340px, 78vw, 460px);
+    --stage-h: clamp(340px, 78vw, 460px);
     --badge-scale: 0.75;
   }
 }
@@ -353,7 +364,7 @@
 @media (max-width: 480px) {
   .wk-oem__stage {
     height: 320px;
-    --stage-r: 195px;
+    --stage-h: 320px;
     --badge-scale: 0.65;
   }
 

@@ -124,12 +124,9 @@
 .wk-challenge__card-inner {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 0 clamp(18px, 2.2vw, 32px);
+  padding: 0 clamp(20px, 2.4vw, 36px) clamp(24px, 3vh, 36px);
   width: 100%;
-  background-color: #F9FAFB;
-  padding: 12px;
-  min-height: clamp(380px, 32vw, 440px);
+  background-color: transparent;
   box-sizing: border-box;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -147,6 +144,7 @@
   letter-spacing: -0.02em;
   color: #1887C9;
   user-select: none;
+  margin-bottom: clamp(16px, 1.8vw, 24px);
 }
 
 /* 3D Visual Asset Area */
@@ -156,40 +154,39 @@
   justify-content: center;
   height: clamp(140px, 13vw, 175px);
   width: 100%;
-  margin: 18px 0;
+  margin: 0 0 clamp(20px, 2vw, 32px) 0;
+  background: transparent;
 }
 
 .wk-challenge__img {
   width: auto;
-  max-width: clamp(110px, 10vw, 140px);
-  max-height: clamp(110px, 10vw, 140px);
+  max-width: clamp(120px, 11vw, 150px);
+  max-height: clamp(120px, 11vw, 150px);
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 10px 24px rgba(15, 23, 42, 0.08));
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   animation: wk-float 4.5s ease-in-out infinite alternate;
 }
 
-.wk-challenge__img--disconnected-systems {
+.wk-challenge__img--automate-operations {
   animation-delay: 0s;
 }
 
-.wk-challenge__img--scaling-limitations {
+.wk-challenge__img--smarter-decisions {
   animation-delay: 0.6s;
 }
 
-.wk-challenge__img--fragmented-data {
+.wk-challenge__img--seamless-experiences {
   animation-delay: 1.2s;
 }
 
-.wk-challenge__img--missed-opportunities {
+.wk-challenge__img--scale-without-limits {
   animation-delay: 1.8s;
 }
 
 .wk-challenge__card:hover .wk-challenge__img {
-  transform: scale(1.08) translateY(-6px);
-  filter: drop-shadow(0 16px 32px rgba(24, 135, 201, 0.18));
+  transform: scale(1.06) translateY(-4px);
 }
 
 /* Floating ambient animation for 3D elements */
@@ -203,19 +200,23 @@
   }
 }
 
-/* Card Heading & Supporting Description */
+/* Card Heading & Supporting Description - Top-aligned with identical baselines */
 .wk-challenge__content {
-  margin-top: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .wk-challenge__card-title {
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(20px, 1.6vw, 24px);
+  font-size: clamp(20px, 1.55vw, 23px);
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.28;
   letter-spacing: -0.015em;
   color: #0F172A;
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
+  min-height: 60px; /* Fixed 2-line height so 1-line and 2-line titles reserve the exact same height */
+  display: flex;
+  align-items: flex-start;
 }
 
 .wk-challenge__card-desc {
@@ -234,10 +235,6 @@
   .wk-challenge__grid {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 48px;
-  }
-
-  .wk-challenge__card-inner {
-    min-height: 360px;
   }
 }
 

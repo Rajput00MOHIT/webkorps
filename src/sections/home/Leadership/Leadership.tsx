@@ -35,7 +35,7 @@ const LEADERS_DATA: LeaderItem[] = [
       'Success is not about being ahead of others, it’s about becoming better than who you were yesterday.',
     image: chiragPhoto,
     imageAlt: 'Chirag Agrawal, CEO & Founder at Webkorps',
-    linkedinUrl: 'https://www.linkedin.com/company/webkorps',
+    linkedinUrl: 'https://www.linkedin.com/in/chiraga9',
     emailUrl: 'mailto:contact@webkorps.com',
   },
   {
@@ -46,7 +46,7 @@ const LEADERS_DATA: LeaderItem[] = [
       'Keep learning, keep growing, and keep moving forward because every small step creates a bigger journey.',
     image: amulPhoto,
     imageAlt: 'Amul Choudhary, COO & Co-Founder at Webkorps',
-    linkedinUrl: 'https://www.linkedin.com/company/webkorps',
+    linkedinUrl: 'https://www.linkedin.com/in/amulchoudhary',
     emailUrl: 'mailto:contact@webkorps.com',
   },
   {
@@ -57,7 +57,7 @@ const LEADERS_DATA: LeaderItem[] = [
       'Challenges may slow you down, but never let them stop you. Every struggle is preparing you for something greater.',
     image: parakhPhoto,
     imageAlt: 'Parakh Garg, CTO at Webkorps',
-    linkedinUrl: 'https://www.linkedin.com/company/webkorps',
+    linkedinUrl: 'https://www.linkedin.com/in/parakhgarg',
     emailUrl: 'mailto:contact@webkorps.com',
   },
   {
@@ -68,7 +68,7 @@ const LEADERS_DATA: LeaderItem[] = [
       'Success shines brighter when it is earned with honesty, and becomes meaningful when it inspires others.',
     image: swapnilPhoto,
     imageAlt: 'Swapnil Bhosle, Vice President of Engineering at Webkorps',
-    linkedinUrl: 'https://www.linkedin.com/company/webkorps',
+    linkedinUrl: 'https://www.linkedin.com/in/swapnil-bhosale-7534b4138',
     emailUrl: 'mailto:contact@webkorps.com',
   },
   {
@@ -79,7 +79,7 @@ const LEADERS_DATA: LeaderItem[] = [
       'Be the reason someone believes in possibilities, and leave every place better than you found it.',
     image: ankurPhoto,
     imageAlt: 'Ankur Singhal, Chief Growth Officer at Webkorps',
-    linkedinUrl: 'https://www.linkedin.com/company/webkorps',
+    linkedinUrl: 'https://www.linkedin.com/in/ankur-singhal-8b51a315',
     emailUrl: 'mailto:contact@webkorps.com',
   },
   {
@@ -90,7 +90,7 @@ const LEADERS_DATA: LeaderItem[] = [
       'Dream big, work hard, and stay humble, because true success is built one step at a time.',
     image: vikasPhoto,
     imageAlt: 'Vikas Dameriya, Vice President of Business at Webkorps',
-    linkedinUrl: 'https://www.linkedin.com/company/webkorps',
+    linkedinUrl: 'https://www.linkedin.com/in/vikas-dameriya-878526b1',
     emailUrl: 'mailto:contact@webkorps.com',
   },
   {
@@ -101,7 +101,7 @@ const LEADERS_DATA: LeaderItem[] = [
       'Don’t wait for the perfect moment to begin, make the moment perfect with your effort.',
     image: mehulPhoto,
     imageAlt: 'Mehul Shah, Head of Operations at Webkorps',
-    linkedinUrl: 'https://www.linkedin.com/company/webkorps',
+    linkedinUrl: 'https://www.linkedin.com/in/mehul-s-01837146',
     emailUrl: 'mailto:contact@webkorps.com',
   },
   {
@@ -112,7 +112,7 @@ const LEADERS_DATA: LeaderItem[] = [
       'Great things take time and patience, keep moving forward and trust your journey.',
     image: aakashPhoto,
     imageAlt: 'Akash Chandrawade, People, Strategy & Delivery at Webkorps',
-    linkedinUrl: 'https://www.linkedin.com/company/webkorps',
+    linkedinUrl: 'https://www.linkedin.com/in/akashchandrawade/',
     emailUrl: 'mailto:contact@webkorps.com',
   },
   {
@@ -123,7 +123,7 @@ const LEADERS_DATA: LeaderItem[] = [
       'Your attitude defines your direction, and your actions define your destination.',
     image: ajayPhoto,
     imageAlt: 'Ajay Thakur, Head Of Recruitment at Webkorps',
-    linkedinUrl: 'https://www.linkedin.com/company/webkorps',
+    linkedinUrl: 'https://www.linkedin.com/in/ajay-thakur-535929226/',
     emailUrl: 'mailto:contact@webkorps.com',
   },
 ];
@@ -253,9 +253,8 @@ export const Leadership: React.FC = () => {
           {LEADERS_DATA.map((leader, index) => (
             <article
               key={leader.id}
-              className={`wk-leader-card ${
-                index === activeIndex ? 'wk-leader-card--active' : ''
-              }`}
+              className={`wk-leader-card ${index === activeIndex ? 'wk-leader-card--active' : ''
+                }`}
               style={{ transitionDelay: `${index * 120}ms` }}
               aria-label={`${leader.name}, ${leader.title}`}
               onClick={() => scrollToSlide(index)}
@@ -328,9 +327,8 @@ export const Leadership: React.FC = () => {
                 role="tab"
                 aria-selected={i === activeIndex}
                 aria-label={`Go to slide ${i + 1}: ${leader.name}`}
-                className={`wk-leadership__dot ${
-                  i === activeIndex ? 'wk-leadership__dot--active' : ''
-                }`}
+                className={`wk-leadership__dot ${i === activeIndex ? 'wk-leadership__dot--active' : ''
+                  }`}
                 onClick={() => scrollToSlide(i)}
               />
             ))}

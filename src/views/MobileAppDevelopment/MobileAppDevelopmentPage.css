@@ -1,0 +1,18 @@
+/**
+ * Mobile App Development Page Styles
+ */
+
+.wk-mobile-dev-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  color: #0F172A;
+}
+
+.wk-mobile-dev-page__main {
+  width: 100%;
+  position: relative;
+  overflow: visible;
+}
+

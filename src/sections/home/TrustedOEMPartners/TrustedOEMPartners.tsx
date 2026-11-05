@@ -30,24 +30,24 @@ export const TrustedOEMPartners: React.FC = () => {
           {/* Background Concentric Arc Surfaces */}
           <svg
             className="wk-oem__bg-arcs"
-            viewBox="0 0 1920 900"
-            preserveAspectRatio="xMidYMax slice"
+            viewBox="0 0 1920 920"
+            preserveAspectRatio="xMidYMax meet"
             aria-hidden="true"
           >
             {/* Outermost pale blue arc band */}
-            <circle cx="960" cy="900" r="910" fill="#F2F8FE" />
+            <circle cx="960" cy="920" r="780" fill="#F2F8FE" />
             {/* Middle soft blue arc band */}
-            <circle cx="960" cy="900" r="755" fill="#E8F2FB" />
+            <circle cx="960" cy="920" r="630" fill="#E8F2FB" />
             {/* Innermost sky blue arc band */}
-            <circle cx="960" cy="900" r="595" fill="#E1EEFB" />
+            <circle cx="960" cy="920" r="480" fill="#E1EEFB" />
             {/* Center dome surface */}
-            <circle cx="960" cy="900" r="350" fill="#FFFFFF" />
+            <circle cx="960" cy="920" r="290" fill="#FFFFFF" />
 
             {/* Exact orbital trajectory centerline tracks */}
             <circle
               cx="960"
-              cy="900"
-              r="855"
+              cy="920"
+              r="695"
               fill="none"
               stroke="#D8E8F5"
               strokeWidth="1.2"
@@ -56,8 +56,8 @@ export const TrustedOEMPartners: React.FC = () => {
             />
             <circle
               cx="960"
-              cy="900"
-              r="702"
+              cy="920"
+              r="550"
               fill="none"
               stroke="#D8E8F5"
               strokeWidth="1.2"
@@ -66,8 +66,8 @@ export const TrustedOEMPartners: React.FC = () => {
             />
             <circle
               cx="960"
-              cy="900"
-              r="549"
+              cy="920"
+              r="410"
               fill="none"
               stroke="#D8E8F5"
               strokeWidth="1.2"

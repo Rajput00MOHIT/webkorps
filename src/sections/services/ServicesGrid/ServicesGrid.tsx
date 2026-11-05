@@ -38,7 +38,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Build tailored software solutions designed around your business goals and workflows.',
     image: customSoftwareImg,
     alt: '3D isometric cylinder pedestal with data screens and growth chart representing custom software development',
-    href: '/contact-us',
+    href: '/services/custom-software-development',
   },
   {
     id: 'web-development',
@@ -47,7 +47,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Create fast, scalable web platforms that deliver seamless digital experiences.',
     image: webDevImg,
     alt: '3D circular platform with web browser window and calendar interface representing web development',
-    href: '/contact-us',
+    href: '/services/web-development',
   },
   {
     id: 'mobile-app',
@@ -56,7 +56,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Build engaging iOS and Android apps that connect businesses with users.',
     image: mobileDevImg,
     alt: '3D smartphone displaying financial app interface on a display stage representing mobile app development',
-    href: '/contact-us',
+    href: '/services/mobile-app-development',
   },
   {
     id: 'ai-ml',
@@ -65,7 +65,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Use AI-powered solutions to automate operations and unlock smarter decisions.',
     image: aiMlImg,
     alt: '3D architectural cube matrix with luminous blue AI block representing AI-ML development',
-    href: '/contact-us',
+    href: '/services/ai-ml-development',
   },
   {
     id: 'cloud-application',
@@ -74,7 +74,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Scale securely with cloud applications built for performance and flexibility.',
     image: cloudAppImg,
     alt: '3D layered translucent blue cloud icon elevated on illuminated pedestal representing cloud application development',
-    href: '/contact-us',
+    href: '/services/cloud-application-development',
   },
   {
     id: 'enterprise-software',
@@ -83,7 +83,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Streamline complex operations with enterprise-ready digital solutions.',
     image: enterpriseImg,
     alt: '3D document stack with integrated workflow tree hierarchy representing enterprise software',
-    href: '/contact-us',
+    href: '/services/enterprise-software-development',
   },
   {
     id: 'iot-application',
@@ -92,7 +92,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Connect systems and devices with intelligent IoT solutions.',
     image: iotImg,
     alt: '3D glass network gateway portals with glowing interconnecting pathway representing IoT application development',
-    href: '/contact-us',
+    href: '/services/iot-application-development',
   },
   {
     id: 'it-staff-augmentation',
@@ -101,7 +101,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Extend your team with experienced tech professionals when you need them.',
     image: itStaffImg,
     alt: '3D modular structural engineering blocks with luminous blue glass slab representing IT staff augmentation',
-    href: '/contact-us',
+    href: '/services/it-staff-augmentation',
   },
   {
     id: 'managed-it-services',
@@ -110,7 +110,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Keep systems secure and running smoothly with reliable IT support.',
     image: managedItImg,
     alt: '3D stack of rounded acrylic glass server plates illuminated with blue gradient representing managed IT services',
-    href: '/contact-us',
+    href: '/services/managed-it-services',
   },
   {
     id: 'blockchain-development',
@@ -119,7 +119,7 @@ const SERVICES_DATA: ServiceEntry[] = [
     description: 'Build secure and transparent blockchain-powered business solutions.',
     image: blockchainImg,
     alt: '3D diagonal sequence of blue blockchain nodes and sphere representing blockchain development',
-    href: '/contact-us',
+    href: '/services/blockchain-development',
   },
 ];
 

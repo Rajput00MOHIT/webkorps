@@ -1,0 +1,256 @@
+/**
+ * Reusable Service Capabilities Section Styles
+ * Source of Truth: CustomSoftwareServices.css
+ */
+
+.wk-capabilities {
+  width: 100%;
+  background-color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header Band */
+.wk-capabilities__header-band {
+  width: 100%;
+  border-bottom: 1px solid #E2E8F0;
+  padding: clamp(48px, 5.5vw, 72px) 24px;
+  text-align: center;
+}
+
+.wk-capabilities__header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wk-capabilities__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  margin: 0 0 14px;
+}
+
+.wk-capabilities__title-accent {
+  color: #1887C9;
+}
+
+.wk-capabilities__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #475569;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Rows Container */
+.wk-capabilities__body {
+  width: 100%;
+  padding: clamp(60px, 7vw, 100px) 24px clamp(80px, 9vw, 120px);
+}
+
+.wk-capabilities__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(56px, 7vw, 92px);
+}
+
+/* Alternating Row */
+.wk-capabilities__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(36px, 5vw, 72px);
+  width: 100%;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-capabilities__row.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wk-capabilities__row--reversed {
+  flex-direction: row-reverse;
+}
+
+/* Content Column (Text Block) */
+.wk-capabilities__content-col {
+  flex: 1 1 48%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Heading */
+.wk-capabilities__row-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: #0F172A;
+  margin: 0 0 16px;
+}
+
+.wk-capabilities__row-num {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+.wk-capabilities__row-title-text {
+  color: #0F172A;
+}
+
+/* Supporting Description */
+.wk-capabilities__row-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: #475569;
+  margin: 0 0 28px;
+  max-width: 480px;
+}
+
+/* Reused Blue Pill CTA Button ("Know More ↗") */
+.wk-capabilities__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1887C9;
+  color: #FFFFFF;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(24, 135, 201, 0.24);
+  transition: background-color 0.25s ease,
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.wk-capabilities__btn:hover {
+  background-color: #1374AD;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(24, 135, 201, 0.34);
+  color: #FFFFFF;
+}
+
+.wk-capabilities__btn:focus-visible {
+  outline: 2px solid #1887C9;
+  outline-offset: 3px;
+}
+
+.wk-capabilities__btn-icon {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wk-capabilities__btn:hover .wk-capabilities__btn-icon {
+  transform: translate(2px, -2px);
+}
+
+/* Visual Illustration Column & Card */
+.wk-capabilities__visual-col {
+  flex: 1 1 52%;
+  max-width: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wk-capabilities__visual-card {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 24vw, 370px);
+  background: #EBF5FB;
+  border: 1px solid rgba(24, 135, 201, 0.12);
+  border-radius: 24px;
+  padding: clamp(24px, 3.5vw, 44px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.wk-capabilities__visual-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(24, 135, 201, 0.28);
+  box-shadow: 0 16px 36px rgba(24, 135, 201, 0.14);
+}
+
+/* 3D Illustration Graphic */
+.wk-capabilities__visual-img {
+  width: 100%;
+  height: 100%;
+  max-height: 310px;
+  object-fit: contain;
+  display: block;
+  animation: wk-cap-float 5s ease-in-out infinite;
+  filter: drop-shadow(0 10px 20px rgba(15, 23, 42, 0.08));
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes wk-cap-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .wk-capabilities__row,
+  .wk-capabilities__row--reversed {
+    flex-direction: column;
+    text-align: left;
+    gap: 32px;
+  }
+
+  .wk-capabilities__content-col {
+    max-width: 100%;
+  }
+
+  .wk-capabilities__visual-col {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .wk-capabilities__visual-card {
+    height: clamp(240px, 50vw, 320px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wk-capabilities__row,
+  .wk-capabilities__visual-card,
+  .wk-capabilities__visual-img,
+  .wk-capabilities__btn {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

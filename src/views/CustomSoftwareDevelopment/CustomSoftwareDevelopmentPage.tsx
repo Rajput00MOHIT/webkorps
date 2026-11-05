@@ -11,7 +11,8 @@ import { SoftwareForEveryBusiness } from '../../sections/custom-software/Softwar
 import { ProvenDeliveryProcess } from '../../sections/custom-software/ProvenDeliveryProcess';
 import { TechnologyExpertise } from '../../sections/technologies/TechnologyExpertise/TechnologyExpertise';
 import { RealBusinessesRealImpact } from '../../sections/custom-software/RealBusinessesRealImpact';
-import { IndustrySolutionsForGrowth } from '../../sections/custom-software/IndustrySolutionsForGrowth';
+import { DomainSpecificSolutions } from '../../components/DomainSpecificSolutions';
+import { CUSTOM_SOFTWARE_DOMAINS } from './customSoftwareDomainData';
 import { BrandTrustStrip } from '../../sections/about/BrandTrustStrip/BrandTrustStrip';
 import { ClientTestimonials } from '../../sections/about/ClientTestimonials/ClientTestimonials';
 import { CustomSoftwareFAQ } from '../../sections/custom-software/CustomSoftwareFAQ';
@@ -81,8 +82,19 @@ export const CustomSoftwareDevelopmentPage: React.FC = () => {
         {/* Section 07: Real Businesses. Real Impact. */}
         <RealBusinessesRealImpact />
 
-        {/* Section 08: Industry Solutions for Growth */}
-        <IndustrySolutionsForGrowth />
+        {/* Section 08: Domain-Specific Solutions */}
+        <DomainSpecificSolutions
+          id="custom-software-domain-solutions"
+          title={
+            <>
+              Custom Software for{' '}
+              <span className="wk-domain-sol__title-accent">Industry-Specific Needs</span>
+            </>
+          }
+          subtitle="We combine deep industry understanding with technology expertise to build software that solves real operational challenges."
+          engineeringLabel="Webkorps Software Engineering"
+          domains={CUSTOM_SOFTWARE_DOMAINS}
+        />
 
         {/* Section 09: Trusted by Fast-Growing Companies Around the World */}
         <BrandTrustStrip variant="services" />

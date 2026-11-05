@@ -23,7 +23,7 @@ interface AISolutionItem {
 const SOLUTIONS: AISolutionItem[] = [
   {
     id: 'generative-ai',
-    title: 'Generative AI &\nEnterprise LLMs',
+    title: 'Generative AI & Enterprise LLMs',
     tags: ['Enterprise RAG', 'Private LLMs', 'Guardrails'],
     description:
       'Build secure, private LLMs and AI copilots with reliable RAG pipelines and strict data protection.',
@@ -32,7 +32,7 @@ const SOLUTIONS: AISolutionItem[] = [
   },
   {
     id: 'agentic-ai',
-    title: 'Agentic AI &\nAutonomous',
+    title: 'Agentic AI & Autonomous Agents',
     tags: ['Human-in-the-Loop', 'Autonomous Agents', 'Tool Calling'],
     description:
       'Build autonomous AI agents to automate complex workflows with secure integrations and human oversight.',
@@ -41,7 +41,7 @@ const SOLUTIONS: AISolutionItem[] = [
   },
   {
     id: 'predictive-analytics',
-    title: 'Predictive Analytics\n& Machine Learning',
+    title: 'Predictive Analytics & Machine Learning',
     tags: ['Time-Series', 'Risk Scoring', 'Anomaly Detection'],
     description:
       'Develop predictive AI models for forecasting, fraud detection, demand planning, and customer value optimization.',
@@ -50,7 +50,7 @@ const SOLUTIONS: AISolutionItem[] = [
   },
   {
     id: 'computer-vision',
-    title: 'Computer Vision &\nMultimodal AI',
+    title: 'Computer Vision & Multimodal AI',
     tags: ['Edge Vision', 'Document OCR', 'Visual QA'],
     description:
       'Deploy scalable AI vision solutions for defect detection, document processing, and spatial intelligence.',
@@ -59,7 +59,7 @@ const SOLUTIONS: AISolutionItem[] = [
   },
   {
     id: 'saas-modernization',
-    title: 'SaaS AI Modernization\n& Copilots',
+    title: 'SaaS AI Modernization & Copilots',
     tags: ['Copilot Sidecars', 'NL-to-SQL', 'Multi-Tenant AI'],
     description:
       'Integrate AI search, smart assistants, and natural-language data queries into existing SaaS platforms.',
@@ -68,8 +68,8 @@ const SOLUTIONS: AISolutionItem[] = [
   },
   {
     id: 'ai-governance',
-    title: 'Enterprise AI\nGovernance & MLOps',
-    tags: ['Copilot Sidecars', 'NL-to-SQL', 'Multi-Tenant AI'],
+    title: 'Enterprise AI Governance & MLOps',
+    tags: ['Governance Telemetry', 'Model CI/CD', 'Compliance'],
     description:
       'Automate AI testing, cost monitoring, data privacy, and compliance across the AI lifecycle.',
     image: governanceImg,
@@ -106,13 +106,7 @@ export const EnterpriseAISolutions: React.FC = () => {
               >
                 {/* Content Side */}
                 <div className="wk-ent-ai__content">
-                  <h3 className="wk-ent-ai__row-title">
-                    {sol.title.split('\n').map((line, i) => (
-                      <span key={i} className="wk-ent-ai__row-title-line">
-                        {line}
-                      </span>
-                    ))}
-                  </h3>
+                  <h3 className="wk-ent-ai__row-title">{sol.title}</h3>
 
                   {/* Capability Tags */}
                   <div className="wk-ent-ai__tags">
@@ -126,26 +120,29 @@ export const EnterpriseAISolutions: React.FC = () => {
                   {/* Description */}
                   <p className="wk-ent-ai__desc">{sol.description}</p>
 
-                  {/* Consultation CTA Button */}
+                  {/* CTA Button: Standardized "Know More ↗" */}
                   <Link
                     href="/contact-us"
                     className="wk-ent-ai__btn"
-                    aria-label={`Consult on this Solution: ${sol.title.replace('\n', ' ')}`}
+                    aria-label={`Know More about ${sol.title}`}
                   >
-                    <span>Consult on this Solution</span>
+                    <span>Know More</span>
                     <svg
-                      width="15"
-                      height="15"
-                      viewBox="0 0 24 24"
+                      width="13"
+                      height="13"
+                      viewBox="0 0 14 14"
                       fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="wk-ent-ai__btn-icon"
                       aria-hidden="true"
                     >
-                      <line x1="7" y1="17" x2="17" y2="7" />
-                      <polyline points="7 7 17 7 17 17" />
+                      <path
+                        d="M3.5 10.5L10.5 3.5M10.5 3.5H4.66667M10.5 3.5V9.33333"
+                        stroke="currentColor"
+                        strokeWidth="1.75"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </Link>
                 </div>
