@@ -15,7 +15,7 @@ interface EcosystemStage {
   id: string;
   title: string;
   description: string;
-  impactMetric: string;
+  keyHighlight: string;
   tags: string[];
 }
 
@@ -25,7 +25,7 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
     title: 'Procurement & Inbound',
     description:
       'Synchronize supplier purchase orders, delivery appointments, and automated advance shipping notices (ASNs) to prevent dock congestion.',
-    impactMetric: 'Up to 40% reduction in dock wait times',
+    keyHighlight: 'Automated supplier order validation and inbound dock coordination.',
     tags: ['PO Synchronization', 'ASN Digitization', 'Dock Scheduling', 'Gate Automation'],
   },
   {
@@ -33,7 +33,7 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
     title: 'Warehouse & Inventory',
     description:
       'Optimize inventory with dynamic bin slotting, barcode/RFID scanning, cross-docking, and real-time stock balance across facilities.',
-    impactMetric: '99.8% pick accuracy with automated verification',
+    keyHighlight: 'Real-time inventory synchronization and intelligent dynamic slotting.',
     tags: ['Dynamic Pallet Slotting', 'RFID Continuous Scan', 'Cross-Dock Routing', 'Auto Cycle Counting'],
   },
   {
@@ -41,7 +41,7 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
     title: 'Order Processing',
     description:
       'Consolidate multi-channel B2B and D2C orders, validate stock availability, and trigger automated pick-and-pack fulfillment batches.',
-    impactMetric: 'Sub-minute order validation & allocation',
+    keyHighlight: 'Fast order validation and intelligent omnichannel allocation.',
     tags: ['Omnichannel Splitting', 'Wave & Batch Picking', 'Auto Manifesting', 'Pack Verification'],
   },
   {
@@ -49,7 +49,7 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
     title: 'Freight & Transportation',
     description:
       'Consolidate loads algorithmically, benchmark carrier rates, plan multi-modal freight routes, and automate contract tendering.',
-    impactMetric: '15–22% lower freight spend per ton-mile',
+    keyHighlight: 'Dynamic carrier selection and multi-modal route optimization.',
     tags: ['Multi-Carrier Tendering', '3D Load Optimization', 'eBOL Automation', 'Intermodal Routing'],
   },
   {
@@ -57,7 +57,7 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
     title: 'Shipment Tracking',
     description:
       'Track vehicle telemetry with live GPS streams, monitor geofence entry and exit, and distribute automated transit alerts.',
-    impactMetric: 'Zero deadband tracking across transit corridors',
+    keyHighlight: 'Live shipment visibility and proactive route exception detection.',
     tags: ['Sub-Second Telematics', 'Cold-Chain IoT', 'Geofence Triggers', 'Dynamic Predictive ETA'],
   },
   {
@@ -65,10 +65,27 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
     title: 'Last-Mile & Delivery',
     description:
       'Sequence driver stops dynamically, provide accurate customer ETAs, and capture contactless electronic proof-of-delivery (ePOD).',
-    impactMetric: '42% faster delivery turnaround with zero paperwork',
+    keyHighlight: 'Intelligent delivery assignment and verified proof of delivery.',
     tags: ['Dynamic Stop Sequencing', 'Contactless ePOD', 'Live Recipient Tracking', 'Reverse Logistics'],
   },
 ];
+
+// Generates a smooth cubic bezier S-curve path connecting points
+function generateCurvedPath(points: { x: number; y: number }[]): string {
+  if (points.length < 2) return '';
+  let d = `M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
+  for (let i = 0; i < points.length - 1; i++) {
+    const p0 = points[i];
+    const p1 = points[i + 1];
+    const dx = p1.x - p0.x;
+    const cp1x = p0.x + dx * 0.5;
+    const cp1y = p0.y;
+    const cp2x = p0.x + dx * 0.5;
+    const cp2y = p1.y;
+    d += ` C ${cp1x.toFixed(1)} ${cp1y.toFixed(1)}, ${cp2x.toFixed(1)} ${cp2y.toFixed(1)}, ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`;
+  }
+  return d;
+}
 
 export const LogisticsEcosystem: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -85,8 +102,8 @@ export const LogisticsEcosystem: React.FC = () => {
     if (cards.length === 0) return;
 
     const trackRect = track.getBoundingClientRect();
-    const topY = 135; // Behind the 3D cart image
-    const bottomY = 320; // Dips in the gaps between cards
+    const topY = 120; // Behind the 3D cart illustration
+    const bottomY = 320; // Lower bend in the gap between cards
 
     const firstCardRect = cards[0].getBoundingClientRect();
     const firstCardLeft = firstCardRect.left - trackRect.left;
@@ -94,7 +111,7 @@ export const LogisticsEcosystem: React.FC = () => {
 
     // Starting point before Card 1
     points.push({
-      x: Math.max(0, firstCardLeft - 100),
+      x: Math.max(0, firstCardLeft - 80),
       y: (topY + bottomY) / 2,
     });
 
@@ -102,10 +119,10 @@ export const LogisticsEcosystem: React.FC = () => {
       const cardRect = card.getBoundingClientRect();
       const centerX = cardRect.left - trackRect.left + cardRect.width / 2;
 
-      // Peak behind the card
+      // Crest behind the card
       points.push({ x: centerX, y: topY });
 
-      // Valley in the gap to the next card
+      // Trough in the gap between cards
       if (idx < cards.length - 1) {
         const nextCardRect = cards[idx + 1].getBoundingClientRect();
         const gapCenterX =
@@ -119,23 +136,15 @@ export const LogisticsEcosystem: React.FC = () => {
     const lastCardRect = lastCard.getBoundingClientRect();
     const lastCardRight = lastCardRect.right - trackRect.left;
     points.push({
-      x: lastCardRight + 100,
+      x: lastCardRight + 80,
       y: (topY + bottomY) / 2,
     });
 
-    // Generate smooth continuous cubic bezier curve
-    let d = `M ${points[0].x} ${points[0].y}`;
-    for (let i = 0; i < points.length - 1; i++) {
-      const p0 = points[i];
-      const p1 = points[i + 1];
-      const midX = (p0.x + p1.x) / 2;
-      d += ` C ${midX} ${p0.y}, ${midX} ${p1.y}, ${p1.x} ${p1.y}`;
-    }
-
-    setCurveD(d);
+    setCurveD(generateCurvedPath(points));
   };
 
   useEffect(() => {
+    // Initial path calculation after DOM layout settle
     calculateCurvedPath();
   }, []);
 
@@ -168,18 +177,20 @@ export const LogisticsEcosystem: React.FC = () => {
 
       gsap.set(track, { x: 0 });
 
-      // Initialize mask strokeDasharray and strokeDashoffset for smooth line draw
+      // Setup SVG mask stroke dash for progressive scroll-driven reveal
       if (maskPath) {
-        const pathLength = maskPath.getTotalLength();
-        if (pathLength > 0) {
+        try {
+          const pathLength = maskPath.getTotalLength();
           gsap.set(maskPath, {
             strokeDasharray: pathLength,
             strokeDashoffset: pathLength,
           });
+        } catch {
+          // Fallback if SVG not rendered yet
         }
       }
 
-      // Generate card-aware snap positions
+      // Card-aware snap positions
       const cards = Array.from(track.querySelectorAll<HTMLElement>('.wk-logistics-eco__card'));
       const totalDist = getDistance();
       const trackPaddingLeft = parseFloat(getComputedStyle(track).paddingLeft) || 0;
@@ -225,7 +236,7 @@ export const LogisticsEcosystem: React.FC = () => {
         0
       );
 
-      // 2. Draw curved dashed line from left to right as the user scrolls
+      // 2. Draw curved dashed line progressively from left to right
       if (maskPath) {
         tl.to(
           maskPath,
@@ -302,7 +313,7 @@ export const LogisticsEcosystem: React.FC = () => {
                 </mask>
               </defs>
 
-              {/* Faint guide dashed line */}
+              {/* Faint roadmap guide dashed line */}
               <path
                 d={curveD}
                 fill="none"
@@ -312,7 +323,7 @@ export const LogisticsEcosystem: React.FC = () => {
                 strokeLinecap="round"
               />
 
-              {/* Active bright blue dashed line drawn on scroll */}
+              {/* Active Webkorps blue dashed line drawn on scroll */}
               <path
                 d={curveD}
                 fill="none"
@@ -346,21 +357,23 @@ export const LogisticsEcosystem: React.FC = () => {
               {/* Card Description */}
               <p className="wk-logistics-eco__card-desc">{stage.description}</p>
 
-              {/* Capabilities Tags */}
+              {/* Integrated Capability Tags */}
               <div className="wk-logistics-eco__tags-list">
                 {stage.tags.map((tag) => (
                   <span key={tag} className="wk-logistics-eco__tag">
+                    <span className="wk-logistics-eco__tag-dot" aria-hidden="true" />
                     {tag}
                   </span>
                 ))}
               </div>
 
-              {/* Operational Impact Stat */}
-              <div className="wk-logistics-eco__card-footer">
-                <span className="wk-logistics-eco__stat-icon" aria-hidden="true">
-                  ⚡
-                </span>
-                <span className="wk-logistics-eco__stat-text">{stage.impactMetric}</span>
+              {/* Distinctive Key Capability Highlight Statement */}
+              <div className="wk-logistics-eco__highlight">
+                <div className="wk-logistics-eco__highlight-accent" aria-hidden="true" />
+                <div className="wk-logistics-eco__highlight-content">
+                  <span className="wk-logistics-eco__highlight-label">KEY CAPABILITY</span>
+                  <p className="wk-logistics-eco__highlight-text">{stage.keyHighlight}</p>
+                </div>
               </div>
             </div>
           ))}
