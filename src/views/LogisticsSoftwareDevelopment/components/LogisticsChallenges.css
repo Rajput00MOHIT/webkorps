@@ -9,6 +9,8 @@
   border-top: 1px solid #E2E8F0;
   border-bottom: 1px solid #E2E8F0;
   position: relative;
+  z-index: 10;
+  box-shadow: 0 -24px 60px rgba(15, 23, 42, 0.08);
   box-sizing: border-box;
 }
 
