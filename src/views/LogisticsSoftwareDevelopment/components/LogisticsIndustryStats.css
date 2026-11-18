@@ -1,25 +1,31 @@
 /**
- * Logistics Industry at a Glance — Modern Editorial / Data-Dashboard Aesthetic
+ * Logistics Industry at a Glance — Market Intelligence Two-Column Design
+ * Visual Source of Truth: Figma node 2694-2150 & reference screenshot
  */
 
 .wk-logistics-stats {
   width: 100%;
-  background: #F8FAFC;
+  background: #FFFFFF;
   border-top: 1px solid #E2E8F0;
   border-bottom: 1px solid #E2E8F0;
-  padding: clamp(56px, 6vw, 84px) 24px;
+  padding: clamp(64px, 7vw, 96px) 24px;
   position: relative;
+  box-sizing: border-box;
 }
 
 .wk-logistics-stats__container {
   max-width: 1280px;
   margin: 0 auto;
+  width: 100%;
 }
 
+/* ========================================================
+   Header
+   ======================================================== */
 .wk-logistics-stats__header {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto clamp(36px, 4vw, 52px);
+  text-align: left;
+  max-width: 820px;
+  margin: 0 0 clamp(36px, 4vw, 48px);
 }
 
 .wk-logistics-stats__badge {
@@ -29,19 +35,19 @@
   background: #EAF4FE;
   color: #1887C9;
   font-family: var(--font-family-sans, 'Inter', sans-serif);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 14px;
-  border: 1px solid rgba(24, 135, 201, 0.2);
+  margin-bottom: 16px;
+  border: 1px solid rgba(24, 135, 201, 0.22);
 }
 
 .wk-logistics-stats__title {
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(28px, 3.2vw, 40px);
+  font-size: clamp(28px, 3.4vw, 42px);
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.22;
   letter-spacing: -0.025em;
   color: #0F172A;
   margin: 0 0 12px;
@@ -53,162 +59,315 @@
 
 .wk-logistics-stats__subtitle {
   font-family: var(--font-family-sans, 'Inter', sans-serif);
-  font-size: clamp(15px, 1.15vw, 17px);
+  font-size: clamp(15px, 1.2vw, 17px);
   line-height: 1.6;
   color: #64748B;
   margin: 0;
 }
 
-/* Data Dashboard Unified Board */
-.wk-logistics-stats__dashboard {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-}
-
-.wk-logistics-stats__strip {
+/* ========================================================
+   Two-Column Main Grid
+   ======================================================== */
+.wk-logistics-stats__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  position: relative;
+  grid-template-columns: 1fr 1.68fr;
+  gap: clamp(20px, 2.4vw, 32px);
+  align-items: stretch;
 }
 
-/* Individual Cell with Subtle Border Dividers */
-.wk-logistics-stats__cell {
-  padding: clamp(28px, 3.2vw, 40px) clamp(22px, 2.2vw, 32px);
-  position: relative;
+/* ========================================================
+   Left Column: Featured India Panel
+   ======================================================== */
+.wk-logistics-stats__india-card {
+  background: #F0F7FD;
+  border: 1px solid rgba(24, 135, 201, 0.18);
+  border-radius: 20px;
+  padding: clamp(28px, 3vw, 36px) clamp(24px, 2.5vw, 32px) clamp(22px, 2.2vw, 28px);
   display: flex;
   flex-direction: column;
-  transition: background-color 0.25s ease;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(24, 135, 201, 0.05);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.wk-logistics-stats__cell:not(:last-child) {
-  border-right: 1px solid #E2E8F0;
+.wk-logistics-stats.is-visible .wk-logistics-stats__india-card {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.wk-logistics-stats__cell:hover {
-  background-color: #FAFCFF;
+.wk-logistics-stats__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1887C9;
 }
 
-/* Cell Indicator */
-.wk-logistics-stats__cell-indicator {
+.wk-logistics-stats__pin-icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.wk-logistics-stats__india-metric {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(44px, 4.2vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #1887C9;
+  margin: 18px 0 12px;
+}
+
+.wk-logistics-stats__india-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0F172A;
+  margin: 0 0 12px;
+}
+
+.wk-logistics-stats__india-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0 0 20px;
+}
+
+.wk-logistics-stats__india-visual {
+  width: 100%;
+  margin-top: auto;
+  border-radius: 12px;
+  overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.wk-logistics-stats__india-img {
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========================================================
+   Right Column: Three Global Panels Stacked
+   ======================================================== */
+.wk-logistics-stats__global-column {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 1.6vw, 20px);
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 
-.wk-logistics-stats__indicator-bar {
-  width: 28px;
-  height: 3px;
-  border-radius: 9999px;
-  background: #CBD5E1;
-  transition: width 0.25s ease, background-color 0.25s ease;
+.wk-logistics-stats__global-panel {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: clamp(22px, 2.2vw, 28px) clamp(24px, 2.4vw, 30px) clamp(18px, 1.8vw, 22px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-.wk-logistics-stats__cell:hover .wk-logistics-stats__indicator-bar {
-  width: 44px;
-  background: #1887C9;
+.wk-logistics-stats.is-visible .wk-logistics-stats__global-panel {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.wk-logistics-stats__region-pill {
-  font-family: var(--font-family-sans, 'Inter', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: #F1F5F9;
-  color: #475569;
+.wk-logistics-stats.is-visible .wk-logistics-stats__global-panel:nth-child(1) {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
 }
 
-/* Numeric Metric */
-.wk-logistics-stats__metric-row {
-  margin-bottom: 12px;
+.wk-logistics-stats.is-visible .wk-logistics-stats__global-panel:nth-child(2) {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
 }
 
-.wk-logistics-stats__metric {
+.wk-logistics-stats.is-visible .wk-logistics-stats__global-panel:nth-child(3) {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.wk-logistics-stats__global-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(24, 135, 201, 0.08);
+  border-color: rgba(24, 135, 201, 0.35);
+}
+
+/* Panel Body 3-Part Layout */
+.wk-logistics-stats__global-body {
+  display: grid;
+  grid-template-columns: 125px 1fr 140px;
+  gap: clamp(16px, 2vw, 24px);
+  align-items: center;
+}
+
+.wk-logistics-stats__global-metric-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-logistics-stats__global-metric {
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(34px, 2.8vw, 44px);
+  font-size: clamp(30px, 2.6vw, 38px);
   font-weight: 800;
-  color: #0F172A;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  display: inline-block;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.wk-logistics-stats__cell:hover .wk-logistics-stats__metric {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: #1887C9;
-  transform: translateY(-1px);
+  margin-top: 8px;
 }
 
-.wk-logistics-stats__item-title {
+.wk-logistics-stats__global-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.wk-logistics-stats__global-title {
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
-  color: #0F172A;
-  margin: 0 0 8px;
   line-height: 1.35;
+  color: #0F172A;
+  margin: 0 0 6px;
 }
 
-.wk-logistics-stats__item-desc {
+.wk-logistics-stats__global-desc {
   font-family: var(--font-family-sans, 'Inter', sans-serif);
   font-size: 13.5px;
   line-height: 1.55;
-  color: #64748B;
-  margin: 0 0 24px;
-  flex: 1;
+  color: #475569;
+  margin: 0;
 }
 
-/* Attribution Line */
+.wk-logistics-stats__global-visual {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.wk-logistics-stats__global-img {
+  width: 100%;
+  max-width: 130px;
+  height: auto;
+  max-height: 85px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========================================================
+   Source Footer
+   ======================================================== */
 .wk-logistics-stats__source {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding-top: 14px;
-  border-top: 1px solid #F1F5F9;
-  margin-top: auto;
+  gap: 7px;
+  margin-top: 14px;
 }
 
-.wk-logistics-stats__source-bullet {
-  width: 6px;
-  height: 6px;
+.wk-logistics-stats__source--india {
+  margin-top: 18px;
+}
+
+.wk-logistics-stats__source-dot {
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: #1887C9;
+  background-color: #1887C9;
   flex-shrink: 0;
 }
 
 .wk-logistics-stats__source-text {
   font-family: var(--font-family-sans, 'Inter', sans-serif);
-  font-size: 11.5px;
-  color: #64748B;
+  font-size: 12px;
   font-weight: 500;
+  color: #64748B;
   line-height: 1.4;
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 1080px) {
-  .wk-logistics-stats__strip {
-    grid-template-columns: repeat(2, 1fr);
+/* ========================================================
+   Responsive Media Queries
+   ======================================================== */
+@media (max-width: 1024px) {
+  .wk-logistics-stats__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
-  .wk-logistics-stats__cell:nth-child(2) {
-    border-right: none;
-  }
-  .wk-logistics-stats__cell:nth-child(1),
-  .wk-logistics-stats__cell:nth-child(2) {
-    border-bottom: 1px solid #E2E8F0;
+
+  .wk-logistics-stats__global-body {
+    grid-template-columns: 110px 1fr 120px;
   }
 }
 
-@media (max-width: 640px) {
-  .wk-logistics-stats__strip {
+@media (max-width: 768px) {
+  .wk-logistics-stats {
+    padding: clamp(48px, 6vw, 64px) 20px;
+  }
+
+  .wk-logistics-stats__global-body {
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+  }
+
+  .wk-logistics-stats__global-metric-wrap {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .wk-logistics-stats__global-metric {
+    margin-top: 0;
+  }
+
+  .wk-logistics-stats__global-info {
+    grid-column: 1;
+  }
+
+  .wk-logistics-stats__global-visual {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 540px) {
+  .wk-logistics-stats__global-body {
     grid-template-columns: 1fr;
   }
-  .wk-logistics-stats__cell:not(:last-child) {
-    border-right: none;
-    border-bottom: 1px solid #E2E8F0;
+
+  .wk-logistics-stats__global-visual {
+    justify-content: flex-start;
+    margin-top: 12px;
+  }
+
+  .wk-logistics-stats__global-img {
+    max-width: 110px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wk-logistics-stats__india-card,
+  .wk-logistics-stats__global-panel {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
