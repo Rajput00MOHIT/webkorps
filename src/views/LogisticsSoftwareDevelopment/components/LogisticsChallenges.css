@@ -1,5 +1,6 @@
 /**
  * Why Logistics Operations Become Difficult to Manage — Editorial Numbered Split-Layout
+ * Sticky Viewport with Scrolling Right-Side Challenges
  */
 
 .wk-logistics-ch {
@@ -7,12 +8,36 @@
   background: #F8FAFC;
   border-top: 1px solid #E2E8F0;
   border-bottom: 1px solid #E2E8F0;
-  padding: clamp(64px, 7vw, 96px) 24px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Desktop: Pinned Exactly to 100vh / 100dvh Viewport Height */
+@media (min-width: 961px) {
+  .wk-logistics-ch {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 24px;
+  }
 }
 
 .wk-logistics-ch__container {
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 961px) {
+  .wk-logistics-ch__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 }
 
 /* Two-Column Editorial Layout */
@@ -20,13 +45,16 @@
   display: grid;
   grid-template-columns: 1fr 1.35fr;
   gap: clamp(40px, 5vw, 72px);
-  align-items: start;
+  align-items: center;
+  width: 100%;
 }
 
-/* Left Column */
+/* Left Column: Completely Stationary */
 .wk-logistics-ch__left {
-  position: sticky;
-  top: 100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .wk-logistics-ch__badge {
@@ -42,6 +70,7 @@
   text-transform: uppercase;
   margin-bottom: 16px;
   border: 1px solid rgba(24, 135, 201, 0.2);
+  align-self: flex-start;
 }
 
 .wk-logistics-ch__title {
@@ -68,9 +97,8 @@
 
 .wk-logistics-ch__highlight-box {
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-left: 3px solid #1887C9;
-  border-radius: 0 12px 12px 0;
+  border: 1.5px solid #1887C9;
+  border-radius: 12px;
   padding: 20px 22px;
 }
 
@@ -93,26 +121,54 @@
   margin: 0;
 }
 
-/* Right Column: Structured Numbered List with Dividers */
-.wk-logistics-ch__list {
+/* Right Column: Clipped Viewport Area */
+.wk-logistics-ch__right {
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
+@media (min-width: 961px) {
+  .wk-logistics-ch__viewport {
+    position: relative;
+    width: 100%;
+    height: clamp(480px, 75vh, 640px);
+    max-height: calc(100vh - 140px);
+    max-height: calc(100dvh - 140px);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .wk-logistics-ch__track {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    box-sizing: border-box;
+    padding-bottom: 24px;
+  }
+}
+
+/* Individual Challenge Row */
 .wk-logistics-ch__row {
   display: grid;
   grid-template-columns: 48px 1fr;
   gap: 20px;
   padding: 26px 20px;
   border-bottom: 1px solid #E2E8F0;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   border-radius: 12px;
+  box-sizing: border-box;
 }
 
 .wk-logistics-ch__row:first-child {
   border-top: 1px solid #E2E8F0;
 }
 
+.wk-logistics-ch__row:hover,
 .wk-logistics-ch__row.is-hovered {
   background: #FFFFFF;
   border-color: #CBD5E1;
@@ -128,8 +184,13 @@
   transition: color 0.2s ease;
 }
 
+.wk-logistics-ch__row:hover .wk-logistics-ch__row-num,
 .wk-logistics-ch__row.is-hovered .wk-logistics-ch__row-num {
   color: #1887C9;
+}
+
+.wk-logistics-ch__row-body {
+  min-width: 0;
 }
 
 .wk-logistics-ch__row-title {
@@ -140,8 +201,10 @@
   margin: 0 0 8px;
   line-height: 1.35;
   transition: color 0.2s ease;
+  overflow-wrap: break-word;
 }
 
+.wk-logistics-ch__row:hover .wk-logistics-ch__row-title,
 .wk-logistics-ch__row.is-hovered .wk-logistics-ch__row-title {
   color: #1887C9;
 }
@@ -152,10 +215,12 @@
   line-height: 1.6;
   color: #64748B;
   margin: 0 0 12px;
+  overflow-wrap: break-word;
 }
 
 .wk-logistics-ch__impact-line {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 6px;
   font-family: var(--font-family-sans, 'Inter', sans-serif);
@@ -166,20 +231,48 @@
 .wk-logistics-ch__impact-label {
   font-weight: 700;
   color: #0F172A;
+  flex-shrink: 0;
 }
 
 .wk-logistics-ch__impact-text {
   color: #475569;
 }
 
+/* Mobile & Tablet Flow (≤960px): Pinning disabled, natural vertical flow */
 @media (max-width: 960px) {
+  .wk-logistics-ch {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+    padding: clamp(48px, 6vw, 72px) 20px;
+  }
+
+  .wk-logistics-ch__container {
+    height: auto;
+  }
+
   .wk-logistics-ch__layout {
     grid-template-columns: 1fr;
     gap: 36px;
+    align-items: start;
+    height: auto;
   }
+
   .wk-logistics-ch__left {
     position: static;
   }
+
+  .wk-logistics-ch__viewport {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .wk-logistics-ch__track {
+    transform: none !important;
+    padding-bottom: 0;
+  }
+
   .wk-logistics-ch__row {
     padding: 20px 12px;
   }
