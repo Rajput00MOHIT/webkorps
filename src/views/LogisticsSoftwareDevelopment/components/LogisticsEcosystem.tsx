@@ -334,6 +334,7 @@ export const LogisticsEcosystem: React.FC = () => {
                   alt={stage.title}
                   width={140}
                   height={108}
+                  style={{ width: 'auto', height: '108px' }}
                   className="wk-logistics-eco__card-img"
                   priority
                 />
