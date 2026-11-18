@@ -5,7 +5,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   INDUSTRY_SOLUTIONS_DATA,
-  IndustrySolutionItem,
 } from './industrySolutionsData';
 import { getImgSrc } from '../../../utils/image';
 import './IndustrySolutionsForGrowth.css';

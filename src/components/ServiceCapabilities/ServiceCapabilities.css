@@ -187,16 +187,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
-}
-
-.wk-capabilities__visual-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(24, 135, 201, 0.28);
-  box-shadow: 0 16px 36px rgba(24, 135, 201, 0.14);
+  box-shadow: none;
 }
 
 /* 3D Illustration Graphic */
@@ -206,19 +197,9 @@
   max-height: 310px;
   object-fit: contain;
   display: block;
-  animation: wk-cap-float 5s ease-in-out infinite;
   filter: drop-shadow(0 10px 20px rgba(15, 23, 42, 0.08));
   user-select: none;
   pointer-events: none;
-}
-
-@keyframes wk-cap-float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
 }
 
 /* Responsive */

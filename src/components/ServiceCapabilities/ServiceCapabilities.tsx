@@ -53,8 +53,6 @@ const CapabilityRow: React.FC<CapabilityRowProps> = ({ item, isReversed, index }
     return () => observer.disconnect();
   }, []);
 
-  const floatDelay = `${(index % 3) * 0.8}s`;
-
   return (
     <div
       ref={rowRef}
@@ -106,7 +104,6 @@ const CapabilityRow: React.FC<CapabilityRowProps> = ({ item, isReversed, index }
             src={getImgSrc(item.image)}
             alt={item.imageAlt}
             className="wk-capabilities__visual-img"
-            style={{ animationDelay: floatDelay }}
             loading="lazy"
           />
         </div>

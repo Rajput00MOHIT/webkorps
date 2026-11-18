@@ -169,7 +169,7 @@ export const INDUSTRIES_NAV_DATA: IndustryItem[] = [
     id: 'logistic',
     title: 'Logistics',
     description: 'Improve shipment visibility and coordinate supply chain workflows.',
-    href: '/industries',
+    href: '/industries/logistics',
   },
   {
     id: 'healthcare',

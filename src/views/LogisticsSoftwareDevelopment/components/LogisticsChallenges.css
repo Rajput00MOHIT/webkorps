@@ -1,0 +1,186 @@
+/**
+ * Why Logistics Operations Become Difficult to Manage — Editorial Numbered Split-Layout
+ */
+
+.wk-logistics-ch {
+  width: 100%;
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  padding: clamp(64px, 7vw, 96px) 24px;
+}
+
+.wk-logistics-ch__container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Two-Column Editorial Layout */
+.wk-logistics-ch__layout {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: clamp(40px, 5vw, 72px);
+  align-items: start;
+}
+
+/* Left Column */
+.wk-logistics-ch__left {
+  position: sticky;
+  top: 100px;
+}
+
+.wk-logistics-ch__badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: #EAF4FE;
+  color: #1887C9;
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  border: 1px solid rgba(24, 135, 201, 0.2);
+}
+
+.wk-logistics-ch__title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin: 0 0 16px;
+}
+
+.wk-logistics-ch__title-accent {
+  color: #1887C9;
+}
+
+.wk-logistics-ch__subtitle {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.65;
+  color: #64748B;
+  margin: 0 0 32px;
+}
+
+.wk-logistics-ch__highlight-box {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-left: 3px solid #1887C9;
+  border-radius: 0 12px 12px 0;
+  padding: 20px 22px;
+}
+
+.wk-logistics-ch__highlight-title {
+  display: block;
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1887C9;
+  margin-bottom: 6px;
+}
+
+.wk-logistics-ch__highlight-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 14px;
+  line-height: 1.55;
+  color: #334155;
+  margin: 0;
+}
+
+/* Right Column: Structured Numbered List with Dividers */
+.wk-logistics-ch__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.wk-logistics-ch__row {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  padding: 26px 20px;
+  border-bottom: 1px solid #E2E8F0;
+  transition: all 0.2s ease;
+  border-radius: 12px;
+}
+
+.wk-logistics-ch__row:first-child {
+  border-top: 1px solid #E2E8F0;
+}
+
+.wk-logistics-ch__row.is-hovered {
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+}
+
+.wk-logistics-ch__row-num {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 800;
+  color: #94A3B8;
+  padding-top: 2px;
+  transition: color 0.2s ease;
+}
+
+.wk-logistics-ch__row.is-hovered .wk-logistics-ch__row-num {
+  color: #1887C9;
+}
+
+.wk-logistics-ch__row-title {
+  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 8px;
+  line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+.wk-logistics-ch__row.is-hovered .wk-logistics-ch__row-title {
+  color: #1887C9;
+}
+
+.wk-logistics-ch__row-desc {
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #64748B;
+  margin: 0 0 12px;
+}
+
+.wk-logistics-ch__impact-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-family-sans, 'Inter', sans-serif);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.wk-logistics-ch__impact-label {
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.wk-logistics-ch__impact-text {
+  color: #475569;
+}
+
+@media (max-width: 960px) {
+  .wk-logistics-ch__layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .wk-logistics-ch__left {
+    position: static;
+  }
+  .wk-logistics-ch__row {
+    padding: 20px 12px;
+  }
+}

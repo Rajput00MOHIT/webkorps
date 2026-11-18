@@ -12,6 +12,8 @@ export interface ServiceHeroProps {
   description: string;
   ctaText?: string;
   ctaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
   showCursor?: boolean;
 }
 
@@ -22,6 +24,8 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
   description,
   ctaText = 'Discuss Your Project',
   ctaHref = '/contact-us',
+  secondaryCtaText,
+  secondaryCtaHref,
   showCursor = true,
 }) => {
   return (
@@ -51,7 +55,7 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
         {/* Supporting Description */}
         <p className="wk-service-hero__desc">{description}</p>
 
-        {/* Primary CTA */}
+        {/* CTA Actions */}
         <div className="wk-service-hero__cta-wrap">
           <a
             href={ctaHref}
@@ -77,9 +81,25 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
               />
             </svg>
           </a>
+
+          {secondaryCtaText && (
+            <a
+              href={secondaryCtaHref || '#'}
+              className="wk-service-hero__btn wk-service-hero__btn--secondary"
+              aria-label={secondaryCtaText}
+            >
+              <span>{secondaryCtaText}</span>
+            </a>
+          )}
         </div>
+
+
+
+        {/* Optional Hero Media Dashboard / Illustration */}
+
       </div>
     </section>
   );
 };
+
 

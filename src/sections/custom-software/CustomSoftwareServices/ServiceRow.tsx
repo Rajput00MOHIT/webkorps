@@ -39,8 +39,6 @@ export const ServiceRow: React.FC<ServiceRowProps> = ({
     return () => observer.disconnect();
   }, []);
 
-  const floatDelay = `${(index % 3) * 0.8}s`;
-
   return (
     <div
       ref={rowRef}
@@ -91,7 +89,6 @@ export const ServiceRow: React.FC<ServiceRowProps> = ({
             src={getImgSrc(item.image)}
             alt={item.imageAlt}
             className="wk-cs-services__visual-img"
-            style={{ animationDelay: floatDelay }}
             loading="lazy"
           />
         </div>

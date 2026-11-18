@@ -116,10 +116,6 @@
   transform: scaleY(1);
 }
 
-.wk-challenge__card:hover .wk-challenge__separator {
-  box-shadow: 0 0 10px rgba(24, 135, 201, 0.5);
-}
-
 /* Card Content Container */
 .wk-challenge__card-inner {
   display: flex;
@@ -128,11 +124,6 @@
   width: 100%;
   background-color: transparent;
   box-sizing: border-box;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.wk-challenge__card:hover .wk-challenge__card-inner {
-  transform: translateY(-4px);
 }
 
 /* Large Blue Numerical Label */
@@ -165,39 +156,6 @@
   object-fit: contain;
   display: block;
   background: transparent;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: wk-float 4.5s ease-in-out infinite alternate;
-}
-
-.wk-challenge__img--automate-operations {
-  animation-delay: 0s;
-}
-
-.wk-challenge__img--smarter-decisions {
-  animation-delay: 0.6s;
-}
-
-.wk-challenge__img--seamless-experiences {
-  animation-delay: 1.2s;
-}
-
-.wk-challenge__img--scale-without-limits {
-  animation-delay: 1.8s;
-}
-
-.wk-challenge__card:hover .wk-challenge__img {
-  transform: scale(1.06) translateY(-4px);
-}
-
-/* Floating ambient animation for 3D elements */
-@keyframes wk-float {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-8px);
-  }
 }
 
 /* Card Heading & Supporting Description - Top-aligned with identical baselines */

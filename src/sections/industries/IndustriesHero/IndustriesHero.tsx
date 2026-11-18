@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import heroIndElementImg from '../../../assets/industries/hero ind element.png';
-import techBulbImg from '../../../assets/industries/tech_bulb_clean.png';
 import { getImgSrc } from '../../../utils/image';
 import { HeroBackground } from '../../../components/HeroBackground';
 import './IndustriesHero.css';

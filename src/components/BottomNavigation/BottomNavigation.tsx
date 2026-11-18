@@ -178,7 +178,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = () => {
               id="trigger-services"
               label="Services"
               isOpen={activeMenu === 'services'}
-              isCurrentPage={pathname === '/services'}
+              isCurrentPage={pathname === '/services' || pathname?.startsWith('/services/')}
               controlsId="mega-menu-services"
               onClick={() => toggleMenu('services')}
             />
@@ -186,8 +186,8 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = () => {
             <NavigationTrigger
               id="trigger-industries"
               label="Industries"
-              isOpen={activeMenu === 'industries'}
-              isCurrentPage={pathname === '/industries'}
+              isOpen={activeMenu === 'industries' || pathname?.startsWith('/industries/')}
+              isCurrentPage={pathname === '/industries' || pathname?.startsWith('/industries/')}
               controlsId="mega-menu-industries"
               onClick={() => toggleMenu('industries')}
             />
