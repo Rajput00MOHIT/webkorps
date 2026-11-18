@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './LogisticsEcosystem.css';
@@ -12,9 +12,10 @@ if (typeof window !== 'undefined') {
 interface EcosystemStage {
   id: string;
   stepNumber: string;
+  category: string;
   title: string;
   description: string;
-  keyHighlight: string;
+  impactMetric: string;
   tags: string[];
   illustration: React.ReactNode;
 }
@@ -23,107 +24,111 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
   {
     id: 'procurement',
     stepNumber: '01',
+    category: 'Supplier & Dock Operations',
     title: 'Procurement & Inbound',
     description:
-      'Synchronize supplier purchase orders, delivery appointments, and automated advance shipping notices (ASNs) to prevent dock congestion.',
-    keyHighlight: 'Automated supplier order validation and inbound dock coordination.',
+      'Synchronize supplier purchase orders, advance shipping notices (ASNs), and dock appointments to eliminate yard congestion and manual gate checks.',
+    impactMetric: 'Up to 40% reduction in dock wait times',
     tags: ['PO Synchronization', 'ASN Digitization', 'Dock Scheduling', 'Gate Automation'],
     illustration: (
-      <svg viewBox="0 0 240 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
+      <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
         <defs>
-          <linearGradient id="eco-grad-dock" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#0EA5E9" stopOpacity="0.12" />
-            <stop offset="100%" stopColor="#0284C7" stopOpacity="0.02" />
+          <linearGradient id="eco-blue-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#1887C9" />
+            <stop offset="100%" stopColor="#0284C7" />
           </linearGradient>
         </defs>
-        {/* Subtle Canvas Base */}
-        <rect x="0" y="0" width="240" height="130" rx="10" fill="#F8FAFC" />
-        <line x1="20" y1="105" x2="220" y2="105" stroke="#E2E8F0" strokeWidth="1.5" strokeDasharray="4 4" />
+        <rect x="20" y="140" width="280" height="20" rx="4" fill="#E2E8F0" />
+        <line x1="20" y1="140" x2="300" y2="140" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="6 6" />
+        
+        {/* Inbound Bay Door */}
+        <rect x="40" y="45" width="90" height="95" rx="6" fill="#F1F5F9" stroke="#CBD5E1" strokeWidth="2" />
+        <rect x="48" y="55" width="74" height="12" rx="2" fill="#E2E8F0" />
+        <rect x="48" y="73" width="74" height="12" rx="2" fill="#E2E8F0" />
+        <rect x="48" y="91" width="74" height="12" rx="2" fill="#E2E8F0" />
+        <rect x="48" y="109" width="74" height="25" rx="2" fill="url(#eco-blue-primary)" fillOpacity="0.15" stroke="#1887C9" strokeWidth="1.5" />
+        <circle cx="85" cy="122" r="4" fill="#1887C9" />
 
-        {/* Dock Bay Gate Frame */}
-        <rect x="32" y="32" width="68" height="73" rx="4" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="1.5" />
-        <rect x="38" y="40" width="56" height="10" rx="2" fill="#F1F5F9" />
-        <rect x="38" y="54" width="56" height="10" rx="2" fill="#F1F5F9" />
-        <rect x="38" y="68" width="56" height="10" rx="2" fill="#F1F5F9" />
-        <rect x="38" y="82" width="56" height="23" rx="2" fill="url(#eco-grad-dock)" stroke="#0EA5E9" strokeWidth="1.2" />
-
-        {/* Freight Cargo Container & Tractor Unit */}
-        <g transform="translate(112, 48)">
-          <rect x="0" y="8" width="70" height="42" rx="3" fill="#FFFFFF" stroke="#334155" strokeWidth="1.5" />
-          <line x1="20" y1="8" x2="20" y2="50" stroke="#E2E8F0" strokeWidth="1" />
-          <line x1="40" y1="8" x2="40" y2="50" stroke="#E2E8F0" strokeWidth="1" />
-          <line x1="60" y1="8" x2="60" y2="50" stroke="#E2E8F0" strokeWidth="1" />
-
-          {/* Cab */}
-          <path d="M70 20H88C90 20 92 22 93 25L98 38C99 40 99 42 99 44V50H70V20Z" fill="#1E293B" />
-          <path d="M74 25H86L91 36H74V25Z" fill="#F0F9FF" />
-
-          {/* Wheels */}
-          <circle cx="16" cy="52" r="7" fill="#0F172A" />
-          <circle cx="16" cy="52" r="3" fill="#FFFFFF" />
-          <circle cx="56" cy="52" r="7" fill="#0F172A" />
-          <circle cx="56" cy="52" r="3" fill="#FFFFFF" />
-          <circle cx="86" cy="52" r="7" fill="#0F172A" />
-          <circle cx="86" cy="52" r="3" fill="#FFFFFF" />
+        {/* Inbound Freight Truck */}
+        <g transform="translate(145, 68)">
+          <rect x="0" y="8" width="95" height="52" rx="4" fill="#FFFFFF" stroke="#1887C9" strokeWidth="2" />
+          <line x1="25" y1="8" x2="25" y2="60" stroke="#E2E8F0" strokeWidth="1.5" />
+          <line x1="50" y1="8" x2="50" y2="60" stroke="#E2E8F0" strokeWidth="1.5" />
+          <line x1="75" y1="8" x2="75" y2="60" stroke="#E2E8F0" strokeWidth="1.5" />
+          <path d="M95 24H120C123 24 126 27 127 30L133 46C134 48 134 50 134 52V60H95V24Z" fill="#1887C9" />
+          <path d="M102 30H118L124 44H102V30Z" fill="#EAF4FE" />
+          <circle cx="20" cy="62" r="9" fill="#0F172A" />
+          <circle cx="20" cy="62" r="4" fill="#FFFFFF" />
+          <circle cx="78" cy="62" r="9" fill="#0F172A" />
+          <circle cx="78" cy="62" r="4" fill="#FFFFFF" />
+          <circle cx="118" cy="62" r="9" fill="#0F172A" />
+          <circle cx="118" cy="62" r="4" fill="#FFFFFF" />
         </g>
 
-        {/* Digital Verification Status Tag */}
-        <g transform="translate(132, 16)">
-          <rect x="0" y="0" width="88" height="24" rx="5" fill="#FFFFFF" stroke="#0EA5E9" strokeWidth="1.2" />
-          <circle cx="12" cy="12" r="3.5" fill="#0EA5E9" />
-          <text x="22" y="15" fill="#0F172A" fontSize="8" fontWeight="700" fontFamily="sans-serif">GATE 03 • ASN OK</text>
+        {/* PO & ASN Verification Badge */}
+        <g transform="translate(195, 20)">
+          <rect x="0" y="0" width="105" height="34" rx="8" fill="#FFFFFF" stroke="#1887C9" strokeWidth="1.5" filter="drop-shadow(0 4px 12px rgba(24,135,201,0.15))" />
+          <circle cx="18" cy="17" r="9" fill="#10B981" fillOpacity="0.15" />
+          <path d="M14 17L17 20L23 14" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="34" y="15" fill="#0F172A" fontSize="9" fontWeight="700" fontFamily="sans-serif">ASN VERIFIED</text>
+          <text x="34" y="26" fill="#64748B" fontSize="8" fontFamily="sans-serif">PO #84920 Gate 03</text>
         </g>
+
+        <circle cx="120" cy="40" r="12" stroke="#1887C9" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
+        <circle cx="120" cy="40" r="22" stroke="#1887C9" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.3" />
       </svg>
     ),
   },
   {
     id: 'warehousing',
     stepNumber: '02',
+    category: 'Intralogistics & Storage',
     title: 'Warehouse & Inventory',
     description:
-      'Optimize inventory with dynamic bin slotting, barcode/RFID scanning, cross-docking, and real-time stock balance across facilities.',
-    keyHighlight: 'Real-time inventory synchronization and intelligent dynamic slotting.',
+      'Optimize multi-tier facility capacity with dynamic slotting algorithms, RFID/barcode scanning, automated cross-docking, and multi-facility balancing.',
+    impactMetric: '99.8% pick accuracy with automated verification',
     tags: ['Dynamic Pallet Slotting', 'RFID Continuous Scan', 'Cross-Dock Routing', 'Auto Cycle Counting'],
     illustration: (
-      <svg viewBox="0 0 240 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
-        <rect x="0" y="0" width="240" height="130" rx="10" fill="#F8FAFC" />
+      <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
+        <rect x="30" y="30" width="14" height="125" rx="3" fill="#334155" />
+        <rect x="110" y="30" width="14" height="125" rx="3" fill="#334155" />
+        <rect x="190" y="30" width="14" height="125" rx="3" fill="#334155" />
 
-        {/* High-Bay Shelving Uprights */}
-        <rect x="28" y="24" width="8" height="92" rx="2" fill="#334155" />
-        <rect x="90" y="24" width="8" height="92" rx="2" fill="#334155" />
-        <rect x="152" y="24" width="8" height="92" rx="2" fill="#334155" />
+        <rect x="30" y="65" width="174" height="8" rx="2" fill="#64748B" />
+        <rect x="30" y="105" width="174" height="8" rx="2" fill="#64748B" />
+        <rect x="30" y="145" width="174" height="8" rx="2" fill="#64748B" />
 
-        {/* Horizontal Storage Beams */}
-        <rect x="28" y="52" width="132" height="6" rx="1.5" fill="#64748B" />
-        <rect x="28" y="82" width="132" height="6" rx="1.5" fill="#64748B" />
-        <rect x="28" y="112" width="132" height="6" rx="1.5" fill="#64748B" />
+        <rect x="48" y="38" width="24" height="26" rx="3" fill="#1887C9" />
+        <rect x="76" y="44" width="28" height="20" rx="3" fill="#BAE6FD" stroke="#1887C9" strokeWidth="1.5" />
+        <rect x="128" y="36" width="26" height="28" rx="3" fill="#E2E8F0" />
+        <rect x="158" y="42" width="26" height="22" rx="3" fill="#1887C9" fillOpacity="0.8" />
 
-        {/* Stored Pallet Units */}
-        <rect x="42" y="32" width="20" height="20" rx="2" fill="#0EA5E9" />
-        <rect x="66" y="36" width="20" height="16" rx="2" fill="#E2E8F0" />
-        <rect x="104" y="30" width="22" height="22" rx="2" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="1.2" />
-        <rect x="130" y="34" width="18" height="18" rx="2" fill="#0284C7" />
+        <rect x="48" y="78" width="28" height="26" rx="3" fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="1" />
+        <rect x="80" y="74" width="24" height="30" rx="3" fill="#1887C9" />
+        <rect x="128" y="78" width="56" height="26" rx="3" fill="#E0F2FE" stroke="#1887C9" strokeWidth="1.5" />
 
-        <rect x="42" y="62" width="44" height="20" rx="2" fill="#E2E8F0" />
-        <rect x="104" y="60" width="44" height="22" rx="2" fill="#BAE6FD" stroke="#0EA5E9" strokeWidth="1.2" />
+        <rect x="48" y="118" width="56" height="26" rx="3" fill="#BAE6FD" />
+        <rect x="128" y="118" width="28" height="26" rx="3" fill="#1887C9" />
+        <rect x="160" y="122" width="24" height="22" rx="3" fill="#E2E8F0" />
 
-        {/* Vertical Optical RFID Scan Ray */}
-        <line x1="126" y1="20" x2="126" y2="114" stroke="#0EA5E9" strokeWidth="1.5" strokeDasharray="3 3" />
-        <circle cx="126" cy="42" r="3" fill="#0EA5E9" />
-
-        {/* Automated Guided Shuttle / Tag */}
-        <g transform="translate(170, 68)">
-          <rect x="0" y="18" width="50" height="18" rx="4" fill="#0F172A" />
-          <circle cx="12" cy="38" r="5" fill="#64748B" />
-          <circle cx="38" cy="38" r="5" fill="#64748B" />
-          <rect x="8" y="2" width="34" height="16" rx="2" fill="#0EA5E9" />
+        {/* Robotic AGV */}
+        <g transform="translate(215, 95)">
+          <rect x="0" y="30" width="75" height="24" rx="6" fill="#0F172A" />
+          <circle cx="15" cy="54" r="7" fill="#64748B" />
+          <circle cx="15" cy="54" r="3" fill="#FFFFFF" />
+          <circle cx="60" cy="54" r="7" fill="#64748B" />
+          <circle cx="60" cy="54" r="3" fill="#FFFFFF" />
+          <rect x="12" y="8" width="50" height="22" rx="3" fill="#1887C9" />
+          <rect x="18" y="14" width="38" height="5" rx="1" fill="#FFFFFF" fillOpacity="0.6" />
+          <polygon points="5,34 -30,20 -30,48 5,38" fill="#1887C9" fillOpacity="0.18" />
         </g>
 
-        {/* Status Tag */}
-        <g transform="translate(136, 14)">
-          <rect x="0" y="0" width="86" height="24" rx="5" fill="#FFFFFF" stroke="#0EA5E9" strokeWidth="1.2" />
-          <circle cx="12" cy="12" r="3.5" fill="#0EA5E9" />
-          <text x="22" y="15" fill="#0F172A" fontSize="8" fontWeight="700" fontFamily="sans-serif">RFID SYNC • 100%</text>
+        <g transform="translate(205, 20)">
+          <rect x="0" y="0" width="100" height="34" rx="8" fill="#FFFFFF" stroke="#1887C9" strokeWidth="1.5" filter="drop-shadow(0 4px 12px rgba(24,135,201,0.15))" />
+          <circle cx="18" cy="17" r="7" fill="#1887C9" />
+          <text x="18" y="21" fill="#FFFFFF" fontSize="9" fontWeight="800" textAnchor="middle" fontFamily="sans-serif">✓</text>
+          <text x="32" y="15" fill="#0F172A" fontSize="9" fontWeight="700" fontFamily="sans-serif">RFID LOC: A-14</text>
+          <text x="32" y="26" fill="#1887C9" fontSize="8" fontWeight="600" fontFamily="sans-serif">Stock Sync: 100%</text>
         </g>
       </svg>
     ),
@@ -131,47 +136,47 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
   {
     id: 'order-processing',
     stepNumber: '03',
+    category: 'Fulfillment & Orchestration',
     title: 'Order Processing',
     description:
-      'Consolidate multi-channel B2B and D2C orders, validate stock availability, and trigger automated pick-and-pack fulfillment batches.',
-    keyHighlight: 'Fast order validation and intelligent omnichannel allocation.',
+      'Consolidate omnichannel B2B and D2C customer orders, execute wave & batch picking algorithms, and automate export manifest validation in real-time.',
+    impactMetric: 'Sub-minute order validation & allocation',
     tags: ['Omnichannel Splitting', 'Wave & Batch Picking', 'Auto Manifesting', 'Pack Verification'],
     illustration: (
-      <svg viewBox="0 0 240 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
-        <rect x="0" y="0" width="240" height="130" rx="10" fill="#F8FAFC" />
+      <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
+        <rect x="20" y="115" width="280" height="14" rx="3" fill="#334155" />
+        <circle cx="35" cy="122" r="5" fill="#94A3B8" />
+        <circle cx="85" cy="122" r="5" fill="#94A3B8" />
+        <circle cx="135" cy="122" r="5" fill="#94A3B8" />
+        <circle cx="185" cy="122" r="5" fill="#94A3B8" />
+        <circle cx="235" cy="122" r="5" fill="#94A3B8" />
+        <circle cx="285" cy="122" r="5" fill="#94A3B8" />
+        <rect x="40" y="129" width="10" height="30" fill="#64748B" />
+        <rect x="155" y="129" width="10" height="30" fill="#64748B" />
+        <rect x="270" y="129" width="10" height="30" fill="#64748B" />
 
-        {/* Automated Conveyor Track */}
-        <rect x="24" y="86" width="192" height="10" rx="3" fill="#334155" />
-        <circle cx="36" cy="91" r="3.5" fill="#94A3B8" />
-        <circle cx="74" cy="91" r="3.5" fill="#94A3B8" />
-        <circle cx="112" cy="91" r="3.5" fill="#94A3B8" />
-        <circle cx="150" cy="91" r="3.5" fill="#94A3B8" />
-        <circle cx="188" cy="91" r="3.5" fill="#94A3B8" />
-        <rect x="42" y="96" width="8" height="20" fill="#64748B" />
-        <rect x="170" y="96" width="8" height="20" fill="#64748B" />
+        <rect x="40" y="75" width="38" height="38" rx="4" fill="#E2E8F0" stroke="#94A3B8" strokeWidth="1.5" />
+        <line x1="40" y1="94" x2="78" y2="94" stroke="#CBD5E1" strokeWidth="1.5" />
 
-        {/* Moving Package 1 */}
-        <rect x="36" y="56" width="28" height="30" rx="3" fill="#FFFFFF" stroke="#94A3B8" strokeWidth="1.2" />
-        <line x1="36" y1="70" x2="64" y2="70" stroke="#E2E8F0" strokeWidth="1" />
+        <rect x="125" y="70" width="46" height="44" rx="5" fill="#1887C9" stroke="#0284C7" strokeWidth="2" />
+        <line x1="125" y1="92" x2="171" y2="92" stroke="#BAE6FD" strokeWidth="1.5" />
+        <rect x="135" y="78" width="14" height="8" rx="2" fill="#FFFFFF" fillOpacity="0.8" />
 
-        {/* Center Smart Parcel (Scan Arch) */}
-        <rect x="96" y="50" width="36" height="36" rx="4" fill="#0EA5E9" />
-        <line x1="96" y1="68" x2="132" y2="68" stroke="#BAE6FD" strokeWidth="1.2" />
-        <rect x="104" y="56" width="10" height="6" rx="1.5" fill="#FFFFFF" />
+        <rect x="225" y="77" width="36" height="36" rx="4" fill="#BAE6FD" stroke="#1887C9" strokeWidth="1.5" />
+        <line x1="225" y1="95" x2="261" y2="95" stroke="#1887C9" strokeWidth="1.5" />
 
-        {/* Package 3 Sorted */}
-        <rect x="162" y="58" width="26" height="28" rx="3" fill="#E2E8F0" stroke="#94A3B8" strokeWidth="1.2" />
+        {/* Laser Scanner */}
+        <path d="M110 115V45C110 40 114 36 119 36H177C182 36 186 40 186 45V115" stroke="#0F172A" strokeWidth="3" />
+        <rect x="133" y="32" width="30" height="10" rx="3" fill="#1887C9" />
+        <polygon points="135,42 105,95 191,95 161,42" fill="#1887C9" fillOpacity="0.18" />
+        <line x1="108" y1="95" x2="188" y2="95" stroke="#1887C9" strokeWidth="2" strokeDasharray="3 3" />
 
-        {/* Scanner Overhead Arch */}
-        <path d="M86 86V38C86 35 88 33 91 33H137C140 33 142 35 142 38V86" stroke="#0F172A" strokeWidth="2.5" />
-        <polygon points="104,38 88,74 140,74 124,38" fill="#0EA5E9" fillOpacity="0.14" />
-        <line x1="88" y1="74" x2="140" y2="74" stroke="#0EA5E9" strokeWidth="1.5" strokeDasharray="3 3" />
-
-        {/* Status Tag */}
-        <g transform="translate(136, 14)">
-          <rect x="0" y="0" width="86" height="24" rx="5" fill="#FFFFFF" stroke="#0EA5E9" strokeWidth="1.2" />
-          <circle cx="12" cy="12" r="3.5" fill="#0EA5E9" />
-          <text x="22" y="15" fill="#0F172A" fontSize="8" fontWeight="700" fontFamily="sans-serif">BATCH #4089 • OK</text>
+        <g transform="translate(195, 20)">
+          <rect x="0" y="0" width="110" height="38" rx="8" fill="#FFFFFF" stroke="#1887C9" strokeWidth="1.5" filter="drop-shadow(0 4px 12px rgba(24,135,201,0.15))" />
+          <circle cx="18" cy="19" r="8" fill="#1887C9" fillOpacity="0.12" />
+          <path d="M14 19L17 22L23 16" stroke="#1887C9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="32" y="16" fill="#0F172A" fontSize="9" fontWeight="700" fontFamily="sans-serif">BATCH #4089</text>
+          <text x="32" y="28" fill="#10B981" fontSize="8" fontWeight="600" fontFamily="sans-serif">96 Orders Dispatched</text>
         </g>
       </svg>
     ),
@@ -179,97 +184,135 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
   {
     id: 'transportation',
     stepNumber: '04',
+    category: 'Fleet & Intermodal Transit',
     title: 'Freight & Transportation',
     description:
-      'Consolidate loads algorithmically, benchmark carrier rates, plan multi-modal freight routes, and automate contract tendering.',
-    keyHighlight: 'Dynamic carrier selection and multi-modal route optimization.',
+      'Consolidate multi-drop freight loads, tender spot and contract carriers through dynamic rate matrices, and enforce digital eBOL waybills on every lane.',
+    impactMetric: '15–22% lower freight spend per ton-mile',
     tags: ['Multi-Carrier Tendering', '3D Load Optimization', 'eBOL Automation', 'Intermodal Routing'],
     illustration: (
-      <svg viewBox="0 0 240 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
-        <rect x="0" y="0" width="240" height="130" rx="10" fill="#F8FAFC" />
+      <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
+        <path d="M10 150C70 150 110 135 150 120C190 105 240 100 310 100" stroke="#CBD5E1" strokeWidth="32" strokeLinecap="round" />
+        <path d="M10 150C70 150 110 135 150 120C190 105 240 100 310 100" stroke="#0F172A" strokeWidth="28" strokeLinecap="round" />
+        <path d="M10 150C70 150 110 135 150 120C190 105 240 100 310 100" stroke="#FFFFFF" strokeWidth="2" strokeDasharray="8 8" />
 
-        {/* Highway Curve */}
-        <path d="M15 110C65 110 95 98 125 88C155 78 190 74 230 74" stroke="#0F172A" strokeWidth="18" strokeLinecap="round" />
-        <path d="M15 110C65 110 95 98 125 88C155 78 190 74 230 74" stroke="#FFFFFF" strokeWidth="1.5" strokeDasharray="6 6" />
-
-        {/* Modern Freight Trailer Unit */}
-        <g transform="translate(50, 52)">
-          <rect x="0" y="8" width="76" height="38" rx="3" fill="#FFFFFF" stroke="#334155" strokeWidth="1.5" />
-          <rect x="4" y="12" width="68" height="30" rx="2" fill="#F8FAFC" />
-          <line x1="12" y1="20" x2="36" y2="20" stroke="#0EA5E9" strokeWidth="1.5" strokeLinecap="round" />
-          <line x1="12" y1="26" x2="48" y2="26" stroke="#0EA5E9" strokeWidth="1.5" strokeLinecap="round" />
-
-          {/* Aerodynamic Tractor Unit */}
-          <path d="M76 22H98C101 22 103 24 104 27L110 38C111 40 111 42 111 44V46H76V22Z" fill="#0EA5E9" />
-          <path d="M81 27H96L102 36H81V27Z" fill="#F0F9FF" />
-
-          {/* Wheels */}
-          <circle cx="16" cy="48" r="6" fill="#0F172A" />
-          <circle cx="16" cy="48" r="2.5" fill="#CBD5E1" />
-          <circle cx="32" cy="48" r="6" fill="#0F172A" />
-          <circle cx="32" cy="48" r="2.5" fill="#CBD5E1" />
-          <circle cx="62" cy="48" r="6" fill="#0F172A" />
-          <circle cx="62" cy="48" r="2.5" fill="#CBD5E1" />
-          <circle cx="98" cy="48" r="6" fill="#0F172A" />
-          <circle cx="98" cy="48" r="2.5" fill="#CBD5E1" />
+        <g transform="translate(60, 75)">
+          <rect x="0" y="12" width="105" height="52" rx="4" fill="#FFFFFF" stroke="#1887C9" strokeWidth="2" />
+          <rect x="6" y="18" width="93" height="40" rx="2" fill="#F0F9FF" />
+          <path d="M15 28H45M15 36H60M15 44H35" stroke="#1887C9" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
+          <path d="M105 30H135C139 30 142 33 144 37L152 52C154 55 154 58 154 61V64H105V30Z" fill="#1887C9" />
+          <path d="M112 37H133L141 50H112V37Z" fill="#BAE6FD" />
+          <circle cx="22" cy="66" r="9" fill="#0F172A" />
+          <circle cx="22" cy="66" r="4" fill="#CBD5E1" />
+          <circle cx="42" cy="66" r="9" fill="#0F172A" />
+          <circle cx="42" cy="66" r="4" fill="#CBD5E1" />
+          <circle cx="85" cy="66" r="9" fill="#0F172A" />
+          <circle cx="85" cy="66" r="4" fill="#CBD5E1" />
+          <circle cx="135" cy="66" r="9" fill="#0F172A" />
+          <circle cx="135" cy="66" r="4" fill="#CBD5E1" />
         </g>
 
-        {/* Status Tag */}
-        <g transform="translate(136, 14)">
-          <rect x="0" y="0" width="86" height="24" rx="5" fill="#FFFFFF" stroke="#0EA5E9" strokeWidth="1.2" />
-          <circle cx="12" cy="12" r="3.5" fill="#0EA5E9" />
-          <text x="22" y="15" fill="#0F172A" fontSize="8" fontWeight="700" fontFamily="sans-serif">LANE • 97% LOAD</text>
+        <g transform="translate(180, 20)">
+          <rect x="0" y="0" width="125" height="42" rx="8" fill="#FFFFFF" stroke="#1887C9" strokeWidth="1.5" filter="drop-shadow(0 4px 12px rgba(24,135,201,0.15))" />
+          <circle cx="18" cy="21" r="9" fill="#1887C9" fillOpacity="0.12" />
+          <path d="M14 21C14 21 16 16 18 16C20 16 22 21 22 21" stroke="#1887C9" strokeWidth="2" strokeLinecap="round" />
+          <text x="34" y="17" fill="#0F172A" fontSize="9" fontWeight="700" fontFamily="sans-serif">CORRIDOR: CHI → DAL</text>
+          <text x="34" y="28" fill="#10B981" fontSize="8" fontWeight="600" fontFamily="sans-serif">Load Factor: 97.4% (3D Optimal)</text>
+          <text x="34" y="38" fill="#64748B" fontSize="7" fontFamily="sans-serif">eBOL Verified & Signed</text>
         </g>
+
+        <circle cx="250" cy="98" r="8" fill="#1887C9" fillOpacity="0.2" />
+        <circle cx="250" cy="98" r="4" fill="#1887C9" />
       </svg>
     ),
   },
   {
     id: 'shipment-tracking',
     stepNumber: '05',
-    title: 'Shipment Tracking & Delivery',
+    category: 'Real-Time Visibility',
+    title: 'Shipment Tracking',
     description:
-      'Track vehicle telemetry with live GPS streams, monitor geofence entry and exit, and capture contactless electronic proof-of-delivery (ePOD).',
-    keyHighlight: 'Live shipment visibility, dynamic route tracking, and verified proof of delivery.',
-    tags: ['Sub-Second Telematics', 'Cold-Chain IoT', 'Dynamic Predictive ETA', 'Contactless ePOD'],
+      'Stream sub-second telematics with multi-carrier IoT integration, real-time geofence events, cold-chain sensor monitoring, and predictive dynamic ETAs.',
+    impactMetric: 'Zero deadband tracking across transit corridors',
+    tags: ['Sub-Second Telematics', 'Cold-Chain IoT', 'Geofence Triggers', 'Dynamic Predictive ETA'],
     illustration: (
-      <svg viewBox="0 0 240 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
-        <rect x="0" y="0" width="240" height="130" rx="10" fill="#F8FAFC" />
+      <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
+        <rect x="25" y="25" width="270" height="135" rx="8" fill="#F8FAFC" stroke="#E2E8F0" strokeWidth="1.5" />
+        <line x1="25" y1="60" x2="295" y2="60" stroke="#E2E8F0" strokeWidth="1" strokeDasharray="4 4" />
+        <line x1="25" y1="95" x2="295" y2="95" stroke="#E2E8F0" strokeWidth="1" strokeDasharray="4 4" />
+        <line x1="25" y1="130" x2="295" y2="130" stroke="#E2E8F0" strokeWidth="1" strokeDasharray="4 4" />
+        <line x1="90" y1="25" x2="90" y2="160" stroke="#E2E8F0" strokeWidth="1" strokeDasharray="4 4" />
+        <line x1="160" y1="25" x2="160" y2="160" stroke="#E2E8F0" strokeWidth="1" strokeDasharray="4 4" />
+        <line x1="230" y1="25" x2="230" y2="160" stroke="#E2E8F0" strokeWidth="1" strokeDasharray="4 4" />
 
-        {/* Telematics Radar Grid */}
-        <rect x="18" y="18" width="204" height="94" rx="6" fill="#FFFFFF" stroke="#E2E8F0" strokeWidth="1.2" />
-        <line x1="18" y1="48" x2="222" y2="48" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
-        <line x1="18" y1="78" x2="222" y2="78" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
-        <line x1="72" y1="18" x2="72" y2="112" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
-        <line x1="130" y1="18" x2="130" y2="112" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
-        <line x1="182" y1="18" x2="182" y2="112" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
+        <path d="M50 125C90 120 110 85 155 85C200 85 220 55 265 55" stroke="#1887C9" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="50" cy="125" r="5" fill="#64748B" />
+        <circle cx="155" cy="85" r="5" fill="#64748B" />
 
-        {/* GPS Vector Transit Path */}
-        <path d="M38 90C68 86 86 62 120 62C154 62 170 42 202 42" stroke="#0EA5E9" strokeWidth="2.5" strokeLinecap="round" />
-        <circle cx="38" cy="90" r="4" fill="#64748B" />
-        <circle cx="120" cy="62" r="4" fill="#64748B" />
+        <circle cx="215" cy="68" r="16" fill="#1887C9" fillOpacity="0.18" />
+        <circle cx="215" cy="68" r="8" fill="#1887C9" />
+        <circle cx="215" cy="68" r="4" fill="#FFFFFF" />
 
-        {/* Live GPS Telematics Beacon Ping */}
-        <circle cx="160" cy="51" r="12" fill="#0EA5E9" fillOpacity="0.16" />
-        <circle cx="160" cy="51" r="6" fill="#0EA5E9" />
-        <circle cx="160" cy="51" r="2.5" fill="#FFFFFF" />
+        <circle cx="265" cy="55" r="22" stroke="#10B981" strokeWidth="1.5" strokeDasharray="4 4" fill="#10B981" fillOpacity="0.08" />
+        <circle cx="265" cy="55" r="6" fill="#10B981" />
 
-        {/* Geofence Delivery Destination */}
-        <circle cx="202" cy="42" r="14" stroke="#10B981" strokeWidth="1.2" strokeDasharray="3 3" fill="#10B981" fillOpacity="0.08" />
-        <circle cx="202" cy="42" r="4" fill="#10B981" />
-
-        {/* Satellite Node Graphic */}
-        <g transform="translate(36, 26)">
-          <rect x="0" y="0" width="14" height="8" rx="1.5" fill="#334155" />
-          <line x1="-5" y1="4" x2="19" y2="4" stroke="#0EA5E9" strokeWidth="1.5" />
-          <circle cx="7" cy="4" r="1.5" fill="#FFFFFF" />
-          <line x1="7" y1="8" x2="15" y2="22" stroke="#0EA5E9" strokeWidth="1" strokeDasharray="2 2" opacity="0.6" />
+        <g transform="translate(60, 32)">
+          <rect x="0" y="0" width="18" height="10" rx="2" fill="#334155" />
+          <line x1="-8" y1="5" x2="26" y2="5" stroke="#1887C9" strokeWidth="2" />
+          <circle cx="9" cy="5" r="2" fill="#FFFFFF" />
+          <path d="M9 14L15 28M9 14L3 28M9 14L9 30" stroke="#1887C9" strokeWidth="1.2" strokeDasharray="2 2" opacity="0.6" />
         </g>
 
-        {/* Status Tag */}
-        <g transform="translate(136, 14)">
-          <rect x="0" y="0" width="86" height="24" rx="5" fill="#FFFFFF" stroke="#0EA5E9" strokeWidth="1.2" />
-          <circle cx="12" cy="12" r="3.5" fill="#0EA5E9" />
-          <text x="22" y="15" fill="#0F172A" fontSize="8" fontWeight="700" fontFamily="sans-serif">LIVE GPS • ON-TIME</text>
+        <g transform="translate(35, 78)">
+          <rect x="0" y="0" width="105" height="36" rx="8" fill="#FFFFFF" stroke="#1887C9" strokeWidth="1.5" filter="drop-shadow(0 4px 12px rgba(24,135,201,0.15))" />
+          <circle cx="14" cy="18" r="5" fill="#10B981" />
+          <text x="26" y="16" fill="#0F172A" fontSize="9" fontWeight="700" fontFamily="sans-serif">LIVE GPS: ON-TIME</text>
+          <text x="26" y="27" fill="#1887C9" fontSize="8" fontWeight="600" fontFamily="sans-serif">Temp: -18.2°C (Reefer OK)</text>
+        </g>
+      </svg>
+    ),
+  },
+  {
+    id: 'last-mile',
+    stepNumber: '06',
+    category: 'Customer Experience & Dispatch',
+    title: 'Last-Mile & Delivery',
+    description:
+      'Dynamically sequence local delivery routes with live traffic AI, send customer WhatsApp/SMS tracking links, and capture verified contactless ePOD signatures.',
+    impactMetric: '42% faster final-leg dispatch turnaround',
+    tags: ['Dynamic Stop Sequencing', 'Contactless ePOD', 'Live Recipient Tracking', 'Reverse Logistics'],
+    illustration: (
+      <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="wk-logistics-eco__illus-svg">
+        <rect x="20" y="130" width="280" height="25" rx="4" fill="#0F172A" />
+        <line x1="20" y1="142" x2="300" y2="142" stroke="#FFFFFF" strokeWidth="2" strokeDasharray="8 8" />
+
+        <g transform="translate(45, 70)">
+          <path d="M0 16C0 12 3 9 7 9H70C74 9 77 12 78 15L84 32C85 34 87 36 90 36H105C108 36 110 38 110 41V60H0V16Z" fill="#1887C9" />
+          <path d="M80 32H102L96 18H74L80 32Z" fill="#BAE6FD" />
+          <rect x="12" y="18" width="50" height="34" rx="2" fill="#0284C7" />
+          <text x="37" y="38" fill="#FFFFFF" fontSize="9" fontWeight="800" textAnchor="middle" fontFamily="sans-serif">EXPRESS</text>
+          <circle cx="24" cy="62" r="9" fill="#0F172A" />
+          <circle cx="24" cy="62" r="4" fill="#CBD5E1" />
+          <circle cx="86" cy="62" r="9" fill="#0F172A" />
+          <circle cx="86" cy="62" r="4" fill="#CBD5E1" />
+        </g>
+
+        <g transform="translate(180, 22)">
+          <rect x="0" y="0" width="118" height="92" rx="10" fill="#FFFFFF" stroke="#0F172A" strokeWidth="2" filter="drop-shadow(0 6px 16px rgba(15,23,42,0.12))" />
+          <rect x="6" y="8" width="106" height="76" rx="6" fill="#F8FAFC" />
+          <circle cx="18" cy="20" r="5" fill="#10B981" />
+          <text x="28" y="23" fill="#0F172A" fontSize="9" fontWeight="800" fontFamily="sans-serif">ePOD VERIFIED</text>
+          <line x1="12" y1="32" x2="106" y2="32" stroke="#E2E8F0" strokeWidth="1" />
+          <text x="12" y="44" fill="#64748B" fontSize="7" fontFamily="sans-serif">Recipient Signature:</text>
+          <path d="M14 62C22 55 26 66 35 58C42 52 48 68 58 59C66 52 74 64 84 56" stroke="#1887C9" strokeWidth="2" strokeLinecap="round" />
+          <line x1="12" y1="68" x2="88" y2="68" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="3 3" />
+          <rect x="12" y="72" width="84" height="9" rx="2" fill="#EAF4FE" />
+          <text x="16" y="79" fill="#1887C9" fontSize="6.5" fontWeight="700" fontFamily="sans-serif">GPS Lat: 41.8781 | 14:32 EST</text>
+        </g>
+
+        <g transform="translate(120, 118)">
+          <rect x="0" y="0" width="60" height="22" rx="11" fill="#10B981" />
+          <text x="30" y="15" fill="#FFFFFF" fontSize="9" fontWeight="800" textAnchor="middle" fontFamily="sans-serif">DELIVERED</text>
         </g>
       </svg>
     ),
@@ -277,10 +320,11 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
 ];
 
 export const LogisticsEcosystem: React.FC = () => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const progressFillRef = useRef<HTMLDivElement>(null);
+  const [activeStageIndex, setActiveStageIndex] = useState<number>(0);
 
   useEffect(() => {
     const prefersReducedMotion =
@@ -289,7 +333,6 @@ export const LogisticsEcosystem: React.FC = () => {
 
     if (
       prefersReducedMotion ||
-      !wrapperRef.current ||
       !sectionRef.current ||
       !viewportRef.current ||
       !trackRef.current
@@ -300,66 +343,75 @@ export const LogisticsEcosystem: React.FC = () => {
     const mm = gsap.matchMedia();
 
     mm.add('(min-width: 961px)', () => {
-      const wrapper = wrapperRef.current;
       const section = sectionRef.current;
       const viewport = viewportRef.current;
       const track = trackRef.current;
-      if (!wrapper || !section || !viewport || !track) return;
+      if (!section || !viewport || !track) return;
 
       const getDistance = () => {
+        // Precise scroll distance: total scroll width minus visible client width
         return Math.max(0, track.scrollWidth - viewport.clientWidth);
       };
 
       gsap.set(track, { x: 0 });
 
-      // Precise scroll distance: horizontal translation + dwell pause + overlap reveal
-      const horizontalDist = getDistance();
-      const dwellDist = 200; // Brief dwell so final card is comfortably framed
-      const overlapDist = Math.max(300, window.innerHeight * 0.5); // Smooth upward layer overlap
-      const totalScroll = horizontalDist + dwellDist + overlapDist;
+      // Generate card-aware snap positions so stops align with card boundaries
+      const cards = Array.from(track.children) as HTMLElement[];
+      const totalDist = getDistance();
+      const trackPaddingLeft = parseFloat(getComputedStyle(track).paddingLeft) || 0;
 
-      // Dynamically configure wrapper height to govern sticky duration
-      wrapper.style.height = `${window.innerHeight + totalScroll}px`;
+      const snapPoints =
+        totalDist > 0
+          ? cards.map((card) => {
+              const cardOffset = card.offsetLeft - trackPaddingLeft;
+              return Math.min(1, Math.max(0, cardOffset / totalDist));
+            })
+          : [0];
 
-      const horizontalRatio = horizontalDist / totalScroll;
-      const dwellRatio = (horizontalDist + dwellDist) / totalScroll;
+      if (!snapPoints.includes(0)) snapPoints.unshift(0);
+      if (!snapPoints.includes(1)) snapPoints.push(1);
+      const uniqueSnaps = Array.from(new Set(snapPoints)).sort((a, b) => a - b);
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: wrapper,
+          trigger: section,
           start: 'top top',
-          end: 'bottom bottom',
+          end: () => `+=${Math.max(window.innerHeight * 1.5, getDistance())}`,
+          pin: true,
+          pinSpacing: true,
           scrub: 1,
+          snap: {
+            snapTo: uniqueSnaps,
+            duration: { min: 0.15, max: 0.35 },
+            delay: 0.1,
+            ease: 'power1.out',
+          },
           invalidateOnRefresh: true,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            if (progressFillRef.current) {
+              progressFillRef.current.style.width = `${Math.min(
+                100,
+                Math.max(0, self.progress * 100)
+              ).toFixed(1)}%`;
+            }
+            const stageCount = ECOSYSTEM_STAGES.length;
+            const currentIdx = Math.min(
+              stageCount - 1,
+              Math.floor(self.progress * stageCount)
+            );
+            setActiveStageIndex(currentIdx);
+          },
         },
       });
 
-      // 1. Move track horizontally from right to left
-      tl.to(
-        track,
-        {
-          x: -horizontalDist,
-          ease: 'none',
-          duration: horizontalRatio,
-        },
-        0
-      );
-
-      // 2. Section recedes with subtle depth as next section overlaps upward
-      tl.to(
-        section,
-        {
-          opacity: 0.92,
-          scale: 0.985,
-          ease: 'power1.in',
-          duration: 1 - dwellRatio,
-        },
-        dwellRatio
-      );
+      tl.to(track, {
+        x: () => -getDistance(),
+        ease: 'none',
+      });
 
       return () => {
         tl.kill();
-        if (wrapper) wrapper.style.height = '';
       };
     });
 
@@ -382,46 +434,63 @@ export const LogisticsEcosystem: React.FC = () => {
   }, []);
 
   return (
-    <div ref={wrapperRef} className="wk-logistics-eco-wrapper">
-      <section
-        id="logistics-ecosystem"
-        ref={sectionRef}
-        className="wk-logistics-eco"
-        aria-label="How the Modern Logistics Ecosystem Works"
-      >
-        {/* Centered Section Header */}
-        <div className="wk-logistics-eco__header">
-          <span className="wk-logistics-eco__badge">Connected Supply Chain</span>
-          <h2 className="wk-logistics-eco__title">
-            How the Modern <span className="wk-logistics-eco__title-accent">Logistics Ecosystem</span> Works
-          </h2>
-          <p className="wk-logistics-eco__subtitle">
-            An end-to-end operational pipeline connecting procurement, warehousing, transit, and delivery into one continuous data flow.
-          </p>
+    <section
+      id="logistics-ecosystem"
+      ref={sectionRef}
+      className="wk-logistics-eco"
+      aria-label="How the Logistics Ecosystem Works"
+    >
+      {/* Centered Section Header Container */}
+      <div className="wk-logistics-eco__header-container">
+        <span className="wk-logistics-eco__badge">Connected Supply Chain</span>
+        <h2 className="wk-logistics-eco__title">
+          How the Modern <span className="wk-logistics-eco__title-accent">Logistics Ecosystem</span> Works
+        </h2>
+        <p className="wk-logistics-eco__subtitle">
+          An end-to-end operational pipeline connecting procurement, warehousing, transit, and delivery into one continuous data flow.
+        </p>
+
+        {/* Progress Indicator - Centered neatly above the card viewport */}
+        <div className="wk-logistics-eco__indicator-wrap" aria-hidden="true">
+          <div className="wk-logistics-eco__indicator-group">
+            <span className="wk-logistics-eco__indicator-text">
+              STAGE <strong className="wk-logistics-eco__indicator-num">{String(activeStageIndex + 1).padStart(2, '0')}</strong> OF 06
+            </span>
+            <div className="wk-logistics-eco__progress-track">
+              <div ref={progressFillRef} className="wk-logistics-eco__progress-fill" />
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Full-Width Horizontal Card Viewport */}
-        <div ref={viewportRef} className="wk-logistics-eco__viewport">
-          <div ref={trackRef} className="wk-logistics-eco__track">
-            {ECOSYSTEM_STAGES.map((stage) => (
-              <div key={stage.id} className="wk-logistics-eco__card">
-                {/* Stage Header */}
-                <div className="wk-logistics-eco__card-meta">
-                  <span className="wk-logistics-eco__step-tag">STAGE {stage.stepNumber}</span>
+      {/* Full-Width Horizontal Card Viewport */}
+      <div ref={viewportRef} className="wk-logistics-eco__viewport">
+        <div ref={trackRef} className="wk-logistics-eco__track">
+          {ECOSYSTEM_STAGES.map((stage, idx) => (
+            <div
+              key={stage.id}
+              className={`wk-logistics-eco__card ${idx === activeStageIndex ? 'is-active' : ''}`}
+            >
+              {/* Top Bar with Stage & Category */}
+              <div className="wk-logistics-eco__card-header">
+                <div className="wk-logistics-eco__step-pill">
+                  <span className="wk-logistics-eco__step-dot" />
+                  <span>STAGE {stage.stepNumber}</span>
                 </div>
+                <span className="wk-logistics-eco__card-category">{stage.category}</span>
+              </div>
 
-                {/* Modern Technical Vector Illustration */}
-                <div className="wk-logistics-eco__card-visual" aria-hidden="true">
-                  {stage.illustration}
-                </div>
+              {/* Bespoke Illustration Area */}
+              <div className="wk-logistics-eco__card-visual" aria-hidden="true">
+                {stage.illustration}
+              </div>
 
-                {/* Card Title */}
+              {/* Card Content */}
+              <div className="wk-logistics-eco__card-body">
                 <h3 className="wk-logistics-eco__card-title">{stage.title}</h3>
-
-                {/* Card Description */}
                 <p className="wk-logistics-eco__card-desc">{stage.description}</p>
 
-                {/* Simplified Capability Tags (Restrained, Light, Non-Heavy) */}
+                {/* Capabilities Tags */}
                 <div className="wk-logistics-eco__tags-list">
                   {stage.tags.map((tag) => (
                     <span key={tag} className="wk-logistics-eco__tag">
@@ -430,16 +499,26 @@ export const LogisticsEcosystem: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Elegant Minimal Key Capability Statement */}
-                <div className="wk-logistics-eco__key-cap">
-                  <span className="wk-logistics-eco__key-cap-label">KEY CAPABILITY</span>
-                  <p className="wk-logistics-eco__key-cap-text">{stage.keyHighlight}</p>
+                {/* Operational Impact Stat */}
+                <div className="wk-logistics-eco__card-footer">
+                  <span className="wk-logistics-eco__stat-icon" aria-hidden="true">
+                    ⚡
+                  </span>
+                  <span className="wk-logistics-eco__stat-text">{stage.impactMetric}</span>
                 </div>
               </div>
-            ))}
-          </div>
+
+              {/* Connecting Pipe / Indicator (Except Last Card) */}
+              {idx < ECOSYSTEM_STAGES.length - 1 && (
+                <div className="wk-logistics-eco__connector" aria-hidden="true">
+                  <div className="wk-logistics-eco__connector-line" />
+                  <div className="wk-logistics-eco__connector-arrow">→</div>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
