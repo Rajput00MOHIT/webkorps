@@ -102,10 +102,7 @@ export const LogisticsAISection: React.FC = () => {
                 className="wk-logistics-ai__image"
                 loading="lazy"
               />
-              <div className="wk-logistics-ai__image-overlay">
-                <span className="wk-logistics-ai__pulse-dot" aria-hidden="true" />
-                <span className="wk-logistics-ai__overlay-text">AI Telematics & Dispatch Engine</span>
-              </div>
+
             </div>
 
             {/* Compact Selector Strip */}

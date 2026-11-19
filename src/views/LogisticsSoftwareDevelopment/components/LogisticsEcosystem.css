@@ -88,15 +88,7 @@
   margin-top: 4px;
 }
 
-.wk-logistics-eco__indicator-group {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  padding: 6px 14px;
-  border-radius: 9999px;
-}
+
 
 .wk-logistics-eco__indicator-text {
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
@@ -333,26 +325,9 @@
   pointer-events: none;
 }
 
-.wk-logistics-eco__connector-line {
-  width: 14px;
-  height: 2px;
-  background: #CBD5E1;
-}
 
-.wk-logistics-eco__connector-arrow {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  border: 1.5px solid #1887C9;
-  color: #1887C9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 800;
-  box-shadow: 0 2px 8px rgba(24, 135, 201, 0.16);
-}
+
+
 
 /* ==========================================================================
    Mobile & Tablet Fallback (< 960px)

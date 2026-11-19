@@ -40,7 +40,7 @@ const ECOSYSTEM_STAGES: EcosystemStage[] = [
         </defs>
         <rect x="20" y="140" width="280" height="20" rx="4" fill="#E2E8F0" />
         <line x1="20" y1="140" x2="300" y2="140" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="6 6" />
-        
+
         {/* Inbound Bay Door */}
         <rect x="40" y="45" width="90" height="95" rx="6" fill="#F1F5F9" stroke="#CBD5E1" strokeWidth="2" />
         <rect x="48" y="55" width="74" height="12" rx="2" fill="#E2E8F0" />
@@ -363,9 +363,9 @@ export const LogisticsEcosystem: React.FC = () => {
       const snapPoints =
         totalDist > 0
           ? cards.map((card) => {
-              const cardOffset = card.offsetLeft - trackPaddingLeft;
-              return Math.min(1, Math.max(0, cardOffset / totalDist));
-            })
+            const cardOffset = card.offsetLeft - trackPaddingLeft;
+            return Math.min(1, Math.max(0, cardOffset / totalDist));
+          })
           : [0];
 
       if (!snapPoints.includes(0)) snapPoints.unshift(0);
@@ -452,14 +452,7 @@ export const LogisticsEcosystem: React.FC = () => {
 
         {/* Progress Indicator - Centered neatly above the card viewport */}
         <div className="wk-logistics-eco__indicator-wrap" aria-hidden="true">
-          <div className="wk-logistics-eco__indicator-group">
-            <span className="wk-logistics-eco__indicator-text">
-              STAGE <strong className="wk-logistics-eco__indicator-num">{String(activeStageIndex + 1).padStart(2, '0')}</strong> OF 06
-            </span>
-            <div className="wk-logistics-eco__progress-track">
-              <div ref={progressFillRef} className="wk-logistics-eco__progress-fill" />
-            </div>
-          </div>
+
         </div>
       </div>
 
@@ -511,8 +504,8 @@ export const LogisticsEcosystem: React.FC = () => {
               {/* Connecting Pipe / Indicator (Except Last Card) */}
               {idx < ECOSYSTEM_STAGES.length - 1 && (
                 <div className="wk-logistics-eco__connector" aria-hidden="true">
-                  <div className="wk-logistics-eco__connector-line" />
-                  <div className="wk-logistics-eco__connector-arrow">→</div>
+
+
                 </div>
               )}
             </div>

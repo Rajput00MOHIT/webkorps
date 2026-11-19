@@ -45,17 +45,7 @@ export const LogisticsIntegrations: React.FC = () => {
           {/* Radial / Connected Systems Map */}
           <div className="wk-logistics-int__network-board">
             {/* Central Node */}
-            <div className="wk-logistics-int__central-core">
-              <span className="wk-logistics-int__core-tag">CENTRAL HUB</span>
-              <h3 className="wk-logistics-int__core-title">Webkorps Logistics Core</h3>
-              <p className="wk-logistics-int__core-desc">
-                High-Throughput Ingestion • EDI Translation • Rule Broker
-              </p>
-              <div className="wk-logistics-int__core-status">
-                <span className="wk-logistics-int__pulse-indicator" aria-hidden="true" />
-                <span>Live Event Stream Synchronized</span>
-              </div>
-            </div>
+
 
             {/* Surrounding Connected Nodes Grid */}
             <div className="wk-logistics-int__nodes-grid">
@@ -74,7 +64,7 @@ export const LogisticsIntegrations: React.FC = () => {
                       <h4 className="wk-logistics-int__node-name">{node.name}</h4>
                     </div>
                     <p className="wk-logistics-int__node-cat">{node.category}</p>
-                    <span className="wk-logistics-int__node-protocol">{node.protocols}</span>
+
                   </button>
                 );
               })}

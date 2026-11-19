@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import Link from 'next/link';
 import cignaAsset from '../../../assets/case-studies/Cigma.png';
 import sonicHealthcareAsset from '../../../assets/case-studies/Sonic healthcare.png';
 import paypalAsset from '../../../assets/case-studies/paypal.png';
@@ -9,6 +10,7 @@ import canopieAsset from '../../../assets/case-studies/canopie.png';
 import medhostAsset from '../../../assets/case-studies/Medhost.png';
 import scoutrAsset from '../../../assets/case-studies/Scoutr.png';
 import pebbleWebAsset from '../../../assets/case-studies/Pebble web.png';
+import safeExpressAsset from '../../../assets/case-studies/Safe-express.png';
 import { getImgSrc } from '../../../utils/image';
 import './CaseStudiesGrid.css';
 
@@ -22,9 +24,23 @@ export interface CaseStudy {
   appType: 'Web Application' | 'Mobile Application';
   industry: string;
   visualBg?: string;
+  href?: string;
 }
 
 const ALL_CASE_STUDIES: CaseStudy[] = [
+  {
+    id: 'safexpress',
+    client: 'Safexpress',
+    description:
+      'Safexpress partnered with Webkorps to engineer an event-driven dispatch platform and sub-second telematics tracking engine across 1,000+ national distribution centers.',
+    categories: ['Platform', 'Logistics', 'Supply Chain'],
+    image: safeExpressAsset,
+    imageAlt: 'Safexpress enterprise dispatch and telematics platform on laptop',
+    appType: 'Web Application',
+    industry: 'Logistics',
+    visualBg: '#F0F9FF',
+    href: '/case-studies/safexpress',
+  },
   {
     id: 'cigna',
     client: 'Cigna',
@@ -251,42 +267,65 @@ export const CaseStudiesGrid: React.FC = () => {
         {/* 2-Column Case Studies Grid */}
         <div className="wk-cs-grid">
           {displayedStudies.length > 0 ? (
-            displayedStudies.map((study) => (
-              <article key={study.id} className="wk-cs-card" id={`cs-${study.id}`}>
-                <div
-                  className="wk-cs-card__visual"
-                  style={{ backgroundColor: study.visualBg || '#EFF6FF' }}
-                >
-                  <img
-                    src={getImgSrc(study.image)}
-                    alt={study.imageAlt}
-                    className="wk-cs-card__img"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-
-                <div className="wk-cs-card__body">
-                  <h3 className="wk-cs-card__client">{study.client}</h3>
-                  <p className="wk-cs-card__desc">{study.description}</p>
+            displayedStudies.map((study) => {
+              const cardContent = (
+                <>
                   <div
-                    className="wk-cs-card__taxonomy"
-                    aria-label={`${study.client} classifications`}
+                    className="wk-cs-card__visual"
+                    style={{ backgroundColor: study.visualBg || '#EFF6FF' }}
                   >
-                    {study.categories.map((cat, idx) => (
-                      <React.Fragment key={cat}>
-                        {idx > 0 && (
-                          <span className="wk-cs-card__dot" aria-hidden="true">
-                            •
-                          </span>
-                        )}
-                        <span className="wk-cs-card__tag">{cat}</span>
-                      </React.Fragment>
-                    ))}
+                    <img
+                      src={getImgSrc(study.image)}
+                      alt={study.imageAlt}
+                      className="wk-cs-card__img"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
-                </div>
-              </article>
-            ))
+
+                  <div className="wk-cs-card__body">
+                    <h3 className="wk-cs-card__client">{study.client}</h3>
+                    <p className="wk-cs-card__desc">{study.description}</p>
+                    <div
+                      className="wk-cs-card__taxonomy"
+                      aria-label={`${study.client} classifications`}
+                    >
+                      {study.categories.map((cat, idx) => (
+                        <React.Fragment key={cat}>
+                          {idx > 0 && (
+                            <span className="wk-cs-card__dot" aria-hidden="true">
+                              •
+                            </span>
+                          )}
+                          <span className="wk-cs-card__tag">{cat}</span>
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              );
+
+              return (
+                <article key={study.id} className="wk-cs-card" id={`cs-${study.id}`}>
+                  {study.href ? (
+                    <Link
+                      href={study.href}
+                      style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        height: '100%',
+                      }}
+                    >
+                      {cardContent}
+                    </Link>
+                  ) : (
+                    cardContent
+                  )}
+                </article>
+              );
+            })
           ) : (
             <div className="wk-cs-empty">
               <h3 className="wk-cs-empty__title">No case studies found</h3>

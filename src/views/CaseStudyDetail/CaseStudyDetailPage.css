@@ -1,0 +1,23 @@
+/**
+ * Case Study Detail Page View Stylesheet
+ */
+
+.wk-case-study-detail-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  color: var(--color-text-primary, #0F172A);
+}
+
+.wk-cs-main {
+  position: relative;
+  width: 100%;
+  padding-bottom: 96px; /* Spacing for floating bottom bar */
+}
+
+.wk-cs-content-stream {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
