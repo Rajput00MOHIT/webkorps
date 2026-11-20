@@ -1,5 +1,6 @@
 /**
  * How the Modern Logistics Ecosystem Works — GSAP Pinned Horizontal Journey
+ * Updated to Figma Card Design: Clean 3D Image + Centered Title + Centered Description
  */
 
 .wk-logistics-eco {
@@ -18,7 +19,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 32px 0 24px;
+    padding: clamp(24px, 3vh, 36px) 0 clamp(20px, 2.5vh, 32px);
     box-sizing: border-box;
   }
 }
@@ -30,29 +31,17 @@
 .wk-logistics-eco__header-container {
   width: 100%;
   max-width: 1240px;
-  margin: 0 auto 20px;
+  margin: 0 auto 18px;
   padding: 0 24px;
   box-sizing: border-box;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-shrink: 0;
 }
 
-.wk-logistics-eco__badge {
-  display: inline-block;
-  padding: 5px 14px;
-  border-radius: 9999px;
-  background: #EAF4FE;
-  color: #1887C9;
-  font-family: var(--font-family-sans, 'Inter', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 1px solid rgba(24, 135, 201, 0.2);
-  margin-bottom: 12px;
-}
+
 
 .wk-logistics-eco__title {
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
@@ -61,7 +50,7 @@
   line-height: 1.25;
   letter-spacing: -0.025em;
   color: #0F172A;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   text-align: center;
   max-width: 900px;
 }
@@ -73,22 +62,23 @@
 .wk-logistics-eco__subtitle {
   font-family: var(--font-family-sans, 'Inter', sans-serif);
   font-size: clamp(14px, 1.1vw, 16px);
-  line-height: 1.6;
+  line-height: 1.55;
   color: #64748B;
   max-width: 760px;
-  margin: 0 auto 16px;
+  margin: 0 auto 14px;
   text-align: center;
 }
 
-/* Centered Stage Progress Indicator */
+
 .wk-logistics-eco__indicator-wrap {
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
-  margin-top: 4px;
+  gap: 14px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 9999px;
+  padding: 6px 16px;
 }
-
-
 
 .wk-logistics-eco__indicator-text {
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
@@ -131,203 +121,103 @@
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 10px 0 16px;
+  padding: 8px 0 16px;
   position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .wk-logistics-eco__track {
   display: flex;
-  gap: 30px;
+  gap: clamp(24px, 2.5vw, 36px);
   width: max-content;
   box-sizing: border-box;
   will-change: transform;
   align-items: stretch;
-  /* Aligns first card symmetrically with centered 1240px container */
-  padding-left: max(24px, calc((100vw - 1240px) / 2));
-  padding-right: max(24px, calc((100vw - 1240px) / 2));
+  /* Aligns first card symmetrically with centered 1280px container */
+  padding-left: max(24px, calc((100vw - 1280px) / 2));
+  padding-right: max(24px, calc((100vw - 1280px) / 2));
 }
 
 /* ==========================================================================
-   Enterprise Pipeline Stage Card
+   Modern Logistics Card Design (Figma node 2699-2514 Reference)
    ========================================================================== */
 
 .wk-logistics-eco__card {
-  flex: 0 0 370px;
-  width: 370px;
+  flex: 0 0 clamp(360px, 27vw, 420px);
+  width: clamp(360px, 27vw, 420px);
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
-  border-radius: 20px;
-  padding: 22px 24px;
+  border-radius: 12px;
+  padding: clamp(28px, 3.2vw, 40px) clamp(22px, 2.6vw, 34px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   position: relative;
   box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-@media (min-width: 961px) and (max-width: 1200px) {
-  .wk-logistics-eco__card {
-    flex: 0 0 330px;
-    width: 330px;
-    padding: 20px;
-  }
-}
-
 .wk-logistics-eco__card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: #CBD5E1;
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03);
+
 }
 
 .wk-logistics-eco__card.is-active {
   border-color: #BAE6FD;
-  box-shadow: 0 12px 32px rgba(24, 135, 201, 0.12), 0 2px 6px rgba(15, 23, 42, 0.03);
+
 }
 
-/* Card Header */
-.wk-logistics-eco__card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.wk-logistics-eco__step-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  background: #EAF4FE;
-  color: #1887C9;
-  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-}
-
-.wk-logistics-eco__step-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #1887C9;
-}
-
-.wk-logistics-eco__card-category {
-  font-family: var(--font-family-sans, 'Inter', sans-serif);
-  font-size: 11px;
-  font-weight: 600;
-  color: #94A3B8;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-/* Card Visual Illustration Area */
-.wk-logistics-eco__card-visual {
+/* 3D Image Area */
+.wk-logistics-eco__card-img-wrap {
   width: 100%;
-  height: 145px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #F0F7FF 0%, #E8F4FC 100%);
-  border: 1px solid rgba(24, 135, 201, 0.12);
+  height: clamp(160px, 18vw, 215px);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 14px;
+  margin-bottom: clamp(16px, 2vw, 24px);
   overflow: hidden;
-  position: relative;
+  user-select: none;
 }
 
-.wk-logistics-eco__illus-svg {
-  width: 100%;
-  height: 100%;
+.wk-logistics-eco__card-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   display: block;
+  transition: transform 0.3s ease;
 }
 
-/* Card Body Content */
-.wk-logistics-eco__card-body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+.wk-logistics-eco__card:hover .wk-logistics-eco__card-img {
+  transform: scale(1.03);
 }
 
+/* Centered Title */
 .wk-logistics-eco__card-title {
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 18px;
+  font-size: clamp(21px, 1.9vw, 25px);
   font-weight: 800;
   color: #0F172A;
-  margin: 0 0 6px;
-  line-height: 1.3;
+  margin: 0 0 12px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  text-align: center;
 }
 
+/* Centered Description */
 .wk-logistics-eco__card-desc {
   font-family: var(--font-family-sans, 'Inter', sans-serif);
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: clamp(14px, 1.05vw, 15.5px);
+  line-height: 1.62;
   color: #64748B;
-  margin: 0 0 12px;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 380px;
 }
-
-/* Tags List */
-.wk-logistics-eco__tags-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-
-.wk-logistics-eco__tag {
-  font-family: var(--font-family-sans, 'Inter', sans-serif);
-  font-size: 10.5px;
-  font-weight: 600;
-  color: #334155;
-  background: #F1F5F9;
-  border: 1px solid #E2E8F0;
-  padding: 3px 8px;
-  border-radius: 5px;
-  letter-spacing: 0.01em;
-}
-
-/* Operational Impact Footer */
-.wk-logistics-eco__card-footer {
-  margin-top: auto;
-  padding-top: 10px;
-  border-top: 1px solid #F1F5F9;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.wk-logistics-eco__stat-icon {
-  font-size: 12px;
-  color: #1887C9;
-  line-height: 1;
-}
-
-.wk-logistics-eco__stat-text {
-  font-family: var(--font-family-sans, 'Inter', sans-serif);
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #0284C7;
-  letter-spacing: -0.01em;
-}
-
-/* Pipeline Connecting Arrow Indicator (Desktop) */
-.wk-logistics-eco__connector {
-  position: absolute;
-  right: -27px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-}
-
-
-
-
 
 /* ==========================================================================
    Mobile & Tablet Fallback (< 960px)
@@ -363,9 +253,11 @@
   .wk-logistics-eco__card {
     width: 100% !important;
     flex: none;
+    padding: 32px 24px;
   }
 
-  .wk-logistics-eco__connector {
-    display: none;
+  .wk-logistics-eco__card-img-wrap {
+    height: 200px;
+    margin-bottom: 18px;
   }
 }

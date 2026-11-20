@@ -355,16 +355,18 @@ export const TECHNOLOGY_CATEGORIES: TechCategory[] = [
         name: 'Kotlin',
         label: 'KOTLIN',
         icon: (
-          <svg width="361" height="361" viewBox="0 0 361 361" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M317.24 317.24H43.7598V43.7598H317.24L180.5 180.5L317.24 317.24Z" fill="url(#paint0_linear_2345_8027)" />
+          <svg width="42" height="42" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M28.1209 28.1209H3.87891V3.87891H28.1209L15.9999 15.9999L28.1209 28.1209Z" fill="url(#paint0_linear_2744_1169)" />
             <defs>
-              <linearGradient id="paint0_linear_2345_8027" x1="317.241" y1="43.756" x2="43.7575" y2="317.24" gradientUnits="userSpaceOnUse">
+              <linearGradient id="paint0_linear_2744_1169" x1="28.1211" y1="3.87857" x2="3.87871" y2="28.1209" gradientUnits="userSpaceOnUse">
                 <stop offset="0.003" stop-color="#E44857" />
                 <stop offset="0.469" stop-color="#C711E1" />
                 <stop offset="1" stop-color="#7F52FF" />
               </linearGradient>
             </defs>
           </svg>
+
+
 
         ),
       },

@@ -5,14 +5,22 @@ import { LOGISTICS_DEMO_PLACEHOLDER } from '../logisticsSoftwareData';
 import { getImgSrc } from '../../../utils/image';
 import './LogisticsIntegrations.css';
 
-interface IntegrationNode {
+export interface IntegrationNode {
   id: string;
   name: string;
   category: string;
   protocols: string;
 }
 
-const INTEGRATION_NODES: IntegrationNode[] = [
+export interface LogisticsIntegrationsProps {
+  id?: string;
+  badge?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+  nodes?: IntegrationNode[];
+}
+
+const DEFAULT_INTEGRATION_NODES: IntegrationNode[] = [
   { id: 'erp', name: 'ERP Systems', category: 'SAP, Oracle, NetSuite', protocols: 'Bidirectional sync' },
   { id: 'crm', name: 'CRM Platforms', category: 'Salesforce, HubSpot', protocols: 'Account & contract sync' },
   { id: 'tms-wms', name: 'TMS & WMS', category: 'Manhattan, Infor', protocols: 'EDI 204 / 214 / 856' },
@@ -23,33 +31,36 @@ const INTEGRATION_NODES: IntegrationNode[] = [
   { id: 'carriers', name: 'Carrier APIs', category: 'FedEx, DHL, BlueDart', protocols: 'Tender & ePOD manifests' },
 ];
 
-export const LogisticsIntegrations: React.FC = () => {
-  const [activeNodeId, setActiveNodeId] = useState<string>(INTEGRATION_NODES[0].id);
+export const LogisticsIntegrations: React.FC<LogisticsIntegrationsProps> = ({
+  id = 'logistics-integrations',
+  badge = 'Integration Architecture',
+  title = (
+    <>
+      Connect Your Entire <span className="wk-logistics-int__title-accent">Logistics Ecosystem</span>
+    </>
+  ),
+  subtitle = 'Unify your ERP, telematics, warehouse sensors, and carrier networks into a synchronized central data hub.',
+  nodes = DEFAULT_INTEGRATION_NODES,
+}) => {
+  const [activeNodeId, setActiveNodeId] = useState<string>(nodes[0]?.id || '');
 
   return (
-    <section id="logistics-integrations" className="wk-logistics-int" aria-label="Connected Logistics Technology & Integrations">
+    <section id={id} className="wk-logistics-int" aria-label="Connected Technology & Integrations">
       <div className="wk-logistics-int__container">
         {/* Header */}
         <div className="wk-logistics-int__header">
-          <span className="wk-logistics-int__badge">Integration Architecture</span>
-          <h2 className="wk-logistics-int__title">
-            Connect Your Entire <span className="wk-logistics-int__title-accent">Logistics Ecosystem</span>
-          </h2>
-          <p className="wk-logistics-int__subtitle">
-            Unify your ERP, telematics, warehouse sensors, and carrier networks into a synchronized central data hub.
-          </p>
+          <span className="wk-logistics-int__badge">{badge}</span>
+          <h2 className="wk-logistics-int__title">{title}</h2>
+          <p className="wk-logistics-int__subtitle">{subtitle}</p>
         </div>
 
         {/* Central Connected-Node Composition */}
         <div className="wk-logistics-int__ecosystem-layout">
           {/* Radial / Connected Systems Map */}
           <div className="wk-logistics-int__network-board">
-            {/* Central Node */}
-
-
             {/* Surrounding Connected Nodes Grid */}
             <div className="wk-logistics-int__nodes-grid">
-              {INTEGRATION_NODES.map((node) => {
+              {nodes.map((node) => {
                 const isActive = activeNodeId === node.id;
                 return (
                   <button
@@ -85,20 +96,7 @@ export const LogisticsIntegrations: React.FC = () => {
               </div>
             </div>
 
-            <div className="wk-logistics-int__features-strip">
-              <div className="wk-logistics-int__feature-col">
-                <span className="wk-logistics-int__feat-title">High-Throughput Ingestion</span>
-                <span className="wk-logistics-int__feat-sub">Processes millions of sensor pings via Kafka & MQTT</span>
-              </div>
-              <div className="wk-logistics-int__feature-col">
-                <span className="wk-logistics-int__feat-title">Automated EDI Translation</span>
-                <span className="wk-logistics-int__feat-sub">Bi-directional parsing of EDI 204, 214, and 856 standards</span>
-              </div>
-              <div className="wk-logistics-int__feature-col">
-                <span className="wk-logistics-int__feat-title">Enterprise Security</span>
-                <span className="wk-logistics-int__feat-sub">TLS 1.3 encryption, RBAC controls, and full audit logs</span>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

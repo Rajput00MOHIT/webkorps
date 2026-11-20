@@ -143,8 +143,8 @@
 
 /* Right Column: Industry Solution Detail Panel */
 .wk-domain-sol__panel {
-  background-color: #F8FAFC;
-  border-radius: 16px;
+  background-color: #f8fafc31;
+  border-radius: 6px;
   border: 1px solid #EDF2F7;
   padding: clamp(28px, 3.2vw, 38px);
   box-sizing: border-box;
@@ -154,26 +154,9 @@
   transition: all 0.25s ease;
 }
 
-/* Compliance / Tech Badge */
-.wk-domain-sol__badge-wrap {
-  margin-bottom: 14px;
-}
 
-.wk-domain-sol__badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 12px;
-  border-radius: 9999px;
-  background-color: #E7F6FF;
-  color: #1887C9;
-  font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
+
+
 
 /* Solution Heading */
 .wk-domain-sol__panel-title {
@@ -253,4 +236,3 @@
     font-size: 17px;
   }
 }
-

@@ -144,7 +144,7 @@ export const LogisticsSoftwareDevelopmentPage: React.FC = () => {
               <span className="wk-capabilities__title-accent">Every Logistics Operation</span>
             </>
           }
-          subtitle="From algorithmic dispatching and smart warehousing to real-time telematics and automated freight billing, we engineer modular software tailored to your workflows."
+          subtitle="We build modular logistics software for smarter dispatch, warehousing, tracking, and freight billing."
           items={LOGISTICS_CAPABILITIES}
         />
 
@@ -156,11 +156,11 @@ export const LogisticsSoftwareDevelopmentPage: React.FC = () => {
           id="logistics-business-models"
           title={
             <>
-              Software Solutions for{' '}
-              <span className="wk-domain-sol__title-accent">Different Logistics Business Models</span>
+              Logistics Software for{' '}
+              <span className="wk-domain-sol__title-accent">Every Business Model</span>
             </>
           }
-          subtitle="Whether you operate a global freight forwarding firm, a multi-client 3PL network, or retail delivery fleets, we build platforms aligned with your commercial reality."
+          subtitle="Tailored logistics platforms for freight forwarders, 3PL providers, and retail delivery fleets."
           engineeringLabel="Webkorps Logistics Engineering"
           domains={LOGISTICS_BUSINESS_DOMAINS}
         />

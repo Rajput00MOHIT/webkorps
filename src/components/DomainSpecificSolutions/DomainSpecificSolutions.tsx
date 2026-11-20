@@ -119,11 +119,8 @@ export const DomainSpecificSolutions: React.FC<DomainSpecificSolutionsProps> = (
             className="wk-domain-sol__panel"
           >
             {/* 1. Compliance Badge (Only when provided) */}
-            {activeDomain.badge && (
-              <div className="wk-domain-sol__badge-wrap">
-                <span className="wk-domain-sol__badge">{activeDomain.badge}</span>
-              </div>
-            )}
+
+
 
             {/* 2. Main Solution Heading */}
             <h3 className="wk-domain-sol__panel-title">{activeDomain.solutionTitle}</h3>

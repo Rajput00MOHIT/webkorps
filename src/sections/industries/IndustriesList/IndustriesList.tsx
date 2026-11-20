@@ -39,7 +39,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Secure and scalable solutions for modern financial systems.',
     image: bankingImg,
     imageAlt: '3D upward crystal blue chart arrow representing Banking and Finance solutions',
-    href: '/case-studies',
+    href: '/industries/fintech',
   },
   {
     id: 'healthcare',
@@ -47,7 +47,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Smart systems to improve care, efficiency, and data management.',
     image: healthcareImg,
     imageAlt: '3D translucent blue medical wave curve representing Healthcare technology',
-    href: '/case-studies',
+    href: '/industries/healthcare',
   },
   {
     id: 'retail-ecommerce',
@@ -55,7 +55,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Digital commerce solutions that enhance sales and customer experience.',
     image: retailImg,
     imageAlt: '3D modern digital storefront with sales charts representing Retail and E-Commerce',
-    href: '/case-studies',
+    href: '/industries/retail-ecommerce',
   },
   {
     id: 'manufacturing',
@@ -63,7 +63,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Automation and systems to improve productivity and operations.',
     image: manufacturingImg,
     imageAlt: '3D automated digital production cubes representing Manufacturing systems',
-    href: '/case-studies',
+    href: '/industries/manufacturing',
   },
   {
     id: 'logistics-supply-chain',
@@ -71,7 +71,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Real-time tracking and smarter operational workflows.',
     image: logisticsImg,
     imageAlt: '3D real-time tracking interface dial representing Logistics and Supply Chain',
-    href: '/case-studies',
+    href: '/industries/logistics',
   },
   {
     id: 'education-elearning',
@@ -79,7 +79,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Scalable platforms for modern digital learning experiences.',
     image: educationImg,
     imageAlt: '3D digital curriculum documents on glowing platform representing Education and E-Learning',
-    href: '/case-studies',
+    href: '/industries/education',
   },
   {
     id: 'real-estate',
@@ -87,7 +87,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Tech-driven platforms for better property management and sales.',
     image: realEstateImg,
     imageAlt: '3D architectural digital screen on circular pedestal representing Real Estate technology',
-    href: '/case-studies',
+    href: '/industries/real-estate',
   },
   {
     id: 'travel-hospitality',
@@ -95,7 +95,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Solutions that improve bookings, operations, and customer experience.',
     image: travelImg,
     imageAlt: '3D structural architectural steps with glass accents representing Travel and Hospitality',
-    href: '/case-studies',
+    href: '/industries/travel-hospitality',
   },
   {
     id: 'automotive-mobility',
@@ -103,7 +103,15 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     description: 'Smart solutions for connected and efficient mobility systems.',
     image: automotiveImg,
     imageAlt: '3D glowing stacked blue modular cubes representing Automotive and Mobility',
-    href: '/case-studies',
+    href: '/industries/automotive',
+  },
+  {
+    id: 'warehouse-fulfillment',
+    name: 'Warehouse & Fulfillment',
+    description: 'Autonomous robotics, dynamic slotting, and smart inventory fulfillment.',
+    image: logisticsImg,
+    imageAlt: '3D warehouse automation and fulfillment systems',
+    href: '/industries/warehouse',
   },
 ];
 

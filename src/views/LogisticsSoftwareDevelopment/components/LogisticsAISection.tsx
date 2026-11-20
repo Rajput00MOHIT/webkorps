@@ -1,17 +1,21 @@
 'use client';
 
 import React, { useState } from 'react';
+import type { StaticImageData } from 'next/image';
 import { LOGISTICS_DEMO_PLACEHOLDER } from '../logisticsSoftwareData';
 import { getImgSrc } from '../../../utils/image';
 import './LogisticsAISection.css';
 
-interface AIUseCaseBrief {
+export interface AIUseCaseBrief {
   id: string;
   number: string;
   title: string;
   problem: string;
-  aiSolution: string;
-  dataFeeds: string;
+  aiSolution?: string;
+  aiApproach?: string;
+  dataFeeds?: string;
+  integrations?: string;
+  benefit?: string;
 }
 
 const AI_USE_CASES: AIUseCaseBrief[] = [
@@ -65,22 +69,46 @@ const AI_USE_CASES: AIUseCaseBrief[] = [
   },
 ];
 
-export const LogisticsAISection: React.FC = () => {
-  const [activeId, setActiveId] = useState<string>(AI_USE_CASES[0].id);
+export interface LogisticsAISectionProps {
+  id?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+  image?: StaticImageData | string;
+  imageAlt?: string;
+  useCases?: AIUseCaseBrief[];
+}
 
-  const activeCase = AI_USE_CASES.find((c) => c.id === activeId) || AI_USE_CASES[0];
+export const LogisticsAISection: React.FC<LogisticsAISectionProps> = ({
+  id = 'logistics-ai',
+  title = (
+    <>
+      Smarter <span className="wk-logistics-ai__title-accent">Logistics with AI</span>
+    </>
+  ),
+  subtitle = 'AI predicts delays, optimizes inventory, and protects freight margins.',
+  image = LOGISTICS_DEMO_PLACEHOLDER,
+  imageAlt = 'AI operations and predictive analytics 3D display',
+  useCases = AI_USE_CASES,
+}) => {
+  const [activeId, setActiveId] = useState<string>(useCases[0]?.id || '');
+
+  React.useEffect(() => {
+    if (useCases && useCases.length > 0) {
+      setActiveId(useCases[0].id);
+    }
+  }, [useCases]);
+
+  const activeCase = useCases.find((c) => c.id === activeId) || useCases[0];
+
+  if (!activeCase) return null;
 
   return (
-    <section id="logistics-ai" className="wk-logistics-ai" aria-label="Smarter Logistics with AI">
+    <section id={id} className="wk-logistics-ai" aria-label="Smarter Operations with AI">
       <div className="wk-logistics-ai__container">
         {/* Section Header */}
         <div className="wk-logistics-ai__header">
-          <h2 className="wk-logistics-ai__title">
-            Smarter <span className="wk-logistics-ai__title-accent">Logistics with AI</span>
-          </h2>
-          <p className="wk-logistics-ai__subtitle">
-            AI predicts delays, optimizes inventory, and protects freight margins.
-          </p>
+          <h2 className="wk-logistics-ai__title">{title}</h2>
+          <p className="wk-logistics-ai__subtitle">{subtitle}</p>
         </div>
 
         {/* Visual-and-Content Split Composition */}
@@ -88,8 +116,8 @@ export const LogisticsAISection: React.FC = () => {
           {/* Left Side: Tabs on Top, 3D Image Card Below */}
           <div className="wk-logistics-ai__left-col">
             {/* 2-Column Tabs Grid */}
-            <div className="wk-logistics-ai__tabs" role="tablist" aria-label="AI Logistics Capabilities">
-              {AI_USE_CASES.map((uc) => {
+            <div className="wk-logistics-ai__tabs" role="tablist" aria-label="AI Capabilities">
+              {useCases.map((uc) => {
                 const isSelected = uc.id === activeId;
                 return (
                   <button
@@ -111,8 +139,8 @@ export const LogisticsAISection: React.FC = () => {
             {/* 3D Illustration Graphic Card */}
             <div className="wk-logistics-ai__image-card">
               <img
-                src={getImgSrc(LOGISTICS_DEMO_PLACEHOLDER)}
-                alt="AI logistics operations and predictive analytics 3D display"
+                src={getImgSrc(image)}
+                alt={imageAlt}
                 className="wk-logistics-ai__image"
                 loading="lazy"
               />
@@ -141,14 +169,22 @@ export const LogisticsAISection: React.FC = () => {
               {/* Solution Box */}
               <div className="wk-logistics-ai__point">
                 <span className="wk-logistics-ai__point-label">HOW APPLIED AI SOLVES IT</span>
-                <p className="wk-logistics-ai__point-desc">{activeCase.aiSolution}</p>
+                <p className="wk-logistics-ai__point-desc">{activeCase.aiSolution || activeCase.aiApproach}</p>
               </div>
 
               {/* Data Ingestion Box */}
               <div className="wk-logistics-ai__point">
                 <span className="wk-logistics-ai__point-label">KEY DATA INTEGRATIONS</span>
-                <p className="wk-logistics-ai__point-desc">{activeCase.dataFeeds}</p>
+                <p className="wk-logistics-ai__point-desc">{activeCase.dataFeeds || activeCase.integrations}</p>
               </div>
+
+              {/* Optional Benefit Box */}
+              {activeCase.benefit && (
+                <div className="wk-logistics-ai__point is-benefit">
+                  <span className="wk-logistics-ai__point-label">MEASURABLE VALUE</span>
+                  <p className="wk-logistics-ai__point-desc">{activeCase.benefit}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

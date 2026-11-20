@@ -175,37 +175,37 @@ export const INDUSTRIES_NAV_DATA: IndustryItem[] = [
     id: 'healthcare',
     title: 'Healthcare',
     description: 'Enhance patient care and clinical workflows with secure digital solutions.',
-    href: '/industries',
+    href: '/industries/healthcare',
   },
   {
     id: 'fintech',
     title: 'Fintech',
     description: 'Strengthen financial operations and enhance transaction security.',
-    href: '/industries',
+    href: '/industries/fintech',
   },
   {
     id: 'real-estate',
     title: 'Real Estate',
     description: 'Simplify property management and streamline operations with connected tech.',
-    href: '/industries',
+    href: '/industries/real-estate',
   },
   {
     id: 'retail',
     title: 'Retail',
     description: 'Create seamless customer shopping journeys and modern digital retail.',
-    href: '/industries',
+    href: '/industries/retail-ecommerce',
   },
   {
     id: 'travel',
     title: 'Travel and Hospitality',
     description: 'Enhance guest journeys and booking operations with connected digital systems.',
-    href: '/industries',
+    href: '/industries/travel-hospitality',
   },
   {
     id: 'warehouse',
     title: 'Warehouse',
     description: 'Optimize fulfillment, inventory tracking, and warehouse automation.',
-    href: '/industries',
+    href: '/industries/warehouse',
   },
 ];
 

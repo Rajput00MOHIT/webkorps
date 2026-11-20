@@ -10,7 +10,32 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export const LogisticsChallenges: React.FC = () => {
+export interface LogisticsChallengeItem {
+  id?: string;
+  number: string;
+  title: string;
+  problem?: string;
+  description?: string;
+  impact: string;
+}
+
+export interface LogisticsChallengesProps {
+  id?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+  items?: LogisticsChallengeItem[];
+}
+
+export const LogisticsChallenges: React.FC<LogisticsChallengesProps> = ({
+  id = 'logistics-challenges',
+  title = (
+    <>
+      Why Logistics <span className="wk-logistics-ch__title-accent">Gets Complex</span>
+    </>
+  ),
+  subtitle = 'As freight volumes grow and carrier networks expand, legacy spreadsheets and disconnected software tools break down—creating blindspots, delays, and runaway operational expenses.',
+  items = LOGISTICS_CHALLENGES,
+}) => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -43,6 +68,9 @@ export const LogisticsChallenges: React.FC = () => {
         const viewportHeight = viewport.clientHeight;
         return Math.max(0, trackHeight - viewportHeight);
       };
+
+      const dist = getDistance();
+      if (dist <= 10) return;
 
       // Ensure initial track position is zero
       gsap.set(track, { y: 0 });
@@ -80,54 +108,42 @@ export const LogisticsChallenges: React.FC = () => {
     return () => {
       mm.revert();
     };
-  }, []);
+  }, [items]);
 
   return (
     <section
-      id="logistics-challenges"
+      id={id}
       ref={sectionRef}
       className="wk-logistics-ch"
-      aria-label="The Real Challenges in Logistics"
+      aria-label="Industry Operational Challenges"
     >
       <div className="wk-logistics-ch__container">
         {/* Editorial Two-Column Split Layout */}
         <div className="wk-logistics-ch__layout">
           {/* Left Column: Contextual Brief (Stationary) */}
           <div className="wk-logistics-ch__left">
-            <span className="wk-logistics-ch__badge">Operational Bottlenecks</span>
-            <h2 className="wk-logistics-ch__title">
-              Why Logistics Operations Become{' '}
-              <span className="wk-logistics-ch__title-accent">Difficult to Manage</span>
-            </h2>
-            <p className="wk-logistics-ch__subtitle">
-              As freight volumes grow and carrier networks expand, legacy spreadsheets and disconnected software tools break down—creating blindspots, delays, and runaway operational expenses.
-            </p>
-
-            <div className="wk-logistics-ch__highlight-box">
-              <span className="wk-logistics-ch__highlight-title">The Core Bottleneck</span>
-              <p className="wk-logistics-ch__highlight-desc">
-                When logistics data is trapped in silos between dispatch, warehouse, and accounting teams, proactive intervention becomes impossible.
-              </p>
-            </div>
+            <h2 className="wk-logistics-ch__title">{title}</h2>
+            <p className="wk-logistics-ch__subtitle">{subtitle}</p>
           </div>
 
           {/* Right Column: Clipped Viewport Area with Scrolling Track */}
           <div className="wk-logistics-ch__right">
             <div ref={viewportRef} className="wk-logistics-ch__viewport">
               <div ref={trackRef} className="wk-logistics-ch__track">
-                {LOGISTICS_CHALLENGES.map((item) => {
-                  const isHovered = hoveredId === item.id;
+                {items.map((item) => {
+                  const itemId = item.id || item.number;
+                  const isHovered = hoveredId === itemId;
                   return (
                     <div
-                      key={item.id}
+                      key={itemId}
                       className={`wk-logistics-ch__row ${isHovered ? 'is-hovered' : ''}`}
-                      onMouseEnter={() => setHoveredId(item.id)}
+                      onMouseEnter={() => setHoveredId(itemId)}
                       onMouseLeave={() => setHoveredId(null)}
                     >
                       <div className="wk-logistics-ch__row-num">{item.number}</div>
                       <div className="wk-logistics-ch__row-body">
                         <h3 className="wk-logistics-ch__row-title">{item.title}</h3>
-                        <p className="wk-logistics-ch__row-desc">{item.problem}</p>
+                        <p className="wk-logistics-ch__row-desc">{item.problem || item.description}</p>
                         <div className="wk-logistics-ch__impact-line">
                           <span className="wk-logistics-ch__impact-label">Impact:</span>
                           <span className="wk-logistics-ch__impact-text">{item.impact}</span>

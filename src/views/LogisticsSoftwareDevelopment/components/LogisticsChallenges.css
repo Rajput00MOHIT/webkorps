@@ -57,21 +57,7 @@
   justify-content: center;
 }
 
-.wk-logistics-ch__badge {
-  display: inline-block;
-  padding: 5px 14px;
-  border-radius: 9999px;
-  background: #EAF4FE;
-  color: #1887C9;
-  font-family: var(--font-family-sans, 'Inter', sans-serif);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  border: 1px solid rgba(24, 135, 201, 0.2);
-  align-self: flex-start;
-}
+
 
 .wk-logistics-ch__title {
   font-family: var(--font-family-heading, 'Plus Jakarta Sans', sans-serif);
@@ -95,12 +81,7 @@
   margin: 0 0 32px;
 }
 
-.wk-logistics-ch__highlight-box {
-  background: #FFFFFF;
-  border: 1.5px solid #1887C9;
-  border-radius: 12px;
-  padding: 20px 22px;
-}
+
 
 .wk-logistics-ch__highlight-title {
   display: block;

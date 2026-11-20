@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { INDUSTRIES_NAV_DATA } from './navigationData';
 import industrySpotlightImg from '../../assets/industries/industry-spotlight.png';
 import { getImgSrc } from '../../utils/image';
@@ -67,11 +68,11 @@ export const IndustriesMenu: React.FC<IndustriesMenuProps> = ({ onItemClick }) =
       {/* Left: Compact 2-Column Industry Grid */}
       <div className="wk-mega-menu__industries-grid">
         {INDUSTRIES_NAV_DATA.map((industry, idx) => (
-          <a
+          <Link
             key={industry.id}
             href={industry.href}
             className="wk-mega-menu__industry-card"
-            onClick={(e) => handleLinkClick(e, industry.href)}
+            onClick={onItemClick}
             style={{ '--item-stagger': `${idx * 30}ms` } as React.CSSProperties}
           >
             <div className="wk-mega-menu__industry-icon-box" aria-hidden="true">
@@ -85,7 +86,7 @@ export const IndustriesMenu: React.FC<IndustriesMenuProps> = ({ onItemClick }) =
               <span className="wk-mega-menu__industry-title">{industry.title}</span>
               <p className="wk-mega-menu__industry-desc">{industry.description}</p>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
 
@@ -107,23 +108,23 @@ export const IndustriesMenu: React.FC<IndustriesMenuProps> = ({ onItemClick }) =
           <p className="wk-mega-menu__industry-spotlight-desc">
             Discover how AI, automation, and cloud-first engineering are reshaping operations across logistics, healthcare, fintech, and retail.
           </p>
-          <a
+          <Link
             href="/insights"
             className="wk-mega-menu__industry-spotlight-link"
-            onClick={(e) => handleLinkClick(e, '/insights')}
+            onClick={onItemClick}
           >
             <span>Read More</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
-          </a>
+          </Link>
         </div>
       </aside>
 
       {/* Direct Route Action to Full Industries Page */}
       <div style={{ gridColumn: '1 / -1', marginTop: '16px', textAlign: 'center' }}>
-        <a
+        <Link
           href="/industries"
           onClick={onItemClick}
           style={{
@@ -140,7 +141,7 @@ export const IndustriesMenu: React.FC<IndustriesMenuProps> = ({ onItemClick }) =
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
             <polyline points="9 18 15 12 9 6" />
           </svg>
-        </a>
+        </Link>
       </div>
     </div>
   );
